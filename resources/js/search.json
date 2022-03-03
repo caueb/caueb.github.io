@@ -1,1 +1,1 @@
-[[{"l":"About"}]]
+[[{"l":"About"}],[{"l":"XSS"},{"i":"reflected-xss---basic","l":"Reflected XSS - Basic"},{"i":"reflected-xss---filter-evasion","l":"Reflected XSS - Filter Evasion"},{"l":"Stored XSS"},{"l":"Data grabber for XSS"},{"l":"Javascript keylogger"},{"l":"Password changer"},{"l":"SSRF via XSS"},{"l":"Load external scripts via JS"},{"l":"Local files using PHP redirection"}]]
