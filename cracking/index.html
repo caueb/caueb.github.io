@@ -6,21 +6,21 @@
     <meta name="turbo-cache-control" content="no-cache">
 
     <!-- Primary Meta Tags -->
-    <title>Port 389 - LDAP</title>
-    <meta name="title" content="Port 389 - LDAP">
-    <meta name="description" content="LdapSearch Naming Context Dump:" />
+    <title>Cracking</title>
+    <meta name="title" content="Cracking">
+    <meta name="description" content="Hash" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://caueb.github.io/enumeration/port-389---27c06/">
-    <meta property="og:title" content="Port 389 - LDAP">
-    <meta property="og:description" content="LdapSearch Naming Context Dump:">
+    <meta property="og:url" content="https://caueb.github.io/cracking/">
+    <meta property="og:title" content="Cracking">
+    <meta property="og:description" content="Hash">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://caueb.github.io/enumeration/port-389---27c06/">
-    <meta property="twitter:title" content="Port 389 - LDAP">
-    <meta property="twitter:description" content="LdapSearch Naming Context Dump:">
+    <meta property="twitter:url" content="https://caueb.github.io/cracking/">
+    <meta property="twitter:title" content="Cracking">
+    <meta property="twitter:description" content="Hash">
     
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
@@ -184,69 +184,179 @@
                 <div id="docs-sidebar-right-toggle"></div>
                
                 <!-- Page content  -->
-<doc-anchor-target id="port-389---ldap" class="break-words">
+<doc-anchor-target id="cracking" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#port-389---ldap">#</doc-anchor-trigger>
-        <span>Port 389 - LDAP</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#cracking">#</doc-anchor-trigger>
+        <span>Cracking</span>
     </h1>
 </doc-anchor-target>
-<doc-anchor-target id="ldapsearch">
+<doc-anchor-target id="search-that-hash">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#ldapsearch">#</doc-anchor-trigger>
-        <span>LDAPSearch</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#search-that-hash">#</doc-anchor-trigger>
+        <span>Search-That-Hash</span>
     </h2>
 </doc-anchor-target>
-<p>LdapSearch Naming Context Dump:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">ldapsearch -h 10.10.10.172 -x -s base namingcontexts</code></pre>
+<pre class="language-bash"><code v-pre class="language-bash"># Search-That-Hash
+# https://github.com/HashPals/Search-That-Hash
+# pip3 install search-that-hash
+sth -f hash.txt
+sth --text &quot;HASH&quot;</code></pre>
 </doc-codeblock></div>
-<doc-anchor-target id="ldapsearch-big-dump">
+<doc-anchor-target id="hashcat">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#hashcat">#</doc-anchor-trigger>
+        <span>Hashcat</span>
+    </h2>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash"># Hashcat examples of hash
+hashcat --example-hashes | grep -i -B5 -A5 &quot;MYSQL&quot;
+
+# Usage
+hashcat -m 1000 -a 0 julian.hash /usr/share/wordlists/rockyou.txt -O -o cracked-hash.txt
+
+-m 0 = designates the type of hash we are cracking (NTLM)
+-a 0 = designates a dictionary attack
+-o   = cracked.txt is the output file for the cracked passwords</code></pre>
+</doc-codeblock></div>
+<div class="table-wrapper scrollbar overflow-hidden">
+<table class="comfortable">
+<thead>
+<tr>
+<th>Hash</th>
+<th>Mode</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>md5 raw</td>
+<td>-m 0</td>
+</tr>
+<tr>
+<td>md5crypt</td>
+<td>-m 500</td>
+</tr>
+<tr>
+<td>md5(apr)</td>
+<td>-m 1600</td>
+</tr>
+<tr>
+<td>sha512crypt</td>
+<td>-m 1800</td>
+</tr>
+<tr>
+<td>wordpress</td>
+<td>-m 400</td>
+</tr>
+<tr>
+<td>DES(unix)</td>
+<td>-m 1500</td>
+</tr>
+<tr>
+<td>Mysql4.0/5</td>
+<td>-m 300</td>
+</tr>
+<tr>
+<td>NTLM</td>
+<td>-m 1000</td>
+</tr>
+</tbody>
+</table>
+</div>
+<doc-anchor-target id="john-the-ripper">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#john-the-ripper">#</doc-anchor-trigger>
+        <span>John The Ripper</span>
+    </h2>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">john --wordlist=/usr/share/wordlists/rockyou.txt hashtocrack.txt
+
+# John automatically detects the hash, but we can specify:
+--format=md5crypt
+--format=raw-md5
+--format=Raw-SHA256
+
+# MYSQL
+john --wordlist=/usr/share/wordlists/rockyou.txt hash.txt --format=Raw-SHA256</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="linux-passwords">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#linux-passwords">#</doc-anchor-trigger>
+        <span>Linux passwords</span>
+    </h2>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">unshadow /etc/passwd /etc/shadow &gt; mypasswd.txt
+john --wordlist=/usr/share/wordlists/rockyou.txt mypasswd.txt</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="crack-files">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#crack-files">#</doc-anchor-trigger>
+        <span>Crack Files</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="zip-files">
     <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#ldapsearch-big-dump">#</doc-anchor-trigger>
-        <span>LdapSearch Big Dump</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#zip-files">#</doc-anchor-trigger>
+        <span>ZIP files</span>
     </h3>
 </doc-anchor-target>
-<p>Need Naming Context to do big dump:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">ldapsearch -h {IP} -x -b &quot;{Naming_Context}&quot;</code></pre>
+<pre class="language-bash"><code v-pre class="language-bash">zip2john &lt;zi­pfi­le&gt; &gt; output.txt 
+john --wordlist=/usr/share/wordlists/rockyou.txt output.txt
+
+# Using Fcrackzip
+fcrackzip -u backup­s.zip -D -p /usr/s­har­e/w­ord­lis­ts/­roc­kyo­u.txt -v</code></pre>
 </doc-codeblock></div>
-<doc-anchor-target id="query-users-in-ldap">
+<doc-anchor-target id="ssh-id_rsa">
     <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#query-users-in-ldap">#</doc-anchor-trigger>
-        <span>Query users in LDAP</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#ssh-id_rsa">#</doc-anchor-trigger>
+        <span>SSH (id_rsa)</span>
     </h3>
 </doc-anchor-target>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">ldapsearch -h 10.10.10.172 -x -b &quot;DC=MEGABANK,DC=LOCAL&quot; '(objectClass=Person)'</code></pre>
+<pre class="language-bash"><code v-pre class="language-bash">/usr/share/john/ssh2john.py id_rsa &gt; hash.john
+john --wordlist=/usr/share/wordlists/rockyou.txt hash.john</code></pre>
 </doc-codeblock></div>
-<doc-anchor-target id="extract-hash--crack--connect">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#extract-hash--crack--connect">#</doc-anchor-trigger>
-        <span>Extract hash &gt;&gt; Crack &gt;&gt; Connect</span>
-    </h2>
+<doc-anchor-target id="pdf">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#pdf">#</doc-anchor-trigger>
+        <span>PDF</span>
+    </h3>
 </doc-anchor-target>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash"># Get users hashes
-python GetNPUsers.py MEGABANK.LOCAL/ -usersfile users.txt -dc-ip 10.10.10.172
-python GetNPUsers.py -request MEGABANK.LOCAL/ -dc-ip 10.10.10.172
-
-# Crack the hashes
-john -wordlist=/usr/share/wordlists/rockyou.txt hash.txt
-
-# Connect with Evil-winrm
-evil-winrm -u mhope -p '4n0therD4y@n0th3r$' -i 10.10.10.172
-
-# Connect using username&amp;hash
-evil-winrm -u mhope -H 'HASHDKASUDHASKUDWXADYASDASJDH' -i 10.10.10.172</code></pre>
+<pre class="language-bash"><code v-pre class="language-bash">pdfcrack -f infrastructure.pdf -w /usr/share/wordlists/rockyou.txt</code></pre>
 </doc-codeblock></div>
-<doc-anchor-target id="ldap-domain-dump">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#ldap-domain-dump">#</doc-anchor-trigger>
-        <span>LDAP Domain Dump</span>
-    </h2>
+<doc-anchor-target id="pgp-message--key">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#pgp-message--key">#</doc-anchor-trigger>
+        <span>PGP MESSAGE &amp; KEY</span>
+    </h3>
 </doc-anchor-target>
+<p>Identification &amp; Syntax</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-none"><code v-pre class="language-none">ldapdomaindump $IP -u 'fusion.corp\lparker' -p '****************' --no-json --no-grep</code></pre>
+<pre class="language-bash"><code v-pre class="language-bash"># PGP MESSAGE HEADER LOOKS LIKE
+-----BEGIN PGP MESSAGE-----
+
+# PGP PRIVATE KEY HEADER LOOKS LIKE
+-----BEGIN PGP PRIVATE KEY BLOCK-----</code></pre>
+</doc-codeblock></div>
+<p>Import the PGP PRIVATE KEY into our machine:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">gpg --import eddie.gpg
+# Sometimes asks for a password, then crack it!</code></pre>
+</doc-codeblock></div>
+<p>Crack:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">gpg2john eddie.gpg
+john eddiepgp.hash --wordlist=/usr/share/wordlist/rockyou.txt</code></pre>
+</doc-codeblock></div>
+<p>After importing the private key, we can use it to decode PGP messages:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash"># Decode command
+gpg -d passbolt.message.gpg</code></pre>
 </doc-codeblock></div>
 
 
@@ -259,20 +369,20 @@ evil-winrm -u mhope -H 'HASHDKASUDHASKUDWXADYASDASJDH' -i 10.10.10.172</code></p
             
 <nav class="flex mt-14">
     <div class="w-1/2">
-        <a class="px-5 py-4 h-full flex items-center break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="/enumeration/port-161-u-efa46/">
+        <a class="px-5 py-4 h-full flex items-center break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="/writeups/securecode1/">
             <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
             <span>
                 <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
-                <span class="block mt-1">Port 161 UDP - SNMP</span>
+                <span class="block mt-1">SecureCode1</span>
             </span>
         </a>
     </div>
 
     <div class="w-1/2">
-        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="/enumeration/port-1433--53941/">
+        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="/xss/">
             <span>
                 <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
-                <span class="block mt-1">Port 1433 - MSSQL</span>
+                <span class="block mt-1">XSS</span>
             </span>
             <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
         </a>
@@ -320,6 +430,6 @@ evil-winrm -u mhope -H 'HASHDKASUDHASKUDWXADYASDASJDH' -i 10.10.10.172</code></p
 
         <div id="docs-overlay-target"></div>
 
-        <script>window.__DOCS__ = { "title": "Port 389 - LDAP", icon: "file", hasPrism: true, hasMermaid: false, hasMath: false }</script>
+        <script>window.__DOCS__ = { "title": "Cracking", icon: "file", hasPrism: true, hasMermaid: false, hasMath: false }</script>
     </body>
 </html>
