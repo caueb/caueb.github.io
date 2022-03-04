@@ -24,12 +24,12 @@
     
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="/resources/css/retype.css?v=1.11.2.699674306286" rel="stylesheet" data-turbo-track="reload" />
+    <link href="/resources/css/retype.css?v=1.11.2.699674977080" rel="stylesheet" data-turbo-track="reload" />
 
-    <script type="text/javascript" src="/resources/js/config.js?v=1.11.2.699674306286" defer data-turbo-track="reload"></script>
+    <script type="text/javascript" src="/resources/js/config.js?v=1.11.2.699674977080" defer data-turbo-track="reload"></script>
     <script type="text/javascript" src="/resources/js/retype.js?v=1.11.2" defer data-turbo-track="reload"></script>
-    <script id="lunr-js" type="text/javascript" src="/resources/js/lunr.js?v=1.11.2.699674306286" defer></script>
-    <script id="prism-js" type="text/javascript" src="/resources/js/prism.js?v=1.11.2.699674306286" defer></script>
+    <script id="lunr-js" type="text/javascript" src="/resources/js/lunr.js?v=1.11.2.699674977080" defer></script>
+    <script id="prism-js" type="text/javascript" src="/resources/js/prism.js?v=1.11.2.699674977080" defer></script>
 </head>
     <body>
         <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -200,8 +200,8 @@
 <pre class="language-bash"><code v-pre class="language-bash"># Search-That-Hash
 # https://github.com/HashPals/Search-That-Hash
 # pip3 install search-that-hash
-sth -f hash.txt
-sth --text &quot;HASH&quot;</code></pre>
+sth -f hash.txt -w /usr/share/wordlists/rockyou.txt
+sth --text &quot;HASH&quot; -w /usr/share/wordlists/rockyou.txt</code></pre>
 </doc-codeblock></div>
 <doc-anchor-target id="hashcat">
     <h2>
@@ -216,10 +216,16 @@ hashcat --example-hashes | grep -i -B5 -A5 &quot;MYSQL&quot;
 # Usage
 hashcat -m 1000 -a 0 julian.hash /usr/share/wordlists/rockyou.txt -O -o cracked-hash.txt
 
--m 0 = designates the type of hash we are cracking (NTLM)
--a 0 = designates a dictionary attack
--o   = cracked.txt is the output file for the cracked passwords</code></pre>
+-m 10000  = designates the type of hash we are cracking (NTLM)
+-a 0      = designates a dictionary attack
+-o        = cracked.txt is the output file for the cracked passwords</code></pre>
 </doc-codeblock></div>
+<doc-anchor-target id="common-hashes">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#common-hashes">#</doc-anchor-trigger>
+        <span>Common hashes</span>
+    </h3>
+</doc-anchor-target>
 <div class="table-wrapper scrollbar overflow-hidden">
 <table class="comfortable">
 <thead>
