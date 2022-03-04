@@ -6,18 +6,21 @@
     <meta name="turbo-cache-control" content="no-cache">
 
     <!-- Primary Meta Tags -->
-    <title>enum</title>
-    <meta name="title" content="enum">
+    <title>Port Forwarding</title>
+    <meta name="title" content="Port Forwarding">
+    <meta name="description" content="Example in how to expose port 4444 found in Windows machine to local 9001:" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://caueb.github.io/tags/enum/">
-    <meta property="og:title" content="enum">
+    <meta property="og:url" content="https://caueb.github.io/windowstricks/port-forwa-815da/">
+    <meta property="og:title" content="Port Forwarding">
+    <meta property="og:description" content="Example in how to expose port 4444 found in Windows machine to local 9001:">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://caueb.github.io/tags/enum/">
-    <meta property="twitter:title" content="enum">
+    <meta property="twitter:url" content="https://caueb.github.io/windowstricks/port-forwa-815da/">
+    <meta property="twitter:title" content="Port Forwarding">
+    <meta property="twitter:description" content="Example in how to expose port 4444 found in Windows machine to local 9001:">
     
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
@@ -26,6 +29,7 @@
     <script type="text/javascript" src="/resources/js/config.js?v=1.11.2.699671206723" defer data-turbo-track="reload"></script>
     <script type="text/javascript" src="/resources/js/retype.js?v=1.11.2" defer data-turbo-track="reload"></script>
     <script id="lunr-js" type="text/javascript" src="/resources/js/lunr.js?v=1.11.2.699671206723" defer></script>
+    <script id="prism-js" type="text/javascript" src="/resources/js/prism.js?v=1.11.2.699671206723" defer></script>
 </head>
     <body>
         <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -180,20 +184,28 @@
                 <div id="docs-sidebar-right-toggle"></div>
                
                 <!-- Page content  -->
-<doc-anchor-target id="tag-enum" class="break-words">
+<doc-anchor-target id="port-forwarding" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#tag-enum">#</doc-anchor-trigger>
-        <span>Tag: enum</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#port-forwarding">#</doc-anchor-trigger>
+        <span>Port Forwarding</span>
     </h1>
 </doc-anchor-target>
-<p>See all <a href="/tags/">tags</a>.</p>
-<a class="no-link mb-6 overflow-hidden border border-gray-200 rounded-lg md:flex dark:border-dark-700 hover:border-gray-400 dark:hover:border-dark-450" href="/exploitation/fuzzing/">
-    <div class="p-6">
-        <div class="text-xs font-semibold text-blue-500 uppercase dark:text-blue-400">Exploitation</div>
-        <div class="mt-2 text-lg font-semibold leading-snug text-gray-900 dark:text-white md:text-xl">Top Fuzzing Parameters</div>
-        <div class="line-clamp-3"><p class="hidden mt-2 md:block">Top fuzzing parameters.</p></div>
-    </div>
-</a>
+<doc-anchor-target id="chisel">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#chisel">#</doc-anchor-trigger>
+        <span>Chisel</span>
+    </h2>
+</doc-anchor-target>
+<p>Example in how to expose port 4444 found in Windows machine to local 9001:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-powershell"><code v-pre class="language-powershell"># Kali (10.10.14.13)
+./chisel server --reverse --port 9001
+
+# Windows
+chisel.exe client 10.10.14.13:9001 R:4444:localhost:4444
+
+* Now we can connect to 127.0.0.1 4444 in Kali machine.</code></pre>
+</doc-codeblock></div>
 
 
 
@@ -203,6 +215,27 @@
             </div>
 
             
+<nav class="flex mt-14">
+    <div class="w-1/2">
+        <a class="px-5 py-4 h-full flex items-center break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="/windowstricks/dump-hashe-abee1/">
+            <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
+            <span>
+                <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
+                <span class="block mt-1">Dump Hashes</span>
+            </span>
+        </a>
+    </div>
+
+    <div class="w-1/2">
+        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="/windowstricks/post-explo-3830d/">
+            <span>
+                <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
+                <span class="block mt-1">Post Exploitation</span>
+            </span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
+        </a>
+    </div>
+</nav>
 
 
         </main>
@@ -245,6 +278,6 @@
 
         <div id="docs-overlay-target"></div>
 
-        <script>window.__DOCS__ = { "title": "enum", icon: "file", hasPrism: false, hasMermaid: false, hasMath: false }</script>
+        <script>window.__DOCS__ = { "title": "Port Forwarding", icon: "file", hasPrism: true, hasMermaid: false, hasMath: false }</script>
     </body>
 </html>
