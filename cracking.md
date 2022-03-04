@@ -9,8 +9,8 @@ icon: unlock
 # Search-That-Hash
 # https://github.com/HashPals/Search-That-Hash
 # pip3 install search-that-hash
-sth -f hash.txt
-sth --text "HASH"
+sth -f hash.txt -w /usr/share/wordlists/rockyou.txt
+sth --text "HASH" -w /usr/share/wordlists/rockyou.txt
 ```
 
 ## Hashcat
@@ -22,11 +22,11 @@ hashcat --example-hashes | grep -i -B5 -A5 "MYSQL"
 # Usage
 hashcat -m 1000 -a 0 julian.hash /usr/share/wordlists/rockyou.txt -O -o cracked-hash.txt
 
--m 0 = designates the type of hash we are cracking (NTLM)
--a 0 = designates a dictionary attack
--o   = cracked.txt is the output file for the cracked passwords
+-m 10000  = designates the type of hash we are cracking (NTLM)
+-a 0      = designates a dictionary attack
+-o        = cracked.txt is the output file for the cracked passwords
 ```
-
+### Common hashes
 | Hash | Mode |
 | --- | --- |
 | md5 raw | -m 0 |
