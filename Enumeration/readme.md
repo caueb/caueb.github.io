@@ -3,8 +3,13 @@
 ## Banner Grabbing
 
 ```bash
-nc -v domain.com 80 # GET / HTTP/1.0
-openssl s_client -connect domain.com:443 # GET / HTTP/1.0
+# PORT 80
+nc -v domain.com 80 
+GET / HTTP/1.0
+
+# PORT 443
+openssl s_client -connect domain.com:443
+GET / HTTP/1.0
 ```
 
 ## Check WAF
