@@ -85,23 +85,3 @@ find / -perm -2 -type f 2>/dev/null
 ```bash
 find / -writable -type d 2>/dev/null
 ```
-
-[MySQL 4.x/5.x](Linux%20Priv%20d2987/MySQL%204%20x%20%208a1a7.md)
-
-[Kernel Exploit](Linux%20Priv%20d2987/Kernel%20Exp%2014b2d.md)
-
-[Port Forwarding - SSH](Linux%20Priv%20d2987/Port%20Forwa%20c97d0.md)
-
-[Weak Files Permissions](Linux%20Priv%20d2987/Weak%20Files%200ec7a.md)
-
-[Sudo](Linux%20Priv%20d2987/Sudo%2025db8.md)
-
-[Cronjobs](Linux%20Priv%20d2987/Cronjobs%20dc94e.md)
-
-[SSH](Linux%20Priv%20d2987/SSH%206b716.md)
-
-[SUID](Linux%20Priv%20d2987/SUID%2080b3d.md)
-
-[NFS](Linux%20Priv%20d2987/NFS%206b60f.md)
-
-[Big Checklist](Linux%20Priv%20d2987/Big%20Checkl%20f4926.md)
