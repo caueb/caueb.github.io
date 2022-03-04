@@ -40,14 +40,14 @@ hashcat -m 1000 -a 0 julian.hash /usr/share/wordlists/rockyou.txt -O -o cracked-
 
 ### Custom wordlist
 Create a custom wordlist based on words and hashcat rules.
-```
-#Create a file with key-words
+```bash
+# Create a file with key-words
 $ cat mywordlist.txt
 password
 2020
 secret
 
-#Use Hashcat to merge the words and add characters
+# Use Hashcat to merge the words and add characters
 hashcat --force --stdout mywordlist.txt -r /usr/share/hashcat/rules/best64.rule
 ```
 
