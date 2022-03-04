@@ -179,6 +179,7 @@ Ok, lets SSH in as `downfall` user and password `secretlyinlove`:
 
 ![](images/Untitled22.png)
 
+## Way to root
 Reading the file `.secret_message` we get a hint into how escalate to root:
 
 ![](images/Untitled23.png)
