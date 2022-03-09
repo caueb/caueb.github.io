@@ -56,7 +56,6 @@ Downloading and unzipping we get 3 files of what seems to be the source code of 
 
 ![](images/untitled7.png)
 
-index.php
 ```php index.php
 <?php
 	include("user.class.php");
@@ -70,7 +69,6 @@ index.php
 ?>
 ```
 
-log.class.php
 ```php log.class.php
 <?php
   class Log {
@@ -88,7 +86,6 @@ log.class.php
 ?>
 ```
 
-user.class.php
 ```php user.class.php
 <?php
   include("log.class.php");
