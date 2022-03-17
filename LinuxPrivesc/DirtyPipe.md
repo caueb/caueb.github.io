@@ -14,7 +14,7 @@ https://github.com/AlexisAhmed/CVE-2022-0847-DirtyPipe-Exploits
 ```
 
 ## Exploit
-Compile using `gcc exploit.c -o exploit`. It will overwrite the root password to `aaron` and sapwn a shell.
+Compile using `gcc exploit.c -o exploit` and run `./exploit`. It will overwrite the root password to `aaron` and sapwn a shell.
 ``` c exploit.c
 /* SPDX-License-Identifier: GPL-2.0 */
 /*
