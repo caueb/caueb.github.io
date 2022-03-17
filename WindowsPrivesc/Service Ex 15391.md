@@ -1,8 +1,7 @@
 # Service Exploit
 
 **DOWNLOAD ACCESSCHK.EXE**
-
-[https://web.archive.org/web/20080530012252/http://live.sysinternals.com/accesschk.exe](https://web.archive.org/web/20080530012252/http:/live.sysinternals.com/accesschk.exe)
+[http://live.sysinternals.com/accesschk.exe](http:/live.sysinternals.com/accesschk.exe)
 
 ## Check if User can modify a service
 
