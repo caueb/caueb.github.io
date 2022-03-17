@@ -2,7 +2,7 @@
 
 ## Affected versions
 Linux kernel versions newer than 5.8 are affected.  
-So far the vulnerability has been patched in the following Linux kernel versions:  
+So far the vulnerability has been patched in the following Linux kernel versions:
 - 5.16.11
 - 5.15.25
 - 5.10.102
@@ -198,6 +198,6 @@ int main() {
 ```
 
 ### su: must be run from a terminal
-If you get this error message:
-1 - Login as root with the password aaron.
+If you get this error message:  
+1 - Login as root with the password aaron.  
 2 - Then, restore /etc/passwd by running mv /tmp/passwd.bak /etc/passwd
