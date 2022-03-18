@@ -31,6 +31,18 @@ find / -group management -ls 2>/dev/null
 netstat -antup
 ```
 
+### Try scanning other ports using netcat
+```
+dave@ubuntu:~/Desktop$ nc -nvz 192.168.122.4 1-10000 2>&1 | grep -v failed
+Connection to 192.168.122.4 80 port [tcp/*] succeeded!
+```
+### SSH tunnel
+Example to create a SSH tunnel and access port 80 in 192.168.122.4
+```
+ssh -L 80:192.168.122.4:80 dave@10.10.10.109
+```
+Now we can access 127.0.0.1:80.
+
 ## Processes Running
 
 ```bash
