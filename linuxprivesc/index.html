@@ -11,25 +11,28 @@
     <!-- Primary Meta Tags -->
     <title>Linux Privesc</title>
     <meta name="title" content="Linux Privesc">
+    <meta name="description" content="Example to create a SSH tunnel and access port 80 in 192.168.122.4" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://caueb.github.io/linuxprivesc/">
     <meta property="og:title" content="Linux Privesc">
+    <meta property="og:description" content="Example to create a SSH tunnel and access port 80 in 192.168.122.4">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://caueb.github.io/linuxprivesc/">
     <meta property="twitter:title" content="Linux Privesc">
+    <meta property="twitter:description" content="Example to create a SSH tunnel and access port 80 in 192.168.122.4">
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="/resources/css/retype.css?v=2.0.700893501213" rel="stylesheet" data-turbo-track="reload" />
+    <link href="/resources/css/retype.css?v=2.0.700895906083" rel="stylesheet" data-turbo-track="reload" />
 
-    <script type="text/javascript" src="/resources/js/config.js?v=2.0.700893501213" defer data-turbo-track="reload"></script>
+    <script type="text/javascript" src="/resources/js/config.js?v=2.0.700895906083" defer data-turbo-track="reload"></script>
     <script type="text/javascript" src="/resources/js/retype.js?v=2.0" defer data-turbo-track="reload"></script>
-    <script id="lunr-js" type="text/javascript" src="/resources/js/lunr.js?v=2.0.700893501213" defer></script>
-    <script id="prism-js" type="text/javascript" src="/resources/js/prism.js?v=2.0.700893501213" defer></script>
+    <script id="lunr-js" type="text/javascript" src="/resources/js/lunr.js?v=2.0.700895906083" defer></script>
+    <script id="prism-js" type="text/javascript" src="/resources/js/prism.js?v=2.0.700895906083" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -209,6 +212,27 @@ find / -group management -ls 2&gt;/dev/null</code></pre>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-bash"><code v-pre class="language-bash">netstat -antup</code></pre>
 </doc-codeblock></div>
+<doc-anchor-target id="try-scanning-other-ports-using-netcat">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#try-scanning-other-ports-using-netcat">#</doc-anchor-trigger>
+        <span>Try scanning other ports using netcat</span>
+    </h3>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-none"><code v-pre class="language-none">dave@ubuntu:~/Desktop$ nc -nvz 192.168.122.4 1-10000 2&gt;&amp;1 | grep -v failed
+Connection to 192.168.122.4 80 port [tcp/*] succeeded!</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="ssh-tunnel">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#ssh-tunnel">#</doc-anchor-trigger>
+        <span>SSH tunnel</span>
+    </h3>
+</doc-anchor-target>
+<p>Example to create a SSH tunnel and access port 80 in 192.168.122.4</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-none"><code v-pre class="language-none">ssh -L 80:192.168.122.4:80 dave@10.10.10.109</code></pre>
+</doc-codeblock></div>
+<p>Now we can access 127.0.0.1:80.</p>
 <doc-anchor-target id="processes-running">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#processes-running">#</doc-anchor-trigger>
