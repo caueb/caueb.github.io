@@ -10,6 +10,6 @@ links:
   icon: mark-github
   target: blank
 footer:
-  copyright: "&copy; Copyright {{ year }}. All rights reserved."
+  copyright: "&copy; Copyright {{ year }}. Caue All rights reserved."
   
 poweredByRetype: false
