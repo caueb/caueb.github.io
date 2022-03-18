@@ -27,12 +27,12 @@
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="/resources/css/retype.css?v=2.0.700895906083" rel="stylesheet" data-turbo-track="reload" />
+    <link href="/resources/css/retype.css?v=2.0.700901654342" rel="stylesheet" data-turbo-track="reload" />
 
-    <script type="text/javascript" src="/resources/js/config.js?v=2.0.700895906083" defer data-turbo-track="reload"></script>
+    <script type="text/javascript" src="/resources/js/config.js?v=2.0.700901654342" defer data-turbo-track="reload"></script>
     <script type="text/javascript" src="/resources/js/retype.js?v=2.0" defer data-turbo-track="reload"></script>
-    <script id="lunr-js" type="text/javascript" src="/resources/js/lunr.js?v=2.0.700895906083" defer></script>
-    <script id="prism-js" type="text/javascript" src="/resources/js/prism.js?v=2.0.700895906083" defer></script>
+    <script id="lunr-js" type="text/javascript" src="/resources/js/lunr.js?v=2.0.700901654342" defer></script>
+    <script id="prism-js" type="text/javascript" src="/resources/js/prism.js?v=2.0.700901654342" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -176,10 +176,10 @@
     </h1>
 </doc-anchor-target>
 <doc-anchor-target id="osint---ssltls-certificates">
-    <h1>
+    <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#osint---ssltls-certificates">#</doc-anchor-trigger>
         <span>OSINT - SSL/TLS Certificates</span>
-    </h1>
+    </h2>
 </doc-anchor-target>
 <p>When an SSL/TLS (Secure Sockets Layer/Transport Layer Security) certificate is created for a domain by a CA (Certificate Authority), CA&#x27;s take part in what&#x27;s called &quot;Certificate Transparency (CT) logs&quot;. These are publicly accessible logs of every SSL/TLS certificate created for a domain name. The purpose of Certificate Transparency logs is to stop malicious and accidentally made certificates from being used.</p>
 <p>We can use this service to our advantage to discover subdomains belonging to a domain, sites like <a href="https://crt.sh/">https://crt.sh</a> and <a href="https://transparencyreport.google.com/https/certificates">https://transparencyreport.google.com/https/certificates</a> offer a searchable database of certificates that shows current and historical results.</p>
@@ -188,51 +188,35 @@
 <li><a href="https://transparencyreport.google.com/https/certificates">https://transparencyreport.google.com/https/certificates</a></li>
 </ul>
 <doc-anchor-target id="osint---search-engines">
-    <h1>
+    <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#osint---search-engines">#</doc-anchor-trigger>
         <span>OSINT - Search Engines</span>
-    </h1>
+    </h2>
 </doc-anchor-target>
 <doc-anchor-target id="google">
-    <h2>
+    <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#google">#</doc-anchor-trigger>
         <span>Google</span>
-    </h2>
+    </h3>
 </doc-anchor-target>
 <p>Search for subdomains and exclude <code v-pre>www</code>.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-none"><code v-pre class="language-none">-site:www.mydomain.com site:*.mydomain.com</code></pre>
 </doc-codeblock></div>
-<doc-anchor-target id="dns-bruteforce">
-    <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#dns-bruteforce">#</doc-anchor-trigger>
-        <span>DNS Bruteforce</span>
-    </h1>
+<doc-anchor-target id="osint---tools">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#osint---tools">#</doc-anchor-trigger>
+        <span>OSINT - Tools</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="sublist3r">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#sublist3r">#</doc-anchor-trigger>
+        <span>Sublist3r</span>
+    </h3>
 </doc-anchor-target>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-none"><code v-pre class="language-none">dnsrecon -t brt -d mydomain.com
-# /usr/share/wordlists/SecLists/Discovery/DNS/namelist.txt</code></pre>
-</doc-codeblock></div>
-<doc-anchor-target id="osint---sublist3r">
-    <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#osint---sublist3r">#</doc-anchor-trigger>
-        <span>OSINT - Sublist3r</span>
-    </h1>
-</doc-anchor-target>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-none"><code v-pre class="language-none">./sublist3r.py -d mydomain.com</code></pre>
-</doc-codeblock></div>
-<doc-anchor-target id="virtual-hosts">
-    <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#virtual-hosts">#</doc-anchor-trigger>
-        <span>Virtual Hosts</span>
-    </h1>
-</doc-anchor-target>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-none"><code v-pre class="language-none"># GOBUSTER
-gobuster vhost -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt -u http://shibboleth.htb
-# OR FFUF
-ffuf -w /usr/share/wordlists/SecLists/Discovery/DNS/namelist.txt -H &quot;Host: FUZZ.mydomain.com&quot; -u http://MACHINE_IP -fs {SIZE}</code></pre>
+<pre class="language-bash"><code v-pre class="language-bash">./sublist3r.py -d mydomain.com</code></pre>
 </doc-codeblock></div>
 <doc-anchor-target id="theharvester">
     <h2>
@@ -243,14 +227,43 @@ ffuf -w /usr/share/wordlists/SecLists/Discovery/DNS/namelist.txt -H &quot;Host: 
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-bash"><code v-pre class="language-bash">theHarverster -d google.com -b google,twitter,linkedin,bing,yahoo,sublist3r</code></pre>
 </doc-codeblock></div>
-<doc-anchor-target id="knockpy">
+<doc-anchor-target id="dns-bruteforce">
     <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#dns-bruteforce">#</doc-anchor-trigger>
+        <span>DNS Bruteforce</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="dnsrecon">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#dnsrecon">#</doc-anchor-trigger>
+        <span>Dnsrecon</span>
+    </h3>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">dnsrecon -t brt -d mydomain.com
+# /usr/share/wordlists/SecLists/Discovery/DNS/namelist.txt</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="knockpy">
+    <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#knockpy">#</doc-anchor-trigger>
         <span>Knockpy</span>
-    </h2>
+    </h3>
 </doc-anchor-target>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-bash"><code v-pre class="language-bash">knockpy google.com -w /usr/share/seclists/Discovery/DNS/shubs-stackoverflow.txt</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="virtual-hosts">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#virtual-hosts">#</doc-anchor-trigger>
+        <span>Virtual Hosts</span>
+    </h2>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash"># GOBUSTER
+gobuster vhost -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt -u http://shibboleth.htb
+
+# FFUF
+ffuf -w /usr/share/wordlists/SecLists/Discovery/DNS/namelist.txt -H &quot;Host: FUZZ.mydomain.com&quot; -u http://MACHINE_IP -fs {SIZE}</code></pre>
 </doc-codeblock></div>
 
                                 
