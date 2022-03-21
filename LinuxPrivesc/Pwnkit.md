@@ -1,4 +1,5 @@
 # Pwnkit
+Polkit (formerly PolicyKit) is a component for controlling system-wide privileges in Unix-like operating systems. It provides an organized way for non-privileged processes to communicate with privileged processes. It is also possible to use polkit to execute commands with elevated privileges using the command pkexec followed by the command intended to be executed (with root permission).
 
 ## Linux distributions
 | Distribution | Vulnerable? |
@@ -20,3 +21,6 @@
 ### In Python
 - https://github.com/ravindubw/CVE-2021-4034
 - https://github.com/joeammond/CVE-2021-4034
+
+### Bash
+- https://github.com/secnigma/CVE-2021-3560-Polkit-Privilege-Esclation
