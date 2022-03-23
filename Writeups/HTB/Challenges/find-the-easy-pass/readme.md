@@ -60,7 +60,13 @@ So it seems that these are the message sent in case of right or wrong password e
 
 ### Analysis
 ![](images/image5.png)
-**JNZ** is a conditional jump, lets single left click on the **JNZ** and press enter. By default it goes to "Wrong Password!".
+`CALL EasyPass.404628` calls a function `sub_404628`. We currently don't know what this functions does, but the outcome of it decides whether we get a "Congratulations! Good Job" message or the "Wrong Password" one (jnz = Jump if not zero to the "Wrong Password" part, else continue to "Good Job").  
+We can select the `CALL EasyPass.404628` and press enter or right-click and "Follow" to see more of the function:
+![](images/image9.png)
+
+It's basically just comparing two values (EAX and EDX). Depending on their equality, we get a zero flag or not:
+![](images/image10.png)
+
 All we need to do now is find out what is the **JNZ** comparing to and we could potentially find the password. Lets set a breakpoint in the **CALL** just before the **JNZ**.
 
 Select the line and press F2.
