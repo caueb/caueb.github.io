@@ -1,10 +1,12 @@
 # Find The Easy Pass
-Category: Reversing  
-Level: Easy  
-Challenge description: Find the password (say PASS) and enter the flag in the form HTB{PASS}
+
+## Challenge description
+| Category | Level | Description |
+| --- | --- | --- |
+| Reversing | Easy | Find the password (say PASS) and enter the flag in the form HTB{PASS}
 
 
-## Downloaded files
+## Downloading files
 For this challenge it is given only one executable file:
 - EasyPass.exe
 
