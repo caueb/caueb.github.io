@@ -44,31 +44,30 @@ Now that we have the file loaded lets search for some strings.
 -   Right click
 -   Go to "Search for"
 -   Click on "All referenced text strings"
-![[/images/image2.png]]
+![](images/image2.png)
 
 We see:
 - Good job. Congratulations  
 - Wrong Password!
 
-![[/images/image3.png]]
+![](images/image3.png)
 
 So it seems that these are the message sent in case of right or wrong password entered. Double-click in the "Good job" to see where it is implemented.
 
-![[/images/image4.png]]
+![](images/image4.png)
 
 ### Analysis
-![[/images/image5.png]]
+![](images/image5.png)
 **JNZ** is a conditional jump, lets single left click on the **JNZ** and press enter. By default it goes to "Wrong Password!".
 All we need to do now is find out what is the **JNZ** comparing to and we could potentially find the password. Lets set a breakpoint in the **CALL** just before the **JNZ**.
 
 Select the line and press F2.
-![[/images/image6.png]]
+![](images/image6.png)
 
 Now lets run the application clicking in the Play button. We can enter anything when prompted for a password:
-![[/images/image7.png]]
+![](images/image7.png)
 
 As soon as we press the "Check Password" button we hit the breakpoint. If we look at the registers we can spot the two ASCII that are probably being compared to define if the password entered is good:
-![[/images/image8.png]]
+![](images/image8.png)
 The program is comparing EAX (user input) to EDX (password in memory).
 We can confirm that running the program again and entering `fortran!` in the password field and we get the "Good Job" message.
-
