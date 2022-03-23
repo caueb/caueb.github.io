@@ -1,6 +1,6 @@
 # Find The Easy Pass
-Category: Reversing
-Level: Easy
+Category: Reversing  
+Level: Easy  
 Challenge description: Find the password (say PASS) and enter the flag in the form HTB{PASS}
 
 
