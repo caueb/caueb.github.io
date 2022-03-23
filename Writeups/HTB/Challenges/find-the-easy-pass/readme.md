@@ -19,7 +19,7 @@ $ sudo apt install wine wine64 wine32 winbind winetricks
 ```
 
 Now we can simply run `wine EasyPass.exe` and the application will load:
-![[/images/image1.png]]
+![](images/image1.png)
 
 We also need a debugger that works for Windows executables, there are many out there but I will be using Ollydbg. Remember that Ollydbg requires `wine` to run.
 Installing Ollydbg:
