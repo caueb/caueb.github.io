@@ -18,21 +18,23 @@
     <meta property="og:url" content="https://caueb.github.io/writeups/htb/challenges/find-the-easy-pass/">
     <meta property="og:title" content="Find The Easy Pass">
     <meta property="og:description" content="Category: Reversing Level: Easy Challenge description: Find the password (say PASS) and enter the flag in the form HTB">
+    <meta property="og:image" content="https://caueb.github.io/writeups/htb/challenges/find-the-easy-pass/images/image2.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://caueb.github.io/writeups/htb/challenges/find-the-easy-pass/">
     <meta property="twitter:title" content="Find The Easy Pass">
     <meta property="twitter:description" content="Category: Reversing Level: Easy Challenge description: Find the password (say PASS) and enter the flag in the form HTB">
+    <meta property="twitter:image" content="https://caueb.github.io/writeups/htb/challenges/find-the-easy-pass/images/image2.png">
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="/resources/css/retype.css?v=2.1.701317802157" rel="stylesheet" data-turbo-track="reload" />
+    <link href="/resources/css/retype.css?v=2.1.701317946601" rel="stylesheet" data-turbo-track="reload" />
 
-    <script type="text/javascript" src="/resources/js/config.js?v=2.1.701317802157" defer data-turbo-track="reload"></script>
+    <script type="text/javascript" src="/resources/js/config.js?v=2.1.701317946601" defer data-turbo-track="reload"></script>
     <script type="text/javascript" src="/resources/js/retype.js?v=2.1" defer data-turbo-track="reload"></script>
-    <script id="lunr-js" type="text/javascript" src="/resources/js/lunr.js?v=2.1.701317802157" defer></script>
-    <script id="prism-js" type="text/javascript" src="/resources/js/prism.js?v=2.1.701317802157" defer></script>
+    <script id="lunr-js" type="text/javascript" src="/resources/js/lunr.js?v=2.1.701317946601" defer></script>
+    <script id="prism-js" type="text/javascript" src="/resources/js/prism.js?v=2.1.701317946601" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -234,31 +236,57 @@ Installing Ollydbg:</p>
 <li>Right click</li>
 <li>Go to &quot;Search for&quot;</li>
 <li>Click on &quot;All referenced text strings&quot;
-![[/images/image2.png]]</li>
+<figure class="content-center">
+    <img src="images/image2.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</li>
 </ul>
 <p>We see:</p>
 <ul>
 <li>Good job. Congratulations  </li>
 <li>Wrong Password!</li>
 </ul>
-<p>![[/images/image3.png]]</p>
+<p><figure class="content-center">
+    <img src="images/image3.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
 <p>So it seems that these are the message sent in case of right or wrong password entered. Double-click in the &quot;Good job&quot; to see where it is implemented.</p>
-<p>![[/images/image4.png]]</p>
+<p><figure class="content-center">
+    <img src="images/image4.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
 <doc-anchor-target id="analysis">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#analysis">#</doc-anchor-trigger>
         <span>Analysis</span>
     </h3>
 </doc-anchor-target>
-<p>![[/images/image5.png]]
+<p><figure class="content-center">
+    <img src="images/image5.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
 <strong>JNZ</strong> is a conditional jump, lets single left click on the <strong>JNZ</strong> and press enter. By default it goes to &quot;Wrong Password!&quot;.
 All we need to do now is find out what is the <strong>JNZ</strong> comparing to and we could potentially find the password. Lets set a breakpoint in the <strong>CALL</strong> just before the <strong>JNZ</strong>.</p>
 <p>Select the line and press F2.
-![[/images/image6.png]]</p>
+<figure class="content-center">
+    <img src="images/image6.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
 <p>Now lets run the application clicking in the Play button. We can enter anything when prompted for a password:
-![[/images/image7.png]]</p>
+<figure class="content-center">
+    <img src="images/image7.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
 <p>As soon as we press the &quot;Check Password&quot; button we hit the breakpoint. If we look at the registers we can spot the two ASCII that are probably being compared to define if the password entered is good:
-![[/images/image8.png]]
+<figure class="content-center">
+    <img src="images/image8.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
 The program is comparing EAX (user input) to EDX (password in memory).
 We can confirm that running the program again and entering <code v-pre>fortran!</code> in the password field and we get the &quot;Good Job&quot; message.</p>
 
