@@ -29,12 +29,12 @@
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="/resources/css/retype.css?v=2.1.701319270206" rel="stylesheet" data-turbo-track="reload" />
+    <link href="/resources/css/retype.css?v=2.1.701334055406" rel="stylesheet" data-turbo-track="reload" />
 
-    <script type="text/javascript" src="/resources/js/config.js?v=2.1.701319270206" defer data-turbo-track="reload"></script>
+    <script type="text/javascript" src="/resources/js/config.js?v=2.1.701334055406" defer data-turbo-track="reload"></script>
     <script type="text/javascript" src="/resources/js/retype.js?v=2.1" defer data-turbo-track="reload"></script>
-    <script id="lunr-js" type="text/javascript" src="/resources/js/lunr.js?v=2.1.701319270206" defer></script>
-    <script id="prism-js" type="text/javascript" src="/resources/js/prism.js?v=2.1.701319270206" defer></script>
+    <script id="lunr-js" type="text/javascript" src="/resources/js/lunr.js?v=2.1.701334055406" defer></script>
+    <script id="prism-js" type="text/javascript" src="/resources/js/prism.js?v=2.1.701334055406" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -293,8 +293,20 @@ Installing Ollydbg:</p>
     <img src="images/image5.png" alt="" />
     <figcaption class="caption"></figcaption>
 </figure>
-<strong>JNZ</strong> is a conditional jump, lets single left click on the <strong>JNZ</strong> and press enter. By default it goes to &quot;Wrong Password!&quot;.
-All we need to do now is find out what is the <strong>JNZ</strong> comparing to and we could potentially find the password. Lets set a breakpoint in the <strong>CALL</strong> just before the <strong>JNZ</strong>.</p>
+<code v-pre>CALL EasyPass.404628</code> calls a function <code v-pre>sub_404628</code>. We currently don&#x27;t know what this functions does, but the outcome of it decides whether we get a &quot;Congratulations! Good Job&quot; message or the &quot;Wrong Password&quot; one (jnz = Jump if not zero to the &quot;Wrong Password&quot; part, else continue to &quot;Good Job&quot;).<br />
+We can select the <code v-pre>CALL EasyPass.404628</code> and press enter or right-click and &quot;Follow&quot; to see more of the function:
+<figure class="content-center">
+    <img src="images/image9.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>It&#x27;s basically just comparing two values (EAX and EDX). Depending on their equality, we get a zero flag or not:
+<figure class="content-center">
+    <img src="images/image10.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>All we need to do now is find out what is the <strong>JNZ</strong> comparing to and we could potentially find the password. Lets set a breakpoint in the <strong>CALL</strong> just before the <strong>JNZ</strong>.</p>
 <p>Select the line and press F2.
 <figure class="content-center">
     <img src="images/image6.png" alt="" />
