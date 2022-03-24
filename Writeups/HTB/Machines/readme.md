@@ -11,3 +11,4 @@ Coming soon as they retire.
 | Catch | Medium | Linux |
 | Phoenix | Hard | Linux |
 | Overflow | Hard | Linux |
+| AdmirerToo | Hard | Linux |
