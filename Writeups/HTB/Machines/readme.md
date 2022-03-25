@@ -12,3 +12,4 @@ Coming soon as they retire.
 | Phoenix | Hard | Linux |
 | Overflow | Hard | Linux |
 | AdmirerToo | Hard | Linux |
+| Acute | Hard | Windows |
