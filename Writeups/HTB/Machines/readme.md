@@ -5,7 +5,7 @@ icon: device-desktop
 Coming soon as they retire.
 !!!
 
-<script src="https://www.hackthebox.eu/badge/78913"></script>
+<script src="https://www.hackthebox.eu/badge/78913"></script>  
 
 | Machine | Level | OS |
 | --- | --- | --- |
