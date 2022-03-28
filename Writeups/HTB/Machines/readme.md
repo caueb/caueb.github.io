@@ -13,3 +13,4 @@ Coming soon as they retire.
 | Overflow | Hard | Linux |
 | AdmirerToo | Hard | Linux |
 | Acute | Hard | Windows |
+| Timelapse | Easy | Windows |
