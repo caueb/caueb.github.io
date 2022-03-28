@@ -1,5 +1,5 @@
 # WAFfle-y Order
-Category: Web
+Category: Web  
 Level: Medium
 
 ## Code Analysis
