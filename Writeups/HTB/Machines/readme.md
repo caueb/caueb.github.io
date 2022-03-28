@@ -2,8 +2,7 @@
 icon: device-desktop
 ---
 ## HTB Badge
-<script src="https://www.hackthebox.eu/badge/78913">
-</script>  
+<script src="https://www.hackthebox.eu/badge/78913"></script>
 
 ## Writeups
 !!!
