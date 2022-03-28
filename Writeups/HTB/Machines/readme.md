@@ -5,7 +5,7 @@ icon: device-desktop
 <script src="https://www.hackthebox.eu/badge/78913">
 </script>  
 
-## Machines
+## Writeups
 !!!
 Coming soon as they retire.
 !!!
