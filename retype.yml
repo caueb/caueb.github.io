@@ -3,7 +3,7 @@ output: .retype
 url: caueb.github.io
 branding:
   title: Caue
-  label: notes
+  label: ctf-notes
 links:
 - text: GitHub
   link: https://github.com/caueb
