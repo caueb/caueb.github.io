@@ -1,11 +1,11 @@
 ---
 icon: device-desktop
 ---
-
+## HTB Badge
 <script src="https://www.hackthebox.eu/badge/78913">
 </script>  
 
-
+## Machines
 !!!
 Coming soon as they retire.
 !!!
