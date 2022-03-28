@@ -4,6 +4,18 @@ icon: code-square
 
 # Windows Tricks
 
+## PowerShell encoded base64
+Create a base64 payload to avoid bad characters.
+```bash
+# Create the command to PowerShell execute
+$ echo -n 'ping -n 2 10.10.14.2' | iconv -t utf-16le | base64
+cABpAG4AZwAgAC0AbgAgADIAIAAxADAALgAxADAALgAxADQALgAyAA==
+
+# Run PowerShell Encoded
+Payload: cmd /c powershell -enc cABpAG4AZwAgAC0AbgAgADIAIAAxADAALgAxADAALgAxADQALgAyAA==
+
+```
+
 ## Run command as User (with creds)
 
 ```powershell
