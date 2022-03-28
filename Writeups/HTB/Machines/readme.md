@@ -1,11 +1,6 @@
 ---
 icon: device-desktop
 ---
-## HTB Badge
-<script src="https://www.hackthebox.eu/badge/78913">
-</script>
-
-## Writeups
 !!!
 Coming soon as they retire.
 !!!
