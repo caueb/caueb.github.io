@@ -30,14 +30,15 @@ fierce --domain <DOMAIN> --dns-servers <DNS_IP> #Will try toperform a zone trans
 ### More info
 
 ```bash
-dig ANY @<DNS_IP> <DOMAIN>     #Any information
-dig A @<DNS_IP> <DOMAIN>       #Regular DNS request
-dig AAAA @<DNS_IP> <DOMAIN>    #IPv6 DNS request
-dig TXT @<DNS_IP> <DOMAIN>     #Information
-dig MX @<DNS_IP> <DOMAIN>      #Emails related
-dig NS @<DNS_IP> <DOMAIN>      #DNS that resolves that name
-dig -x 192.168.0.2 @<DNS_IP>   #Reverse lookup
-dig -x 2a00:1450:400c:c06::93 @<DNS_IP> #reverse IPv6 lookup
+dig ANY @<DNS_IP> <DOMAIN>              #Any information
+dig A @<DNS_IP> <DOMAIN>                #Regular DNS request
+dig AAAA @<DNS_IP> <DOMAIN>             #IPv6 DNS request
+dig TXT @<DNS_IP> <DOMAIN>              #Information
+dig MX @<DNS_IP> <DOMAIN>               #Emails related
+dig NS @<DNS_IP> <DOMAIN>               #DNS that resolves that name
+dig -x 10.10.11.120 @10.10.11.120       #Reverse lookup
+dig @10.10.11.120 -x 10.10.11.120       #Reverse lookup
+dig -x 2a00:1450:400c:c06::93 @<DNS_IP> #Reverse IPv6 lookup
 ```
 
 ## Finding Subdomains
