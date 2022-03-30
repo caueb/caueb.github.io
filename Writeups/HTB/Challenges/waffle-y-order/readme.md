@@ -178,4 +178,4 @@ In `malicious.dtd` we tell the system to get contents of /flag and encode it usi
 
 ## FLAG
 Now we just need to run `exploit.py` and get the flag in the webhook.
-HTB{wh0_l3t_th3_enc0d1ngs_0ut???w00f..wo0f..w0of..WAFfl3s!!}
+HTB{XXX..XXX..XXX}
