@@ -15,26 +15,26 @@
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://caueb.github.io/writeups/htb/machines/overflow/overflow/">
+    <meta property="og:url" content="https://caueb.github.io/writeups/htb/machines/overflow/">
     <meta property="og:title" content="Overflow">
     <meta property="og:description" content="IP: 10.10.11.119">
     <meta property="og:image" content="https://caueb.github.io/writeups/htb/machines/overflow/images/image1.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://caueb.github.io/writeups/htb/machines/overflow/overflow/">
+    <meta property="twitter:url" content="https://caueb.github.io/writeups/htb/machines/overflow/">
     <meta property="twitter:title" content="Overflow">
     <meta property="twitter:description" content="IP: 10.10.11.119">
     <meta property="twitter:image" content="https://caueb.github.io/writeups/htb/machines/overflow/images/image1.png">
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="/resources/css/retype.css?v=2.2.702867644569" rel="stylesheet" data-turbo-track="reload" />
+    <link href="/resources/css/retype.css?v=2.2.702867740407" rel="stylesheet" data-turbo-track="reload" />
 
-    <script type="text/javascript" src="/resources/js/config.js?v=2.2.702867644569" defer data-turbo-track="reload"></script>
+    <script type="text/javascript" src="/resources/js/config.js?v=2.2.702867740407" defer data-turbo-track="reload"></script>
     <script type="text/javascript" src="/resources/js/retype.js?v=2.2" defer data-turbo-track="reload"></script>
-    <script id="lunr-js" type="text/javascript" src="/resources/js/lunr.js?v=2.2.702867644569" defer></script>
-    <script id="prism-js" type="text/javascript" src="/resources/js/prism.js?v=2.2.702867644569" defer></script>
+    <script id="lunr-js" type="text/javascript" src="/resources/js/lunr.js?v=2.2.702867740407" defer></script>
+    <script id="prism-js" type="text/javascript" src="/resources/js/prism.js?v=2.2.702867740407" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -249,13 +249,13 @@ Service Info: Host:  overflow; OS: Linux; CPE: cpe:/o:linux:linux_kernel
 </doc-codeblock></div>
 <p>Going to <a href="http://overflow.htb/">http://overflow.htb/</a> we see a website with only &quot;Sign In&quot; and &quot;Sign Up&quot; functionalities:
 <figure class="content-center">
-    <img src="../images/image1.png" alt="" />
+    <img src="images/image1.png" alt="" />
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
 <p>I first tried some default credentials but nothing works, so I registered a new user <code v-pre>caue:password</code>. The application automatically log me in as I sign up. Notice the redirect to <code v-pre>/home/index.php</code>, and other options are now available:
 <figure class="content-center">
-    <img src="../images/image2.png" alt="" />
+    <img src="images/image2.png" alt="" />
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
@@ -298,7 +298,7 @@ Service Info: Host:  overflow; OS: Linux; CPE: cpe:/o:linux:linux_kernel
 </doc-codeblock></div>
 <p>Accessing <code v-pre>/home/logs.php</code> we get &quot;Unauthorized!!&quot; message:
 <figure class="content-center">
-    <img src="../images/image3.png" alt="" />
+    <img src="images/image3.png" alt="" />
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
@@ -311,13 +311,13 @@ Service Info: Host:  overflow; OS: Linux; CPE: cpe:/o:linux:linux_kernel
 </doc-anchor-target>
 <p>Lets take a look at the cookies:
 <figure class="content-center">
-    <img src="../images/image4.png" alt="" />
+    <img src="images/image4.png" alt="" />
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
 <p>Tried to decode the cookies but didn&#x27;t get any information back, it looks like there is some cipher behind it. However, modifying the cookie adding or removing characters, we get redirected and an error message:
 <figure class="content-center">
-    <img src="../images/image5.png" alt="" />
+    <img src="images/image5.png" alt="" />
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
@@ -419,7 +419,7 @@ Block 2 Results:
 </doc-codeblock></div>
 <p>Great! We have the <code v-pre>admin</code> cookie! We can open the browser developer tools and change the current cookie to this one. As soon as we refresh the page we get an &quot;Admin Panel&quot; menu option:
 <figure class="content-center">
-    <img src="../images/image6.png" alt="" />
+    <img src="images/image6.png" alt="" />
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
@@ -432,13 +432,13 @@ Block 2 Results:
 </doc-anchor-target>
 <p>Decided to go back to <code v-pre>/home</code> and take a look at the &quot;Logs&quot;. Since we were not authorized before, lets see what happend with admin cookie:
 <figure class="content-center">
-    <img src="../images/image7.png" alt="" />
+    <img src="images/image7.png" alt="" />
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
 <p>Clicking in the &quot;Logs&quot; menu bar opens a popup dialog displaying the last login times of the user. If we look in the browser developer tools, we can see an interesting JavaScript being loaded <code v-pre>../config/admin_last_login.js</code>. Lets take a look at it.
 <figure class="content-center">
-    <img src="../images/image8.png" alt="" />
+    <img src="images/image8.png" alt="" />
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
@@ -634,7 +634,7 @@ e3d748d58b58657bfa4dffe2def0b1c7:6c2d17f37e226486:alpha!@#$%bravo</code></pre>
 <p>Back to the CMS page <a href="http://overflow.htb/admin_cms_panel/admin/login.php">http://overflow.htb/admin_cms_panel/admin/login.php</a> we can use this credentials to login!
 We can see at the bottom of the page the version <code v-pre>CMS Made Simple 2.2.8 Flin Flon</code>. I kept browsing and enumerating the pages and saw an hint to another page:
 <figure class="content-center">
-    <img src="../images/image10.png" alt="" />
+    <img src="images/image10.png" alt="" />
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
@@ -648,7 +648,7 @@ There is a login page and using the same credentials from <code v-pre>editor</co
 </doc-anchor-target>
 <p>Poking around on the website, we find an upload function when we click on our account. I tried uploading a php webshell, but it failed due to unsupported filetype.
 <figure class="content-center">
-    <img src="../images/image11.png" alt="" />
+    <img src="images/image11.png" alt="" />
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
@@ -914,7 +914,7 @@ file_encrypt                                            100%   12KB  37.4KB/s   
 <p>Lets open in Ghidra and have a look at the functions!
 Starting with the <code v-pre>check_pin</code> function, maybe we can reverse the code to determine a valid PIN.
 <figure class="content-center">
-    <img src="../images/image12.png" alt="" />
+    <img src="images/image12.png" alt="" />
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
@@ -1014,7 +1014,7 @@ Thanks for checking. You can give your feedback for improvements at developer@ov
 </doc-codeblock></div>
 <p>Back to Ghidra we look at the <code v-pre>check_pin</code> function again and spot where the <code v-pre>name:</code> is being used and stored. It is stored in <code v-pre>local_2c</code> variable which is programmed to allocate 20 bytes only, here is our buffer overflow!
 <figure class="content-center">
-    <img src="../images/image13.png" alt="" />
+    <img src="images/image13.png" alt="" />
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
@@ -1133,7 +1133,7 @@ dest.write(bytes([i ^ 0x9b]))</code></pre>
     </h2>
 </doc-anchor-target>
 <p><figure class="content-center">
-    <img src="../images/image14.png" alt="" />
+    <img src="images/image14.png" alt="" />
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
