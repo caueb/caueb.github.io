@@ -14,3 +14,4 @@ Coming soon as they retire.
 | AdmirerToo | Hard | Linux |
 | Acute | Hard | Windows |
 | Timelapse | Easy | Windows |
+| Retired | Medium | Linux |
