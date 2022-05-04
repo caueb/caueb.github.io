@@ -129,3 +129,25 @@ After importing the private key, we can use it to decode PGP messages:
 # Decode command
 gpg -d passbolt.message.gpg
 ```
+
+### PFX
+Using John (FASTER):
+```
+$ pfx2john staff.pfx > staff.pfx.out
+$ john staff.pfx.out --wordlist=/usr/share/wordlists/rockyou.txt
+```
+
+Using pkcs12:
+```bash
+# Install tool
+$ git clone https://github.com/crackpkcs12/crackpkcs12.git
+$ cd crackpkcs12/
+$ ./configure
+$ make
+$ cd src/
+$ ./crackpkcs12
+
+# Cracking PFX
+$ ./crackpkcs12 -v -d /usr/share/wordlists/rockyou.txt staff.pfx
+```
+Now we can import the `.pfx` certificate using the password on Firefox to access internal resources.
