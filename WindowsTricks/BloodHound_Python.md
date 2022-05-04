@@ -123,14 +123,11 @@ Go to Upload Data: Import the `.json` files create by Bloodhound.py.
 
 **FIND KERBEROASTABLE ACCOUNTS**
 
-BloodHound: ANALYSIS → QUERIES
-
+BloodHound: ANALYSIS → QUERIES  
 - Find all Domains Admins
     - Mark users as high value if not yet
 - List all Kerberoastable Accounts
-    
     *Found `web-svc` account.*
-    
 
 Use credentials and impacket to extract the hash of Kerberoastable users:
 
