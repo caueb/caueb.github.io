@@ -27,12 +27,12 @@
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="/resources/css/retype.css?v=2.2.704525807427" rel="stylesheet" data-turbo-track="reload" />
+    <link href="/resources/css/retype.css?v=2.2.704946846910" rel="stylesheet" data-turbo-track="reload" />
 
-    <script type="text/javascript" src="/resources/js/config.js?v=2.2.704525807427" defer data-turbo-track="reload"></script>
+    <script type="text/javascript" src="/resources/js/config.js?v=2.2.704946846910" defer data-turbo-track="reload"></script>
     <script type="text/javascript" src="/resources/js/retype.js?v=2.2" defer data-turbo-track="reload"></script>
-    <script id="lunr-js" type="text/javascript" src="/resources/js/lunr.js?v=2.2.704525807427" defer></script>
-    <script id="prism-js" type="text/javascript" src="/resources/js/prism.js?v=2.2.704525807427" defer></script>
+    <script id="lunr-js" type="text/javascript" src="/resources/js/lunr.js?v=2.2.704946846910" defer></script>
+    <script id="prism-js" type="text/javascript" src="/resources/js/prism.js?v=2.2.704946846910" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -379,6 +379,31 @@ john eddiepgp.hash --wordlist=/usr/share/wordlist/rockyou.txt</code></pre>
 <pre class="language-bash"><code v-pre class="language-bash"># Decode command
 gpg -d passbolt.message.gpg</code></pre>
 </doc-codeblock></div>
+<doc-anchor-target id="pfx">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#pfx">#</doc-anchor-trigger>
+        <span>PFX</span>
+    </h3>
+</doc-anchor-target>
+<p>Using John (FASTER):</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-none"><code v-pre class="language-none">$ pfx2john staff.pfx &gt; staff.pfx.out
+$ john staff.pfx.out --wordlist=/usr/share/wordlists/rockyou.txt</code></pre>
+</doc-codeblock></div>
+<p>Using pkcs12:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash"># Install tool
+$ git clone https://github.com/crackpkcs12/crackpkcs12.git
+$ cd crackpkcs12/
+$ ./configure
+$ make
+$ cd src/
+$ ./crackpkcs12
+
+# Cracking PFX
+$ ./crackpkcs12 -v -d /usr/share/wordlists/rockyou.txt staff.pfx</code></pre>
+</doc-codeblock></div>
+<p>Now we can import the <code v-pre>.pfx</code> certificate using the password on Firefox to access internal resources.</p>
 
                                 
                                 <!-- Required only on API pages -->
