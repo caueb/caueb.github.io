@@ -31,6 +31,11 @@ This tool can be used to extract `.git` from local directory as well.
 
 ## Git Commands
 
+### See all branches
+```bash
+git branch -a
+```
+
 ### See files
 
 ```bash
