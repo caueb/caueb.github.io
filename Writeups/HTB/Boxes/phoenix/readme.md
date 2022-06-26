@@ -55,11 +55,11 @@ $ wpscan --url https://phoenix.htb/ --enumerate ap,at,cb,dbe,u --disable-tls-che
 ```
 
 Bad decision! I got IP blocked!
-![[phoenix/images/image1.png]]
+![](images/image1.png)
 
 Lets manually enumerate the website.
 Looking at the home page source code I could spot some of the plugins metadata. One of them, asgaros-forum, even leak the the version installed:
-![[phoenix/images/image2.png]]
+![](images/image2.png)
 
 Searched for known vulnerabilities and found an unauthenticated [SQL injection](https://wpscan.com/vulnerability/36cc5151-1d5e-4874-bcec-3b6326235db1) for this plugin. To exploit is very easy, the syntax looks like this:
 ```
@@ -167,7 +167,7 @@ We got some passwords but no luck for Jane and Jack.
 
 ### Login in as Phoenix
 Login using the administrator credentials `phoenix:phoenixthefirebird14` we are stopped by OTP:
-![[phoenix/images/image3.png]]
+![](images/image3.png)
 
 I tried many ways of circunventing the OTP but nothing works.
 At this point I decided to re-enumerate the plugins installed on wordpress. Maybe we can find some vulnerable plugins. Reading the source code of the home page I could get some of them:
@@ -219,7 +219,7 @@ https://phoenix.htb/wp-admin/shell.phtml
 ```
 
 Browsing to https://phoenix.htb/wp-admin/shell.phtml we get our semi-interactive webshell!
-![[phoenix/images/image4.png]]
+![](images/image4.png)
 
 ## Shell as wp_user
 First of all, lets get a real tty. Start a netcat listener on our kali machine:
@@ -341,7 +341,7 @@ drwxr-xr-x 10 root root  4096 Jul 31  2020 ..
 ```
 
 It is a binary and I cannot read it in plain-text. So I setup another tty with `pspy` running and executed the binary to see what is doing:
-![[phoenix/images/image6.png]]
+![](images/image6.png)
 
 ### Rsync privilege escalation
 The most interesing things to note above are:
@@ -358,10 +358,10 @@ editor@phoenix:/backups$ touch "/backups/-e sh shell.sh"
 ```
 
 The `/backups` directory should look like this. Now we just wait for the cronjob:
-![[phoenix/images/image7.png]]
+![](images/image7.png)
 
 And here it is, we have a copy of  `bash` with the SUID bit:
-![[image8.png]]
+![](images/image8.png)
 
 Lets get a root shell:
 ```bash
