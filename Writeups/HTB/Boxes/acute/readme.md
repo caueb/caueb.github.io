@@ -36,10 +36,10 @@ Scanning the open ports we see only 443 open. We also notice the DNS `atsserver.
 
 ## Port 443 - HTTPS
 Browsing to https://10.10.11.145/ we are given a 404 not found page. However, browsing to https://atsserver.acute.local/ we are directed to "Acute Health" page:
-![[acute/images/image1.png]]
+![](images/image1.png)
 
 If we go to https://atsserver.acute.local/about.html it is possible to download a `.docx` file clicking in the "New Starter Forms" on the top right corner:
-![[acute/images/image2.png]]
+![](images/image2.png)
 
 I will use `libreoffice` to open the file and read its contents:
 ```bash
@@ -75,7 +75,7 @@ The document seems to be a guide for a new employee. The important bits are:
 
 ### Acute Staff Access
 Accessing https://atsserver.acute.local/Acute_Staff_Access:
-![[acute/images/image3.png]]
+![](images/image3.png)
 
 So we need username, password and computer name. So far we have default password. But we don’t have computer name.
 
@@ -135,7 +135,7 @@ The important details are:
 So we have 2 usernames and the computer name.
 
 If we come back to the About page, there is a list of employees:
-![[acute/images/image4.png]]
+![](images/image4.png)
 
 If we try to follow the same username format that is in the `exiftool` "Creator" field we get:
 ```
@@ -278,7 +278,7 @@ PS C:\Utils>
 ```
 
 I ran WinPEAS and got this interesting info:
-![[acute/images/image5.png]]
+![](images/image5.png)
 
 This means that `edavies` is using RDP (gui interface) and is ACTIVE!
 We can use a meterpreter module to watch his screen:
@@ -290,7 +290,7 @@ meterpreter > screenshare -q 100
 ```
 
 While stalking `edavies` we see the user opening a PowerShell session and entering some commands:
-![[acute/images/image6.png]]
+![](images/image6.png)
 
 This was his commands:
 ```PowerShell
@@ -518,7 +518,7 @@ acute\awallace
 ```
 
 Enumerating files and directories there is one that sticks out - `keepmeon`:
-![[acute/images/image7.png]]
+![](images/image7.png)
 
 Lets read its content:
 ```Powershell
@@ -557,7 +557,7 @@ Lets check:
 ```PowerShell
 PS C:\Utils> Invoke-Command -ComputerName ATSSERVER -ConfigurationName dc_manage -Credential $cred -Command {whoami /groups}
 ```
-![[acute/images/image8.png]]
+![](images/image8.png)
 Yes! We got it.
 We are domain admin now. Let’s read the final flag from administrators directory.
 
