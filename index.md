@@ -5,6 +5,10 @@ icon: info
 This is just a website where I like to keep some CTF notes and writeups.
 
 ## Changelog
+
+### 26/07/2022
+- Added Writeup - Catch
+
 ### 16/07/2022
 - Added Writeups - Acute
 
