@@ -246,5 +246,5 @@ We are root.
 
 TT
 ```
-${{ this.push "return require('child_process').exec('whoami');" }}
+{{ this.push "return require('child_process').exec('whoami');" }}
 ```
