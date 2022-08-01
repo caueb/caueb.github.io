@@ -245,7 +245,5 @@ uid=0(root) gid=0(root) groups=0(root)
 We are root.
 
 ```
-{{ [].class.base.subclasses() }}
-{{''.class.mro()[1].subclasses()}}
-{{ ''.__class__.__mro__[2].__subclasses__() }}
+{% debug %}
 ```
