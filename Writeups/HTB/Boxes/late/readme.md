@@ -54,7 +54,7 @@ Now we can access http://images.late.htb/:
 If we pay attention, the title says "Flask", and this framework is known for Server-Side-Template-Injection issues. So if this application turn images into text we could pottenctially send an image containing a SSTI payload to test.
 
 ### Testing for Flask SSTI
-Lets start with the most simple payload: `{%{{7*7}}%}`. We can simply open any text editor, type in the payload, zoom in, and take a screenshot like below:
+Lets start with the most simple payload: `{%{{%{7*7}%}}%}`. We can simply open any text editor, type in the payload, zoom in, and take a screenshot like below:
 ![](images/7x7.png)
 Now we upload image to the website.
 
