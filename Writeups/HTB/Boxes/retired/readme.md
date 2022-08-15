@@ -419,7 +419,7 @@ r.sendline()
 ```
 
 Once again, start the binary with gdb and run the python exploit:
-![[retired/images/image4.png]]
+![](retired/images/image4.png)
 Perfect!
 
 ### Exploit plan
