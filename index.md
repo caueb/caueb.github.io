@@ -6,6 +6,9 @@ This is just a website where I like to keep some CTF notes and writeups.
 
 ## Changelog
 
+### 14/08/2022
+- Added Writeup - Retired
+
 ### 07/08/2022
 - Added Writeup - Overgraph
 
