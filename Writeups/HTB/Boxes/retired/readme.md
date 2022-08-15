@@ -58,7 +58,7 @@ by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
 ```
 
 Accessing http://10.10.11.154/beta.html we are redirected to http://10.10.11.154/index.php?page=beta.html:
-![](retired/images/image1.png)
+![](images/image1.png)
 
 The page talks about uploading a license file of 512 bits to get into the beta program. When pressing the SUBMIT button we note that it is sending a POST request to `activate_license.php`.
 
