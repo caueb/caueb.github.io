@@ -84,31 +84,31 @@ Port 80 redirects to `talkative.htb`, lets add it to our hosts file:
 
 ## Reconnaissance
 ### Port 80
-![](talkative/images/image1.png)
+![](images/image1.png)
 
 Looking at the source-code we see multiple indicators that is Bolt CMS:
-![](talkative/images/image2.png)
-![](talkative/images/image3.png)
+![](images/image2.png)
+![](images/image3.png)
 
 ### Port 8080
 Jamovi 0.9.5.5 is running on port 8080:
-![](talkative/images/image4.png)
+![](images/image4.png)
 
 ### Port 3000
 Rocket Chat running on port 3000:
-![](talkative/images/image5.png)
+![](images/image5.png)
 
 Since we don't have credentials yet lets register a new account:
-![[talkative/images/image12.png]]
+![[images/image12.png]]
 
 As soon as we register and login with the credentials `caue:password123` we see that the `admin` joined the channel. His name is Saul Goodman:
-![](talkative/images/image13.png)
+![](images/image13.png)
 
 Nothing much to do here now,  but lets keep in mind these details!
 
 ## Foothold
 We can go to port 8080, open RJ editor:
-![](talkative/images/image6.png)
+![](images/image6.png)
 
 Add this line and press CTRL+SHIFT+ENTER to execute ruby command to get a shell:
 ```
@@ -162,7 +162,7 @@ Lets scan the ports open with a one liner bash script:
 ```bash
 for port in $(seq 1 65535); do (echo fart > /dev/tcp/172.18.0.2/$port && echo "open - $port") 2> /dev/null; done
 ```
-![](talkative/images/image11.png)
+![](images/image11.png)
 We have the following ports open:
 - 41337
 - 41338
@@ -307,7 +307,7 @@ by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
 ...[snip]...
 ```
 
-![](talkative/images/image7.png)
+![](images/image7.png)
 
 We can login as `admin` reusing one of the passwords found previsouly:
 ```
@@ -316,10 +316,10 @@ admin:jeO09ufhWD<s
 
 ### Exploit Bolt
 We can go to Configuration -> All configuration files and edit `bundles.php` adding a reverse shell there:
-![](talkative/images/image8.png)
+![](images/image8.png)
 
 I used the php reverse shell that is pre-installed in Kali: `/usr/share/laudanum/php/php-reverse-shell.php`. And change my IP and PORT:
-![](talkative/images/image9.png)
+![](images/image9.png)
 
 As we save the file and click in the Bolt Dashboard, the reverse shell is triggered.
 ```
@@ -473,7 +473,7 @@ PORT      STATE SERVICE
 27017 is the default port for MongoDB as we can see [here](https://www.mongodb.com/docs/manual/reference/default-mongodb-port/).
 
 Uploaded `pspy` to monitor the processes and got something interesting:
-![](talkative/images/image10.png)
+![](images/image10.png)
 
 So connecting the dots we could assume there is a MongoDB running there!
 Lets use `chisel` to forward this port to us!
@@ -703,7 +703,7 @@ Done! Now we can login to Rocket Chat on port 3000 with the credentials `admin:p
 
 ### Rocket Chat
 We can get the Rocket Chat running going to the Administration panel:
-![](talkative/images/image14.png)
+![](images/image14.png)
 
 Doing a bit of research I find that for this version we can simply create a webhook to spawn a reverse shell. 
 - Browse to http://talkative.htb:3000/admin/integrations/new.
