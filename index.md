@@ -6,6 +6,10 @@ This is just a website where I like to keep some CTF notes and writeups.
 
 ## Changelog
 
+### 06/09/2022
+- Added Writeup - Noter
+- Added Writeup - Talkative
+
 ### 14/08/2022
 - Added Writeup - Retired
 
