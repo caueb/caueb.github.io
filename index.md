@@ -2,9 +2,13 @@
 icon: info
 ---
 # About
-This is just a website where I like to keep some CTF notes and writeups.
+This is a website where I like to share some CTF notes and writeups.
 
 ## Changelog
+
+### 14/08/2023
+- Added Purple Team Lab folder
+    - Added Deploy Elastic on Raspberry Pi
 
 ### 06/09/2022
 - Added Writeup - Noter
