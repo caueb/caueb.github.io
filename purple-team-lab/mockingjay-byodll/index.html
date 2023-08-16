@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.1.0.745483398436">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.1.0.745484110546">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.1.0">
@@ -30,12 +30,12 @@
 
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../resources/css/retype.css?v=3.1.0.745483398436" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.1.0.745484110546" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.1.0.745483398436" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.1.0.745484110546" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.1.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.1.0.745483398436" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.1.0.745483398436" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.1.0.745484110546" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.1.0.745484110546" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -242,11 +242,11 @@
 </div>
 <p>One of the reasons why Mockingjay successfully evade EDR is that it can skip some of these common process injection steps, such as, allocating memory, changing memory permissions, and starting a new thread. This is because the legitimate loaded DLL already provide all that to the attacker.</p>
 <p>Loading DLLs with default RWX to execute code is not new to 2023, it has been used for multiple years in the game hacking community as we can see in <a href="https://www.unknowncheats.me/forum/2174119-post31.html">this post in the forum Unknown Cheats from 2018</a>.</p>
-<p>Based on my knowledge and research, there is no DLLs with a RWX section on a default Windows installation. You can use <a href="https://github.com/caueb/Mockingjay/blob/main/rwx_finder.py">this Python script</a> to check if there are any on yours.
+<p>Based on my knowledge and research, there are no DLLs with a RWX section on a default Windows installation. You can use <a href="https://github.com/caueb/Mockingjay/blob/main/rwx_finder.py">this Python script</a> to check if there are any on yours.
 However, the research done by Security Joes found a vulnerable DLL on systems with Visual Studio 2022 Community installed at <code v-pre>C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\TeamFoundation\Team Explorer\Git\usr\bin\msys-2.0.dll.</code>
 This DLL have a RWX section of 16 KB in size, which is enough to store and execute a payload.<br />
 I was very curious to know how this works, so I created a proof-of-concept that loads the vulnerable DLL and self-inject shellcode: <a href="https://github.com/caueb/Mockingjay">https://github.com/caueb/Mockingjay</a></p>
-<p>All this sounds very interesting, however, this technique is limited to compromised systems that contain a vulnerable DLL. While I was wondering if threat actors may target developers now, as they are more likely to have Visual Studio installed, I thought “why not just bring the vulnerable DLL to the compromised machine?”. I decided to modify the code in my POC to download the DLL from the internet, write to disk, and then load the DLL from disk. It works, evaded Elastic EDR on full prevention mode.</p>
+<p>All this sounds very interesting, however, this technique is limited to compromised systems that contain a vulnerable DLL. While I was wondering if threat actors may target developers now, as they are more likely to have Visual Studio installed, I thought “why not just bring the vulnerable DLL to the compromised machine?”. I decided to modify the code in my POC to download the DLL from the internet, write to disk, and then load the DLL from disk.</p>
 <doc-anchor-target id="mockingjay---byodll-1">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#mockingjay---byodll-1">#</doc-anchor-trigger>
