@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.1.0.745484216377">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.1.0.745543727788">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.1.0">
@@ -11,7 +11,7 @@
     <!-- Primary Meta Tags -->
     <title>Mockingjay - BYODLL</title>
     <meta name="title" content="Mockingjay - BYODLL">
-    <meta name="description" content="In June 2023 cybersecurity researchers at Security Joes raised the alert for a new process injection technique called Mockingjay">
+    <meta name="description" content="In June 2023, cybersecurity researchers at Security Joes raised the alert for a new process injection technique called Mockingjay">
 
     <!-- Canonical -->
     <link rel="canonical" href="https://caueb.github.io/purple-team-lab/mockingjay-byodll/">
@@ -20,22 +20,22 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://caueb.github.io/purple-team-lab/mockingjay-byodll/">
     <meta property="og:title" content="Mockingjay - BYODLL">
-    <meta property="og:description" content="In June 2023 cybersecurity researchers at Security Joes raised the alert for a new process injection technique called Mockingjay">
+    <meta property="og:description" content="In June 2023, cybersecurity researchers at Security Joes raised the alert for a new process injection technique called Mockingjay">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://caueb.github.io/purple-team-lab/mockingjay-byodll/">
     <meta property="twitter:title" content="Mockingjay - BYODLL">
-    <meta property="twitter:description" content="In June 2023 cybersecurity researchers at Security Joes raised the alert for a new process injection technique called Mockingjay">
+    <meta property="twitter:description" content="In June 2023, cybersecurity researchers at Security Joes raised the alert for a new process injection technique called Mockingjay">
 
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../resources/css/retype.css?v=3.1.0.745484216377" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.1.0.745543727788" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.1.0.745484216377" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.1.0.745543727788" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.1.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.1.0.745484216377" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.1.0.745484216377" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.1.0.745543727788" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.1.0.745543727788" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -211,7 +211,7 @@
         <span>Intro</span>
     </h2>
 </doc-anchor-target>
-<p>In June 2023 cybersecurity researchers at Security Joes raised the alert for a <a href="https://www.securityjoes.com/post/process-mockingjay-echoing-rwx-in-userland-to-achieve-code-execution">new process injection technique called Mockingjay</a> which would be able to evade traditional EDR. The technique consist of abusing default RWX (Read-Write-Execute) sections in a DLL to execute arbitrary code on compromised systems. Security tools such as EDR will often place hooks and monitor for specific Windows APIs calls, or sometimes the combination of them, to decide if a process is malicious. For example, the most common APIs used for process injection are:</p>
+<p>In June 2023, cybersecurity researchers at Security Joes raised the alert for a <a href="https://www.securityjoes.com/post/process-mockingjay-echoing-rwx-in-userland-to-achieve-code-execution">new process injection technique called Mockingjay</a> which would be able to evade traditional EDR. The technique consists of abusing default RWX (Read-Write-Execute) sections in a DLL to execute arbitrary code on compromised systems. Security tools such as EDR will often place hooks and monitor for specific Windows APIs calls to decide if a process is malicious. For example, the most common APIs used for process injection are:</p>
 <div class="table-wrapper scrollbar overflow-hidden">
 <table class="compact comfortable">
 <thead>
@@ -240,8 +240,8 @@
 </tbody>
 </table>
 </div>
-<p>One of the reasons why Mockingjay successfully evade EDR is that it can skip some of these common process injection steps, such as, allocating memory, changing memory permissions, and starting a new thread. This is because the legitimate loaded DLL already provide all that to the attacker.</p>
-<p>Loading DLLs with default RWX to execute code is not new to 2023, it has been used for multiple years in the game hacking community as we can see in <a href="https://www.unknowncheats.me/forum/2174119-post31.html">this post in the forum Unknown Cheats from 2018</a>.</p>
+<p>One of the reasons why Mockingjay successfully evades EDR is that it can skip some of these common process injection steps, such as allocating memory, changing memory permissions, and starting a new thread. This is because the vulnerable loaded DLL already provides all that to the attacker.</p>
+<p>Loading DLLs with default RWX section to execute code is not new in 2023, it has been used for multiple years in the game hacking community as we can see in <a href="https://www.unknowncheats.me/forum/2174119-post31.html">this post in the forum Unknown Cheats from 2018</a>.</p>
 <p>Based on my knowledge and research, there are no DLLs with a RWX section on a default Windows installation. You can use <a href="https://github.com/caueb/Mockingjay/blob/main/rwx_finder.py">this Python script</a> to check if there are any on yours.
 However, the research done by Security Joes found a vulnerable DLL on systems with Visual Studio 2022 Community installed at <code v-pre>C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\TeamFoundation\Team Explorer\Git\usr\bin\msys-2.0.dll.</code>
 This DLL have a RWX section of 16 KB in size, which is enough to store and execute a payload.<br />
@@ -253,8 +253,8 @@ I was very curious to know how this works, so I created a proof-of-concept that 
         <span>Mockingjay - BYODLL</span>
     </h2>
 </doc-anchor-target>
-<p>To test the detection of bringing your own vulnerable DLL I modified my POC and run against Elastic EDR in my home lab. You can read more about how I have my <a href="https://caueb.github.io/purple-team-lab/elasticonraspberrypi/">home lab setup here</a>.</p>
-<p>Basically I have the following setup:</p>
+<p>To test the detection of bringing your own vulnerable DLL, I modified my POC and run against Elastic EDR in my home lab. You can read more about how I have my <a href="https://caueb.github.io/purple-team-lab/elasticonraspberrypi/">home lab setup here</a>.</p>
+<p>Essentially I have the following setup:</p>
 <ul>
 <li>1 x Windows 11 fully updated with Elastic EDR agent (target).</li>
 <li>1 x Windows 11 fully updated (attacker).</li>
@@ -357,7 +357,7 @@ I was very curious to know how this works, so I created a proof-of-concept that 
     return 0;
 }</code></pre>
 </doc-codeblock></div>
-<p>What I did not know was that whenever the EDR see the combination of the Windows APIs <code v-pre>CreateFileA</code> (to save the DLL to disk) with <code v-pre>CryptCreateHash</code>and <code v-pre>CryptHashData</code> (to decrypt the payload) would immediately flag my program as malicious since many ransomware use of the same.</p>
+<p>What I did not know was that whenever the EDR detects the combination of the Windows APIs <code v-pre>CreateFileA</code> (to save the DLL to disk) with <code v-pre>CryptCreateHash</code>and <code v-pre>CryptHashData</code> (to decrypt the payload), the EDR would immediately flag my program as malicious since many ransomware use the same.</p>
 <p>Decided to simplify things, instead of encrypting, lets just encode the shellcode, this way we do not load any of the Crypt* functions. I will be using IPV4 encoding, while there are many <a href="https://github.com/TheD1rkMtr/Shellcode-Hide/blob/main/2%20-%20Encoding/4%20-%20IPv4%20shellcode/IPfuscation/IPfuscation.cpp">examples on Github</a>, I will implement the one I learned from <a href="https://maldevacademy.com/">Maldev Academy</a> (Sorry, I can’t share this one).</p>
 <doc-anchor-target id="spoofing-metadata">
     <h3>
@@ -365,13 +365,13 @@ I was very curious to know how this works, so I created a proof-of-concept that 
         <span>Spoofing metadata</span>
     </h3>
 </doc-anchor-target>
-<p>In order to make my executable less suspicious I removed the CRT library from the project and added spoofed metadata stolen from Notepad++.exe. By the way, I created a short PowerShell script to <a href="https://gist.github.com/caueb/eb0f49a90ca3532b3e04e6c65d7c2acd">extract the metadata from a binary here</a> if you are interested.
+<p>In order to make my executable less suspicious I removed the CRT library from the project and added spoofed metadata stolen from Notepad++.exe. If you are interested, I created a short PowerShell script to <a href="https://gist.github.com/caueb/eb0f49a90ca3532b3e04e6c65d7c2acd">extract the metadata from a binary here</a>.
 <figure class="content-center">
     <img src="../imgs/mockingjay/img02.png" alt="">
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
-<p>Below is a comparison of our compiled malware(left) and Notepad++(right) executable metadata:
+<p>Below is a comparison of the compiled malware(left) and Notepad++(right) executable metadata:
 <figure class="content-center">
     <img src="../imgs/mockingjay/img03.png" alt="">
     <figcaption class="caption"></figcaption>
@@ -383,7 +383,7 @@ I was very curious to know how this works, so I created a proof-of-concept that 
         <span>Execution flow</span>
     </h3>
 </doc-anchor-target>
-<p>Let’s recap what our malware will be executing:</p>
+<p>Let’s recap what the malware will be executing:</p>
 <ol>
 <li>Download the vulnerable DLL from the attacker machine and save to the target machine disk</li>
 <li>Load the downloaded vulnerable DLL into the process</li>
@@ -398,7 +398,7 @@ I was very curious to know how this works, so I created a proof-of-concept that 
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
-<p>In the target machine we can use curl to download the malware and then execute:
+<p>In the target machine, we can use curl to download the malware and then execute:
 <figure class="content-center">
     <img src="../imgs/mockingjay/img05.png" alt="">
     <figcaption class="caption"></figcaption>
@@ -450,11 +450,11 @@ We receive our reverse shell call in the attacker machine:
 </doc-anchor-target>
 <p>There are plenty of opportunities for detection in this technique.</p>
 <ul>
-<li>To start off don’t rely on just out-of-the-box detection rules, use of behavioral analysis and machine learning techniques to identify process injection.</li>
+<li>To start off - don’t rely on just out-of-the-box detection rules, use of behavioral analysis, and machine learning techniques to identify process injection.</li>
 <li>Create a list of DLLs that contain RWX sections and monitor their use.</li>
-<li>Monitor for unusual processes loading a DLL with RWX sections. In this case, a DLL was downloaded from internet and saved to disk, then loaded back to the process, look for this characteristics.</li>
+<li>Monitor for unusual processes loading a DLL with RWX sections. In this case, a DLL was downloaded from internet and saved to disk, then loaded back to the process. Look for these characteristics.</li>
 </ul>
-<p>For more information about Mockingjay I recommend reading the original article published by Security Joes:</p>
+<p>For more information about Mockingjay, I recommend reading the original article published by Security Joes:</p>
 <ul>
 <li><a href="https://www.securityjoes.com/post/process-mockingjay-echoing-rwx-in-userland-to-achieve-code-execution">https://www.securityjoes.com/post/process-mockingjay-echoing-rwx-in-userland-to-achieve-code-execution</a></li>
 </ul>
