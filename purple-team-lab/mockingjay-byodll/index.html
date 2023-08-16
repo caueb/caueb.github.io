@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.1.0.745482832209">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.1.0.745483095883">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.1.0">
@@ -30,12 +30,12 @@
 
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../resources/css/retype.css?v=3.1.0.745482832209" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.1.0.745483095883" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.1.0.745482832209" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.1.0.745483095883" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.1.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.1.0.745482832209" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.1.0.745482832209" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.1.0.745483095883" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.1.0.745483095883" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -211,13 +211,13 @@
         <span>Intro</span>
     </h2>
 </doc-anchor-target>
-<p class="compact">In June 2023 cybersecurity researchers at Security Joes raised the alert for a <a href="https://www.securityjoes.com/post/process-mockingjay-echoing-rwx-in-userland-to-achieve-code-execution">new process injection technique called Mockingjay</a> which would be able to evade traditional EDR. The technique consist of abusing default RWX (Read-Write-Execute) sections in a DLL to execute arbitrary code on compromised systems. Security tools such as EDR will often place hooks and monitor for specific Windows APIs calls, or sometimes the combination of them, to decide if a process is malicious. For example, the most common APIs used for process injection are:
+<p class="compact">In June 2023 cybersecurity researchers at Security Joes raised the alert for a <a href="https://www.securityjoes.com/post/process-mockingjay-echoing-rwx-in-userland-to-achieve-code-execution">new process injection technique called Mockingjay</a> which would be able to evade traditional EDR. The technique consist of abusing default RWX (Read-Write-Execute) sections in a DLL to execute arbitrary code on compromised systems. Security tools such as EDR will often place hooks and monitor for specific Windows APIs calls, or sometimes the combination of them, to decide if a process is malicious. For example, the most common APIs used for process injection are:<br />
 Windows API | Description 
-:--- | :---
-VirtualAlloc | This API is used to allocate memory within the process&#x27;s address space. In self-injection, it&#x27;s used to allocate memory to hold the payload.
-RtlMoveMemory | While not an official API, this is a memory copy operation used to copy the payload code into the allocated memory.
+:------------- | :-------------
+VirtualAlloc   | This API is used to allocate memory within the process&#x27;s address space. In self-injection, it&#x27;s used to allocate memory to hold the payload.
+RtlMoveMemory  | While not an official API, this is a memory copy operation used to copy the payload code into the allocated memory.
 VirtualProtect | This API is used to change the protection attributes of a memory region. It&#x27;s often used after allocating memory to make it executable, allowing the payload code to be executed.
-CreateThread | This API is used to create a new thread within the process. It&#x27;s often used to start the execution of the payload entry point.</p>
+CreateThread   | This API is used to create a new thread within the process. It&#x27;s often used to start the execution of the payload entry point.</p>
 <p>One of the reasons why Mockingjay successfully evade EDR is that it can skip some of these common process injection steps, such as, allocating memory, changing memory permissions, and starting a new thread. This is because the legitimate loaded DLL already provide all that to the attacker.</p>
 <p>Loading DLLs with default RWX to execute code is not new to 2023, it has been used for multiple years in the game hacking community as we can see in <a href="https://www.unknowncheats.me/forum/2174119-post31.html">this post in the forum Unknown Cheats from 2018</a>.</p>
 <p>Based on my knowledge and research, there is no DLLs with a RWX section on a default Windows installation. You can use <a href="https://github.com/caueb/Mockingjay/blob/main/rwx_finder.py">this Python script</a> to check if there is any on yours.
