@@ -1,7 +1,7 @@
 # Mockingjay - BYODLL
 ## Intro
 In June 2023 cybersecurity researchers at Security Joes raised the alert for a [new process injection technique called Mockingjay](https://www.securityjoes.com/post/process-mockingjay-echoing-rwx-in-userland-to-achieve-code-execution) which would be able to evade traditional EDR. The technique consist of abusing default RWX (Read-Write-Execute) sections in a DLL to execute arbitrary code on compromised systems. Security tools such as EDR will often place hooks and monitor for specific Windows APIs calls, or sometimes the combination of them, to decide if a process is malicious. For example, the most common APIs used for process injection are:
-Windows API | Description
+Windows API | Description {.compact}
 :--- | :---
 VirtualAlloc | This API is used to allocate memory within the process's address space. In self-injection, it's used to allocate memory to hold the payload.
 RtlMoveMemory | While not an official API, this is a memory copy operation used to copy the payload code into the allocated memory.
