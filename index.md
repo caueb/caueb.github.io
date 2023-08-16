@@ -5,6 +5,8 @@ icon: info
 This is a website where I like to share some CTF notes and writeups.
 
 ## Changelog
+### 16/08/2023
+- Added Purple Team Lab / Mockingjay - BYODLL
 
 ### 14/08/2023
 - Added Purple Team Lab folder
