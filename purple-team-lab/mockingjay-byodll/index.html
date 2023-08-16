@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.1.0.745482745835">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.1.0.745482832209">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.1.0">
@@ -30,12 +30,12 @@
 
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../resources/css/retype.css?v=3.1.0.745482745835" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.1.0.745482832209" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.1.0.745482745835" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.1.0.745482832209" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.1.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.1.0.745482745835" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.1.0.745482745835" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.1.0.745482832209" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.1.0.745482832209" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -211,8 +211,8 @@
         <span>Intro</span>
     </h2>
 </doc-anchor-target>
-<p>In June 2023 cybersecurity researchers at Security Joes raised the alert for a <a href="https://www.securityjoes.com/post/process-mockingjay-echoing-rwx-in-userland-to-achieve-code-execution">new process injection technique called Mockingjay</a> which would be able to evade traditional EDR. The technique consist of abusing default RWX (Read-Write-Execute) sections in a DLL to execute arbitrary code on compromised systems. Security tools such as EDR will often place hooks and monitor for specific Windows APIs calls, or sometimes the combination of them, to decide if a process is malicious. For example, the most common APIs used for process injection are:
-Windows API | Description
+<p class="compact">In June 2023 cybersecurity researchers at Security Joes raised the alert for a <a href="https://www.securityjoes.com/post/process-mockingjay-echoing-rwx-in-userland-to-achieve-code-execution">new process injection technique called Mockingjay</a> which would be able to evade traditional EDR. The technique consist of abusing default RWX (Read-Write-Execute) sections in a DLL to execute arbitrary code on compromised systems. Security tools such as EDR will often place hooks and monitor for specific Windows APIs calls, or sometimes the combination of them, to decide if a process is malicious. For example, the most common APIs used for process injection are:
+Windows API | Description 
 :--- | :---
 VirtualAlloc | This API is used to allocate memory within the process&#x27;s address space. In self-injection, it&#x27;s used to allocate memory to hold the payload.
 RtlMoveMemory | While not an official API, this is a memory copy operation used to copy the payload code into the allocated memory.
