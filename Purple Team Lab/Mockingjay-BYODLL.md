@@ -13,7 +13,7 @@ One of the reasons why Mockingjay successfully evade EDR is that it can skip som
 
 Loading DLLs with default RWX to execute code is not new to 2023, it has been used for multiple years in the game hacking community as we can see in [this post in the forum Unknown Cheats from 2018](https://www.unknowncheats.me/forum/2174119-post31.html).
 
-Based on my knowledge and research, there is no DLLs with a RWX section on a default Windows installation. You can use [this Python script](https://github.com/caueb/Mockingjay/blob/main/rwx_finder.py) to check if there is any on yours.
+Based on my knowledge and research, there is no DLLs with a RWX section on a default Windows installation. You can use [this Python script](https://github.com/caueb/Mockingjay/blob/main/rwx_finder.py) to check if there are any on yours.
 However, the research done by Security Joes found a vulnerable DLL on systems with Visual Studio 2022 Community installed at `C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\TeamFoundation\Team Explorer\Git\usr\bin\msys-2.0.dll.`
 This DLL have a RWX section of 16 KB in size, which is enough to store and execute a payload.  
 I was very curious to know how this works, so I created a proof-of-concept that loads the vulnerable DLL and self-inject shellcode: https://github.com/caueb/Mockingjay
