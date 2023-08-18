@@ -8,7 +8,7 @@ icon: info
 I will try to share here some CTF notes and writeups. 
 
 ## Certifications
-![](About/imgs/certs.png) 
+![](Changelog/imgs/certs.png) 
 
 ## Disclaimer
 !!!
