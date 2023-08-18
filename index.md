@@ -5,10 +5,10 @@ icon: info
 :i_love_you_hand_sign: Passionate about offensive security.  
 :round_pushpin: Western Australia.
 
-I will try to share here some CTF notes and writeups.  
+I will try to share here some CTF notes and writeups. 
 
 ## Certifications
-![](imgs/certs.png) 
+![](About/imgs/certs.png) 
 
 ## Disclaimer
 !!!
