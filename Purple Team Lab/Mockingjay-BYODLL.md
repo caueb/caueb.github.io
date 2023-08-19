@@ -1,4 +1,7 @@
+![](imgs/mockingjay/mockingjay-header.png)
+
 # Mockingjay - BYODLL
+
 ## Intro
 In June 2023, cybersecurity researchers at Security Joes raised the alert for a [new process injection technique called Mockingjay](https://www.securityjoes.com/post/process-mockingjay-echoing-rwx-in-userland-to-achieve-code-execution) which would be able to evade traditional EDR. The technique consists of abusing default RWX (Read-Write-Execute) sections in a DLL to execute arbitrary code on compromised systems. Security tools such as EDR will often place hooks and monitor for specific Windows APIs calls to decide if a process is malicious. For example, the most common APIs used for process injection are:  
 
@@ -9,7 +12,7 @@ RtlMoveMemory  | While not an official API, this is a memory copy operation used
 VirtualProtect | This API is used to change the protection attributes of a memory region. It's often used after allocating memory to make it executable, allowing the payload code to be executed.  
 CreateThread   | This API is used to create a new thread within the process. It's often used to start the execution of the payload entry point.
 
-One of the reasons why Mockingjay successfully evades EDR is that it can skip some of these common process injection steps, such as allocating memory, changing memory permissions, and starting a new thread. This is because the vulnerable loaded DLL already provides all that to the attacker.
+One of the reasons why Mockingjay successfully evades EDR is that it can skip some of these common process injection steps, such as allocating memory and changing memory permissions. This is because the vulnerable loaded DLL already provides all that to the attacker.
 
 Loading DLLs with default RWX section to execute code is not new in 2023, it has been used for multiple years in the game hacking community as we can see in [this post in the forum Unknown Cheats from 2018](https://www.unknowncheats.me/forum/2174119-post31.html).
 
