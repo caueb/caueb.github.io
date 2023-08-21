@@ -1,3 +1,5 @@
+![](imgs/elastic/raspberrypi_header.png)
+
 # Deploy Elastic on Raspberry Pi
 
 ## Intro
