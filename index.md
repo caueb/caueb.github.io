@@ -9,7 +9,7 @@ icon: info
 ## Certifications
 ![](Changelog/imgs/certs.png) 
 
-## Disclaimer
+### Disclaimer
 !!!
 All information contained in this website/blog is provided for educational and research
 purposes only. The author is not responsible for any illegal use of any 
