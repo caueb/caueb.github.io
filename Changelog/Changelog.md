@@ -1,5 +1,6 @@
 ---
 order: -1
+icon: calendar
 ---
 
 # Changelog
