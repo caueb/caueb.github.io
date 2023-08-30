@@ -3,12 +3,12 @@
 # Early Bird - Edge case
 
 ## Intro
-In a recent red team lab - [Vulnlab](https://www.vulnlab.com/main/red-team-labs) - we had the challenge to establish initial access via phishing. Basically, after compromising an IT department email account, we had to send a phishing email targeting another account which was expecting to receive the "HR Tool". The target machine is running Elastic EDR agent and the goal was to evade detection and gain a foothold.
+In a recent red team lab - [Vulnlab](https://www.vulnlab.com/main/red-team-labs) - I had the challenge to establish initial access via phishing. Basically, after compromising an IT department email account, I had to send a phishing email targeting another account which was expecting to receive the "HR Tool". The target machine is running Elastic EDR agent and the goal was to evade detection and gain a foothold.
 
 My initial thoughts were to create a program that uses of the Early Bird technique to spawn a new instance of MS Edge and inject a reverse shell shellcode. The reason to pick Edge as the target process is because security products can easily detect anomalous network connections, for example, it would be very suspicious if `Notepad.exe` process starts sending HTTP/S packets every 30s.
 
 ## The current directory issue
-I wanted to spawn an instance of MS Edge as closer to the original as possible to avoid detection. Here is how a legitimate `msedge.exe` process looks like in Process Hacker:
+I wanted to spawn an instance of MS Edge as close to the original as possible to avoid detection. Here is how a legitimate `msedge.exe` process looks like in Process Hacker:
 ![](imgs/earlybird/img01.png)
 
 When using `CreateProcessA` API or even the low-level `NtCreateUserProcess` we can specify the parameters and attributes for the process, such as the "Image file name", "Command line", even spoof the parent process. However, the one that was challenging to get it right was the "Current directory" since it contains the path containing the version of Edge. If we don’t specify anything and pass the `NULL` value, it will be populated with the current directory where the program was initiated:
@@ -137,7 +137,7 @@ int main() {
 Compile and run the code above, we can verify that it is working:
 ![](imgs/earlybird/img04.png)
 
-## Bypassing PPID spoofing rule
+## Parent process spoofing rule bypass
 When I thought I was done, Elastic was detecting the parent process spoofing. Luckily, we can have  a look at Elastic detection [rules for PPID spoofing on Github](https://github.com/elastic/protections-artifacts/blob/main/behavior/rules/defense_evasion_parent_process_pid_spoofing.toml#L91). That is when I saw this on [line 91](https://github.com/elastic/protections-artifacts/blob/7cab0ce93881cef1b1073c3946aac790a284f554/behavior/rules/defense_evasion_parent_process_pid_spoofing.toml#L91):
 ![](imgs/earlybird/img05.png)
 
