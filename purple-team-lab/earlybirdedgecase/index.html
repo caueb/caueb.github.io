@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.2.0.746693856572">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.2.0.746751485081">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.2.0">
@@ -11,7 +11,7 @@
     <!-- Primary Meta Tags -->
     <title>Early Bird - Edge case</title>
     <meta name="title" content="Early Bird - Edge case">
-    <meta name="description" content="In a recent red team lab - Vulnlab- we had the challenge to establish initial access via phishing.">
+    <meta name="description" content="In a recent red team lab - Vulnlab- I had the challenge to establish initial access via phishing.">
 
     <!-- Canonical -->
     <link rel="canonical" href="https://caueb.github.io/purple-team-lab/earlybirdedgecase/">
@@ -20,22 +20,22 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://caueb.github.io/purple-team-lab/earlybirdedgecase/">
     <meta property="og:title" content="Early Bird - Edge case">
-    <meta property="og:description" content="In a recent red team lab - Vulnlab- we had the challenge to establish initial access via phishing.">
+    <meta property="og:description" content="In a recent red team lab - Vulnlab- I had the challenge to establish initial access via phishing.">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://caueb.github.io/purple-team-lab/earlybirdedgecase/">
     <meta property="twitter:title" content="Early Bird - Edge case">
-    <meta property="twitter:description" content="In a recent red team lab - Vulnlab- we had the challenge to establish initial access via phishing.">
+    <meta property="twitter:description" content="In a recent red team lab - Vulnlab- I had the challenge to establish initial access via phishing.">
 
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../resources/css/retype.css?v=3.2.0.746693856572" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.2.0.746751485081" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.2.0.746693856572" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.2.0.746751485081" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.2.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.2.0.746693856572" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.2.0.746693856572" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.2.0.746751485081" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.2.0.746751485081" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -216,7 +216,7 @@
         <span>Intro</span>
     </h2>
 </doc-anchor-target>
-<p>In a recent red team lab - <a href="https://www.vulnlab.com/main/red-team-labs">Vulnlab</a> - we had the challenge to establish initial access via phishing. Basically, after compromising an IT department email account, we had to send a phishing email targeting another account which was expecting to receive the &quot;HR Tool&quot;. The target machine is running Elastic EDR agent and the goal was to evade detection and gain a foothold.</p>
+<p>In a recent red team lab - <a href="https://www.vulnlab.com/main/red-team-labs">Vulnlab</a> - I had the challenge to establish initial access via phishing. Basically, after compromising an IT department email account, I had to send a phishing email targeting another account which was expecting to receive the &quot;HR Tool&quot;. The target machine is running Elastic EDR agent and the goal was to evade detection and gain a foothold.</p>
 <p>My initial thoughts were to create a program that uses of the Early Bird technique to spawn a new instance of MS Edge and inject a reverse shell shellcode. The reason to pick Edge as the target process is because security products can easily detect anomalous network connections, for example, it would be very suspicious if <code v-pre>Notepad.exe</code> process starts sending HTTP/S packets every 30s.</p>
 <doc-anchor-target id="the-current-directory-issue">
     <h2>
@@ -224,7 +224,7 @@
         <span>The current directory issue</span>
     </h2>
 </doc-anchor-target>
-<p>I wanted to spawn an instance of MS Edge as closer to the original as possible to avoid detection. Here is how a legitimate <code v-pre>msedge.exe</code> process looks like in Process Hacker:
+<p>I wanted to spawn an instance of MS Edge as close to the original as possible to avoid detection. Here is how a legitimate <code v-pre>msedge.exe</code> process looks like in Process Hacker:
 <figure class="content-center">
     <img src="../imgs/earlybird/img01.png" alt="">
     <figcaption class="caption"></figcaption>
@@ -364,10 +364,10 @@ int main() {
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
-<doc-anchor-target id="bypassing-ppid-spoofing-rule">
+<doc-anchor-target id="parent-process-spoofing-rule-bypass">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#bypassing-ppid-spoofing-rule">#</doc-anchor-trigger>
-        <span>Bypassing PPID spoofing rule</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#parent-process-spoofing-rule-bypass">#</doc-anchor-trigger>
+        <span>Parent process spoofing rule bypass</span>
     </h2>
 </doc-anchor-target>
 <p>When I thought I was done, Elastic was detecting the parent process spoofing. Luckily, we can have  a look at Elastic detection <a href="https://github.com/elastic/protections-artifacts/blob/main/behavior/rules/defense_evasion_parent_process_pid_spoofing.toml#L91">rules for PPID spoofing on Github</a>. That is when I saw this on <a href="https://github.com/elastic/protections-artifacts/blob/7cab0ce93881cef1b1073c3946aac790a284f554/behavior/rules/defense_evasion_parent_process_pid_spoofing.toml#L91">line 91</a>:
