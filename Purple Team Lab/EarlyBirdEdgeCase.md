@@ -11,7 +11,7 @@ My initial thoughts were to create a program that uses of the Early Bird techniq
 I wanted to spawn an instance of MS Edge as close to the original as possible to avoid detection. Here is how a legitimate `msedge.exe` process looks like in Process Hacker:
 ![](imgs/earlybird/img01.png)
 
-When using `CreateProcessA` API or even the low-level `NtCreateUserProcess` we can specify the parameters and attributes for the process, such as the "Image file name", "Command line", even spoof the parent process. However, the one that was challenging to get it right was the "Current directory" since it contains the path containing the version of Edge. If we don’t specify anything and pass the `NULL` value, it will be populated with the current directory where the program was initiated:
+When using `CreateProcessA` API or even the low-level `NtCreateUserProcess` we can specify the parameters and attributes for the process, such as the "Image file name", "Command line", even spoof the parent process. However, the one that was challenging to get it right was the "Current directory" since it contains the full path + version installed of Edge. I don't know what version is installed in the target. If we don’t specify anything and pass the `NULL` value, it will be populated with the current directory where the program was initiated:
 ![](imgs/earlybird/img02.png)
 *Note: I am also spoofing the parent process as you can see it is showing as child of `explorer.exe`.*
 
