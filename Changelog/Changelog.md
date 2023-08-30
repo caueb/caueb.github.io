@@ -7,6 +7,7 @@ icon: calendar
 
 Date | Change {.compact}
 --- | ---
+30/08/2023 | Added Early Bird - Edge case
 23/08/2023 | Added CTF Cheat Sheets folder
 16/08/2023 | Added Purple Team Lab - Mockingjay - BYODLL
 14/08/2023 | Added Purple Team Lab folder / Added Deploy Elastic on Raspberry Pi
