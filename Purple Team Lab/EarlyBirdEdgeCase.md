@@ -141,7 +141,7 @@ Compile and run the code above, we can verify that it is working:
 When I thought I was done, Elastic was detecting the parent process spoofing. Luckily, we can have  a look at Elastic detection [rules for PPID spoofing on Github](https://github.com/elastic/protections-artifacts/blob/main/behavior/rules/defense_evasion_parent_process_pid_spoofing.toml#L91). That is when I saw this on [line 91](https://github.com/elastic/protections-artifacts/blob/7cab0ce93881cef1b1073c3946aac790a284f554/behavior/rules/defense_evasion_parent_process_pid_spoofing.toml#L91):
 ![](imgs/earlybird/img05.png)
 
-It seems that if `msedge.exe` has 2 or more arguments and parent is sihost.exe then we are good to go. I modified the "Command line" value and changed the parent process from `explorer.exe` to `sihost.exe`:
+It seems that if `msedge.exe` has 2 or more arguments and parent is `sihost.exe` then we are good to go. I modified the "Command line" value and changed the parent process from `explorer.exe` to `sihost.exe`:
 ![](imgs/earlybird/img06.png)
 
 Looks exactly what we need to get that initial foothold in the red team lab.
