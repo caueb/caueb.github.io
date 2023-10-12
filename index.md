@@ -6,9 +6,6 @@ icon: info
 :round_pushpin: Western Australia.
 
 
-## Certifications
-![](Changelog/imgs/certs.png) 
-
 ### Disclaimer
 !!!
 All information contained in this website/blog is provided for educational and research
