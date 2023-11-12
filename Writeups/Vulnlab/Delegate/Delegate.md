@@ -112,16 +112,17 @@ Password:
 1121: DELEGATE\delegation admins (SidTypeGroup)
 ```
 The output show the following user accounts that could be potential targets in future:  
- SID | SamAccountName {.compact}   
- -------- | -------- 
- 500 | Administrator 
- 501 | Guest 
- 502 | krbtgt 
- 1104 | A.Briggs  
- 1105 | b.Brown  
- 1106 | R.Cooper  
- 1107 | J.Roberts  
- 1108 | N.Thompson  
+
+SID | SamAccountName {.compact} 
+--- | --------  
+500 | Administrator  
+501 | Guest  
+502 | krbtgt  
+1104 | A.Briggs  
+1105 | b.Brown  
+1106 | R.Cooper  
+1107 | J.Roberts  
+1108 | N.Thompson  
 
 We also get the Domain SID:
 ```bash
