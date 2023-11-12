@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.753097594612">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.753097770908">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.5.0">
@@ -32,12 +32,12 @@
 
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../../resources/css/retype.css?v=3.5.0.753097594612" rel="stylesheet">
+    <link href="../../../resources/css/retype.css?v=3.5.0.753097770908" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../../resources/js/config.js?v=3.5.0.753097594612" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../../resources/js/config.js?v=3.5.0.753097770908" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../../resources/js/retype.js?v=3.5.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../../resources/js/lunr.js?v=3.5.0.753097594612" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../../resources/js/prism.js?v=3.5.0.753097594612" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../../resources/js/lunr.js?v=3.5.0.753097770908" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../../resources/js/prism.js?v=3.5.0.753097770908" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -208,7 +208,7 @@
 </doc-anchor-target>
 <p>Link: <a href="https://www.vulnlab.com/machines">https://www.vulnlab.com/machines</a></p>
 <div class="table-wrapper scrollbar overflow-hidden">
-<table class="comfortable">
+<table class="compact">
 <thead>
 <tr>
 <th>Name</th>
@@ -349,51 +349,17 @@ Password:
 1108: DELEGATE\N.Thompson (SidTypeUser)
 1121: DELEGATE\delegation admins (SidTypeGroup)</code></pre>
 </doc-codeblock></div>
-<p>The output show the following user accounts that could be potential targets in future:</p>
-<div class="table-wrapper scrollbar overflow-hidden">
-<table class="comfortable">
-<thead>
-<tr>
-<th>SID</th>
-<th>SamAccountName</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>500</td>
-<td>Administrator</td>
-</tr>
-<tr>
-<td>501</td>
-<td>Guest</td>
-</tr>
-<tr>
-<td>502</td>
-<td>krbtgt</td>
-</tr>
-<tr>
-<td>1104</td>
-<td>A.Briggs</td>
-</tr>
-<tr>
-<td>1105</td>
-<td>b.Brown</td>
-</tr>
-<tr>
-<td>1106</td>
-<td>R.Cooper</td>
-</tr>
-<tr>
-<td>1107</td>
-<td>J.Roberts</td>
-</tr>
-<tr>
-<td>1108</td>
-<td>N.Thompson</td>
-</tr>
-</tbody>
-</table>
-</div>
+<p class="compact">The output show the following user accounts that could be potential targets in future:<br />
+SID | SamAccountName <br />
+-------- | --------
+500 | Administrator
+501 | Guest
+502 | krbtgt
+1104 | A.Briggs<br />
+1105 | b.Brown<br />
+1106 | R.Cooper<br />
+1107 | J.Roberts<br />
+1108 | N.Thompson</p>
 <p>We also get the Domain SID:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-bash"><code v-pre class="language-bash">Domain SID is: S-1-5-21-1484473093-3449528695-2030935120</code></pre>
