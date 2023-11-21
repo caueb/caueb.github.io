@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.753883664994">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.753883975711">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.5.0">
@@ -30,11 +30,11 @@
 
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../resources/css/retype.css?v=3.5.0.753883664994" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.5.0.753883975711" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.753883664994" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.753883975711" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.5.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.753883664994" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.753883975711" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -216,18 +216,18 @@
 </doc-anchor-target>
 <p>The combination of the techniques Threadless Injection, Stomping, and Caro-Kann has proven to be highly evasive against AV/EDR. I developed a simple proof-of-concept by integrating these three techniques and then executed it on a computer protected with Microsoft Defender for Endpoint to observe the detections.</p>
 <doc-anchor-target id="the-defense---mde">
-    <h1>
+    <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#the-defense---mde">#</doc-anchor-trigger>
         <span>The defense - MDE</span>
-    </h1>
+    </h2>
 </doc-anchor-target>
 <p>I sign up to evaluate Microsoft Defender for Endpoint for free (up to 2 months I guess) <a href="https://learn.microsoft.com/en-us/microsoft-365/security/defender-endpoint/evaluate-mde?view=o365-worldwide">in this link</a>. Next, I created a new Windows 11 Pro virtual machine no my home network, and onboarded the machine into MDE.</p>
 <p>Note that I have not changed any rules or policies, these are the default settings when onboarding a new device.</p>
 <doc-anchor-target id="the-code">
-    <h1>
+    <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#the-code">#</doc-anchor-trigger>
         <span>The code</span>
-    </h1>
+    </h2>
 </doc-anchor-target>
 <p>Threadless Injection is a novel process injection technique involving hooking an export function from a remote process in order to gain shellcode execution.</p>
 <p>More info at <a href="https://github.com/CCob/ThreadlessInject">CCob repo and BSides presentation</a>.</p>
@@ -258,10 +258,10 @@
 </figure>
 </p>
 <doc-anchor-target id="executing">
-    <h1>
+    <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#executing">#</doc-anchor-trigger>
         <span>Executing</span>
-    </h1>
+    </h2>
 </doc-anchor-target>
 <p>To execute the ThreadlessStompingKann technique, the following steps were taken:</p>
 <ol>
