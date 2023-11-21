@@ -45,7 +45,7 @@ To execute the ThreadlessStompingKann technique, the following steps were taken:
 1. Started a Havoc C2 listener on port 443 (HTTPS) and created a beacon shellcode. 
 2. Next, XOR encrypted the beacon file and hosted on the attacker machine, port 80 (HTTP). 
 3. Dropped the compiled executable ThreadlessStompingKann.exe in the target machine under the Downloads folder. 
-4. Opened Notepad, started Powershell, and executed the program.
+4. Opened Notepad (the target process), started Powershell, and executed the program.
 
 ![](imgs/threadlessstompingkann/1-Running.png)
 
