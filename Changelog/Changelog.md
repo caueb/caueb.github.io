@@ -7,6 +7,7 @@ icon: calendar
 
 Date | Change {.compact}
 --- | ---
+21/11/2023 | Added Purple Team Lab - ThreadlessStompingKann
 30/08/2023 | Added Purple Team Lab - Early Bird - Edge case
 23/08/2023 | Added CTF Cheat Sheets folder
 16/08/2023 | Added Purple Team Lab - Mockingjay - BYODLL
