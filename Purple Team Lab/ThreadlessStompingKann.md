@@ -84,7 +84,7 @@ Note:
 
 
 !!!  
-The full code for the POC above can be found [on my Github repo here](https://github.com/caueb).   
+The full code for the POC above can be found [on my Github repo here](https://github.com/caueb/ThreadlessStompingKann).   
 !!!
 
 
