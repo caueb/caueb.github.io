@@ -5,12 +5,12 @@
 ## Intro
 The combination of the techniques Threadless Injection, Stomping, and Caro-Kann has proven to be highly evasive against AV/EDR. I developed a simple proof-of-concept by integrating these three techniques and then executed it on a computer protected with Microsoft Defender for Endpoint to observe the detections.
 
-# The defense - MDE
+## The defense - MDE
 I sign up to evaluate Microsoft Defender for Endpoint for free (up to 2 months I guess) [in this link](https://learn.microsoft.com/en-us/microsoft-365/security/defender-endpoint/evaluate-mde?view=o365-worldwide). Next, I created a new Windows 11 Pro virtual machine no my home network, and onboarded the machine into MDE.
 
 Note that I have not changed any rules or policies, these are the default settings when onboarding a new device.
 
-# The code
+## The code
 Threadless Injection is a novel process injection technique involving hooking an export function from a remote process in order to gain shellcode execution.
 
 More info at [CCob repo and BSides presentation](https://github.com/CCob/ThreadlessInject).
@@ -37,7 +37,7 @@ The plan:
 
 ![](imgs/threadlessstompingkann/ThreadlessStompingKann.gif)
 
-# Executing
+## Executing
 To execute the ThreadlessStompingKann technique, the following steps were taken:
 1. Started a Havoc C2 listener on port 443 (HTTPS) and created a beacon shellcode. 
 2. Next, XOR encrypted the beacon file and hosted on the attacker machine, port 80 (HTTP). 
