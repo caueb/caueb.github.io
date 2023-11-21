@@ -8,7 +8,10 @@ The combination of the techniques Threadless Injection, Stomping, and Caro-Kann 
 ## The defense - MDE
 I sign up to evaluate Microsoft Defender for Endpoint for free (up to 2 months I guess) [in this link](https://learn.microsoft.com/en-us/microsoft-365/security/defender-endpoint/evaluate-mde?view=o365-worldwide). Next, I created a new Windows 11 Pro virtual machine on my home network, and onboarded the machine into MDE.
 
+!!!
 Note that I have not changed any rules or policies, these are the default settings when onboarding a new device.
+!!!
+
 
 ## The code
 Threadless Injection is a novel process injection technique involving hooking an export function from a remote process in order to gain shellcode execution.
