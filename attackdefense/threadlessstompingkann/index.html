@@ -3,39 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.756459609642">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.756460142197">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.5.0">
 
     <!-- Primary Meta Tags -->
-    <title>Early Bird - Edge case</title>
-    <meta name="title" content="Early Bird - Edge case">
-    <meta name="description" content="In a recent red team lab - Vulnlab- I had the challenge to establish initial access via phishing.">
+    <title>ThreadlessStompingKann</title>
+    <meta name="title" content="ThreadlessStompingKann">
+    <meta name="description" content="The combination of the techniques Threadless Injection, Stomping, and Caro-Kann has proven to be highly evasive against AV/EDR.">
 
     <!-- Canonical -->
-    <link rel="canonical" href="https://caueb.github.io/purple-team-lab/earlybirdedgecase/">
+    <link rel="canonical" href="https://caueb.github.io/attackdefense/threadlessstompingkann/">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://caueb.github.io/purple-team-lab/earlybirdedgecase/">
-    <meta property="og:title" content="Early Bird - Edge case">
-    <meta property="og:description" content="In a recent red team lab - Vulnlab- I had the challenge to establish initial access via phishing.">
+    <meta property="og:url" content="https://caueb.github.io/attackdefense/threadlessstompingkann/">
+    <meta property="og:title" content="ThreadlessStompingKann">
+    <meta property="og:description" content="The combination of the techniques Threadless Injection, Stomping, and Caro-Kann has proven to be highly evasive against AV/EDR.">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://caueb.github.io/purple-team-lab/earlybirdedgecase/">
-    <meta property="twitter:title" content="Early Bird - Edge case">
-    <meta property="twitter:description" content="In a recent red team lab - Vulnlab- I had the challenge to establish initial access via phishing.">
+    <meta property="twitter:url" content="https://caueb.github.io/attackdefense/threadlessstompingkann/">
+    <meta property="twitter:title" content="ThreadlessStompingKann">
+    <meta property="twitter:description" content="The combination of the techniques Threadless Injection, Stomping, and Caro-Kann has proven to be highly evasive against AV/EDR.">
 
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../resources/css/retype.css?v=3.5.0.756459609642" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.5.0.756460142197" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.756459609642" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.756460142197" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.5.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.756459609642" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.5.0.756459609642" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.756460142197" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -199,14 +198,14 @@
                                 <div id="docs-sidebar-right-toggle"></div>
                                 <!-- Page content  -->
 <p><figure class="content-center">
-    <img src="../imgs/earlybird/edgecaseheader.jpeg" alt="">
+    <img src="../imgs/threadlessstompingkann/banner.png" alt="">
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
-<doc-anchor-target id="early-bird---edge-case" class="break-words">
+<doc-anchor-target id="threadlessstompingkann" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#early-bird---edge-case">#</doc-anchor-trigger>
-        <span>Early Bird - Edge case</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#threadlessstompingkann">#</doc-anchor-trigger>
+        <span>ThreadlessStompingKann</span>
     </h1>
 </doc-anchor-target>
 <doc-anchor-target id="intro">
@@ -215,173 +214,14 @@
         <span>Intro</span>
     </h2>
 </doc-anchor-target>
-<p>In a recent red team lab - <a href="https://www.vulnlab.com/main/red-team-labs">Vulnlab</a> - I had the challenge to establish initial access via phishing. Basically, after compromising an IT department email account, I had to send a phishing email targeting another account which was expecting to receive the &quot;HR Tool&quot;. The target machine is running Elastic EDR agent and the goal was to evade detection and gain a foothold.</p>
-<p>My initial thoughts were to create a program that uses of the Early Bird technique to spawn a new instance of MS Edge and inject a reverse shell shellcode. The reason to pick Edge as the target process is because security products can easily detect anomalous network connections, for example, it would be very suspicious if <code v-pre>Notepad.exe</code> process starts sending HTTP/S packets every 30s.</p>
-<doc-anchor-target id="the-current-directory-issue">
+<p>The combination of the techniques Threadless Injection, Stomping, and Caro-Kann has proven to be highly evasive against AV/EDR. I developed a simple proof-of-concept by integrating these three techniques and then executed it on a computer protected with Microsoft Defender for Endpoint to observe the detections.</p>
+<doc-anchor-target id="the-defense---mde">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#the-current-directory-issue">#</doc-anchor-trigger>
-        <span>The current directory issue</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#the-defense---mde">#</doc-anchor-trigger>
+        <span>The defense - MDE</span>
     </h2>
 </doc-anchor-target>
-<p>I wanted to spawn an instance of MS Edge as close to the original as possible to avoid detection. Here is how a legitimate <code v-pre>msedge.exe</code> process looks like in Process Hacker:
-<figure class="content-center">
-    <img src="../imgs/earlybird/img01.png" alt="">
-    <figcaption class="caption"></figcaption>
-</figure>
-</p>
-<p>When using <code v-pre>CreateProcessA</code> API or even the low-level <code v-pre>NtCreateUserProcess</code> we can specify the parameters and attributes for the process, such as the &quot;Image file name&quot;, &quot;Command line&quot;, even spoof the parent process. However, the one that was challenging to get it right was the &quot;Current directory&quot; since it contains the full path + version installed of Edge. I don&#x27;t know what version is installed in the target. If we don’t specify anything and pass the <code v-pre>NULL</code> value, it will be populated with the current directory where the program was initiated:
-<figure class="content-center">
-    <img src="../imgs/earlybird/img02.png" alt="">
-    <figcaption class="caption"></figcaption>
-</figure>
-<em>Note: I am also spoofing the parent process as you can see it is showing as child of <code v-pre>explorer.exe</code>.</em></p>
-<p>See below a snippet of the code for spawning <code v-pre>msedge.exe</code> without specifying the &quot;Current directory&quot;:</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-c"><code v-pre class="language-c">...&lt;snip&gt;...
-if (!CreateProcessA(
-		&quot;C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe&quot;,
-		&quot;\&quot;C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe\&quot;&quot;,
-		NULL,
-		NULL,
-		FALSE,
-		CREATE_SUSPENDED | CREATE_NO_WINDOW | EXTENDED_STARTUPINFO_PRESENT,
-		NULL,
-		NULL,   // Current directory value
-		&amp;SiEx.StartupInfo,
-		&amp;Pi)) {
-		printf(&quot;[!] CreateProcessA failed with error : %d \n&quot;, GetLastError());
-		return FALSE;
-	}
-...&lt;snip&gt;...</code></pre>
-</doc-codeblock></div>
-<p>On the other hand, if we specify the wrong directory, it will fail and the program will likely crash.</p>
-<doc-anchor-target id="fetching-edge-version-from-the-registry">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#fetching-edge-version-from-the-registry">#</doc-anchor-trigger>
-        <span>Fetching Edge version from the registry</span>
-    </h2>
-</doc-anchor-target>
-<p>To solve this issue we need to retrieve the Edge version installed in the target system, concatenate with the path <code v-pre>C:\Program Files (x86)\Microsoft\Edge\Application\</code> and pass as the value for the current directory when spawning an instance of <code v-pre>msedge.exe</code>.</p>
-<p>There are a few ways to do that, I decided to fetch the registry.
-<figure class="content-center">
-    <img src="../imgs/earlybird/img03.png" alt="">
-    <figcaption class="caption"></figcaption>
-</figure>
-We can find the Edge version installed under <code v-pre>HKEY_CURRENT_USER\Software\Microsoft\Edge\BLBeacon</code> registry, in the <code v-pre>version</code> key.</p>
-<p>Building a POC to retrieve Edge version from the registry:</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-c"><code v-pre class="language-c">#include &lt;stdio.h&gt;
-#include &lt;windows.h&gt;
-
-BOOL ReadEdgeVersionFromRegistry(OUT LPCSTR* ppPath) {
-	LSTATUS status = NULL;
-	DWORD dwBytesRead = 0;
-	PBYTE pBytes = NULL;
-
-	// MS Edge install registry location: Software\\Microsoft\\Edge\\BLBeacon
-	char edgeReg[] = { 'S', 'o', 'f', 't', 'w', 'a', 'r', 'e', '\\', 'M', 'i', 'c', 'r', 'o', 's', 'o', 'f', 't', '\\', 'E', 'd', 'g', 'e', '\\', 'B', 'L', 'B', 'e', 'a', 'c', 'o', 'n', '\0' };
-
-	// Key in registry containing the MS Edge version
-	char edgeVersion[] = { 'v', 'e', 'r', 's', 'i', 'o', 'n', '\0' };
-
-	// Fetching the version's size
-	status = RegGetValueA(HKEY_CURRENT_USER, edgeReg, edgeVersion, RRF_RT_ANY, NULL, NULL, &amp;dwBytesRead);
-	if (ERROR_SUCCESS != status) {
-		printf(&quot;[!] RegGetValueA Failed With Error : %d\n&quot;, status);
-		return FALSE;
-	}
-
-	// Allocating heap that will store the version that will be read
-	pBytes = (PBYTE)HeapAlloc(GetProcessHeap(), HEAP_ZERO_MEMORY, dwBytesRead);
-	if (pBytes == NULL) {
-		printf(&quot;[!] HeapAlloc Failed With Error : %d\n&quot;, GetLastError());
-		return FALSE;
-	}
-
-	// Reading the version from &quot;edgeReg&quot; key, from value &quot;edgeVersion&quot;
-	status = RegGetValueA(HKEY_CURRENT_USER, edgeReg, edgeVersion, RRF_RT_ANY, NULL, pBytes, &amp;dwBytesRead);
-	if (ERROR_SUCCESS != status) {
-		printf(&quot;[!] RegGetValueA Failed With Error : %d\n&quot;, status);
-		HeapFree(GetProcessHeap(), 0, pBytes);
-		return FALSE;
-	}
-	printf(&quot;\t[i] Found Edge version: %s\n&quot;, pBytes);
-
-	/* Concatenate the version with the base path C:\\Program Files(x86)\\Microsoft\\Edge\\Application\\ */
-	char basePath[] = { 'C', ':', '\\', 'P', 'r', 'o', 'g', 'r', 'a', 'm', ' ', 'F', 'i', 'l', 'e', 's', ' ', '(', 'x', '8', '6', ')', '\\', 'M', 'i', 'c', 'r', 'o', 's', 'o', 'f', 't', '\\', 'E', 'd', 'g', 'e', '\\', 'A', 'p', 'p', 'l', 'i', 'c', 'a', 't', 'i', 'o', 'n', '\\', '\0' };
-	size_t basePathLen = strlen(basePath);
-	size_t versionLen = dwBytesRead - 1; // Exclude the null-terminator from the version length
-
-	// Allocate memory for the complete path
-	*ppPath = (LPCSTR)HeapAlloc(GetProcessHeap(), HEAP_ZERO_MEMORY, basePathLen + versionLen + 1);
-	if (*ppPath == NULL) {
-		printf(&quot;[!] HeapAlloc Failed With Error : %d\n&quot;, GetLastError());
-		HeapFree(GetProcessHeap(), 0, pBytes);
-		return FALSE;
-	}
-
-	// Copy the base path to ppPath
-	if (strcpy_s((char*)*ppPath, basePathLen + versionLen + 1, basePath) != 0) {
-		printf(&quot;[!] strcpy_s Failed\n&quot;);
-		HeapFree(GetProcessHeap(), 0, *ppPath);
-		HeapFree(GetProcessHeap(), 0, pBytes);
-		return FALSE;
-	}
-
-	// Concatenate the version at the end of ppPath
-	if (strcat_s((char*)*ppPath, basePathLen + versionLen + 1, (const char*)pBytes) != 0) {
-		printf(&quot;[!] strcat_s Failed\n&quot;);
-		HeapFree(GetProcessHeap(), 0, *ppPath);
-		HeapFree(GetProcessHeap(), 0, pBytes);
-		return FALSE;
-	}
-
-	// Print the full concatenated path
-	printf(&quot;\t[i] Edge full Path: %s\n&quot;, *ppPath);
-
-	// Free the version buffer
-	HeapFree(GetProcessHeap(), 0, pBytes);
-
-	return TRUE;
-}
-
-int main() {
-
-    printf(&quot;[i] Looking for MS Edge version in the registry\n&quot;);
-    LPCSTR pEdgePath = NULL;
-    if (!ReadEdgeVersionFromRegistry(&amp;pEdgePath)) {
-        printf(&quot;[-] Error retrieving Microsoft Edge path\n&quot;);
-        return -1;
-    }
-
-    return 0;
-}</code></pre>
-</doc-codeblock></div>
-<p>Compile and run the code above, we can verify that it is working:
-<figure class="content-center">
-    <img src="../imgs/earlybird/img04.png" alt="">
-    <figcaption class="caption"></figcaption>
-</figure>
-</p>
-<doc-anchor-target id="parent-process-spoofing-rule-bypass">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#parent-process-spoofing-rule-bypass">#</doc-anchor-trigger>
-        <span>Parent process spoofing rule bypass</span>
-    </h2>
-</doc-anchor-target>
-<p>When I thought I was done, Elastic was detecting the parent process spoofing. Luckily, we can have  a look at Elastic detection <a href="https://github.com/elastic/protections-artifacts/blob/main/behavior/rules/defense_evasion_parent_process_pid_spoofing.toml#L91">rules for PPID spoofing on Github</a>. That is when I saw this on <a href="https://github.com/elastic/protections-artifacts/blob/7cab0ce93881cef1b1073c3946aac790a284f554/behavior/rules/defense_evasion_parent_process_pid_spoofing.toml#L91">line 91</a>:
-<figure class="content-center">
-    <img src="../imgs/earlybird/img05.png" alt="">
-    <figcaption class="caption"></figcaption>
-</figure>
-</p>
-<p>It seems that if <code v-pre>msedge.exe</code> has 2 or more arguments and parent is <code v-pre>sihost.exe</code> then we are good to go. I modified the &quot;Command line&quot; value and changed the parent process from <code v-pre>explorer.exe</code> to <code v-pre>sihost.exe</code>:
-<figure class="content-center">
-    <img src="../imgs/earlybird/img06.png" alt="">
-    <figcaption class="caption"></figcaption>
-</figure>
-</p>
-<p>Looks exactly what we need to get that initial foothold in the red team lab.</p>
+<p>I sign up to evaluate Microsoft Defender for Endpoint for free (up to 2 months I guess) <a href="https://learn.microsoft.com/en-us/microsoft-365/security/defender-endpoint/evaluate-mde?view=o365-worldwide">in this link</a>. Next, I created a new Windows 11 Pro virtual machine on my home network, and onboarded the machine into MDE.</p>
 <div class="flex mb-6">
     <div class="shrink-0 w-1 rounded-tl rounded-bl bg-blue-500 dark:bg-blue-400"></div>
     <div class="flex w-full py-4 border border-l-0 border-gray-300 rounded-tr rounded-br doc-alert bg-white dark:bg-dark-700 dark:border-dark-700" role="alert">
@@ -395,67 +235,136 @@ int main() {
             </svg>
         </div>
         <div class="pr-5 ml-3 w-full">
-<p>The full code for the POC above can be found <a href="https://github.com/caueb/EarlyBird-EdgeCase">on my Github repo here</a>.</p>
+<p>Note that I have not changed any rules or policies, these are the default settings when onboarding a new device.</p>
         </div>
     </div>
 </div>
-<doc-anchor-target id="final-adjustments">
+<doc-anchor-target id="the-code">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#final-adjustments">#</doc-anchor-trigger>
-        <span>Final adjustments</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#the-code">#</doc-anchor-trigger>
+        <span>The code</span>
     </h2>
 </doc-anchor-target>
-<p>For my final code I replaced most of the Windows API calls with indirect syscalls using <a href="https://github.com/Maldev-Academy/HellHall">HellsHall</a>.</p>
-<p>Here is a list of the APIs to replace from the POC:</p>
-<div class="table-wrapper scrollbar overflow-hidden">
-<table class="compact">
-<thead>
-<tr>
-<th>POC WinAPI</th>
-<th>Syscall</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>OpenProcessToken</td>
-<td>NtOpenProcessToken</td>
-</tr>
-<tr>
-<td>OpenProcess</td>
-<td>NtOpenProcess</td>
-</tr>
-<tr>
-<td>CreateProcessA</td>
-<td>NtCreateUserProcess</td>
-</tr>
-<tr>
-<td>VirtualAllocEx</td>
-<td>NtAllocateVirtualMemory</td>
-</tr>
-<tr>
-<td>WriteProcessMemory</td>
-<td>NtWriteVirtualMemory</td>
-</tr>
-<tr>
-<td>VirtualProtectEx</td>
-<td>NtProtectVirtualMemory</td>
-</tr>
-<tr>
-<td>QueueUserAPC</td>
-<td>NtQueueApcThread</td>
-</tr>
-<tr>
-<td>ResumeThread</td>
-<td>NtResumeThread</td>
-</tr>
-<tr>
-<td>CloseHandle</td>
-<td>NtClose</td>
-</tr>
-</tbody>
-</table>
+<p>Threadless Injection is a novel process injection technique involving hooking an export function from a remote process in order to gain shellcode execution.</p>
+<p>More info at <a href="https://github.com/CCob/ThreadlessInject">CCob repo and BSides presentation</a>.</p>
+<p>Caro-Kann involves two injections in the remote process, one for the payload, and the second for a custom shellcode. The custom shellcode is then modified at runtime with the payload address just before injection. A new thread is created pointing to the custom shellcode address, which in turn will change the memory permissions (to RX) and execute the payload.</p>
+<p>More info at S3cur3Th1sSh1t repo <a href="https://github.com/S3cur3Th1sSh1t/Caro-Kann#caro-kann">of the Caro-Kann technique</a>.</p>
+<p>DLL Stomping, or module stomping, is a technique that involves overwriting loaded modules with malicious code. The main goal is to backup the malicious code with some legitimate module, creating a camouflage effect that makes it more challenging for security measures to detect the presence of the malicious payload.</p>
+<p>The plan:</p>
+<ol>
+<li>Fetch the payload from the internet</li>
+<li>Get a handle to a remote process</li>
+<li>Inject the DLL we want to stomp in the remote process (Stomp + Threadless Inject)</li>
+<li>Get the address of 2 functions present in the DLL (Stomp)
+<ol>
+<li>Find the address of a function A to hold the payload (Stomp)</li>
+<li>Find the address of a function B to hold a custom shellcode that will change the memory protection of function A execute it (Stomp)</li>
+</ol>
+</li>
+<li>Write the payload into function A (Caro-Kann)</li>
+<li>Modify the custom shellcode at runtime adding the address of function A and size of the payload (Caro-Kann)</li>
+<li>Save the original state of the function B (Caro-Kann)</li>
+<li>Write the custom shellcode into function B (Caro-Kann)</li>
+<li>Use Threadless Injection to call function B (Threadless)</li>
+<li>Sleep for a few seconds to let the function B to call function A and then restore function B (entry point) to original state (Caro-Kann)</li>
+</ol>
+<p><figure class="content-center">
+    <img src="../imgs/threadlessstompingkann/threadlessstompingkann.gif" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<doc-anchor-target id="executing">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#executing">#</doc-anchor-trigger>
+        <span>Executing</span>
+    </h2>
+</doc-anchor-target>
+<p>To execute the ThreadlessStompingKann technique, the following steps were taken:</p>
+<ol>
+<li>Started a Havoc C2 listener on port 443 (HTTPS) and created a beacon shellcode.</li>
+<li>Next, XOR encrypted the beacon file and hosted on the attacker machine, port 80 (HTTP).</li>
+<li>Dropped the compiled executable ThreadlessStompingKann.exe in the target machine under the Downloads folder.</li>
+<li>Opened Notepad (the target process), started Powershell, and executed the program.</li>
+</ol>
+<p><figure class="content-center">
+    <img src="../imgs/threadlessstompingkann/1-running.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>Seconds later, I could see a hit on the web server of the attacker machine to fetch the payload and a new connection was established coming from Notepad.exe.</p>
+<p><figure class="content-center">
+    <img src="../imgs/threadlessstompingkann/2-havoc.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>I executed a few commands in the beacon just to test everything was working, including listed the processes running as we can see below. Highlighted is the MDE agent running.</p>
+<p><figure class="content-center">
+    <img src="../imgs/threadlessstompingkann/2-havoc-processes.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<doc-anchor-target id="observations">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#observations">#</doc-anchor-trigger>
+        <span>Observations</span>
+    </h2>
+</doc-anchor-target>
+<p>During the execution, the following observations were made.</p>
+<p>Microsoft Defender for Endpoint (MDE) detected and logged several incidents related to the ThreadlessStompingKann technique, however, none of them seems to be critical enough to raise any alert.</p>
+<p><figure class="content-center">
+    <img src="../imgs/threadlessstompingkann/4-mdeincidents.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>In the image above we see MDE alerts page is empty. I waited up to 4 hours and nothing came up.</p>
+<p><figure class="content-center">
+    <img src="../imgs/threadlessstompingkann/3-mdetimeline.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>The MDE timeline showed the initial detection and response to the technique.</p>
+<ol>
+<li>Powershell started the process ThreadlessStompingKann.exe</li>
+<li>The payload being fetched from the attacker machine</li>
+<li>The payload was triggered and Notepad.exe established a C2 connection via HTTPS to the attacker machine</li>
+</ol>
+<p><figure class="content-center">
+    <img src="../imgs/threadlessstompingkann/3-mdetimeline_protections.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>After 30 minutes of the execution, MDE provided incident details, including information on the memory protections that were changed in Notepad.exe.</p>
+<p>The selected row is the Havoc payload, we can compare the size of the region with the output in the executable. However, the detection was triggered during the allocation of the memory and not when the custom shellcode was executed.</p>
+<p>Note:
+<em>I could have used many different approaches to be a bit more stealthier, for example, since we are communicating to the C2 via HTTPS choosing msedge.exe instead of Notepad.exe, or adding other evasive techniques, such as unhooking dll, direct/indirec syscalls, api hashing, iat obfuscation, etc. The code have some intentionally bad opsec to get the gist of MDE against it. I guess the simple code using WinAPIs still work.</em></p>
+<div class="flex mb-6">
+    <div class="shrink-0 w-1 rounded-tl rounded-bl bg-blue-500 dark:bg-blue-400"></div>
+    <div class="flex w-full py-4 border border-l-0 border-gray-300 rounded-tr rounded-br doc-alert bg-white dark:bg-dark-700 dark:border-dark-700" role="alert">
+        <div class="flex items-center ml-4 h-7">
+            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px text-blue-500 dark:text-blue-400" width="22" height="22" viewBox="0 0 24 24" role="presentation">
+                <g fill="currentColor"><g>
+                    <path d="M12 1C5.93 1 1 5.93 1 12s4.93 11 11 11 11-4.93 11-11S18.07 1 12 1zm0 20c-4.96 0-9-4.04-9-9s4.04-9 9-9 9 4.04 9 9-4.04 9-9 9z"></path>
+                    <path d="M12 11c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1s1-.45 1-1v-4c0-.55-.45-1-1-1zM12.01 7c-.56 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"></path>
+                    <path fill="none" d="M0 0h24v24H0z"></path>
+                </g></g>
+            </svg>
+        </div>
+        <div class="pr-5 ml-3 w-full">
+<p>The full code for the POC above can be found <a href="https://github.com/caueb/ThreadlessStompingKann">on my Github repo here</a>.</p>
+        </div>
+    </div>
 </div>
-<p>After doing these modifications I successfully got my initial foothold and a reverse shell running under <code v-pre>msedge.exe</code>.</p>
+<doc-anchor-target id="credits">
+    <h1>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#credits">#</doc-anchor-trigger>
+        <span>Credits</span>
+    </h1>
+</doc-anchor-target>
+<ul>
+<li>CCob for his Threadless Inject: <a href="https://github.com/CCob/ThreadlessInject">https://github.com/CCob/ThreadlessInject</a></li>
+<li>OtterHacker for his DEFCON31 presentation on Threadless Stomping: <a href="https://github.com/OtterHacker/Conferences/tree/main/Defcon31">https://github.com/OtterHacker/Conferences/tree/main/Defcon31</a></li>
+<li>S3cur3Th1sSh1t for his Caro-Kann: <a href="https://github.com/S3cur3Th1sSh1t/Caro-Kann">https://github.com/S3cur3Th1sSh1t/Caro-Kann</a></li>
+</ul>
 
                                 
                                 <!-- Required only on API pages -->
@@ -465,20 +374,20 @@ int main() {
                             
                                 <nav class="flex mt-14">
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../purple-team-lab/elasticonraspberrypi/">
+                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../attackdefense/mockingjay-byodll/">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                             <span>
                                                 <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
-                                                <span class="block mt-1">Deploy Elastic on Raspberry Pi</span>
+                                                <span class="block mt-1">Mockingjay - BYODLL</span>
                                             </span>
                                         </a>
                                     </div>
                             
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../purple-team-lab/mockingjay-byodll/">
+                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../ctf-cheat-sheets/enumeration/port-80-44-c44be/">
                                             <span>
                                                 <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
-                                                <span class="block mt-1">Mockingjay - BYODLL</span>
+                                                <span class="block mt-1">Port 80/443 - Web</span>
                                             </span>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                         </a>
@@ -522,6 +431,6 @@ int main() {
 
     <div id="docs-overlay-target"></div>
 
-    <script data-cfasync="false">window.__DOCS__ = { "title": "Early Bird - Edge case", level: 2, icon: "file", hasPrism: true, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
+    <script data-cfasync="false">window.__DOCS__ = { "title": "ThreadlessStompingKann", level: 2, icon: "file", hasPrism: false, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
 </body>
 </html>
