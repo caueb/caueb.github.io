@@ -1,3 +1,3 @@
 ---
-redirect: /attackdefense/threadlessstompingkann
+redirect: /attackdefense/threadlessstompingkann/
 ---
