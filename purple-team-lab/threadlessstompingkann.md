@@ -1,3 +1,3 @@
 ---
-redirect: /attackdefense/ThreadlessStompingKann.md
+redirect: /attackdefense/threadlessstompingkann
 ---
