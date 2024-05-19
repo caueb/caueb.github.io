@@ -1,5 +1,3 @@
 ---
-icon: info
+redirect: /attackdefense/threadlessstompingkann/
 ---
-
-This page has moved to [Attack&Defense - ThreadlessStompingKann](/attackdefense/threadlessstompingkann/).
